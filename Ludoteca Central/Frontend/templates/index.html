@@ -1,0 +1,1716 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="banners-section container mx-auto my-5 px-2 sm:px-8">
+    <div class="grid grid-cols-12 gap-5">
+      <div class="swiper-container col-span-12 overflow-hidden rounded-lg md:col-span-8">
+        <div class="swiper swiper-banner group relative flex items-center">
+          <div class="swiper-wrapper max-h-[377px]">
+            <div class="swiper-slide">
+              <img src="images/banner/banner-1.png" alt="banner 1" />
+            </div>
+            <div class="swiper-slide">
+              <img src="images/banner/banner-2.jpg" alt="banner 2" />
+            </div>
+            <div class="swiper-slide">
+              <img src="images/banner/banner-3.jpg" alt="banner 3" />
+            </div>
+            <div class="swiper-slide">
+              <img src="images/banner/banner-4.jpg" alt="banner 3" />
+            </div>
+          </div>
+          <div class="button-next btn-slider-1 transition-all-300 -right-16 group-hover:right-4">
+            &#10095;
+          </div>
+          <div class="button-prev btn-slider-1 transition-all-300 -left-16 group-hover:left-4">
+            &#10094;
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+      <div class="group relative col-span-4 hidden overflow-hidden rounded-lg md:block">
+        <div class="overlay-gradient absolute z-[1] h-full w-full"></div>
+        <img class="transition-all-300 h-full w-full object-cover hover:transform group-hover:scale-110"
+          src="images/categories/vr-glass-hero.jpg" alt="banner-img" />
+        <div class="absolute top-0 left-0 flex h-full w-full items-center">
+          <div class="z-[2] p-5">
+            <h3 class="text-lg font-bold uppercase text-primary-color drop-shadow-xl" style="color: #eceeef;">
+              VR - Meta Quest 3
+            </h3>
+            <p class="my-5 text-white drop-shadow-md">
+              Choose your vr and play it!
+            </p>
+            <a class="btn-effect inline-block rounded-lg bg-primary-color py-2 px-3 text-white" href="shop-mixed.html"
+              style="color: #fff;">
+              <span>Shop now</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="information-section container mx-auto my-5 px-2 sm:px-8">
+    <div class="grid grid-cols-12 gap-5">
+      <div class="col-span-12 flex sm:col-span-6 lg:col-span-3">
+        <div
+          class="transition-all-300 flex w-full items-center gap-4 rounded-lg bg-white p-5 hover:shadow-lg xs:pl-[20%] sm:pl-5">
+          <div class="rounded-full border-2">
+            <i class="bi bi-truck flex p-3 text-[40px] text-primary-color"></i>
+          </div>
+          <div>
+            <h6 class="font-bold capitalize">Free shipping</h6>
+            <p class="break-all text-sm text-gray-400">Orders over $100</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-12 flex sm:col-span-6 lg:col-span-3">
+        <div
+          class="transition-all-300 flex w-full items-center gap-4 rounded-lg bg-white p-5 hover:shadow-lg xs:pl-[20%] sm:pl-5">
+          <div class="rounded-full border-2">
+            <i class="bi bi-cash-coin flex p-3 text-[40px] text-primary-color"></i>
+          </div>
+          <div>
+            <h6 class="font-bold capitalize">Money back</h6>
+            <p class="break-all text-sm text-gray-400">With a 30 day</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-12 flex sm:col-span-6 lg:col-span-3">
+        <div
+          class="transition-all-300 flex w-full items-center gap-4 rounded-lg bg-white p-5 hover:shadow-lg xs:pl-[20%] sm:pl-5">
+          <div class="rounded-full border-2">
+            <i class="bi bi-shield-check flex p-3 text-[40px] text-primary-color"></i>
+          </div>
+          <div>
+            <h6 class="font-bold capitalize">Secure payment</h6>
+            <p class="break-all text-sm text-gray-400">Secured payment</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-12 flex sm:col-span-6 lg:col-span-3">
+        <div
+          class="transition-all-300 flex w-full items-center gap-4 rounded-lg bg-white p-5 hover:shadow-lg xs:pl-[20%] sm:pl-5">
+          <div class="rounded-full border-2">
+            <i class="bi bi-headset flex p-3 text-[40px] text-primary-color"></i>
+          </div>
+          <div>
+            <h6 class="font-bold capitalize">Online support</h6>
+            <p class="break-all text-sm text-gray-400">Support 24/7</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="offers-section container mx-auto my-5 px-2 sm:px-8">
+    <div class="liner-container mt-5 flex justify-center border-b-2 border-[rgba(119,119,119,.17)]">
+      <h1 class="mb-[-2px] inline-block border-b-2 border-primary-color pb-3 text-2xl font-bold uppercase">
+        Offers
+      </h1>
+    </div>
+    <div class="swiper-container">
+      <div class="swiper swiper-cards group relative flex items-center py-5">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide h-auto">
+            <div
+              class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
+              <div class="absolute top-[10px] right-[10px]">
+                <div class="p-[2px]">
+                  <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                    href="javascript:void(0)">
+                    <i class="bi bi-heart pointer-events-none flex text-white"></i>
+                  </a>
+                </div>
+                <div class="p-[2px]">
+                  <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                    href="javascript:void(0)" data-target=".quick-view-modal">
+                    <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
+                  </a>
+                </div>
+              </div>
+              <div
+                class="absolute top-0 left-0 flex h-[35px] w-[90px] items-center justify-center rounded-br-lg bg-primary-color">
+                <span class="text-md text-center font-semibold uppercase text-white">
+                  25% Off</span>
+              </div>
+              <div class="h-[190px] overflow-hidden rounded-lg">
+                <a href="#">
+                  <img class="card-object-fit h-full w-full" src="images/cards/notebooks/note_1.jpg" alt="product" />
+                </a>
+              </div>
+              <div class="my-2 flex justify-between">
+                <div class="flex">
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-gray-200"></i>
+                </div>
+                <div>
+                  <span class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                </div>
+              </div>
+              <div class="my-1">
+                <a class="clamp break-all font-medium" href="#">
+                  Apple Macbook Aire 13
+                </a>
+              </div>
+              <div class="my-1">
+                <p class="clamp-2 text-sm text-gray-400">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Itaque culpa, odio, qui praesentium dignissimos eaque
+                  dolorum porro alias neque, eius animi ipsa voluptates. Optio
+                  repellat tempora voluptas, dolores ipsam ad!
+                </p>
+              </div>
+
+              <div class="my-1">
+                <span class="text-lg font-bold">$37.00</span>
+                <span class="text-sm text-primary-color line-through">$50.00</span>
+              </div>
+              <div class="mt-auto">
+                <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
+                  href="#!">
+                  <span class="font-bold uppercase text-white">View details</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide h-auto">
+            <div
+              class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
+              <div class="absolute top-[10px] right-[10px]">
+                <div class="p-[2px]">
+                  <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                    href="javascript:void(0)">
+                    <i class="bi bi-heart pointer-events-none flex text-white"></i>
+                  </a>
+                </div>
+                <div class="p-[2px]">
+                  <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                    href="javascript:void(0)" data-target=".quick-view-modal">
+                    <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
+                  </a>
+                </div>
+              </div>
+              <div
+                class="absolute top-0 left-0 flex h-[35px] w-[90px] items-center justify-center rounded-br-lg bg-primary-color">
+                <span class="text-md text-center font-semibold uppercase text-white">
+                  25% Off</span>
+              </div>
+              <div class="h-[190px] overflow-hidden rounded-lg">
+                <a href="#">
+                  <img class="card-object-fit h-full w-full" src="images/categories/gaming/consoles.jpg"
+                    alt="product" />
+                </a>
+              </div>
+              <div class="my-2 flex justify-between">
+                <div class="flex">
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-gray-200"></i>
+                </div>
+                <div>
+                  <span class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                </div>
+              </div>
+              <div class="my-1">
+                <a class="clamp break-all font-medium" href="#">
+                  PlayStation 5
+                </a>
+              </div>
+              <div class="my-1">
+                <p class="clamp-2 text-sm text-gray-400">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Itaque culpa, odio, qui praesentium dignissimos eaque
+                  dolorum porro alias neque, eius animi ipsa voluptates. Optio
+                  repellat tempora voluptas, dolores ipsam ad!
+                </p>
+              </div>
+
+              <div class="my-1">
+                <span class="text-lg font-bold">$37.00</span>
+                <span class="text-sm text-primary-color line-through">$50.00</span>
+              </div>
+              <div class="mt-auto">
+                <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
+                  href="#">
+                  <span class="font-bold uppercase text-white">View details</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide h-auto">
+            <div
+              class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
+              <div class="absolute top-[10px] right-[10px]">
+                <div class="p-[2px]">
+                  <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                    href="javascript:void(0)">
+                    <i class="bi bi-heart pointer-events-none flex text-white"></i>
+                  </a>
+                </div>
+                <div class="p-[2px]">
+                  <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                    href="javascript:void(0)" data-target=".quick-view-modal">
+                    <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
+                  </a>
+                </div>
+              </div>
+              <div
+                class="absolute top-0 left-0 flex h-[35px] w-[90px] items-center justify-center rounded-br-lg bg-primary-color">
+                <span class="text-md text-center font-semibold uppercase text-white">
+                  25% Off</span>
+              </div>
+              <div class="h-[190px] overflow-hidden rounded-lg">
+                <a href="#">
+                  <img class="card-object-fit h-full w-full" src="images/cards/mousepad.jpg" alt="product" />
+                </a>
+              </div>
+              <div class="my-2 flex justify-between">
+                <div class="flex">
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-gray-200"></i>
+                </div>
+                <div>
+                  <span class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                </div>
+              </div>
+              <div class="my-1">
+                <a class="clamp break-all font-medium" href="#">
+                  Mousepad Hyperx Fury S Pro Speed
+                </a>
+              </div>
+              <div class="my-1">
+                <p class="clamp-2 text-sm text-gray-400">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Itaque culpa, odio, qui praesentium dignissimos eaque
+                  dolorum porro alias neque, eius animi ipsa voluptates. Optio
+                  repellat tempora voluptas, dolores ipsam ad!
+                </p>
+              </div>
+
+              <div class="my-1">
+                <span class="text-lg font-bold">$37.00</span>
+                <span class="text-sm text-primary-color line-through">$50.00</span>
+              </div>
+              <div class="mt-auto">
+                <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
+                  href="#">
+                  <span class="font-bold uppercase text-white">View details</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide h-auto">
+            <div
+              class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
+              <div class="absolute top-[10px] right-[10px]">
+                <div class="p-[2px]">
+                  <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                    href="javascript:void(0)">
+                    <i class="bi bi-heart pointer-events-none flex text-white"></i>
+                  </a>
+                </div>
+                <div class="p-[2px]">
+                  <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                    href="javascript:void(0)" data-target=".quick-view-modal">
+                    <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
+                  </a>
+                </div>
+              </div>
+              <div
+                class="absolute top-0 left-0 flex h-[35px] w-[90px] items-center justify-center rounded-br-lg bg-primary-color">
+                <span class="text-md text-center font-semibold uppercase text-white">
+                  25% Off</span>
+              </div>
+              <div class="h-[190px] overflow-hidden rounded-lg">
+                <a href="#">
+                  <img class="card-object-fit h-full w-full" src="images/categories/pc_components/processors.jpg"
+                    alt="product" />
+                </a>
+              </div>
+              <div class="my-2 flex justify-between">
+                <div class="flex">
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-gray-200"></i>
+                </div>
+                <div>
+                  <span class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                </div>
+              </div>
+              <div class="my-1">
+                <a class="clamp break-all font-medium" href="#">
+                  Ryzen 5 3600x
+                </a>
+              </div>
+              <div class="my-1">
+                <p class="clamp-2 text-sm text-gray-400">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Itaque culpa, odio, qui praesentium dignissimos eaque
+                  dolorum porro alias neque, eius animi ipsa voluptates. Optio
+                  repellat tempora voluptas, dolores ipsam ad!
+                </p>
+              </div>
+
+              <div class="my-1">
+                <span class="text-lg font-bold">$37.00</span>
+                <span class="text-sm text-primary-color line-through">$50.00</span>
+              </div>
+              <div class="mt-auto">
+                <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
+                  href="shop-mixed.html">
+                  <span class="font-bold uppercase text-white">View details</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide h-auto">
+            <div
+              class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
+              <div class="absolute top-[10px] right-[10px]">
+                <div class="p-[2px]">
+                  <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                    href="javascript:void(0)">
+                    <i class="bi bi-heart pointer-events-none flex text-white"></i>
+                  </a>
+                </div>
+                <div class="p-[2px]">
+                  <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                    href="javascript:void(0)" data-target=".quick-view-modal">
+                    <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
+                  </a>
+                </div>
+              </div>
+              <div
+                class="absolute top-0 left-0 flex h-[35px] w-[90px] items-center justify-center rounded-br-lg bg-primary-color">
+                <span class="text-md text-center font-semibold uppercase text-white">
+                  25% Off</span>
+              </div>
+              <div class="h-[190px] overflow-hidden rounded-lg">
+                <a href="#">
+                  <img class="card-object-fit h-full w-full" src="images/categories/peripherals/mouse.jpg"
+                    alt="product" />
+                </a>
+              </div>
+              <div class="my-2 flex justify-between">
+                <div class="flex">
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-gray-200"></i>
+                </div>
+                <div>
+                  <span class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                </div>
+              </div>
+              <div class="my-1">
+                <a class="clamp break-all font-medium" href="#">
+                  Mouse Logitech g403
+                </a>
+              </div>
+              <div class="my-1">
+                <p class="clamp-2 text-sm text-gray-400">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Itaque culpa, odio, qui praesentium dignissimos eaque
+                  dolorum porro alias neque, eius animi ipsa voluptates. Optio
+                  repellat tempora voluptas, dolores ipsam ad!
+                </p>
+              </div>
+
+
+              <div class="my-1">
+                <span class="text-lg font-bold">$37.00</span>
+                <span class="text-sm text-primary-color line-through">$50.00</span>
+              </div>
+              <div class="mt-auto">
+                <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
+                  href="#">
+                  <span class="font-bold uppercase text-white">View details</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide h-auto">
+            <div
+              class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
+              <div class="absolute top-[10px] right-[10px]">
+                <div class="p-[2px]">
+                  <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                    href="javascript:void(0)">
+                    <i class="bi bi-heart pointer-events-none flex text-white"></i>
+                  </a>
+                </div>
+                <div class="p-[2px]">
+                  <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                    href="javascript:void(0)" data-target=".quick-view-modal">
+                    <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
+                  </a>
+                </div>
+              </div>
+              <div
+                class="absolute top-0 left-0 flex h-[35px] w-[90px] items-center justify-center rounded-br-lg bg-primary-color">
+                <span class="text-md text-center font-semibold uppercase text-white">
+                  25% Off</span>
+              </div>
+              <div class="h-[190px] overflow-hidden rounded-lg">
+                <a href="#">
+                  <img class="card-object-fit h-full w-full" src="images/cards/phones/phone_1.jpg" alt="product" />
+                </a>
+              </div>
+              <div class="my-2 flex justify-between">
+                <div class="flex">
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-gray-200"></i>
+                </div>
+                <div>
+                  <span class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                </div>
+              </div>
+              <div class="my-1">
+                <a class="clamp break-all font-medium" href="#">
+                  Moto e7i Power
+                </a>
+              </div>
+              <div class="my-1">
+                <p class="clamp-2 text-sm text-gray-400">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Itaque culpa, odio, qui praesentium dignissimos eaque
+                  dolorum porro alias neque, eius animi ipsa voluptates. Optio
+                  repellat tempora voluptas, dolores ipsam ad!
+                </p>
+              </div>
+
+
+              <div class="my-1">
+                <span class="text-lg font-bold">$37.00</span>
+                <span class="text-sm text-primary-color line-through">$50.00</span>
+              </div>
+              <div class="mt-auto">
+                <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
+                  href="#">
+                  <span class="font-bold uppercase text-white">View details</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide h-auto">
+            <div
+              class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
+              <div class="absolute top-[10px] right-[10px]">
+                <div class="p-[2px]">
+                  <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                    href="javascript:void(0)">
+                    <i class="bi bi-heart pointer-events-none flex text-white"></i>
+                  </a>
+                </div>
+                <div class="p-[2px]">
+                  <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                    href="javascript:void(0)" data-target=".quick-view-modal">
+                    <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
+                  </a>
+                </div>
+              </div>
+              <div
+                class="absolute top-0 left-0 flex h-[35px] w-[90px] items-center justify-center rounded-br-lg bg-primary-color">
+                <span class="text-md text-center font-semibold uppercase text-white">
+                  25% Off</span>
+              </div>
+              <div class="h-[190px] overflow-hidden rounded-lg">
+                <a href="#">
+                  <img class="card-object-fit h-full w-full" src="images/cards/notebooks/note_6.jpg" alt="product" />
+                </a>
+              </div>
+              <div class="my-2 flex justify-between">
+                <div class="flex">
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-gray-200"></i>
+                </div>
+                <div>
+                  <span class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                </div>
+              </div>
+              <div class="my-1">
+                <a class="clamp break-all font-medium" href="#">
+                  Dell Inspiron
+                </a>
+              </div>
+              <div class="my-1">
+                <p class="clamp-2 text-sm text-gray-400">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Itaque culpa, odio, qui praesentium dignissimos eaque
+                  dolorum porro alias neque, eius animi ipsa voluptates. Optio
+                  repellat tempora voluptas, dolores ipsam ad!
+                </p>
+              </div>
+
+
+              <div class="my-1">
+                <span class="text-lg font-bold">$37.00</span>
+                <span class="text-sm text-primary-color line-through">$50.00</span>
+              </div>
+              <div class="mt-auto">
+                <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
+                  href="#">
+                  <span class="font-bold uppercase text-white">View details</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide h-auto">
+            <div
+              class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
+              <div class="absolute top-[10px] right-[10px]">
+                <div class="p-[2px]">
+                  <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                    href="javascript:void(0)">
+                    <i class="bi bi-heart pointer-events-none flex text-white"></i>
+                  </a>
+                </div>
+                <div class="p-[2px]">
+                  <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                    href="javascript:void(0)" data-target=".quick-view-modal">
+                    <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
+                  </a>
+                </div>
+              </div>
+              <div
+                class="absolute top-0 left-0 flex h-[35px] w-[90px] items-center justify-center rounded-br-lg bg-primary-color">
+                <span class="text-md text-center font-semibold uppercase text-white">
+                  25% Off</span>
+              </div>
+              <div class="h-[190px] overflow-hidden rounded-lg">
+                <a href="#">
+                  <img class="card-object-fit h-full w-full" src="images/cards/phones/phone_5.jpg" alt="product" />
+                </a>
+              </div>
+              <div class="my-2 flex justify-between">
+                <div class="flex">
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-star"></i>
+                  <i class="bi bi-star-fill flex text-base text-gray-200"></i>
+                </div>
+                <div>
+                  <span class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                </div>
+              </div>
+              <div class="my-1">
+                <a class="clamp break-all font-medium" href="#">
+                  Samsung Galaxy Z Fold4
+                </a>
+              </div>
+              <div class="my-1">
+                <p class="clamp-2 text-sm text-gray-400">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Itaque culpa, odio, qui praesentium dignissimos eaque
+                  dolorum porro alias neque, eius animi ipsa voluptates. Optio
+                  repellat tempora voluptas, dolores ipsam ad!
+                </p>
+              </div>
+
+
+              <div class="my-1">
+                <span class="text-lg font-bold">$37.00</span>
+                <span class="text-sm text-primary-color line-through">$50.00</span>
+              </div>
+              <div class="mt-auto">
+                <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
+                  href="#">
+                  <span class="font-bold uppercase text-white">View details</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="button-next btn-slider-1 transition-all-300 -right-16 group-hover:right-4">
+          &#10095;
+        </div>
+        <div class="button-prev btn-slider-1 transition-all-300 -left-16 group-hover:left-4">
+          &#10094;
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="banners-section-2 container mx-auto my-5 px-2 sm:px-8">
+    <div class="grid grid-cols-12 gap-5">
+      <div class="group relative col-span-12 h-[300px] overflow-hidden rounded-lg sm:col-span-6">
+        <div class="overlay-gradient absolute z-[1] h-full w-full"></div>
+        <img class="transition-all-300 h-full w-full object-cover hover:transform group-hover:scale-110"
+          src="images/categories/vr-glass-hero.jpg" alt="banner-img" />
+        <div class="absolute top-0 left-0 flex h-full w-full items-center">
+          <div class="z-[2] p-5">
+            <h3 class="text-lg font-bold uppercase text-primary-color drop-shadow-xl">
+              Virtual Glasses
+            </h3>
+            <p class="my-5 text-white drop-shadow-md">
+              Choose the ideal VR for you!
+            </p>
+            <a class="btn-effect inline-block rounded-lg bg-primary-color py-2 px-3 text-white" href="#">
+              <span>Show more</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="group relative col-span-12 h-[300px] overflow-hidden rounded-lg sm:col-span-6">
+        <div class="overlay-gradient absolute z-[1] h-full w-full"></div>
+        <img class="transition-all-300 h-full w-full object-cover hover:transform group-hover:scale-110"
+          src="images/categories/banner-robot.png" alt="banner-img" />
+        <div class="absolute top-0 left-0 flex h-full w-full items-center">
+          <div class="z-[2] p-5">
+            <h3 class="text-lg font-bold uppercase text-primary-color drop-shadow-xl">
+              Robot Vacuum
+            </h3>
+            <p class="my-5 text-white drop-shadow-md">
+              Smarthome at the best price!
+            </p>
+            <a class="btn-effect inline-block rounded-lg bg-primary-color py-2 px-3 text-white" href="#">
+              <span>Show more</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="products-1-section container mx-auto my-5 px-2 sm:px-8">
+    <div class="liner-container mt-5 flex justify-center border-b-2 border-[rgba(119,119,119,.17)]">
+      <h1 class="mb-[-2px] inline-block border-b-2 border-primary-color pb-3 text-2xl font-bold uppercase">
+        Notebooks
+      </h1>
+    </div>
+    <div class="grid grid-cols-12 gap-5">
+      <div class="group relative col-span-3 my-5 hidden overflow-hidden rounded-l-lg xl:block">
+        <div class="overlay-gradient absolute z-[1] h-full w-full"></div>
+        <img class="transition-all-300 h-full w-full object-cover hover:transform group-hover:scale-110"
+          src="images/categories/ergonic-chair-01.jpg" alt="banner-img" />
+        <div class="absolute top-0 left-0 flex h-full w-full items-center">
+          <div class="z-[2] p-5">
+            <h3 class="text-lg font-bold uppercase text-primary-color drop-shadow-xl" style="color: #d7d7d7;">
+              Ergonic Chair
+            </h3>
+            <p class="my-5 text-white drop-shadow-md">
+              Choose your laptop now!
+            </p>
+            <a class="btn-effect inline-block rounded-lg bg-primary-color py-2 px-3 text-white" href="#">
+              <span>Show more</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="cards-slider-2 swiper-container col-span-12 xl:col-span-9">
+        <div class="swiper swiper-cards-2 group relative flex items-center py-5">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide h-auto">
+              <div
+                class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
+                <div class="absolute top-[10px] right-[10px]">
+                  <div class="p-[2px]">
+                    <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                      href="javascript:void(0)">
+                      <i class="bi bi-heart pointer-events-none flex text-white"></i>
+                    </a>
+                  </div>
+                  <div class="p-[2px]">
+                    <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                      href="javascript:void(0)" data-target=".quick-view-modal">
+                      <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="h-[190px] overflow-hidden rounded-lg">
+                  <a href="#">
+                    <img class="card-object-fit h-full w-full" src="images/cards/notebooks/note_1.jpg" alt="product" />
+                  </a>
+                </div>
+                <div class="my-2 flex justify-between">
+                  <div class="flex">
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-gray-200"></i>
+                  </div>
+                  <div>
+                    <span
+                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                  </div>
+                </div>
+                <div class="my-1">
+                  <a class="clamp break-all font-medium" href="#">Apple Macbook Air 13</a>
+                </div>
+                <div class="my-1">
+                  <p class="clamp-2 text-sm text-gray-400">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Itaque culpa, odio, qui praesentium dignissimos eaque
+                    dolorum porro alias neque, eius animi ipsa voluptates.
+                    Optio repellat tempora voluptas, dolores ipsam ad!
+                  </p>
+                </div>
+
+                <div class="my-1">
+                  <span class="text-lg font-bold">$37.00</span>
+                </div>
+                <div class="mt-auto">
+                  <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
+                    href="#">
+                    <span class="font-bold uppercase text-white">View details</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide h-auto">
+              <div
+                class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
+                <div class="absolute top-[10px] right-[10px]">
+                  <div class="p-[2px]">
+                    <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                      href="javascript:void(0)">
+                      <i class="bi bi-heart pointer-events-none flex text-white"></i>
+                    </a>
+                  </div>
+                  <div class="p-[2px]">
+                    <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                      href="javascript:void(0)" data-target=".quick-view-modal">
+                      <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="h-[190px] overflow-hidden rounded-lg">
+                  <a href="#">
+                    <img class="card-object-fit h-full w-full" src="images/cards/notebooks/note_2.jpg" alt="product" />
+                  </a>
+                </div>
+                <div class="my-2 flex justify-between">
+                  <div class="flex">
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-gray-200"></i>
+                  </div>
+                  <div>
+                    <span
+                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                  </div>
+                </div>
+                <div class="my-1">
+                  <a class="clamp break-all font-medium" href="#">Asus ZenBook 14</a>
+                </div>
+                <div class="my-1">
+                  <p class="clamp-2 text-sm text-gray-400">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Itaque culpa, odio, qui praesentium dignissimos eaque
+                    dolorum porro alias neque, eius animi ipsa voluptates.
+                    Optio repellat tempora voluptas, dolores ipsam ad!
+                  </p>
+                </div>
+
+                <div class="my-1">
+                  <span class="text-lg font-bold">$37.00</span>
+                </div>
+                <div class="mt-auto">
+                  <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
+                    href="#">
+                    <span class="font-bold uppercase text-white">View details</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide h-auto">
+              <div
+                class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
+                <div class="absolute top-[10px] right-[10px]">
+                  <div class="p-[2px]">
+                    <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                      href="javascript:void(0)">
+                      <i class="bi bi-heart pointer-events-none flex text-white"></i>
+                    </a>
+                  </div>
+                  <div class="p-[2px]">
+                    <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                      href="javascript:void(0)" data-target=".quick-view-modal">
+                      <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="h-[190px] overflow-hidden rounded-lg">
+                  <a href="#">
+                    <img class="card-object-fit h-full w-full" src="images/cards/notebooks/note_3.jpg" alt="product" />
+                  </a>
+                </div>
+                <div class="my-2 flex justify-between">
+                  <div class="flex">
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-gray-200"></i>
+                  </div>
+                  <div>
+                    <span
+                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                  </div>
+                </div>
+                <div class="my-1">
+                  <a class="clamp break-all font-medium" href="#">Lenovo V15</a>
+                </div>
+                <div class="my-1">
+                  <p class="clamp-2 text-sm text-gray-400">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Itaque culpa, odio, qui praesentium dignissimos eaque
+                    dolorum porro alias neque, eius animi ipsa voluptates.
+                    Optio repellat tempora voluptas, dolores ipsam ad!
+                  </p>
+                </div>
+
+                <div class="my-1">
+                  <span class="text-lg font-bold">$37.00</span>
+                </div>
+                <div class="mt-auto">
+                  <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
+                    href="#">
+                    <span class="font-bold uppercase text-white">View details</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide h-auto">
+              <div
+                class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
+                <div class="absolute top-[10px] right-[10px]">
+                  <div class="p-[2px]">
+                    <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                      href="javascript:void(0)">
+                      <i class="bi bi-heart pointer-events-none flex text-white"></i>
+                    </a>
+                  </div>
+                  <div class="p-[2px]">
+                    <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                      href="javascript:void(0)" data-target=".quick-view-modal">
+                      <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="h-[190px] overflow-hidden rounded-lg">
+                  <a href="#">
+                    <img class="card-object-fit h-full w-full" src="images/cards/notebooks/note_4.jpg" alt="product" />
+                  </a>
+                </div>
+                <div class="my-2 flex justify-between">
+                  <div class="flex">
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-gray-200"></i>
+                  </div>
+                  <div>
+                    <span
+                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                  </div>
+                </div>
+                <div class="my-1">
+                  <a class="clamp break-all font-medium" href="#">HP 255 G7</a>
+                </div>
+                <div class="my-1">
+                  <p class="clamp-2 text-sm text-gray-400">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Itaque culpa, odio, qui praesentium dignissimos eaque
+                    dolorum porro alias neque, eius animi ipsa voluptates.
+                    Optio repellat tempora voluptas, dolores ipsam ad!
+                  </p>
+                </div>
+
+                <div class="my-1">
+                  <span class="text-lg font-bold">$37.00</span>
+                </div>
+                <div class="mt-auto">
+                  <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
+                    href="#">
+                    <span class="font-bold uppercase text-white">View details</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide h-auto">
+              <div
+                class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
+                <div class="absolute top-[10px] right-[10px]">
+                  <div class="p-[2px]">
+                    <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                      href="javascript:void(0)">
+                      <i class="bi bi-heart pointer-events-none flex text-white"></i>
+                    </a>
+                  </div>
+                  <div class="p-[2px]">
+                    <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                      href="javascript:void(0)" data-target=".quick-view-modal">
+                      <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="h-[190px] overflow-hidden rounded-lg">
+                  <a href="#">
+                    <img class="card-object-fit h-full w-full" src="images/cards/notebooks/note_5.jpg" alt="product" />
+                  </a>
+                </div>
+                <div class="my-2 flex justify-between">
+                  <div class="flex">
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-gray-200"></i>
+                  </div>
+                  <div>
+                    <span
+                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                  </div>
+                </div>
+                <div class="my-1">
+                  <a class="clamp break-all font-medium" href="#">MSI Stealth</a>
+                </div>
+                <div class="my-1">
+                  <p class="clamp-2 text-sm text-gray-400">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Itaque culpa, odio, qui praesentium dignissimos eaque
+                    dolorum porro alias neque, eius animi ipsa voluptates.
+                    Optio repellat tempora voluptas, dolores ipsam ad!
+                  </p>
+                </div>
+
+                <div class="my-1">
+                  <span class="text-lg font-bold">$37.00</span>
+                </div>
+                <div class="mt-auto">
+                  <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
+                    href="#">
+                    <span class="font-bold uppercase text-white">View details</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide h-auto">
+              <div
+                class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
+                <div class="absolute top-[10px] right-[10px]">
+                  <div class="p-[2px]">
+                    <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                      href="javascript:void(0)">
+                      <i class="bi bi-heart pointer-events-none flex text-white"></i>
+                    </a>
+                  </div>
+                  <div class="p-[2px]">
+                    <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                      href="javascript:void(0)" data-target=".quick-view-modal">
+                      <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="h-[190px] overflow-hidden rounded-lg">
+                  <a href="#">
+                    <img class="card-object-fit h-full w-full" src="images/cards/notebooks/note_6.jpg" alt="product" />
+                  </a>
+                </div>
+                <div class="my-2 flex justify-between">
+                  <div class="flex">
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-gray-200"></i>
+                  </div>
+                  <div>
+                    <span
+                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                  </div>
+                </div>
+                <div class="my-1">
+                  <a class="clamp break-all font-medium" href="#">Dell Inspiron</a>
+                </div>
+                <div class="my-1">
+                  <p class="clamp-2 text-sm text-gray-400">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Itaque culpa, odio, qui praesentium dignissimos eaque
+                    dolorum porro alias neque, eius animi ipsa voluptates.
+                    Optio repellat tempora voluptas, dolores ipsam ad!
+                  </p>
+                </div>
+
+                <div class="my-1">
+                  <span class="text-lg font-bold">$37.00</span>
+                </div>
+                <div class="mt-auto">
+                  <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
+                    href="#">
+                    <span class="font-bold uppercase text-white">View details</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="button-next btn-slider-1 transition-all-300 -right-16 group-hover:right-4">
+            &#10095;
+          </div>
+          <div class="button-prev btn-slider-1 transition-all-300 -left-16 group-hover:left-4">
+            &#10094;
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="products-2-section container mx-auto my-5 px-2 sm:px-8">
+    <div class="liner-container mt-5 flex justify-center border-b-2 border-[rgba(119,119,119,.17)]">
+      <h1 class="mb-[-2px] inline-block border-b-2 border-primary-color pb-3 text-2xl font-bold uppercase">
+        Smartphones
+      </h1>
+    </div>
+    <div class="grid grid-cols-12 gap-5">
+      <div class="group relative col-span-3 my-5 hidden overflow-hidden rounded-l-lg xl:block">
+        <div class="overlay-gradient absolute z-[1] h-full w-full"></div>
+        <img class="transition-all-300 h-full w-full object-cover hover:transform group-hover:scale-110"
+          src="images/categories/keyboard-custom.jpg" alt="banner-img" />
+        <div class="absolute top-0 left-0 flex h-full w-full items-center">
+          <div class="z-[2] p-5">
+            <h3 class="text-lg font-bold uppercase text-primary-color drop-shadow-xl" style="color: #d7d7d7;">
+              Keyboards
+            </h3>
+            <p class="my-5 text-white drop-shadow-md">
+              Choose your keyboard now!
+            </p>
+            <a class="btn-effect inline-block rounded-lg bg-primary-color py-2 px-3 text-white" href="#">
+              <span>Show more</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="cards-slider-2 swiper-container col-span-12 xl:col-span-9">
+        <div class="swiper swiper-cards-2 group relative flex items-center py-5">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide h-auto">
+              <div
+                class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
+                <div class="absolute top-[10px] right-[10px]">
+                  <div class="p-[2px]">
+                    <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                      href="javascript:void(0)">
+                      <i class="bi bi-heart pointer-events-none flex text-white"></i>
+                    </a>
+                  </div>
+                  <div class="p-[2px]">
+                    <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                      href="javascript:void(0)" data-target=".quick-view-modal">
+                      <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="h-[190px] overflow-hidden rounded-lg">
+                  <a href="#">
+                    <img class="card-object-fit h-full w-full" src="images/cards/phones/phone_1.jpg" alt="product" />
+                  </a>
+                </div>
+                <div class="my-2 flex justify-between">
+                  <div class="flex">
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-gray-200"></i>
+                  </div>
+                  <div>
+                    <span
+                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                  </div>
+                </div>
+                <div class="my-1">
+                  <a class="clamp break-all font-medium" href="#">Moto e7i Power</a>
+                </div>
+                <div class="my-1">
+                  <p class="clamp-2 text-sm text-gray-400">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Itaque culpa, odio, qui praesentium dignissimos eaque
+                    dolorum porro alias neque, eius animi ipsa voluptates.
+                    Optio repellat tempora voluptas, dolores ipsam ad!
+                  </p>
+                </div>
+
+                <div class="my-1">
+                  <span class="text-lg font-bold">$37.00</span>
+                </div>
+                <div class="mt-auto">
+                  <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
+                    href="#">
+                    <span class="font-bold uppercase text-white">View details</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide h-auto">
+              <div
+                class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
+                <div class="absolute top-[10px] right-[10px]">
+                  <div class="p-[2px]">
+                    <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                      href="javascript:void(0)">
+                      <i class="bi bi-heart pointer-events-none flex text-white"></i>
+                    </a>
+                  </div>
+                  <div class="p-[2px]">
+                    <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                      href="javascript:void(0)" data-target=".quick-view-modal">
+                      <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="h-[190px] overflow-hidden rounded-lg">
+                  <a href="#">
+                    <img class="card-object-fit h-full w-full" src="images/cards/phones/phone_2.jpg" alt="product" />
+                  </a>
+                </div>
+                <div class="my-2 flex justify-between">
+                  <div class="flex">
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-gray-200"></i>
+                  </div>
+                  <div>
+                    <span
+                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                  </div>
+                </div>
+                <div class="my-1">
+                  <a class="clamp break-all font-medium" href="#">iPhone 12 Mini</a>
+                </div>
+                <div class="my-1">
+                  <p class="clamp-2 text-sm text-gray-400">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Itaque culpa, odio, qui praesentium dignissimos eaque
+                    dolorum porro alias neque, eius animi ipsa voluptates.
+                    Optio repellat tempora voluptas, dolores ipsam ad!
+                  </p>
+                </div>
+
+                <div class="my-1">
+                  <span class="text-lg font-bold">$37.00</span>
+                </div>
+                <div class="mt-auto">
+                  <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
+                    href="#">
+                    <span class="font-bold uppercase text-white">View details</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide h-auto">
+              <div
+                class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
+                <div class="absolute top-[10px] right-[10px]">
+                  <div class="p-[2px]">
+                    <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                      href="javascript:void(0)">
+                      <i class="bi bi-heart pointer-events-none flex text-white"></i>
+                    </a>
+                  </div>
+                  <div class="p-[2px]">
+                    <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                      href="javascript:void(0)" data-target=".quick-view-modal">
+                      <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="h-[190px] overflow-hidden rounded-lg">
+                  <a href="#">
+                    <img class="card-object-fit h-full w-full" src="images/cards/phones/phone_3.jpg" alt="product" />
+                  </a>
+                </div>
+                <div class="my-2 flex justify-between">
+                  <div class="flex">
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-gray-200"></i>
+                  </div>
+                  <div>
+                    <span
+                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                  </div>
+                </div>
+                <div class="my-1">
+                  <a class="clamp break-all font-medium" href="#">Samsung A12</a>
+                </div>
+                <div class="my-1">
+                  <p class="clamp-2 text-sm text-gray-400">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Itaque culpa, odio, qui praesentium dignissimos eaque
+                    dolorum porro alias neque, eius animi ipsa voluptates.
+                    Optio repellat tempora voluptas, dolores ipsam ad!
+                  </p>
+                </div>
+
+                <div class="my-1">
+                  <span class="text-lg font-bold">$37.00</span>
+                </div>
+                <div class="mt-auto">
+                  <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
+                    href="#">
+                    <span class="font-bold uppercase text-white">View details</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide h-auto">
+              <div
+                class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
+                <div class="absolute top-[10px] right-[10px]">
+                  <div class="p-[2px]">
+                    <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                      href="javascript:void(0)">
+                      <i class="bi bi-heart pointer-events-none flex text-white"></i>
+                    </a>
+                  </div>
+                  <div class="p-[2px]">
+                    <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                      href="javascript:void(0)" data-target=".quick-view-modal">
+                      <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="h-[190px] overflow-hidden rounded-lg">
+                  <a href="#">
+                    <img class="card-object-fit h-full w-full" src="images/cards/phones/phone_4.jpg" alt="product" />
+                  </a>
+                </div>
+                <div class="my-2 flex justify-between">
+                  <div class="flex">
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-gray-200"></i>
+                  </div>
+                  <div>
+                    <span
+                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                  </div>
+                </div>
+                <div class="my-1">
+                  <a class="clamp break-all font-medium" href="#">Nokia 5.4</a>
+                </div>
+                <div class="my-1">
+                  <p class="clamp-2 text-sm text-gray-400">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Itaque culpa, odio, qui praesentium dignissimos eaque
+                    dolorum porro alias neque, eius animi ipsa voluptates.
+                    Optio repellat tempora voluptas, dolores ipsam ad!
+                  </p>
+                </div>
+
+                <div class="my-1">
+                  <span class="text-lg font-bold">$37.00</span>
+                </div>
+                <div class="mt-auto">
+                  <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
+                    href="#">
+                    <span class="font-bold uppercase text-white">View details</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide h-auto">
+              <div
+                class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
+                <div class="absolute top-[10px] right-[10px]">
+                  <div class="p-[2px]">
+                    <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                      href="javascript:void(0)">
+                      <i class="bi bi-heart pointer-events-none flex text-white"></i>
+                    </a>
+                  </div>
+                  <div class="p-[2px]">
+                    <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                      href="javascript:void(0)" data-target=".quick-view-modal">
+                      <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="h-[190px] overflow-hidden rounded-lg">
+                  <a href="#">
+                    <img class="card-object-fit h-full w-full" src="images/cards/phones/phone_5.jpg" alt="product" />
+                  </a>
+                </div>
+                <div class="my-2 flex justify-between">
+                  <div class="flex">
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-gray-200"></i>
+                  </div>
+                  <div>
+                    <span
+                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                  </div>
+                </div>
+                <div class="my-1">
+                  <a class="clamp break-all font-medium" href="#">Samsung Galaxy Z Fold4</a>
+                </div>
+                <div class="my-1">
+                  <p class="clamp-2 text-sm text-gray-400">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Itaque culpa, odio, qui praesentium dignissimos eaque
+                    dolorum porro alias neque, eius animi ipsa voluptates.
+                    Optio repellat tempora voluptas, dolores ipsam ad!
+                  </p>
+                </div>
+
+                <div class="my-1">
+                  <span class="text-lg font-bold">$37.00</span>
+                </div>
+                <div class="mt-auto">
+                  <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
+                    href="#">
+                    <span class="font-bold uppercase text-white">View details</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide h-auto">
+              <div
+                class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
+                <div class="absolute top-[10px] right-[10px]">
+                  <div class="p-[2px]">
+                    <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                      href="javascript:void(0)">
+                      <i class="bi bi-heart pointer-events-none flex text-white"></i>
+                    </a>
+                  </div>
+                  <div class="p-[2px]">
+                    <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                      href="javascript:void(0)" data-target=".quick-view-modal">
+                      <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="h-[190px] overflow-hidden rounded-lg">
+                  <a href="#">
+                    <img class="card-object-fit h-full w-full" src="images/cards/phones/phone_6.jpg" alt="product" />
+                  </a>
+                </div>
+                <div class="my-2 flex justify-between">
+                  <div class="flex">
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-star"></i>
+                    <i class="bi bi-star-fill flex text-base text-gray-200"></i>
+                  </div>
+                  <div>
+                    <span
+                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                  </div>
+                </div>
+                <div class="my-1">
+                  <a class="clamp break-all font-medium" href="#">Motorola Edge 30</a>
+                </div>
+                <div class="my-1">
+                  <p class="clamp-2 text-sm text-gray-400">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Itaque culpa, odio, qui praesentium dignissimos eaque
+                    dolorum porro alias neque, eius animi ipsa voluptates.
+                    Optio repellat tempora voluptas, dolores ipsam ad!
+                  </p>
+                </div>
+
+                <div class="my-1">
+                  <span class="text-lg font-bold">$37.00</span>
+                </div>
+                <div class="mt-auto">
+                  <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
+                    href="#">
+                    <span class="font-bold uppercase text-white">View details</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="button-next btn-slider-1 transition-all-300 -right-16 group-hover:right-4">
+            &#10095;
+          </div>
+          <div class="button-prev btn-slider-1 transition-all-300 -left-16 group-hover:left-4">
+            &#10094;
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="categories-section container mx-auto my-5 px-2 sm:px-8">
+    <div class="liner-container mb-5 flex justify-center border-b-2 border-[rgba(119,119,119,.17)]">
+      <h1 class="mb-[-2px] inline-block border-b-2 border-primary-color pb-3 text-2xl font-bold uppercase">
+        Categories
+      </h1>
+    </div>
+    <div class="swiper-container col-span-12 overflow-hidden rounded-lg md:col-span-8">
+      <div class="swiper swiper-default group relative flex items-center py-5">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="grid grid-cols-3 xs:grid-cols-6 sm:grid-cols-9 lg:grid-cols-12">
+              <div class="col-span-3 flex border">
+                <a class="transition-all-300 flex w-full justify-center bg-white p-5 hover:relative hover:z-[2] hover:shadow-xl"
+                  href="#">
+                  <div>
+                    <i class="bi bi-gpu-card mb-2 flex justify-center text-[40px] text-primary-color"></i>
+                    <span class="text-gray-40">Video Cards</span>
+                  </div>
+                </a>
+              </div>
+              <div class="col-span-3 flex border">
+                <a class="transition-all-300 flex w-full justify-center bg-white p-5 hover:relative hover:z-[2] hover:shadow-xl"
+                  href="#">
+                  <div>
+                    <i class="bi bi-plug-fill mb-2 flex justify-center text-[40px] text-primary-color"></i>
+                    <span class="text-gray-40">Power Supplies</span>
+                  </div>
+                </a>
+              </div>
+              <div class="col-span-3 flex border">
+                <a class="transition-all-300 flex w-full justify-center bg-white p-5 hover:relative hover:z-[2] hover:shadow-xl"
+                  href="#">
+                  <div>
+                    <i class="bi bi-motherboard-fill mb-2 flex justify-center text-[40px] text-primary-color"></i>
+                    <span class="text-gray-40">Motherboard</span>
+                  </div>
+                </a>
+              </div>
+              <div class="col-span-3 flex border">
+                <a class="transition-all-300 flex w-full justify-center bg-white p-5 hover:relative hover:z-[2] hover:shadow-xl"
+                  href="#">
+                  <div>
+                    <i class="bi bi-cpu-fill mb-2 flex justify-center text-[40px] text-primary-color"></i>
+                    <span class="text-gray-40">Processors</span>
+                  </div>
+                </a>
+              </div>
+              <div class="col-span-3 flex border">
+                <a class="transition-all-300 flex w-full justify-center bg-white p-5 hover:relative hover:z-[2] hover:shadow-xl"
+                  href="#">
+                  <div>
+                    <i class="bi bi-memory mb-2 flex justify-center text-[40px] text-primary-color"></i>
+                    <span class="text-gray-40">Memory Ram</span>
+                  </div>
+                </a>
+              </div>
+              <div class="col-span-3 flex border">
+                <a class="transition-all-300 flex w-full justify-center bg-white p-5 hover:relative hover:z-[2] hover:shadow-xl"
+                  href="#">
+                  <div>
+                    <i class="bi bi-device-hdd-fill mb-2 flex justify-center text-[40px] text-primary-color"></i>
+                    <span class="text-gray-40">Hard Drives</span>
+                  </div>
+                </a>
+              </div>
+              <div class="col-span-3 flex border">
+                <a class="transition-all-300 flex w-full justify-center bg-white p-5 hover:relative hover:z-[2] hover:shadow-xl"
+                  href="#">
+                  <div>
+                    <i class="bi bi-device-ssd-fill mb-2 flex justify-center text-[40px] text-primary-color"></i>
+                    <span class="text-gray-40">SSD</span>
+                  </div>
+                </a>
+              </div>
+              <div class="col-span-3 flex border">
+                <a class="transition-all-300 flex w-full justify-center bg-white p-5 hover:relative hover:z-[2] hover:shadow-xl"
+                  href="#">
+                  <div>
+                    <i class="bi bi-pc mb-2 flex justify-center text-[40px] text-primary-color"></i>
+                    <span class="text-gray-40">Cases</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="grid grid-cols-3 xs:grid-cols-6 sm:grid-cols-9 lg:grid-cols-12">
+              <div class="col-span-3 flex border">
+                <a class="transition-all-300 flex w-full justify-center bg-white p-5 hover:relative hover:z-[2] hover:shadow-xl"
+                  href="#">
+                  <div>
+                    <i class="bi bi-mouse-fill mb-2 flex justify-center text-[40px] text-primary-color"></i>
+                    <span class="text-gray-40">Mouses</span>
+                  </div>
+                </a>
+              </div>
+              <div class="col-span-3 flex border">
+                <a class="transition-all-300 flex w-full justify-center bg-white p-5 hover:relative hover:z-[2] hover:shadow-xl"
+                  href="#">
+                  <div>
+                    <i class="bi bi-keyboard-fill mb-2 flex justify-center text-[40px] text-primary-color"></i>
+                    <span class="text-gray-40">Keyboards</span>
+                  </div>
+                </a>
+              </div>
+              <div class="col-span-3 flex border">
+                <a class="transition-all-300 flex w-full justify-center bg-white p-5 hover:relative hover:z-[2] hover:shadow-xl"
+                  href="#">
+                  <div>
+                    <i class="bi bi-printer-fill mb-2 flex justify-center text-[40px] text-primary-color"></i>
+                    <span class="text-gray-40">Printers</span>
+                  </div>
+                </a>
+              </div>
+              <div class="col-span-3 flex border">
+                <a class="transition-all-300 flex w-full justify-center bg-white p-5 hover:relative hover:z-[2] hover:shadow-xl"
+                  href="#">
+                  <div>
+                    <i class="bi bi-laptop mb-2 flex justify-center text-[40px] text-primary-color"></i>
+                    <span class="text-gray-40">Notebooks</span>
+                  </div>
+                </a>
+              </div>
+              <div class="col-span-3 flex border">
+                <a class="transition-all-300 flex w-full justify-center bg-white p-5 hover:relative hover:z-[2] hover:shadow-xl"
+                  href="#">
+                  <div>
+                    <i class="bi bi-phone-fill mb-2 flex justify-center text-[40px] text-primary-color"></i>
+                    <span class="text-gray-40">Phones</span>
+                  </div>
+                </a>
+              </div>
+              <div class="col-span-3 flex border">
+                <a class="transition-all-300 flex w-full justify-center bg-white p-5 hover:relative hover:z-[2] hover:shadow-xl"
+                  href="#">
+                  <div>
+                    <i class="bi bi-tablet-landscape-fill mb-2 flex justify-center text-[40px] text-primary-color"></i>
+                    <span class="text-gray-40">Tablets</span>
+                  </div>
+                </a>
+              </div>
+              <div class="col-span-3 flex border">
+                <a class="transition-all-300 flex w-full justify-center bg-white p-5 hover:relative hover:z-[2] hover:shadow-xl"
+                  href="#">
+                  <div>
+                    <i class="bi bi-display mb-2 flex justify-center text-[40px] text-primary-color"></i>
+                    <span class="text-gray-40">Monitors</span>
+                  </div>
+                </a>
+              </div>
+              <div class="col-span-3 flex border">
+                <a class="transition-all-300 flex w-full justify-center bg-white p-5 hover:relative hover:z-[2] hover:shadow-xl"
+                  href="#">
+                  <div>
+                    <i class="bi bi-usb-drive-fill mb-2 flex justify-center text-[40px] text-primary-color"></i>
+                    <span class="text-gray-40">Pendrives</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination !top-[-5px] !bottom-[unset] text-right"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="brands-section container mx-auto my-5 px-2 sm:px-8">
+    <div class="swiper swiper-brands group relative flex items-center">
+      <div class="swiper-wrapper flex select-none items-center">
+        <div class="swiper-slide">
+          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/amd-logo.png"
+            alt="logo" />
+        </div>
+        <div class="swiper-slide">
+          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/asrock-logo.png"
+            alt="logo" />
+        </div>
+        <div class="swiper-slide">
+          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/asus-logo.png"
+            alt="logo" />
+        </div>
+        <div class="swiper-slide">
+          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/corsair-logo.png"
+            alt="logo" />
+        </div>
+        <div class="swiper-slide">
+          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/genius-logo.png"
+            alt="logo" />
+        </div>
+        <div class="swiper-slide">
+          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/gigabyte-logo.png"
+            alt="logo" />
+        </div>
+        <div class="swiper-slide">
+          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/hp-logo.png"
+            alt="logo" />
+        </div>
+        <div class="swiper-slide">
+          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/intel-logo.png"
+            alt="logo" />
+        </div>
+        <div class="swiper-slide">
+          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/kingston-logo.png"
+            alt="logo" />
+        </div>
+        <div class="swiper-slide">
+          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/lenovo-logo.png"
+            alt="logo" />
+        </div>
+        <div class="swiper-slide">
+          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/logitech-logo.png"
+            alt="logo" />
+        </div>
+        <div class="swiper-slide">
+          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/msi-logo.png"
+            alt="logo" />
+        </div>
+        <div class="swiper-slide">
+          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/nvidia-logo.png"
+            alt="logo" />
+        </div>
+        <div class="swiper-slide">
+          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/philips-logo.png"
+            alt="logo" />
+        </div>
+        <div class="swiper-slide">
+          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/redragon-logo.png"
+            alt="logo" />
+        </div>
+        <div class="swiper-slide">
+          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/samsung-logo.png"
+            alt="logo" />
+        </div>
+      </div>
+      <div class="button-next btn-slider-2 transition-all-300 -right-16 hover:text-primary-color group-hover:right-4">
+        &#10095;
+      </div>
+      <div class="button-prev btn-slider-2 transition-all-300 -left-16 hover:text-primary-color group-hover:left-4">
+        &#10094;
+      </div>
+    </div>
+  </div>
+{% endblock %}
