@@ -26,6 +26,7 @@
 #### **Integración con base de datos**
 #### **Panel de administración**
 #### **Diseño responsive**
+##### *Este listado organiza los componentes fundamentales del sistema web de la ludoteca. Cada ítem representa una necesidad funcional concreta del negocio y contribuye al objetivo general: brindar una experiencia digital eficiente, ordenada y agradable tanto para usuarios como para administradores.*
 
 
 
