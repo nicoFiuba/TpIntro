@@ -17,8 +17,8 @@
 ### 🟩Tecnologias utilizadas:
 #### **Backend**: Flask (Python), MySQL, Firebase Authentication.
 #### **Frontend**: HTML, CSS, JavaScript.
-###-----------------------------------------
-###🟪**Listado de servicios a utilizar:**
+### -----------------------------------------
+### 🟪Listado de servicios a utilizar:
 #### **Registro e inicio de sesión de usuarios**
 #### **Catálogo de productos**
 #### **Carrito de compras**
