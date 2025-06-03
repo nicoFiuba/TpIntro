@@ -20,5 +20,5 @@ CREATE TABLE Stock(
     categoria ENUM('Juego de mesa', 'Juego de Cartas', 'Juego de rol') NOT NULL,
     publico_destinado ENUM('Todo público', 'Adultos') NOT NULL,
     precio DECIMAL(10,2) NOT NULL 
-
 );
+
