@@ -17,3 +17,16 @@
 ### 🟩Tecnologias utilizadas:
 #### **Backend**: Flask (Python), MySQL, Firebase Authentication.
 #### **Frontend**: HTML, CSS, JavaScript.
+### -----------------------------------------
+### 🟪Listado de servicios a utilizar:
+#### **Registro e inicio de sesión de usuarios**
+#### **Catálogo de productos**
+#### **Carrito de compras**
+#### **Sistema de stock**
+#### **Integración con base de datos**
+#### **Panel de administración**
+#### **Diseño responsive**
+##### *Este listado organiza los componentes fundamentales del sistema web de la ludoteca. Cada ítem representa una necesidad funcional concreta del negocio y contribuye al objetivo general: brindar una experiencia digital eficiente, ordenada y agradable tanto para usuarios como para administradores.*
+
+
+

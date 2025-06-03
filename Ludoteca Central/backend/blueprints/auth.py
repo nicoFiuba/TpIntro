@@ -1,6 +1,8 @@
 from flask import Blueprint, request, jsonify, session
 from db import get_connection
 from flask import current_app
+from werkzeug.security import generate_password_hash, check_password_hash
+
 
 auth_bp = Blueprint('auth', __name__)
 
@@ -11,9 +13,13 @@ def user_exists(username):
             return cursor.fetchone() is not None
         
 def create_user(username, password, role="user"):
+    hashed_password = generate_password_hash(password)
     with get_connection() as conn:
         with conn.cursor() as cursor:
-            cursor.execute("INSERT INTO users (username, password, role) VALUES (%s, %s, %s)", (username, password, role))
+            cursor.execute(
+                "INSERT INTO users (username, password, role) VALUES (%s, %s, %s)",
+                (username, hashed_password, role)
+            )
             conn.commit()
 
 def verify_user(username, password):
@@ -21,7 +27,7 @@ def verify_user(username, password):
         with conn.cursor() as cursor:
             cursor.execute("SELECT * FROM users WHERE username = %s", (username,))
             user = cursor.fetchone()
-            if user and user["password"] == password:
+            if user and check_password_hash(user["password"], password):
                 return user
             return None
         
