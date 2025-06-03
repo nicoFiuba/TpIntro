@@ -1,9 +1,9 @@
 from flask import Flask, Blueprint
 from flask_cors import CORS
 import config
-from blueprints.auth import auth_bp
-from blueprints.user import user_bp
-from blueprints.admin import admin_bp
+from blueprints.usuarios.auth import auth_bp
+from blueprints.usuarios.user import user_bp
+from blueprints.usuarios.admin import admin_bp
 
 app = Flask(__name__)
 
