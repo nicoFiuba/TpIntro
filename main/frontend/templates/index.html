@@ -32,7 +32,7 @@
       <div class="group relative col-span-4 hidden overflow-hidden rounded-lg md:block">
         <div class="overlay-gradient absolute z-[1] h-full w-full"></div>
         <img class="transition-all-300 h-full w-full object-cover hover:transform group-hover:scale-110"
-          src="{{url_for('static', filename='images/product/dos.jpg')}}"/>
+          src="{{url_for('static', filename='images/product/dos-producto.jpg')}}"/>
         <div class="absolute top-0 left-0 flex h-full w-full items-center">
           <div class="z-[2] p-5">
             <h3 class="text-lg font-bold uppercase text-primary-color drop-shadow-xl" style="color: #eceeef;">
@@ -56,32 +56,32 @@
       <div class="col-span-12 flex sm:col-span-6 lg:col-span-3">
         <div
           class="transition-all-300 flex w-full items-center gap-4 rounded-lg bg-white p-5 hover:shadow-lg xs:pl-[20%] sm:pl-5">
-          <div class="rounded-full border-2">
-            <i class="bi bi-truck flex p-3 text-[40px] text-primary-color"></i>
+          <div class="rounded-full border-2 overflow-hidden w-[20%] h-[20%] flex items-center justify-center">
+            <img src="{{url_for('static', filename='/images/brands/envios-logo.png')}}" alt="Envíos" class="w-full h-full object-cover" />
           </div>
           <div>
-            <h6 class="font-bold capitalize">Envio gratis</h6>
-            <p class="break-all text-sm text-gray-400">En compras superiores a $70.000</p>
+            <h6 class="font-bold capitalize">Envios</h6>
+            <p class="break-all text-sm text-gray-400">A todo el pais</p>
           </div>
         </div>
       </div>
       <div class="col-span-12 flex sm:col-span-6 lg:col-span-3">
         <div
           class="transition-all-300 flex w-full items-center gap-4 rounded-lg bg-white p-5 hover:shadow-lg xs:pl-[20%] sm:pl-5">
-          <div class="rounded-full border-2">
-            <i class="bi bi-cash-coin flex p-3 text-[40px] text-primary-color"></i>
+          <div class="rounded-full border-2 overflow-hidden w-[20%] h-[20%] flex items-center justify-center">
+            <img src="{{url_for('static', filename='/images/brands/reingresostock-logo.png')}}" alt="Reingreso Stock" class="w-full h-full object-cover" />
           </div>
           <div>
-            <h6 class="font-bold capitalize">Devoluciones</h6>
-            <p class="break-all text-sm text-gray-400"> Hasta 7 dias despues de la compra</p>
+            <h6 class="font-bold capitalize">Reingreso de stock</h6>
+            <p class="break-all text-sm text-gray-400">Todas las semanas</p>
           </div>
         </div>
       </div>
       <div class="col-span-12 flex sm:col-span-6 lg:col-span-3">
         <div
           class="transition-all-300 flex w-full items-center gap-4 rounded-lg bg-white p-5 hover:shadow-lg xs:pl-[20%] sm:pl-5">
-          <div class="rounded-full border-2">
-            <i class="bi bi-shield-check flex p-3 text-[40px] text-primary-color"></i>
+          <div class="rounded-full border-2 overflow-hidden w-[20%] h-[20%] flex items-center justify-center">
+            <img src="{{url_for('static', filename='/images/brands/pagos-logo.png')}}" alt="Pagos seguros" class="w-full h-full object-cover" />
           </div>
           <div>
             <h6 class="font-bold capitalize">Pagos seguros</h6>
@@ -92,9 +92,10 @@
       <div class="col-span-12 flex sm:col-span-6 lg:col-span-3">
         <div
           class="transition-all-300 flex w-full items-center gap-4 rounded-lg bg-white p-5 hover:shadow-lg xs:pl-[20%] sm:pl-5">
-          <div class="rounded-full border-2">
-            <i class="bi bi-headset flex p-3 text-[40px] text-primary-color"></i>
+          <div class="rounded-full border-2 overflow-hidden w-[20%] h-[20%] flex items-center justify-center">
+            <img src="{{url_for('static', filename='/images/brands/atencion_cliente-logo.png')}}" alt="Soporte" class="w-full h-full object-cover" />
           </div>
+  
           <div>
             <h6 class="font-bold capitalize">Soporte Online</h6>
             <p class="break-all text-sm text-gray-400">Las 24hs</p>
@@ -507,7 +508,7 @@
       <div class="group relative col-span-12 h-[300px] overflow-hidden rounded-lg sm:col-span-6">
         <div class="overlay-gradient absolute z-[1] h-full w-full"></div>
         <img class="transition-all-300 h-full w-full object-cover hover:transform group-hover:scale-110"
-          src="{{url_for('static', filename='/images/banner/monopoly-banner-2.jpeg')}}"/>
+          src="{{url_for('static', filename='/images/banner/monopoly-banner.jpeg')}}"/>
         <div class="absolute top-0 left-0 flex h-full w-full items-center">
           <div class="z-[2] p-5">
             <h3 class="text-lg font-bold uppercase text-primary-color drop-shadow-xl">
@@ -1273,80 +1274,5 @@
     </div>
   </div>
 
-  <div class="brands-section container mx-auto my-5 px-2 sm:px-8">
-    <div class="swiper swiper-brands group relative flex items-center">
-      <div class="swiper-wrapper flex select-none items-center">
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/amd-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/asrock-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/asus-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/corsair-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/genius-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/gigabyte-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/hp-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/intel-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/kingston-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/lenovo-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/logitech-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/msi-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/nvidia-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/philips-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/redragon-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/samsung-logo.png"
-            alt="logo" />
-        </div>
-      </div>
-      <div class="button-next btn-slider-2 transition-all-300 -right-16 hover:text-primary-color group-hover:right-4">
-        &#10095;
-      </div>
-      <div class="button-prev btn-slider-2 transition-all-300 -left-16 hover:text-primary-color group-hover:left-4">
-        &#10094;
-      </div>
-    </div>
-  </div>
+  
 {% endblock %}
