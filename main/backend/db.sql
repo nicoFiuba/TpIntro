@@ -12,7 +12,7 @@ CREATE TABLE Usuario(
 );
 
 
-CREATE TABLE Stock(
+CREATE TABLE productos(
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     descripcion TEXT,
@@ -20,5 +20,6 @@ CREATE TABLE Stock(
     stock INT NOT NULL DEFAULT 0,
     categoria ENUM('Juego de mesa', 'Juego de Cartas', 'Juego de rol', 'Otro') NOT NULL DEFAULT 'Otro',
     publico_destinado ENUM('Todo público', 'Adultos') NOT NULL DEFAULT 'Todo público',
+    imagen LONGBLOB
 );
 

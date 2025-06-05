@@ -23,8 +23,9 @@ def crear_producto(datos_producto):
     cursor = conn.cursor()
     
     sql = """
-    INSERT INTO productos (nombre, descripcion, precio, stock, categoria, imagen, edad, tipo) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+    INSERT INTO productos (nombre, descripcion, precio, stock, categoria, imagen, publico_destinado, tipo) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
     """
+
     valores = (
         datos_producto.get('nombre'),
         datos_producto.get('descripcion'),
@@ -32,7 +33,7 @@ def crear_producto(datos_producto):
         datos_producto.get('stock'),
         datos_producto.get('categoria'),
         datos_producto.get('imagen'),
-        datos_producto.get('edad'),
+        datos_producto.get('publico_destinado'),
         datos_producto.get('tipo')
     )
 
@@ -49,6 +50,7 @@ def actualizar_producto(producto_id, datos_producto):
     sql = """
     UPDATE productos SET nombre = %s, descripcion = %s, precio = %s, stock = %s, categoria = %s, imagen = %s, edad = %s, tipo = %s WHERE id = %s
     """
+
     valores = (
         datos_producto.get('nombre'),
         datos_producto.get('descripcion'),
@@ -56,7 +58,7 @@ def actualizar_producto(producto_id, datos_producto):
         datos_producto.get('stock'),
         datos_producto.get('categoria'),
         datos_producto.get('imagen'),
-        datos_producto.get('edad'),
+        datos_producto.get('publico_destinado'),
         datos_producto.get('tipo'),
         producto_id
     )

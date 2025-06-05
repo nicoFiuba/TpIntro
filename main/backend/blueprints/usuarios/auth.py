@@ -31,35 +31,35 @@ def verify_user(username, password):
                 return user
             return None
         
-    @auth_bp.route('/register', methods=['POST'])
-    def register():
-        data = request.json
-        username = data.get('username')
-        password = data.get('password')
+@auth_bp.route('/register', methods=['POST'])
+def register():
+    data = request.json
+    username = data.get('username')
+    password = data.get('password')
 
-        if not username or not password:
+    if not username or not password:
             return jsonify({'message': 'Faltan datos'}), 400
-        if user_exists(username):
+    if user_exists(username):
             return jsonify({'message': 'Usuario ya existe'}), 400
-        create_user(username, password)
-        return jsonify({'message': 'Usuario registrado exitosamente'}), 201
-    
-    @auth_bp.route('/login', methods=['POST'])
-    def login():
-        data = request.json
-        username = data.get('username')
-        password = data.get('password')
+    create_user(username, password)
+    return jsonify({'message': 'Usuario registrado exitosamente'}), 201
 
-        if not username or not password:
-            return jsonify({'message': 'Faltan datos'}), 400
-        user = verify_user(username, password)
-        if not user:
-            return jsonify({'message': 'Credenciales incorrectas'}), 401
+@auth_bp.route('/login', methods=['POST'])
+def login():
+    data = request.json
+    username = data.get('username')
+    password = data.get('password')
+
+    if not username or not password:
+        return jsonify({'message': 'Faltan datos'}), 400
+    user = verify_user(username, password)
+    if not user:
+       return jsonify({'message': 'Credenciales incorrectas'}), 401
         
-        session['user_id'] = user['id']
-        session['is_admin'] = user['role'] == 'admin'
+    session['user_id'] = user['id']
+    session['is_admin'] = user['role'] == 'admin'
         
-        return jsonify({'message': 'Inicio de sesión exitoso', 'user_id': user['id']}), 200
+    return jsonify({'message': 'Inicio de sesión exitoso', 'user_id': user['id']}), 200
 
 @auth_bp.route('/logout', methods=['POST'])
 def logout():
