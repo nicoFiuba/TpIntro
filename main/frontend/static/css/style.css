@@ -2269,7 +2269,7 @@ select {
 }
 
 .text-primary-color {
-  color: var(--color-primary);
+  color: white;
 }
 
 .text-red-300 {

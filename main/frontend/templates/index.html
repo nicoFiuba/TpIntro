@@ -8,16 +8,16 @@
         <div class="swiper swiper-banner group relative flex items-center">
           <div class="swiper-wrapper max-h-[377px]">
             <div class="swiper-slide">
-              <img src="{{url_for('static', filename='images/banner/banner-1.png')}}" alt="banner 1" />
+              <img src="{{url_for('static', filename='images/banner/uno-banner.jpg')}}" alt="banner 1" />
             </div>
             <div class="swiper-slide">
-              <img src="{{url_for('static', filename='images/banner/banner-2.jpg')}}" alt="banner 2" />
+              <img src="{{url_for('static', filename='images/banner/jenga-banner.jpg')}}" alt="banner 2" />
             </div>
             <div class="swiper-slide">
-              <img src="{{url_for('static', filename='images/banner/banner-3.jpg')}}" alt="banner 3" />
+              <img src="{{url_for('static', filename='images/banner/ajedrez-banner.jpg')}}" alt="banner 3" />
             </div>
             <div class="swiper-slide">
-              <img src="{{url_for('static', filename='images/banner/banner-4.jpg')}}" alt="banner 3" />
+              <img src="{{url_for('static', filename='images/banner/teg-banner.png')}}" alt="banner 3" />
             </div>
           </div>
           <div class="button-next btn-slider-1 transition-all-300 -right-16 group-hover:right-4">
@@ -32,18 +32,18 @@
       <div class="group relative col-span-4 hidden overflow-hidden rounded-lg md:block">
         <div class="overlay-gradient absolute z-[1] h-full w-full"></div>
         <img class="transition-all-300 h-full w-full object-cover hover:transform group-hover:scale-110"
-          src="images/categories/vr-glass-hero.jpg" alt="banner-img" />
+          src="{{url_for('static', filename='images/product/dos-producto.jpg')}}"/>
         <div class="absolute top-0 left-0 flex h-full w-full items-center">
           <div class="z-[2] p-5">
             <h3 class="text-lg font-bold uppercase text-primary-color drop-shadow-xl" style="color: #eceeef;">
-              VR - Meta Quest 3
+              Dos - Preventa exclusiva
             </h3>
             <p class="my-5 text-white drop-shadow-md">
-              Choose your vr and play it!
+              ¡Compra "Dos" y divertite!
             </p>
             <a class="btn-effect inline-block rounded-lg bg-primary-color py-2 px-3 text-white" href="shop-mixed.html"
               style="color: #fff;">
-              <span>Shop now</span>
+              <span>Comprar ahora</span>
             </a>
           </div>
         </div>
@@ -56,48 +56,49 @@
       <div class="col-span-12 flex sm:col-span-6 lg:col-span-3">
         <div
           class="transition-all-300 flex w-full items-center gap-4 rounded-lg bg-white p-5 hover:shadow-lg xs:pl-[20%] sm:pl-5">
-          <div class="rounded-full border-2">
-            <i class="bi bi-truck flex p-3 text-[40px] text-primary-color"></i>
+          <div class="rounded-full border-2 overflow-hidden w-[20%] h-[20%] flex items-center justify-center">
+            <img src="{{url_for('static', filename='/images/brands/envios-logo.png')}}" alt="Envíos" class="w-full h-full object-cover" />
           </div>
           <div>
-            <h6 class="font-bold capitalize">Free shipping</h6>
-            <p class="break-all text-sm text-gray-400">Orders over $100</p>
+            <h6 class="font-bold capitalize">Envios</h6>
+            <p class="break-all text-sm text-gray-400">A todo el pais</p>
           </div>
         </div>
       </div>
       <div class="col-span-12 flex sm:col-span-6 lg:col-span-3">
         <div
           class="transition-all-300 flex w-full items-center gap-4 rounded-lg bg-white p-5 hover:shadow-lg xs:pl-[20%] sm:pl-5">
-          <div class="rounded-full border-2">
-            <i class="bi bi-cash-coin flex p-3 text-[40px] text-primary-color"></i>
+          <div class="rounded-full border-2 overflow-hidden w-[20%] h-[20%] flex items-center justify-center">
+            <img src="{{url_for('static', filename='/images/brands/reingresostock-logo.png')}}" alt="Reingreso Stock" class="w-full h-full object-cover" />
           </div>
           <div>
-            <h6 class="font-bold capitalize">Money back</h6>
-            <p class="break-all text-sm text-gray-400">With a 30 day</p>
+            <h6 class="font-bold capitalize">Reingreso de stock</h6>
+            <p class="break-all text-sm text-gray-400">Todas las semanas</p>
           </div>
         </div>
       </div>
       <div class="col-span-12 flex sm:col-span-6 lg:col-span-3">
         <div
           class="transition-all-300 flex w-full items-center gap-4 rounded-lg bg-white p-5 hover:shadow-lg xs:pl-[20%] sm:pl-5">
-          <div class="rounded-full border-2">
-            <i class="bi bi-shield-check flex p-3 text-[40px] text-primary-color"></i>
+          <div class="rounded-full border-2 overflow-hidden w-[20%] h-[20%] flex items-center justify-center">
+            <img src="{{url_for('static', filename='/images/brands/pagos-logo.png')}}" alt="Pagos seguros" class="w-full h-full object-cover" />
           </div>
           <div>
-            <h6 class="font-bold capitalize">Secure payment</h6>
-            <p class="break-all text-sm text-gray-400">Secured payment</p>
+            <h6 class="font-bold capitalize">Pagos seguros</h6>
+            <p class="break-all text-sm text-gray-400">Con distintos metodos</p>
           </div>
         </div>
       </div>
       <div class="col-span-12 flex sm:col-span-6 lg:col-span-3">
         <div
           class="transition-all-300 flex w-full items-center gap-4 rounded-lg bg-white p-5 hover:shadow-lg xs:pl-[20%] sm:pl-5">
-          <div class="rounded-full border-2">
-            <i class="bi bi-headset flex p-3 text-[40px] text-primary-color"></i>
+          <div class="rounded-full border-2 overflow-hidden w-[20%] h-[20%] flex items-center justify-center">
+            <img src="{{url_for('static', filename='/images/brands/atencion_cliente-logo.png')}}" alt="Soporte" class="w-full h-full object-cover" />
           </div>
+  
           <div>
-            <h6 class="font-bold capitalize">Online support</h6>
-            <p class="break-all text-sm text-gray-400">Support 24/7</p>
+            <h6 class="font-bold capitalize">Soporte Online</h6>
+            <p class="break-all text-sm text-gray-400">Las 24hs</p>
           </div>
         </div>
       </div>
@@ -107,7 +108,7 @@
   <div class="offers-section container mx-auto my-5 px-2 sm:px-8">
     <div class="liner-container mt-5 flex justify-center border-b-2 border-[rgba(119,119,119,.17)]">
       <h1 class="mb-[-2px] inline-block border-b-2 border-primary-color pb-3 text-2xl font-bold uppercase">
-        Offers
+        Productos Destacados
       </h1>
     </div>
     <div class="swiper-container">
@@ -130,14 +131,11 @@
                   </a>
                 </div>
               </div>
-              <div
-                class="absolute top-0 left-0 flex h-[35px] w-[90px] items-center justify-center rounded-br-lg bg-primary-color">
-                <span class="text-md text-center font-semibold uppercase text-white">
-                  25% Off</span>
-              </div>
+           
+              <!--Primer producto slider productos destacados-->
               <div class="h-[190px] overflow-hidden rounded-lg">
                 <a href="#">
-                  <img class="card-object-fit h-full w-full" src="images/cards/notebooks/note_1.jpg" alt="product" />
+                  <img class="card-object-fit h-full w-full" src="{{url_for('static', filename='/images/product/uno-producto.jpg')}}"/> <!-- Imagen del producto -->
                 </a>
               </div>
               <div class="my-2 flex justify-between">
@@ -149,31 +147,32 @@
                   <i class="bi bi-star-fill flex text-base text-gray-200"></i>
                 </div>
                 <div>
-                  <span class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                  <span class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">Stock Disponible</span>
                 </div>
               </div>
               <div class="my-1">
                 <a class="clamp break-all font-medium" href="#">
-                  Apple Macbook Aire 13
+                  Uno
                 </a>
               </div>
               <div class="my-1">
                 <p class="clamp-2 text-sm text-gray-400">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Itaque culpa, odio, qui praesentium dignissimos eaque
-                  dolorum porro alias neque, eius animi ipsa voluptates. Optio
-                  repellat tempora voluptas, dolores ipsam ad!
+                  El objetivo es ser el primero en quedarse sin cartas 
+                  en la mano. Cada jugador debe ir descartando cartas 
+                  que coincidan en color o número con la carta en juego.   <!-- Descripción del producto -->
+                  Además, hay cartas especiales que cambian el sentido del 
+                  juego, hacen robar cartas o saltan turnos. Cuando a un jugador 
+                  le queda una sola carta, debe decir “¡UNO!” o puede ser penalizado. 
                 </p>
               </div>
 
               <div class="my-1">
-                <span class="text-lg font-bold">$37.00</span>
-                <span class="text-sm text-primary-color line-through">$50.00</span>
+                <span class="text-lg font-bold">$10.000</span> <!-- Precio del producto -->
               </div>
               <div class="mt-auto">
                 <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
                   href="#!">
-                  <span class="font-bold uppercase text-white">View details</span>
+                  <span class="font-bold uppercase text-white">Ver detalles</span>
                 </a>
               </div>
             </div>
@@ -195,15 +194,12 @@
                   </a>
                 </div>
               </div>
-              <div
-                class="absolute top-0 left-0 flex h-[35px] w-[90px] items-center justify-center rounded-br-lg bg-primary-color">
-                <span class="text-md text-center font-semibold uppercase text-white">
-                  25% Off</span>
-              </div>
+
+            <!--Segundo producto slider-->
               <div class="h-[190px] overflow-hidden rounded-lg">
                 <a href="#">
-                  <img class="card-object-fit h-full w-full" src="images/categories/gaming/consoles.jpg"
-                    alt="product" />
+                  <img class="card-object-fit h-full w-full" src="{{url_for('static', filename='/images/product/jenga-producto.jpg')}}"/> <!-- Imagen del producto -->
+        
                 </a>
               </div>
               <div class="my-2 flex justify-between">
@@ -215,31 +211,28 @@
                   <i class="bi bi-star-fill flex text-base text-gray-200"></i>
                 </div>
                 <div>
-                  <span class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                  <span class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">Stock disponible</span>
                 </div>
               </div>
               <div class="my-1">
                 <a class="clamp break-all font-medium" href="#">
-                  PlayStation 5
+                  Jenga  <!-- Nombre del producto -->
                 </a>
               </div>
               <div class="my-1">
                 <p class="clamp-2 text-sm text-gray-400">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Itaque culpa, odio, qui praesentium dignissimos eaque
-                  dolorum porro alias neque, eius animi ipsa voluptates. Optio
-                  repellat tempora voluptas, dolores ipsam ad!
-                </p>
+                  Jenga es un juego de habilidad física que consiste
+                   en retirar bloques de madera de una torre construida  <!-- Descripción del producto -->
+                   con 54 bloques, intentando no derribarla.
               </div>
 
               <div class="my-1">
-                <span class="text-lg font-bold">$37.00</span>
-                <span class="text-sm text-primary-color line-through">$50.00</span>
+                <span class="text-lg font-bold">$10.000</span> <!-- Precio del producto -->
               </div>
               <div class="mt-auto">
                 <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
                   href="#">
-                  <span class="font-bold uppercase text-white">View details</span>
+                  <span class="font-bold uppercase text-white">Ver detalles</span>
                 </a>
               </div>
             </div>
@@ -261,14 +254,12 @@
                   </a>
                 </div>
               </div>
-              <div
-                class="absolute top-0 left-0 flex h-[35px] w-[90px] items-center justify-center rounded-br-lg bg-primary-color">
-                <span class="text-md text-center font-semibold uppercase text-white">
-                  25% Off</span>
-              </div>
+
+          
+              <!--Tercer producto slider-->
               <div class="h-[190px] overflow-hidden rounded-lg">
                 <a href="#">
-                  <img class="card-object-fit h-full w-full" src="images/cards/mousepad.jpg" alt="product" />
+                  <img class="card-object-fit h-full w-full" src="{{url_for('static', filename='/images/product/ajedrez-producto.jpg')}}"/> <!-- Imagen del producto -->
                 </a>
               </div>
               <div class="my-2 flex justify-between">
@@ -280,31 +271,35 @@
                   <i class="bi bi-star-fill flex text-base text-gray-200"></i>
                 </div>
                 <div>
-                  <span class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                  <span class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">Stock disponible</span>
                 </div>
               </div>
               <div class="my-1">
                 <a class="clamp break-all font-medium" href="#">
-                  Mousepad Hyperx Fury S Pro Speed
+                  Ajedrez <!-- Nombre del producto -->
                 </a>
               </div>
               <div class="my-1">
                 <p class="clamp-2 text-sm text-gray-400">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Itaque culpa, odio, qui praesentium dignissimos eaque
-                  dolorum porro alias neque, eius animi ipsa voluptates. Optio
-                  repellat tempora voluptas, dolores ipsam ad!
+                  El ajedrez es un juego de estrategia para 
+                  dos personas que se juega sobre un tablero 
+                  de 64 casillas, alternadas en colores claros 
+                  y oscuros. Cada jugador comienza con 16 
+                  piezas: un rey, una dama (o reina), dos torres,
+                   dos alfiles, dos caballos y ocho peones.  
+                   El objetivo del juego es dar jaque mate al rey 
+                   del oponente, lo que significa dejarlo sin posibilidad 
+                   de escapar a una amenaza de captura.  <!-- Descripción del producto -->
                 </p>
               </div>
 
               <div class="my-1">
-                <span class="text-lg font-bold">$37.00</span>
-                <span class="text-sm text-primary-color line-through">$50.00</span>
+                <span class="text-lg font-bold">$15.000</span> <!-- Precio del producto -->
               </div>
               <div class="mt-auto">
                 <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
                   href="#">
-                  <span class="font-bold uppercase text-white">View details</span>
+                  <span class="font-bold uppercase text-white">Ver detalles</span>
                 </a>
               </div>
             </div>
@@ -326,15 +321,11 @@
                   </a>
                 </div>
               </div>
-              <div
-                class="absolute top-0 left-0 flex h-[35px] w-[90px] items-center justify-center rounded-br-lg bg-primary-color">
-                <span class="text-md text-center font-semibold uppercase text-white">
-                  25% Off</span>
-              </div>
+              
+              <!--Cuarto producto slider-->
               <div class="h-[190px] overflow-hidden rounded-lg">
                 <a href="#">
-                  <img class="card-object-fit h-full w-full" src="images/categories/pc_components/processors.jpg"
-                    alt="product" />
+                  <img class="card-object-fit h-full w-full" src="{{url_for('static', filename='/images/product/dos-producto.jpg')}}"/> <!-- Imagen del producto -->
                 </a>
               </div>
               <div class="my-2 flex justify-between">
@@ -346,31 +337,32 @@
                   <i class="bi bi-star-fill flex text-base text-gray-200"></i>
                 </div>
                 <div>
-                  <span class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                  <span class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">Stock disponible</span>
                 </div>
               </div>
               <div class="my-1">
                 <a class="clamp break-all font-medium" href="#">
-                  Ryzen 5 3600x
+                  Dos  <!-- Nombre del producto -->
                 </a>
               </div>
               <div class="my-1">
                 <p class="clamp-2 text-sm text-gray-400">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Itaque culpa, odio, qui praesentium dignissimos eaque
-                  dolorum porro alias neque, eius animi ipsa voluptates. Optio
-                  repellat tempora voluptas, dolores ipsam ad!
-                </p>
+                  El objetivo es ser el primero en quedarse sin cartas 
+                  en la mano. Cada jugador debe ir descartando cartas 
+                  que coincidan en color o número con la carta en juego. 
+                  Además, hay cartas especiales que cambian el sentido del 
+                  juego, hacen robar cartas o saltan turnos. Cuando a un jugador 
+                  le queda una sola carta, debe decir “¡DOS!” o puede ser penalizado. 
+                </p> <!-- Descripción del producto -->
               </div>
 
               <div class="my-1">
-                <span class="text-lg font-bold">$37.00</span>
-                <span class="text-sm text-primary-color line-through">$50.00</span>
+                <span class="text-lg font-bold">$10.000</span> <!-- Precio del producto -->
               </div>
               <div class="mt-auto">
                 <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
                   href="shop-mixed.html">
-                  <span class="font-bold uppercase text-white">View details</span>
+                  <span class="font-bold uppercase text-white">Ver detalles</span>
                 </a>
               </div>
             </div>
@@ -392,15 +384,11 @@
                   </a>
                 </div>
               </div>
-              <div
-                class="absolute top-0 left-0 flex h-[35px] w-[90px] items-center justify-center rounded-br-lg bg-primary-color">
-                <span class="text-md text-center font-semibold uppercase text-white">
-                  25% Off</span>
-              </div>
+               
+              <!--Quinto producto slider-->
               <div class="h-[190px] overflow-hidden rounded-lg">
                 <a href="#">
-                  <img class="card-object-fit h-full w-full" src="images/categories/peripherals/mouse.jpg"
-                    alt="product" />
+                  <img class="card-object-fit h-full w-full" src="{{url_for('static', filename='/images/product/teg-producto.jpg')}}"/> <!-- Imagen del producto -->           
                 </a>
               </div>
               <div class="my-2 flex justify-between">
@@ -412,32 +400,31 @@
                   <i class="bi bi-star-fill flex text-base text-gray-200"></i>
                 </div>
                 <div>
-                  <span class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                  <span class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">Stock disponible</span>
                 </div>
               </div>
               <div class="my-1">
                 <a class="clamp break-all font-medium" href="#">
-                  Mouse Logitech g403
+                  T.E.G. <!-- Nombre del producto -->
                 </a>
               </div>
               <div class="my-1">
                 <p class="clamp-2 text-sm text-gray-400">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Itaque culpa, odio, qui praesentium dignissimos eaque
-                  dolorum porro alias neque, eius animi ipsa voluptates. Optio
-                  repellat tempora voluptas, dolores ipsam ad!
-                </p>
+                  El plan táctico y estratégico de guerra servirá 
+                  para lograr un objetivo en un planisferio dividido 
+                  en 50 países donde 6 ejércitos compiten por 
+                  conquistar el mundo.
+                </p> <!-- Descripción del producto -->
               </div>
 
 
               <div class="my-1">
-                <span class="text-lg font-bold">$37.00</span>
-                <span class="text-sm text-primary-color line-through">$50.00</span>
+                <span class="text-lg font-bold">$50.000</span> <!-- Precio del producto -->
               </div>
               <div class="mt-auto">
                 <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
                   href="#">
-                  <span class="font-bold uppercase text-white">View details</span>
+                  <span class="font-bold uppercase text-white">Ver detalles</span>
                 </a>
               </div>
             </div>
@@ -459,14 +446,11 @@
                   </a>
                 </div>
               </div>
-              <div
-                class="absolute top-0 left-0 flex h-[35px] w-[90px] items-center justify-center rounded-br-lg bg-primary-color">
-                <span class="text-md text-center font-semibold uppercase text-white">
-                  25% Off</span>
-              </div>
+           
+              <!--Sexto producto slider-->
               <div class="h-[190px] overflow-hidden rounded-lg">
                 <a href="#">
-                  <img class="card-object-fit h-full w-full" src="images/cards/phones/phone_1.jpg" alt="product" />
+                  <img class="card-object-fit h-full w-full" src="{{url_for('static', filename='/images/product/monopoly-producto.jpg')}}" /> <!-- Imagen del producto -->
                 </a>
               </div>
               <div class="my-2 flex justify-between">
@@ -478,164 +462,30 @@
                   <i class="bi bi-star-fill flex text-base text-gray-200"></i>
                 </div>
                 <div>
-                  <span class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                  <span class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">Stock disponible</span>
                 </div>
               </div>
               <div class="my-1">
                 <a class="clamp break-all font-medium" href="#">
-                  Moto e7i Power
+                  Monopoly <!-- Nombre del producto -->
                 </a>
               </div>
               <div class="my-1">
                 <p class="clamp-2 text-sm text-gray-400">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Itaque culpa, odio, qui praesentium dignissimos eaque
-                  dolorum porro alias neque, eius animi ipsa voluptates. Optio
-                  repellat tempora voluptas, dolores ipsam ad!
-                </p>
+                  Monopoly es un juego de mesa basado en el intercambio y la compraventa de
+                  propiedades inmobiliarias. Los jugadores se mueven por un tablero, comprando
+                  propiedades, construyendo casas y hoteles, y cobrando alquileres a los demás jugadores.
+                </p> <!-- Descripción del producto -->
               </div>
 
 
               <div class="my-1">
-                <span class="text-lg font-bold">$37.00</span>
-                <span class="text-sm text-primary-color line-through">$50.00</span>
+                <span class="text-lg font-bold">$60.000</span> <!-- Precio del producto -->  
               </div>
               <div class="mt-auto">
                 <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
                   href="#">
-                  <span class="font-bold uppercase text-white">View details</span>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide h-auto">
-            <div
-              class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
-              <div class="absolute top-[10px] right-[10px]">
-                <div class="p-[2px]">
-                  <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
-                    href="javascript:void(0)">
-                    <i class="bi bi-heart pointer-events-none flex text-white"></i>
-                  </a>
-                </div>
-                <div class="p-[2px]">
-                  <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
-                    href="javascript:void(0)" data-target=".quick-view-modal">
-                    <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
-                  </a>
-                </div>
-              </div>
-              <div
-                class="absolute top-0 left-0 flex h-[35px] w-[90px] items-center justify-center rounded-br-lg bg-primary-color">
-                <span class="text-md text-center font-semibold uppercase text-white">
-                  25% Off</span>
-              </div>
-              <div class="h-[190px] overflow-hidden rounded-lg">
-                <a href="#">
-                  <img class="card-object-fit h-full w-full" src="images/cards/notebooks/note_6.jpg" alt="product" />
-                </a>
-              </div>
-              <div class="my-2 flex justify-between">
-                <div class="flex">
-                  <i class="bi bi-star-fill flex text-base text-star"></i>
-                  <i class="bi bi-star-fill flex text-base text-star"></i>
-                  <i class="bi bi-star-fill flex text-base text-star"></i>
-                  <i class="bi bi-star-fill flex text-base text-star"></i>
-                  <i class="bi bi-star-fill flex text-base text-gray-200"></i>
-                </div>
-                <div>
-                  <span class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
-                </div>
-              </div>
-              <div class="my-1">
-                <a class="clamp break-all font-medium" href="#">
-                  Dell Inspiron
-                </a>
-              </div>
-              <div class="my-1">
-                <p class="clamp-2 text-sm text-gray-400">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Itaque culpa, odio, qui praesentium dignissimos eaque
-                  dolorum porro alias neque, eius animi ipsa voluptates. Optio
-                  repellat tempora voluptas, dolores ipsam ad!
-                </p>
-              </div>
-
-
-              <div class="my-1">
-                <span class="text-lg font-bold">$37.00</span>
-                <span class="text-sm text-primary-color line-through">$50.00</span>
-              </div>
-              <div class="mt-auto">
-                <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
-                  href="#">
-                  <span class="font-bold uppercase text-white">View details</span>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide h-auto">
-            <div
-              class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
-              <div class="absolute top-[10px] right-[10px]">
-                <div class="p-[2px]">
-                  <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
-                    href="javascript:void(0)">
-                    <i class="bi bi-heart pointer-events-none flex text-white"></i>
-                  </a>
-                </div>
-                <div class="p-[2px]">
-                  <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
-                    href="javascript:void(0)" data-target=".quick-view-modal">
-                    <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
-                  </a>
-                </div>
-              </div>
-              <div
-                class="absolute top-0 left-0 flex h-[35px] w-[90px] items-center justify-center rounded-br-lg bg-primary-color">
-                <span class="text-md text-center font-semibold uppercase text-white">
-                  25% Off</span>
-              </div>
-              <div class="h-[190px] overflow-hidden rounded-lg">
-                <a href="#">
-                  <img class="card-object-fit h-full w-full" src="images/cards/phones/phone_5.jpg" alt="product" />
-                </a>
-              </div>
-              <div class="my-2 flex justify-between">
-                <div class="flex">
-                  <i class="bi bi-star-fill flex text-base text-star"></i>
-                  <i class="bi bi-star-fill flex text-base text-star"></i>
-                  <i class="bi bi-star-fill flex text-base text-star"></i>
-                  <i class="bi bi-star-fill flex text-base text-star"></i>
-                  <i class="bi bi-star-fill flex text-base text-gray-200"></i>
-                </div>
-                <div>
-                  <span class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
-                </div>
-              </div>
-              <div class="my-1">
-                <a class="clamp break-all font-medium" href="#">
-                  Samsung Galaxy Z Fold4
-                </a>
-              </div>
-              <div class="my-1">
-                <p class="clamp-2 text-sm text-gray-400">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Itaque culpa, odio, qui praesentium dignissimos eaque
-                  dolorum porro alias neque, eius animi ipsa voluptates. Optio
-                  repellat tempora voluptas, dolores ipsam ad!
-                </p>
-              </div>
-
-
-              <div class="my-1">
-                <span class="text-lg font-bold">$37.00</span>
-                <span class="text-sm text-primary-color line-through">$50.00</span>
-              </div>
-              <div class="mt-auto">
-                <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
-                  href="#">
-                  <span class="font-bold uppercase text-white">View details</span>
+                  <span class="font-bold uppercase text-white">Ver detalles</span>
                 </a>
               </div>
             </div>
@@ -652,22 +502,23 @@
     </div>
   </div>
 
+  <!-- Sección de banners -->
   <div class="banners-section-2 container mx-auto my-5 px-2 sm:px-8">
     <div class="grid grid-cols-12 gap-5">
       <div class="group relative col-span-12 h-[300px] overflow-hidden rounded-lg sm:col-span-6">
         <div class="overlay-gradient absolute z-[1] h-full w-full"></div>
         <img class="transition-all-300 h-full w-full object-cover hover:transform group-hover:scale-110"
-          src="images/categories/vr-glass-hero.jpg" alt="banner-img" />
+          src="{{url_for('static', filename='/images/banner/monopoly-banner.jpeg')}}"/>
         <div class="absolute top-0 left-0 flex h-full w-full items-center">
           <div class="z-[2] p-5">
             <h3 class="text-lg font-bold uppercase text-primary-color drop-shadow-xl">
-              Virtual Glasses
+              Monopoly
             </h3>
             <p class="my-5 text-white drop-shadow-md">
-              Choose the ideal VR for you!
+              Ideal para jugar en familia o con amigos
             </p>
             <a class="btn-effect inline-block rounded-lg bg-primary-color py-2 px-3 text-white" href="#">
-              <span>Show more</span>
+              <span>Ver mas</span>
             </a>
           </div>
         </div>
@@ -675,17 +526,17 @@
       <div class="group relative col-span-12 h-[300px] overflow-hidden rounded-lg sm:col-span-6">
         <div class="overlay-gradient absolute z-[1] h-full w-full"></div>
         <img class="transition-all-300 h-full w-full object-cover hover:transform group-hover:scale-110"
-          src="images/categories/banner-robot.png" alt="banner-img" />
+          src="{{url_for('static', filename='/images/banner/rompecabezas-banner.jpg')}}"/>
         <div class="absolute top-0 left-0 flex h-full w-full items-center">
           <div class="z-[2] p-5">
             <h3 class="text-lg font-bold uppercase text-primary-color drop-shadow-xl">
-              Robot Vacuum
+              Rompecabezas
             </h3>
             <p class="my-5 text-white drop-shadow-md">
-              Smarthome at the best price!
+              Para los mas chicos del hogar
             </p>
             <a class="btn-effect inline-block rounded-lg bg-primary-color py-2 px-3 text-white" href="#">
-              <span>Show more</span>
+              <span>Ver mas</span>
             </a>
           </div>
         </div>
@@ -693,27 +544,28 @@
     </div>
   </div>
 
+  <!--Sliders por categoria-->
   <div class="products-1-section container mx-auto my-5 px-2 sm:px-8">
     <div class="liner-container mt-5 flex justify-center border-b-2 border-[rgba(119,119,119,.17)]">
       <h1 class="mb-[-2px] inline-block border-b-2 border-primary-color pb-3 text-2xl font-bold uppercase">
-        Notebooks
+        Todas las edades
       </h1>
     </div>
     <div class="grid grid-cols-12 gap-5">
       <div class="group relative col-span-3 my-5 hidden overflow-hidden rounded-l-lg xl:block">
         <div class="overlay-gradient absolute z-[1] h-full w-full"></div>
         <img class="transition-all-300 h-full w-full object-cover hover:transform group-hover:scale-110"
-          src="images/categories/ergonic-chair-01.jpg" alt="banner-img" />
+          src="{{url_for('static', filename='images/banner/todas_las_edades-banner.jpg')}}"/>
         <div class="absolute top-0 left-0 flex h-full w-full items-center">
           <div class="z-[2] p-5">
             <h3 class="text-lg font-bold uppercase text-primary-color drop-shadow-xl" style="color: #d7d7d7;">
-              Ergonic Chair
+              Para todas las edades
             </h3>
             <p class="my-5 text-white drop-shadow-md">
-              Choose your laptop now!
+              Productos destacados
             </p>
             <a class="btn-effect inline-block rounded-lg bg-primary-color py-2 px-3 text-white" href="#">
-              <span>Show more</span>
+              <span>Ver todos</span>
             </a>
           </div>
         </div>
@@ -738,9 +590,10 @@
                     </a>
                   </div>
                 </div>
+                <!--Primer producto slider para todas las edades-->
                 <div class="h-[190px] overflow-hidden rounded-lg">
                   <a href="#">
-                    <img class="card-object-fit h-full w-full" src="images/cards/notebooks/note_1.jpg" alt="product" />
+                    <img class="card-object-fit h-full w-full" src="{{url_for('static', filename='/images/product/uno-producto.jpg')}}"/>
                   </a>
                 </div>
                 <div class="my-2 flex justify-between">
@@ -753,28 +606,30 @@
                   </div>
                   <div>
                     <span
-                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">Stock disponible</span>
                   </div>
                 </div>
                 <div class="my-1">
-                  <a class="clamp break-all font-medium" href="#">Apple Macbook Air 13</a>
+                  <a class="clamp break-all font-medium" href="#">Uno</a>
                 </div>
                 <div class="my-1">
                   <p class="clamp-2 text-sm text-gray-400">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Itaque culpa, odio, qui praesentium dignissimos eaque
-                    dolorum porro alias neque, eius animi ipsa voluptates.
-                    Optio repellat tempora voluptas, dolores ipsam ad!
+                    El objetivo es ser el primero en quedarse sin cartas 
+                  en la mano. Cada jugador debe ir descartando cartas 
+                  que coincidan en color o número con la carta en juego.  
+                  Además, hay cartas especiales que cambian el sentido del 
+                  juego, hacen robar cartas o saltan turnos. Cuando a un jugador 
+                  le queda una sola carta, debe decir “¡UNO!” o puede ser penalizado. 
                   </p>
                 </div>
 
                 <div class="my-1">
-                  <span class="text-lg font-bold">$37.00</span>
+                  <span class="text-lg font-bold">$10.000</span>
                 </div>
                 <div class="mt-auto">
                   <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
                     href="#">
-                    <span class="font-bold uppercase text-white">View details</span>
+                    <span class="font-bold uppercase text-white">Ver detalles</span>
                   </a>
                 </div>
               </div>
@@ -796,9 +651,10 @@
                     </a>
                   </div>
                 </div>
+                <!--Segundo producto slider para todas las edades-->
                 <div class="h-[190px] overflow-hidden rounded-lg">
                   <a href="#">
-                    <img class="card-object-fit h-full w-full" src="images/cards/notebooks/note_2.jpg" alt="product" />
+                    <img class="card-object-fit h-full w-full" src="{{url_for('static', filename='/images/product/dos-producto.jpg')}}"/>
                   </a>
                 </div>
                 <div class="my-2 flex justify-between">
@@ -811,28 +667,30 @@
                   </div>
                   <div>
                     <span
-                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">Stock disponible</span>
                   </div>
                 </div>
                 <div class="my-1">
-                  <a class="clamp break-all font-medium" href="#">Asus ZenBook 14</a>
+                  <a class="clamp break-all font-medium" href="#">Dos</a>
                 </div>
                 <div class="my-1">
                   <p class="clamp-2 text-sm text-gray-400">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Itaque culpa, odio, qui praesentium dignissimos eaque
-                    dolorum porro alias neque, eius animi ipsa voluptates.
-                    Optio repellat tempora voluptas, dolores ipsam ad!
+                    El objetivo es ser el primero en quedarse sin cartas 
+                  en la mano. Cada jugador debe ir descartando cartas 
+                  que coincidan en color o número con la carta en juego.  
+                  Además, hay cartas especiales que cambian el sentido del 
+                  juego, hacen robar cartas o saltan turnos. Cuando a un jugador 
+                  le queda una sola carta, debe decir “¡DOS!” o puede ser penalizado.
                   </p>
                 </div>
 
                 <div class="my-1">
-                  <span class="text-lg font-bold">$37.00</span>
+                  <span class="text-lg font-bold">$10.000</span>
                 </div>
                 <div class="mt-auto">
                   <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
                     href="#">
-                    <span class="font-bold uppercase text-white">View details</span>
+                    <span class="font-bold uppercase text-white">Ver detalles</span>
                   </a>
                 </div>
               </div>
@@ -854,9 +712,11 @@
                     </a>
                   </div>
                 </div>
+                
+                <!-- Tercer producto slider para todas las edades-->
                 <div class="h-[190px] overflow-hidden rounded-lg">
                   <a href="#">
-                    <img class="card-object-fit h-full w-full" src="images/cards/notebooks/note_3.jpg" alt="product" />
+                    <img class="card-object-fit h-full w-full" src="{{url_for('static', filename='/images/product/rompecabezas-producto.png')}}"/>
                   </a>
                 </div>
                 <div class="my-2 flex justify-between">
@@ -869,28 +729,27 @@
                   </div>
                   <div>
                     <span
-                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">Stock disponible</span>
                   </div>
                 </div>
                 <div class="my-1">
-                  <a class="clamp break-all font-medium" href="#">Lenovo V15</a>
+                  <a class="clamp break-all font-medium" href="#">Rompecabezas</a>
                 </div>
                 <div class="my-1">
                   <p class="clamp-2 text-sm text-gray-400">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Itaque culpa, odio, qui praesentium dignissimos eaque
-                    dolorum porro alias neque, eius animi ipsa voluptates.
-                    Optio repellat tempora voluptas, dolores ipsam ad!
+                    Rompecabezas de animales, paisajes y más. 24 piezas
+                    de madera con ilustraciones coloridas. Ideal para niños
+                    de 3 a 6 años
                   </p>
                 </div>
 
                 <div class="my-1">
-                  <span class="text-lg font-bold">$37.00</span>
+                  <span class="text-lg font-bold">$20.000</span>
                 </div>
                 <div class="mt-auto">
                   <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
                     href="#">
-                    <span class="font-bold uppercase text-white">View details</span>
+                    <span class="font-bold uppercase text-white">Ver detalles</span>
                   </a>
                 </div>
               </div>
@@ -912,9 +771,10 @@
                     </a>
                   </div>
                 </div>
+              <!-- Cuarto producto slider para todas las edades-->
                 <div class="h-[190px] overflow-hidden rounded-lg">
                   <a href="#">
-                    <img class="card-object-fit h-full w-full" src="images/cards/notebooks/note_4.jpg" alt="product" />
+                    <img class="card-object-fit h-full w-full" src="{{url_for('static', filename='/images/product/ludo-producto.jpg')}}"/>
                   </a>
                 </div>
                 <div class="my-2 flex justify-between">
@@ -927,144 +787,28 @@
                   </div>
                   <div>
                     <span
-                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">Stock disponible</span>
                   </div>
                 </div>
                 <div class="my-1">
-                  <a class="clamp break-all font-medium" href="#">HP 255 G7</a>
+                  <a class="clamp break-all font-medium" href="#">Ludo</a>
                 </div>
                 <div class="my-1">
                   <p class="clamp-2 text-sm text-gray-400">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Itaque culpa, odio, qui praesentium dignissimos eaque
-                    dolorum porro alias neque, eius animi ipsa voluptates.
-                    Optio repellat tempora voluptas, dolores ipsam ad!
+                    Ludo es un juego de mesa clásico que se juega con 
+                    fichas y un dado. El objetivo es llevar todas las 
+                    fichas al centro del tablero antes que los demás jugadores.
+                    Es un juego de estrategia y suerte, ideal para toda la familia.
                   </p>
                 </div>
 
                 <div class="my-1">
-                  <span class="text-lg font-bold">$37.00</span>
+                  <span class="text-lg font-bold">$25.000</span>
                 </div>
                 <div class="mt-auto">
                   <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
                     href="#">
-                    <span class="font-bold uppercase text-white">View details</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide h-auto">
-              <div
-                class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
-                <div class="absolute top-[10px] right-[10px]">
-                  <div class="p-[2px]">
-                    <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
-                      href="javascript:void(0)">
-                      <i class="bi bi-heart pointer-events-none flex text-white"></i>
-                    </a>
-                  </div>
-                  <div class="p-[2px]">
-                    <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
-                      href="javascript:void(0)" data-target=".quick-view-modal">
-                      <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
-                    </a>
-                  </div>
-                </div>
-                <div class="h-[190px] overflow-hidden rounded-lg">
-                  <a href="#">
-                    <img class="card-object-fit h-full w-full" src="images/cards/notebooks/note_5.jpg" alt="product" />
-                  </a>
-                </div>
-                <div class="my-2 flex justify-between">
-                  <div class="flex">
-                    <i class="bi bi-star-fill flex text-base text-star"></i>
-                    <i class="bi bi-star-fill flex text-base text-star"></i>
-                    <i class="bi bi-star-fill flex text-base text-star"></i>
-                    <i class="bi bi-star-fill flex text-base text-star"></i>
-                    <i class="bi bi-star-fill flex text-base text-gray-200"></i>
-                  </div>
-                  <div>
-                    <span
-                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
-                  </div>
-                </div>
-                <div class="my-1">
-                  <a class="clamp break-all font-medium" href="#">MSI Stealth</a>
-                </div>
-                <div class="my-1">
-                  <p class="clamp-2 text-sm text-gray-400">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Itaque culpa, odio, qui praesentium dignissimos eaque
-                    dolorum porro alias neque, eius animi ipsa voluptates.
-                    Optio repellat tempora voluptas, dolores ipsam ad!
-                  </p>
-                </div>
-
-                <div class="my-1">
-                  <span class="text-lg font-bold">$37.00</span>
-                </div>
-                <div class="mt-auto">
-                  <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
-                    href="#">
-                    <span class="font-bold uppercase text-white">View details</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide h-auto">
-              <div
-                class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
-                <div class="absolute top-[10px] right-[10px]">
-                  <div class="p-[2px]">
-                    <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
-                      href="javascript:void(0)">
-                      <i class="bi bi-heart pointer-events-none flex text-white"></i>
-                    </a>
-                  </div>
-                  <div class="p-[2px]">
-                    <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
-                      href="javascript:void(0)" data-target=".quick-view-modal">
-                      <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
-                    </a>
-                  </div>
-                </div>
-                <div class="h-[190px] overflow-hidden rounded-lg">
-                  <a href="#">
-                    <img class="card-object-fit h-full w-full" src="images/cards/notebooks/note_6.jpg" alt="product" />
-                  </a>
-                </div>
-                <div class="my-2 flex justify-between">
-                  <div class="flex">
-                    <i class="bi bi-star-fill flex text-base text-star"></i>
-                    <i class="bi bi-star-fill flex text-base text-star"></i>
-                    <i class="bi bi-star-fill flex text-base text-star"></i>
-                    <i class="bi bi-star-fill flex text-base text-star"></i>
-                    <i class="bi bi-star-fill flex text-base text-gray-200"></i>
-                  </div>
-                  <div>
-                    <span
-                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
-                  </div>
-                </div>
-                <div class="my-1">
-                  <a class="clamp break-all font-medium" href="#">Dell Inspiron</a>
-                </div>
-                <div class="my-1">
-                  <p class="clamp-2 text-sm text-gray-400">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Itaque culpa, odio, qui praesentium dignissimos eaque
-                    dolorum porro alias neque, eius animi ipsa voluptates.
-                    Optio repellat tempora voluptas, dolores ipsam ad!
-                  </p>
-                </div>
-
-                <div class="my-1">
-                  <span class="text-lg font-bold">$37.00</span>
-                </div>
-                <div class="mt-auto">
-                  <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
-                    href="#">
-                    <span class="font-bold uppercase text-white">View details</span>
+                    <span class="font-bold uppercase text-white">Ver detalles</span>
                   </a>
                 </div>
               </div>
@@ -1085,24 +829,24 @@
   <div class="products-2-section container mx-auto my-5 px-2 sm:px-8">
     <div class="liner-container mt-5 flex justify-center border-b-2 border-[rgba(119,119,119,.17)]">
       <h1 class="mb-[-2px] inline-block border-b-2 border-primary-color pb-3 text-2xl font-bold uppercase">
-        Smartphones
+        Estrategia
       </h1>
     </div>
     <div class="grid grid-cols-12 gap-5">
       <div class="group relative col-span-3 my-5 hidden overflow-hidden rounded-l-lg xl:block">
         <div class="overlay-gradient absolute z-[1] h-full w-full"></div>
         <img class="transition-all-300 h-full w-full object-cover hover:transform group-hover:scale-110"
-          src="images/categories/keyboard-custom.jpg" alt="banner-img" />
+          src="{{url_for('static', filename='/images/banner/estrategia-banner.jpg')}}"/>
         <div class="absolute top-0 left-0 flex h-full w-full items-center">
           <div class="z-[2] p-5">
             <h3 class="text-lg font-bold uppercase text-primary-color drop-shadow-xl" style="color: #d7d7d7;">
-              Keyboards
+              Juegos de estrategia
             </h3>
             <p class="my-5 text-white drop-shadow-md">
-              Choose your keyboard now!
+              Destacados
             </p>
             <a class="btn-effect inline-block rounded-lg bg-primary-color py-2 px-3 text-white" href="#">
-              <span>Show more</span>
+              <span>Ver todos</span>
             </a>
           </div>
         </div>
@@ -1127,9 +871,11 @@
                     </a>
                   </div>
                 </div>
+
+                <!-- Primer producto slider juegos de estrategia -->
                 <div class="h-[190px] overflow-hidden rounded-lg">
                   <a href="#">
-                    <img class="card-object-fit h-full w-full" src="images/cards/phones/phone_1.jpg" alt="product" />
+                    <img class="card-object-fit h-full w-full" src="{{url_for('static', filename='/images/product/ajedrez-producto.jpg')}}" />
                   </a>
                 </div>
                 <div class="my-2 flex justify-between">
@@ -1142,28 +888,33 @@
                   </div>
                   <div>
                     <span
-                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">Stock disponible</span>
                   </div>
                 </div>
                 <div class="my-1">
-                  <a class="clamp break-all font-medium" href="#">Moto e7i Power</a>
+                  <a class="clamp break-all font-medium" href="#">Ajedrez</a>
                 </div>
                 <div class="my-1">
                   <p class="clamp-2 text-sm text-gray-400">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Itaque culpa, odio, qui praesentium dignissimos eaque
-                    dolorum porro alias neque, eius animi ipsa voluptates.
-                    Optio repellat tempora voluptas, dolores ipsam ad!
+                    El ajedrez es un juego de estrategia para 
+                  dos personas que se juega sobre un tablero 
+                  de 64 casillas, alternadas en colores claros 
+                  y oscuros. Cada jugador comienza con 16 
+                  piezas: un rey, una dama (o reina), dos torres,
+                   dos alfiles, dos caballos y ocho peones.  
+                   El objetivo del juego es dar jaque mate al rey 
+                   del oponente, lo que significa dejarlo sin posibilidad 
+                   de escapar a una amenaza de captura.
                   </p>
                 </div>
 
                 <div class="my-1">
-                  <span class="text-lg font-bold">$37.00</span>
+                  <span class="text-lg font-bold">$15.000</span>
                 </div>
                 <div class="mt-auto">
                   <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
                     href="#">
-                    <span class="font-bold uppercase text-white">View details</span>
+                    <span class="font-bold uppercase text-white">Ver detalles</span>
                   </a>
                 </div>
               </div>
@@ -1185,9 +936,10 @@
                     </a>
                   </div>
                 </div>
+                <!-- Segundo producto slider estrategia -->
                 <div class="h-[190px] overflow-hidden rounded-lg">
                   <a href="#">
-                    <img class="card-object-fit h-full w-full" src="images/cards/phones/phone_2.jpg" alt="product" />
+                    <img class="card-object-fit h-full w-full" src="{{url_for('static', filename='/images/product/teg-producto.jpg')}}"/>
                   </a>
                 </div>
                 <div class="my-2 flex justify-between">
@@ -1200,28 +952,28 @@
                   </div>
                   <div>
                     <span
-                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">Stock disponible</span>
                   </div>
                 </div>
                 <div class="my-1">
-                  <a class="clamp break-all font-medium" href="#">iPhone 12 Mini</a>
+                  <a class="clamp break-all font-medium" href="#">T.E.G.</a>
                 </div>
                 <div class="my-1">
                   <p class="clamp-2 text-sm text-gray-400">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Itaque culpa, odio, qui praesentium dignissimos eaque
-                    dolorum porro alias neque, eius animi ipsa voluptates.
-                    Optio repellat tempora voluptas, dolores ipsam ad!
+                    El plan táctico y estratégico de guerra servirá 
+                  para lograr un objetivo en un planisferio dividido 
+                  en 50 países donde 6 ejércitos compiten por 
+                  conquistar el mundo.
                   </p>
                 </div>
 
                 <div class="my-1">
-                  <span class="text-lg font-bold">$37.00</span>
+                  <span class="text-lg font-bold">$50.000</span>
                 </div>
                 <div class="mt-auto">
                   <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
                     href="#">
-                    <span class="font-bold uppercase text-white">View details</span>
+                    <span class="font-bold uppercase text-white">Ver detalles</span>
                   </a>
                 </div>
               </div>
@@ -1243,9 +995,10 @@
                     </a>
                   </div>
                 </div>
+                <!-- Tercer producto slider estrategia -->
                 <div class="h-[190px] overflow-hidden rounded-lg">
                   <a href="#">
-                    <img class="card-object-fit h-full w-full" src="images/cards/phones/phone_3.jpg" alt="product" />
+                    <img class="card-object-fit h-full w-full" src="{{url_for('static', filename='/images/product/monopoly-producto.jpg')}}"/>
                   </a>
                 </div>
                 <div class="my-2 flex justify-between">
@@ -1258,28 +1011,27 @@
                   </div>
                   <div>
                     <span
-                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">Stock disponible</span>
                   </div>
                 </div>
                 <div class="my-1">
-                  <a class="clamp break-all font-medium" href="#">Samsung A12</a>
+                  <a class="clamp break-all font-medium" href="#">Monopoly</a>
                 </div>
                 <div class="my-1">
                   <p class="clamp-2 text-sm text-gray-400">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Itaque culpa, odio, qui praesentium dignissimos eaque
-                    dolorum porro alias neque, eius animi ipsa voluptates.
-                    Optio repellat tempora voluptas, dolores ipsam ad!
+                    Monopoly es un juego de mesa basado en el intercambio y la compraventa de
+                  propiedades inmobiliarias. Los jugadores se mueven por un tablero, comprando
+                  propiedades, construyendo casas y hoteles, y cobrando alquileres a los demás jugadores.
                   </p>
                 </div>
 
                 <div class="my-1">
-                  <span class="text-lg font-bold">$37.00</span>
+                  <span class="text-lg font-bold">$60.000</span>
                 </div>
                 <div class="mt-auto">
                   <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
                     href="#">
-                    <span class="font-bold uppercase text-white">View details</span>
+                    <span class="font-bold uppercase text-white">Ver detalles</span>
                   </a>
                 </div>
               </div>
@@ -1301,9 +1053,11 @@
                     </a>
                   </div>
                 </div>
+                
+               
                 <div class="h-[190px] overflow-hidden rounded-lg">
                   <a href="#">
-                    <img class="card-object-fit h-full w-full" src="images/cards/phones/phone_4.jpg" alt="product" />
+                    <img class="card-object-fit h-full w-full" src="{{url_for('static', filename='/images/product/clue-producto.jpg')}}"/>
                   </a>
                 </div>
                 <div class="my-2 flex justify-between">
@@ -1316,144 +1070,27 @@
                   </div>
                   <div>
                     <span
-                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">Stock disponible</span>
                   </div>
                 </div>
                 <div class="my-1">
-                  <a class="clamp break-all font-medium" href="#">Nokia 5.4</a>
+                  <a class="clamp break-all font-medium" href="#">Clue</a>
                 </div>
                 <div class="my-1">
                   <p class="clamp-2 text-sm text-gray-400">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Itaque culpa, odio, qui praesentium dignissimos eaque
-                    dolorum porro alias neque, eius animi ipsa voluptates.
-                    Optio repellat tempora voluptas, dolores ipsam ad!
+                    Clue es un juego de mesa de misterio y deducción.
+                    Los jugadores deben resolver un asesinato descubriendo quién es el asesino,
+                    con qué arma y en qué habitación ocurrió el crimen.
                   </p>
                 </div>
 
                 <div class="my-1">
-                  <span class="text-lg font-bold">$37.00</span>
+                  <span class="text-lg font-bold">$60.000</span>
                 </div>
                 <div class="mt-auto">
                   <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
                     href="#">
-                    <span class="font-bold uppercase text-white">View details</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide h-auto">
-              <div
-                class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
-                <div class="absolute top-[10px] right-[10px]">
-                  <div class="p-[2px]">
-                    <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
-                      href="javascript:void(0)">
-                      <i class="bi bi-heart pointer-events-none flex text-white"></i>
-                    </a>
-                  </div>
-                  <div class="p-[2px]">
-                    <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
-                      href="javascript:void(0)" data-target=".quick-view-modal">
-                      <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
-                    </a>
-                  </div>
-                </div>
-                <div class="h-[190px] overflow-hidden rounded-lg">
-                  <a href="#">
-                    <img class="card-object-fit h-full w-full" src="images/cards/phones/phone_5.jpg" alt="product" />
-                  </a>
-                </div>
-                <div class="my-2 flex justify-between">
-                  <div class="flex">
-                    <i class="bi bi-star-fill flex text-base text-star"></i>
-                    <i class="bi bi-star-fill flex text-base text-star"></i>
-                    <i class="bi bi-star-fill flex text-base text-star"></i>
-                    <i class="bi bi-star-fill flex text-base text-star"></i>
-                    <i class="bi bi-star-fill flex text-base text-gray-200"></i>
-                  </div>
-                  <div>
-                    <span
-                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
-                  </div>
-                </div>
-                <div class="my-1">
-                  <a class="clamp break-all font-medium" href="#">Samsung Galaxy Z Fold4</a>
-                </div>
-                <div class="my-1">
-                  <p class="clamp-2 text-sm text-gray-400">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Itaque culpa, odio, qui praesentium dignissimos eaque
-                    dolorum porro alias neque, eius animi ipsa voluptates.
-                    Optio repellat tempora voluptas, dolores ipsam ad!
-                  </p>
-                </div>
-
-                <div class="my-1">
-                  <span class="text-lg font-bold">$37.00</span>
-                </div>
-                <div class="mt-auto">
-                  <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
-                    href="#">
-                    <span class="font-bold uppercase text-white">View details</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide h-auto">
-              <div
-                class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
-                <div class="absolute top-[10px] right-[10px]">
-                  <div class="p-[2px]">
-                    <a class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
-                      href="javascript:void(0)">
-                      <i class="bi bi-heart pointer-events-none flex text-white"></i>
-                    </a>
-                  </div>
-                  <div class="p-[2px]">
-                    <a class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
-                      href="javascript:void(0)" data-target=".quick-view-modal">
-                      <i class="bi bi-eye pointer-events-none flex text-xl text-white"></i>
-                    </a>
-                  </div>
-                </div>
-                <div class="h-[190px] overflow-hidden rounded-lg">
-                  <a href="#">
-                    <img class="card-object-fit h-full w-full" src="images/cards/phones/phone_6.jpg" alt="product" />
-                  </a>
-                </div>
-                <div class="my-2 flex justify-between">
-                  <div class="flex">
-                    <i class="bi bi-star-fill flex text-base text-star"></i>
-                    <i class="bi bi-star-fill flex text-base text-star"></i>
-                    <i class="bi bi-star-fill flex text-base text-star"></i>
-                    <i class="bi bi-star-fill flex text-base text-star"></i>
-                    <i class="bi bi-star-fill flex text-base text-gray-200"></i>
-                  </div>
-                  <div>
-                    <span
-                      class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
-                  </div>
-                </div>
-                <div class="my-1">
-                  <a class="clamp break-all font-medium" href="#">Motorola Edge 30</a>
-                </div>
-                <div class="my-1">
-                  <p class="clamp-2 text-sm text-gray-400">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Itaque culpa, odio, qui praesentium dignissimos eaque
-                    dolorum porro alias neque, eius animi ipsa voluptates.
-                    Optio repellat tempora voluptas, dolores ipsam ad!
-                  </p>
-                </div>
-
-                <div class="my-1">
-                  <span class="text-lg font-bold">$37.00</span>
-                </div>
-                <div class="mt-auto">
-                  <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
-                    href="#">
-                    <span class="font-bold uppercase text-white">View details</span>
+                    <span class="font-bold uppercase text-white">Ver detalles</span>
                   </a>
                 </div>
               </div>
@@ -1637,80 +1274,5 @@
     </div>
   </div>
 
-  <div class="brands-section container mx-auto my-5 px-2 sm:px-8">
-    <div class="swiper swiper-brands group relative flex items-center">
-      <div class="swiper-wrapper flex select-none items-center">
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/amd-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/asrock-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/asus-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/corsair-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/genius-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/gigabyte-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/hp-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/intel-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/kingston-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/lenovo-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/logitech-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/msi-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/nvidia-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/philips-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/redragon-logo.png"
-            alt="logo" />
-        </div>
-        <div class="swiper-slide">
-          <img class="transition-all-300 object-contain filter hover:filter-none" src="images/brands/samsung-logo.png"
-            alt="logo" />
-        </div>
-      </div>
-      <div class="button-next btn-slider-2 transition-all-300 -right-16 hover:text-primary-color group-hover:right-4">
-        &#10095;
-      </div>
-      <div class="button-prev btn-slider-2 transition-all-300 -left-16 hover:text-primary-color group-hover:left-4">
-        &#10094;
-      </div>
-    </div>
-  </div>
+  
 {% endblock %}
