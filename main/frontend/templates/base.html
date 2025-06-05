@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="{{url_for('static', filename='libraries/metismenujs.min.css')}}" />
   <link rel="stylesheet" href="{{url_for('static', filename='libraries/iziToast/iziToast.min.css')}}" />
   <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" />
-  <title>{% block title %} Besnik. - Electronics store {% endblock %}</title>
+  <title>{% block title %} Ludoteca central {% endblock %}</title>
   {% block styles %}{% endblock %}
 </head>
 
@@ -23,11 +23,11 @@
           <div class="flex gap-[15px]">
             <div class="flex items-center gap-2">
               <i class="bi bi-envelope flex text-2xl text-primary-color"></i>
-              <a href="#" class="font-light text-white">Besnik.@example.com</a>
+              <a href="#" class="font-light text-white">ludotecacentral@gmail.com</a>
             </div>
             <div class="flex items-center gap-2">
               <i class="bi bi-telephone flex text-xl text-primary-color"></i>
-              <a href="#" class="font-light text-white">0123456789</a>
+              <a href="#" class="font-light text-white">+54 9 2364 52-3000</a>
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@
         style="background-color: #fff; color: #011638;">
         <div class="order-1 col-span-2 self-center lg:order-1 lg:col-span-3">
           <a href="{{url_for('index')}}">
-            <img class="inline" src="{{url_for('static', filename='images/svg/logo.svg')}}" alt="Besnik." />
+            <img class="inline" src="{{url_for('static', filename='images/svg/logo.svg')}}" alt="{{ BRAND_NAME }}" />
           </a>
         </div>
         <div
@@ -644,7 +644,7 @@
           <div class="tabs-content border border-t-transparent">
             <div class="tab-content invisible absolute w-full p-5 opacity-0">
               <div class="my-5">
-                <img class="mx-auto" src="{{url_for('static', filename='images/svg/logo.svg')}}" alt="Besnik." />
+                <img class="mx-auto" src="{{url_for('static', filename='images/svg/logo.svg')}}" alt="{{ BRAND_NAME }}" />
               </div>
               <form action="#">
                 <div class="flex flex-col gap-4">
@@ -688,7 +688,7 @@
             </div>
             <div class="tab-content invisible absolute w-full bg-white p-5 opacity-0">
               <div class="my-5">
-                <img class="mx-auto" src="{{url_for('static', filename='images/svg/logo.svg')}}" alt="Besnik." />
+                <img class="mx-auto" src="{{url_for('static', filename='images/svg/logo.svg')}}" alt="{{ BRAND_NAME }}" />
               </div>
               <form action="#">
                 <div class="flex flex-col gap-4">
@@ -976,7 +976,7 @@
 
   <div class="loader fixed z-[999] flex h-screen w-screen items-center justify-center bg-body">
     <div class="loader-content flex flex-col items-center gap-2">
-      <span class="text-3xl font-semibold text-gray-200">Besnik.</span>
+      <span class="text-3xl font-semibold text-gray-200">Ludoteca central</span>
       <div class="flex h-1 w-40 gap-1 overflow-hidden bg-gray-200">
         <div class="animation-loader h-full w-20 bg-primary-color"></div>
       </div>
@@ -994,11 +994,11 @@
             <div>
               <div class="flex items-center gap-[10px] py-2">
                 <i class="bi bi-envelope-fill flex text-xl text-primary-color"></i>
-                <a class="break-all" href="#">besnik.@example.com</a>
+                <a class="break-all" href="#">ludotecacentral@gmail.com</a>
               </div>
               <div class="flex items-center gap-[10px] py-2">
                 <i class="bi bi-telephone-fill flex text-xl text-primary-color"></i>
-                <a class="break-all" href="#">0123456789</a>
+                <a class="break-all" href="#">+54 9 2364 52-3000</a>
               </div>
               <div class="flex items-center gap-[10px] py-2">
                 <i class="bi bi-geo-alt-fill flex text-xl text-primary-color"></i>
