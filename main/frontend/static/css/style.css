@@ -404,12 +404,12 @@ select:focus {
     );
   --tw-ring-offset-width: 0px;
   --tw-ring-offset-color: #fff;
-  --tw-ring-color: #0F1B4C;
+  --tw-ring-color: #216A60;
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
   -webkit-box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  border-color: #0F1B4C;
+  border-color: #216A60;
 }
 
 input::-webkit-input-placeholder,
@@ -474,7 +474,7 @@ select {
   flex-shrink: 0;
   height: 1rem;
   width: 1rem;
-  color: #0F1B4C;
+  color: #216A60;
   background-color: #fff;
   border-color: #6b7280;
   border-width: 1px;
@@ -499,7 +499,7 @@ select {
     );
   --tw-ring-offset-width: 2px;
   --tw-ring-offset-color: #fff;
-  --tw-ring-color: #0F1B4C;
+  --tw-ring-color: #216A60;
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
   -webkit-box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -2210,7 +2210,7 @@ select {
   letter-spacing: 0.025em;
 }
 
-.text-\[\#0F1B4C\] {
+.text-\[\#216A60\] {
   --tw-text-opacity: 1;
   color: rgb(48 145 255 / var(--tw-text-opacity));
 }
@@ -2493,8 +2493,8 @@ select {
 :root {
   /* Enter the color value, it must be RGB */
   --color-R: 33;
-  --color-G: 29;
-  --color-B: 112;
+  --color-G: 106;
+  --color-B: 96;
   /* Automatic calculation: dark color, you can adjust the value (0.70) */
   --color-Rd: calc(var(--color-R) * 0.7);
   --color-Gd: calc(var(--color-G) * 0.7);
