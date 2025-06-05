@@ -5,9 +5,16 @@ app = Flask(__name__)
 
 # Flask ejemplo
 @app.context_processor
-def inject_brand():
+def poner_nombre():
     return dict(BRAND_NAME="Ludoteca central")
 
+@app.context_processor
+def poner_mail():
+    return dict(MAIL= "ludotecacentral@gmail.com")
+
+@app.context_processor
+def poner_mail():
+    return dict(NUMERO= "+54 11 60217938")
 
 @app.route('/')
 def index():
