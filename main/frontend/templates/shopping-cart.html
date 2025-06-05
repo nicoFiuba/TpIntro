@@ -9,13 +9,13 @@
   <div class="breadcrumb-section container mx-auto my-5 px-2 sm:px-8">
     <ul class="flex flex-wrap items-center gap-1">
       <li class="transition-all-300 hover:text-primary-color">
-        <a href="index.html">Home</a>
+        <a href="{{ url_for('index') }}">Home</a>
       </li>
       <li>
         <i class="bi bi-caret-right-fill flex text-primary-color"></i>
       </li>
       <li class="transition-all-300 active hover:text-primary-color">
-        <a href="shopping-cart.html">Shopping Cart</a>
+        <a href="{{ url_for('shopping_cart') }}">Shopping Cart</a>
       </li>
     </ul>
   </div>
@@ -47,7 +47,7 @@
             <div class="flex items-center">
               <div class="h-[100px] w-[100px] min-w-[100px] overflow-hidden rounded-lg border">
                 <a href="#">
-                  <img class="h-full w-full object-cover" src="images/product/prod-1.jpg" alt="product" />
+                  <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/product/prod-1.jpg') }}" alt="product" />
                 </a>
               </div>
             </div>
@@ -107,7 +107,7 @@
             <div class="flex items-center">
               <div class="h-[100px] w-[100px] min-w-[100px] overflow-hidden rounded-lg border">
                 <a href="#">
-                  <img class="h-full w-full object-cover" src="images/cards/mousepad.jpg" alt="product" />
+                  <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/cards/mousepad.jpg') }}" alt="product" />
                 </a>
               </div>
             </div>
@@ -186,7 +186,7 @@
                 <td class="p-2">
                   <div class="h-[100px] w-[100px] min-w-[100px] overflow-hidden rounded-lg border">
                     <a href="#">
-                      <img class="h-full w-full object-cover" src="images/product/prod-1.jpg" alt="product" />
+                      <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/product/prod-1.jpg') }}" alt="product" />
                     </a>
                   </div>
                 </td>
@@ -225,7 +225,7 @@
                 <td class="p-2">
                   <div class="h-[100px] w-[100px] min-w-[100px] overflow-hidden rounded-lg border">
                     <a href="#">
-                      <img class="h-full w-full object-cover" src="images/cards/mousepad.jpg" alt="product" />
+                      <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/cards/mousepad.jpg') }}" alt="product" />
                     </a>
                   </div>
                 </td>
@@ -309,12 +309,12 @@
           </button>
         </div>
         <a class="transition-all-300 my-5 flex items-center justify-center gap-2 hover:text-primary-color"
-          href="shopping-cart.html">
+          href="{{ url_for('shopping_cart') }}">
           <i class="bi bi-arrow-repeat flex text-xl"></i>
           <span>Update Cart</span>
         </a>
         <a class="transition-all-300 my-5 flex items-center justify-center gap-2 hover:text-primary-color"
-          href="shopping-cart.html">
+          href="{{ url_for('shopping_cart') }}">
           <i class="bi bi-cart-plus flex text-xl"></i>
           <span>Add more products</span>
         </a>
@@ -332,13 +332,13 @@
             <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex text-xl"></i>
           </button>
           <div class="py-12">
-            <img src="images/logo.png" class="mx-auto h-[40px]" alt="logo" />
+            <img src="{{ url_for('static', filename='images/logo.png') }}" class="mx-auto h-[40px]" alt="logo" />
           </div>
         </div>
         <nav class="h-full w-full overflow-auto bg-white">
           <ul class="metismenu">
             <li class="border-b border-gray-200">
-              <a class="flex select-none items-center p-2" href="index.html">
+              <a class="flex select-none items-center p-2" href="{{ url_for('index') }}">
                 <i class="bi bi-house-door mr-3 flex text-xl text-primary-color"></i>
                 <span class="font-semibold">Home</span>
               </a>
@@ -432,7 +432,7 @@
             </li>
 
             <li class="border-b border-gray-200">
-              <a class="flex select-none items-center p-2" href="contact-us.html">
+              <a class="flex select-none items-center p-2" href="{{ url_for('contact_us')}}">
                 <i class="bi bi-telephone mr-3 flex text-xl text-primary-color"></i>
                 <span class="font-semibold">Contact Us</span>
               </a>
@@ -443,23 +443,15 @@
                 <span class="font-semibold">Pages</span>
               </div>
               <div class="metismenu-content">
-                <a class="btn-open-modal ml-10 block p-1" href="wishlist.html">Wishlist</a>
-                <a class="btn-open-modal ml-10 block p-1" href="shopping-cart.html">Shopping Cart</a>
-                <a class="btn-open-modal ml-10 block p-1" href="product-details.html">Product Details</a>
-                <a class="btn-open-modal ml-10 block p-1" href="checkout.html">Checkout</a>
-                <a class="btn-open-modal ml-10 block p-1" href="shop-mixed.html">Shop - Mixed</a>
+                
+                <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('shopping_cart') }}">Shopping Cart</a>
+                <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('product_details') }}">Product Details</a>
+                
+                <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('shop_mixed') }}">Shop - Mixed</a>
 
-                <a class="btn-open-modal ml-10 block p-1" href="about-us.html">About Us</a>
-                <a class="btn-open-modal ml-10 block p-1" href="my-account.html">My Account</a>
-                <a class="btn-open-modal ml-10 block p-1" href="forgot-password.html">Forgot Password</a>
-                <a class="btn-open-modal ml-10 block p-1" href="login.html">Login</a>
-                <a class="btn-open-modal ml-10 block p-1" href="sign-up.html">Sign Up</a>
-                <a class="btn-open-modal ml-10 block p-1" href="verification.html">Verification</a>
+                <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('my_account') }}">My Account</a>
+                <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('purchase_completed') }}">Purchase Completed</a>
 
-                <a class="btn-open-modal ml-10 block p-1" href="error404.html">Error 404</a>
-                <a class="btn-open-modal ml-10 block p-1" href="message-sent.html">Message Sent</a>
-                <a class="btn-open-modal ml-10 block p-1" href="purchase-completed.html">Purchase Completed</a>
-                <a class="btn-open-modal ml-10 block p-1" href="purchase-failed.html">Purchase Failed</a>
 
               </div>
             </li>
@@ -496,7 +488,7 @@
           <a class="transition-all-300 flex h-[100px] w-full items-center justify-between gap-5 bg-white p-2 hover:bg-gray-100"
             href="#">
             <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border">
-              <img class="h-full w-full object-cover" src="images/product/prod-1.jpg" alt="product" />
+              <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/product/prod-1.jpg') }}" alt="product" />
             </div>
             <div class="flex w-full flex-col">
               <h6 class="clamp-2 break-all text-lg font-semibold">
@@ -524,13 +516,10 @@
             <span class="text-lg font-semibold text-primary-color">$37.00</span>
           </div>
           <a class="btn-effect transition-all-300 my-5 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
-            href="shopping-cart.html">
+            href="{{ url_for('shopping_cart') }}">
             <span class="font-bold uppercase text-white">View Shopping Cart</span>
           </a>
-          <a class="btn-effect transition-all-300 my-5 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
-            href="checkout.html">
-            <span class="font-bold uppercase text-white">Checkout now</span>
-          </a>
+        
         </div>
       </div>
     </div>
@@ -563,7 +552,7 @@
           <a class="transition-all-300 flex h-[100px] w-full items-center justify-between gap-5 bg-white p-2 hover:bg-gray-100"
             href="#">
             <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border">
-              <img class="h-full w-full object-cover" src="images/product/prod-1.jpg" alt="product" />
+              <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/product/prod-1.jpg') }}" alt="product" />
             </div>
 
             <div class="flex w-full flex-col">
@@ -582,10 +571,7 @@
           </a>
         </div>
         <div class="mt-auto border-t-2 border-gray-200 bg-white px-1 xs:px-5">
-          <a class="btn-effect transition-all-300 my-5 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
-            href="wishlist.html">
-            <span class="font-bold uppercase text-white">View Wishlist</span>
-          </a>
+          
         </div>
       </div>
     </div>
@@ -614,7 +600,7 @@
           <div class="tabs-content border border-t-transparent">
             <div class="tab-content invisible absolute w-full p-5 opacity-0">
               <div class="my-5">
-                <img class="mx-auto" src="images/svg/logo.svg" alt="Besnik." />
+                <img class="mx-auto" src="{{ url_for('static', filename='images/svg/logo.svg') }}" alt="Besnik." />
               </div>
               <form action="#">
                 <div class="flex flex-col gap-4">
@@ -659,7 +645,7 @@
             </div>
             <div class="tab-content invisible absolute w-full bg-white p-5 opacity-0">
               <div class="my-5">
-                <img class="mx-auto" src="images/svg/logo.svg" alt="Besnik." />
+                <img class="mx-auto" src="{{ url_for('static', filename='images/svg/logo.svg') }}" alt="Besnik." />
               </div>
               <form action="#">
                 <div class="flex flex-col gap-4">
@@ -725,14 +711,7 @@
     </div>
   </div>
 
-  <div class="loader fixed z-[999] flex h-screen w-screen items-center justify-center bg-body">
-    <div class="loader-content flex flex-col items-center gap-2">
-      <span class="text-3xl font-semibold text-gray-200">Besnik.</span>
-      <div class="flex h-1 w-40 gap-1 overflow-hidden bg-gray-200">
-        <div class="animation-loader h-full w-20 bg-primary-color"></div>
-      </div>
-    </div>
-  </div>
+ 
 
 {% endblock %}
 

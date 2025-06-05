@@ -1119,5 +1119,11 @@
   <script src="{{url_for('static', filename='libraries/iziToast/iziToast.min.js')}}"></script>
   <script src="{{url_for('static', filename='js/main.js')}}"></script>
   {% block scripts %}{% endblock %}
+  <script>
+    window.addEventListener('load', function() {
+      var loader = document.querySelector('.loader');
+      if (loader) loader.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
