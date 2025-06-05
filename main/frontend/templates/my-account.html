@@ -11,7 +11,7 @@
           <div class="flex flex-col items-center">
             <div class="relative">
               <div class="h-24 w-24 overflow-hidden rounded-full bg-gray-200 shadow-md">
-                <img class="h-full w-full object-cover" src="images/comments/profile_1.png" alt="profile" />
+                <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/comments/profile_1.png') }}" alt="profile" />
               </div>
               <i
                 class="bi bi-camera-fill transition-all-300 absolute top-0 left-0 flex cursor-pointer rounded-full bg-slate-500 p-1 text-white shadow-md hover:bg-slate-400"></i>
@@ -232,11 +232,11 @@
                 <div class="pointer-events-none flex flex-col gap-5 sm:flex-row">
                   <div class="relative">
                     <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border bg-white">
-                      <img class="h-full w-full object-cover" src="images/product/prod-1.jpg" alt="product" />
+                      <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/product/prod-1.jpg') }}" alt="product" />
                     </div>
                     <div
                       class="absolute -top-2 -right-2 h-[30px] w-[30px] min-w-[30px] overflow-hidden rounded-lg border bg-white">
-                      <img class="h-full w-full object-cover" src="images/cards/mousepad.jpg" alt="product" />
+                      <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/cards/mousepad.jpg') }}" alt="product" />
                     </div>
                   </div>
                   <div class="flex flex-col justify-between">
@@ -267,7 +267,7 @@
                 href="javascript:void(0)" data-target=".order-details-modal">
                 <div class="pointer-events-none flex flex-col gap-5 sm:flex-row">
                   <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border">
-                    <img class="h-full w-full object-cover" src="images/product/prod-1.jpg" alt="product" />
+                    <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/product/prod-1.jpg') }}" alt="product" />
                   </div>
                   <div class="flex flex-col justify-between">
                     <span class="clamp-2 break-all text-lg font-semibold">Ryzen 5 3600x</span>
@@ -295,7 +295,7 @@
                 href="javascript:void(0)" data-target=".order-details-modal">
                 <div class="pointer-events-none flex flex-col gap-5 sm:flex-row">
                   <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border">
-                    <img class="h-full w-full object-cover" src="images/product/prod-1.jpg" alt="product" />
+                    <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/product/prod-1.jpg') }}" alt="product" />
                   </div>
                   <div class="flex flex-col justify-between">
                     <span class="clamp-2 break-all text-lg font-semibold">Ryzen 5 3600x</span>
@@ -331,7 +331,7 @@
                 <div class="flex flex-col">
                   <span class="text-xs font-light">Card</span>
                   <div class="h-10 w-10">
-                    <img class="h-full w-full object-contain" src="images/svg/visa-logo.svg" alt="visa" />
+                    <img class="h-full w-full object-contain" src="{{ url_for('static', filename='images/svg/visa-logo.svg') }}" alt="visa" />
                   </div>
                 </div>
               </div>
@@ -370,7 +370,7 @@
                 <div class="flex flex-col">
                   <span class="text-xs font-light">Card</span>
                   <div class="h-10 w-10">
-                    <img class="h-full w-full object-contain" src="images/svg/mastercard-logo.svg" alt="visa" />
+                    <img class="h-full w-full object-contain" src="{{ url_for('static', filename='images/svg/mastercard-logo.svg') }}" alt="visa" />
                   </div>
                 </div>
               </div>
@@ -497,13 +497,13 @@
             <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex text-xl"></i>
           </button>
           <div class="py-12">
-            <img src="images/logo.png" class="mx-auto h-[40px]" alt="logo" />
+            <img src="{{ url_for('static', filename='images/logo.png') }}" class="mx-auto h-[40px]" alt="logo" />
           </div>
         </div>
         <nav class="h-full w-full overflow-auto bg-white">
           <ul class="metismenu">
             <li class="border-b border-gray-200">
-              <a class="flex select-none items-center p-2" href="index.html">
+              <a class="flex select-none items-center p-2" href="{{ url_for('index') }}">
                 <i class="bi bi-house-door mr-3 flex text-xl text-primary-color"></i>
                 <span class="font-semibold">Home</span>
               </a>
@@ -585,7 +585,7 @@
               </a>
             </li>
             <li class="border-b border-gray-200">
-              <a class="flex select-none items-center p-2" href="contact-us.html">
+              <a class="flex select-none items-center p-2" href="{{ url_for('contact_us') }}">
                 <i class="bi bi-telephone mr-3 flex text-xl text-primary-color"></i>
                 <span class="font-semibold">Contact Us</span>
               </a>
@@ -596,23 +596,13 @@
                 <span class="font-semibold">Pages</span>
               </div>
               <div class="metismenu-content">
-                <a class="btn-open-modal ml-10 block p-1" href="wishlist.html">Wishlist</a>
-                <a class="btn-open-modal ml-10 block p-1" href="shopping-cart.html">Shopping Cart</a>
-                <a class="btn-open-modal ml-10 block p-1" href="product-details.html">Product Details</a>
-                <a class="btn-open-modal ml-10 block p-1" href="checkout.html">Checkout</a>
-                <a class="btn-open-modal ml-10 block p-1" href="shop-mixed.html">Shop - Mixed</a>
-
-                <a class="btn-open-modal ml-10 block p-1" href="about-us.html">About Us</a>
-                <a class="btn-open-modal ml-10 block p-1" href="my-account.html">My Account</a>
-                <a class="btn-open-modal ml-10 block p-1" href="forgot-password.html">Forgot Password</a>
-                <a class="btn-open-modal ml-10 block p-1" href="login.html">Login</a>
-                <a class="btn-open-modal ml-10 block p-1" href="sign-up.html">Sign Up</a>
-                <a class="btn-open-modal ml-10 block p-1" href="verification.html">Verification</a>
-
-                <a class="btn-open-modal ml-10 block p-1" href="error404.html">Error 404</a>
-                <a class="btn-open-modal ml-10 block p-1" href="message-sent.html">Message Sent</a>
-                <a class="btn-open-modal ml-10 block p-1" href="purchase-completed.html">Purchase Completed</a>
-                <a class="btn-open-modal ml-10 block p-1" href="purchase-failed.html">Purchase Failed</a>
+ 
+                <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('shopping_cart') }}">Shopping Cart</a>
+                <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('product_details') }}">Product Details</a>
+                <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('shop_mixed') }}">Shop - Mixed</a>
+                <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('my_account') }}">My Account</a>
+                <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('purchase_completed') }}">Purchase Completed</a>
+       
 
               </div>
             </li>
@@ -655,7 +645,7 @@
           <a class="transition-all-300 flex h-[100px] w-full items-center justify-between gap-5 bg-white p-2 hover:bg-gray-100"
             href="#">
             <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border">
-              <img class="h-full w-full object-cover" src="images/product/prod-1.jpg" alt="product" />
+              <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/product/prod-1.jpg') }}" alt="product" />
             </div>
             <div class="flex w-full flex-col">
               <h6 class="clamp-2 break-all text-lg font-semibold">
@@ -683,13 +673,10 @@
             <span class="text-lg font-semibold text-primary-color">$37.00</span>
           </div>
           <a class="btn-effect transition-all-300 my-5 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
-            href="shopping-cart.html">
+            href="{{ url_for('shopping_cart') }}">
             <span class="font-bold uppercase text-white">View Shopping Cart</span>
           </a>
-          <a class="btn-effect transition-all-300 my-5 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
-            href="checkout.html">
-            <span class="font-bold uppercase text-white">Checkout now</span>
-          </a>
+          
         </div>
       </div>
     </div>
@@ -722,7 +709,7 @@
           <a class="transition-all-300 flex h-[100px] w-full items-center justify-between gap-5 bg-white p-2 hover:bg-gray-100"
             href="#">
             <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border">
-              <img class="h-full w-full object-cover" src="images/product/prod-1.jpg" alt="product" />
+              <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/product/prod-1.jpg') }}" alt="product" />
             </div>
 
             <div class="flex w-full flex-col">
@@ -741,10 +728,7 @@
           </a>
         </div>
         <div class="mt-auto border-t-2 border-gray-200 bg-white px-1 xs:px-5">
-          <a class="btn-effect transition-all-300 my-5 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
-            href="wishlist.html">
-            <span class="font-bold uppercase text-white">View Wishlist</span>
-          </a>
+         
         </div>
       </div>
     </div>
@@ -822,7 +806,7 @@
           <div class="step-content hidden flex-col gap-2">
             <div class="flex flex-col items-center gap-2 text-center">
               <div class="max-h-[200px] max-w-[200px]">
-                <img class="h-full w-full" src="images/svg/password-successfull.svg" alt="password-successfull" />
+                <img class="h-full w-full" src="{{ url_for('static', filename='images/svg/password-successfull.svg') }}" alt="password-successfull" />
               </div>
               <h1 class="text-2xl uppercase text-primary-color">
                 Password Changed Successfully
@@ -910,7 +894,7 @@
           <div class="step-content hidden flex-col gap-2">
             <div class="flex flex-col items-center gap-2 text-center">
               <div class="max-h-[200px] max-w-[200px]">
-                <img class="h-full w-full" src="images/svg/deactivate-account.svg" alt="deactivate-account" />
+                <img class="h-full w-full" src="{{ url_for('static', filename='images/svg/deactivate-account.svg') }}" alt="deactivate-account" />
               </div>
               <h1 class="text-2xl uppercase text-primary-color">
                 Delete Account
@@ -1118,7 +1102,7 @@
               <a class="flex w-full flex-col items-center justify-between gap-5 bg-white p-2 hover:bg-gray-100 sm:flex-row"
                 href="#">
                 <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border">
-                  <img class="h-full w-full object-cover" src="images/product/prod-1.jpg" alt="product" />
+                  <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/product/prod-1.jpg') }}" alt="product" />
                 </div>
                 <div class="flex w-full flex-col">
                   <h6 class="clamp-2 break-all text-lg font-semibold">
@@ -1142,7 +1126,7 @@
               <a class="flex w-full flex-col items-center justify-between gap-5 bg-white p-2 hover:bg-gray-100 sm:flex-row"
                 href="#">
                 <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border">
-                  <img class="h-full w-full object-cover" src="images/cards/mousepad.jpg" alt="product" />
+                  <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/cards/mousepad.jpg') }}" alt="product" />
                 </div>
                 <div class="flex w-full flex-col">
                   <div>
@@ -1271,7 +1255,7 @@
           <div class="flex max-h-[350px] flex-col gap-5 overflow-auto">
             <div class="flex gap-5">
               <div class="hidden h-14 w-14 min-w-[3.5rem] overflow-hidden rounded-full shadow-md sm:block">
-                <img class="h-full w-full object-cover" src="images/comments/profile_1.png" alt="profile_logo" />
+                <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/comments/profile_1.png') }}" alt="profile_logo" />
               </div>
               <div class="rounded-lg bg-white p-2">
                 <div class="flex flex-col">
@@ -1291,7 +1275,7 @@
             </div>
             <div class="flex gap-5">
               <div class="order-2 hidden h-14 w-14 min-w-[3.5rem] overflow-hidden rounded-full shadow-md sm:block">
-                <img class="h-full w-full object-cover" src="images/svg/logo.svg" alt="profile_logo" />
+                <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/svg/logo.svg') }}" alt="profile_logo" />
               </div>
               <div class="order-1 rounded-lg bg-sky-400 p-2 shadow-md">
                 <div class="flex flex-col items-end">
@@ -1390,14 +1374,6 @@
     </div>
   </div>
 
-  <div class="loader fixed z-[999] flex h-screen w-screen items-center justify-center bg-body">
-    <div class="loader-content flex flex-col items-center gap-2">
-      <span class="text-3xl font-semibold text-gray-200">Besnik.</span>
-      <div class="flex h-1 w-40 gap-1 overflow-hidden bg-gray-200">
-        <div class="animation-loader h-full w-20 bg-primary-color"></div>
-      </div>
-    </div>
-  </div>
-
+  
 {% endblock %}
 
