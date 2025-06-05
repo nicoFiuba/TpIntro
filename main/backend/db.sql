@@ -4,7 +4,7 @@ use Ludoteca;
 
 CREATE TABLE Usuario(
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
+    username VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     password_ VARCHAR(255) NOT NULL,
     role ENUM('admin', 'user') NOT NULL DEFAULT 'user',
@@ -12,7 +12,7 @@ CREATE TABLE Usuario(
 );
 
 
-CREATE TABLE productos(
+CREATE TABLE Productos(
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     descripcion TEXT,
