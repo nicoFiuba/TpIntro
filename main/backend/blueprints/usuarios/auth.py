@@ -9,7 +9,7 @@ auth_bp = Blueprint('auth', __name__)
 def user_exists(username):
     with get_connection() as conn:
         with conn.cursor() as cursor:
-            cursor.execute("SELECT id FROM users WHERE username = %s. (username,)")
+            cursor.execute("SELECT id FROM Usuario WHERE username = %s (username,)")
             return cursor.fetchone() is not None
         
 def create_user(username, password, role="user"):
@@ -17,15 +17,16 @@ def create_user(username, password, role="user"):
     with get_connection() as conn:
         with conn.cursor() as cursor:
             cursor.execute(
-                "INSERT INTO users (username, password, role) VALUES (%s, %s, %s)",
+                "INSERT INTO Usuario (username, password_, role) VALUES (%s, %s, %s)",
                 (username, hashed_password, role)
             )
             conn.commit()
 
 def verify_user(username, password):
     with get_connection() as conn:
+        print("Llegue")
         with conn.cursor() as cursor:
-            cursor.execute("SELECT * FROM users WHERE username = %s", (username,))
+            cursor.execute("SELECT * FROM Usuario WHERE username = %s", (username,))
             user = cursor.fetchone()
             if user and check_password_hash(user["password"], password):
                 return user
@@ -46,15 +47,19 @@ def register():
 
 @auth_bp.route('/login', methods=['POST'])
 def login():
-    data = request.json
-    username = data.get('username')
-    password = data.get('password')
+    if request.is_json:
+        data = request.get_json()
+        username = data.get('username')
+        password = data.get('password')
+    else:
+        username = request.form.get('username')
+        password = request.form.get('password')
 
     if not username or not password:
         return jsonify({'message': 'Faltan datos'}), 400
     user = verify_user(username, password)
     if not user:
-       return jsonify({'message': 'Credenciales incorrectas'}), 401
+        return jsonify({'message': 'Credenciales incorrectas'}), 401
         
     session['user_id'] = user['id']
     session['is_admin'] = user['role'] == 'admin'
