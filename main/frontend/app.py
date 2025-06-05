@@ -2,6 +2,13 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
+
+# Flask ejemplo
+@app.context_processor
+def inject_brand():
+    return dict(BRAND_NAME="Ludoteca central")
+
+
 @app.route('/')
 def index():
    return render_template("index.html")
