@@ -22,14 +22,6 @@ def product_details():
 def my_account():
     return render_template("my-account.html")
 
-@app.route('/login')
-def login():
-    return render_template("login.html")
-
-@app.route('/sign-up')
-def sign_up():
-    return render_template("sign-up.html")
-
 @app.route('/purchase-completed')
 def purchase_completed():
     return render_template("purchase-completed.html")
