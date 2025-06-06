@@ -1,7 +1,7 @@
 DB_CONFIG = {
     'host': 'localhost',
-    'user': 'root',
-    'password': 'Password123',
+    'user': 'flask_user',
+    'password': 'flask123',
     'database': 'Ludoteca',
 }
 
