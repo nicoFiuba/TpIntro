@@ -5,7 +5,9 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" href="{{url_for('static', filename='images/svg/logo.svg')}}" type="image/x-icon" />
+  <link rel="icon" href="{{ url_for('static', filename='images/svg/logo-32.svg') }}" sizes="32x32" type="image/x-icon">
+  <link rel="icon" href="{{ url_for('static', filename='images/svg/logo-64.svg') }}" sizes="64x64" type="image/x-icon">
+  <link rel="icon" href="{{ url_for('static', filename='images/svg/logo-128.svg') }}" sizes="128x128" type="image/x-icon">
   <link rel="stylesheet" href="{{url_for('static', filename='libraries/swiper@11.0.4/swiper-bundle.min.css')}}" />
   <link rel="stylesheet" href="{{url_for('static', filename='fonts/bootstrap-icons.css')}}" />
   <link rel="stylesheet" href="{{url_for('static', filename='libraries/metismenujs.min.css')}}" />
@@ -20,7 +22,7 @@
 <body class="flex min-h-screen flex-col overflow-hidden bg-body font-poppins text-txt">
   <header class="header-section relative z-30 shadow-custom-1">
     <div class="hidden bg-secondary-color sm:flex">
-      <div class="container mx-auto grid h-full grid-cols-12 px-2 py-[6px] sm:px-8" style="background-color: #216A60;">
+      <div class="container mx-auto grid h-full grid-cols-12 px-2 py-[6px] sm:px-8" style="background-color: #0E506C;">
         <div class="col-span-8 self-center">
           <div class="flex gap-[15px]">
             <div class="flex items-center gap-2">
@@ -53,7 +55,7 @@
     </div>
     <div class="bg-secondary-color">
       <div class="container mx-auto grid h-full grid-cols-4 gap-1 px-2 py-5 sm:px-8 lg:grid-cols-12 lg:gap-0"
-        style="background-color: #fff; color: #216A60;">
+        style="background-color: #fff; color: #0E506C;">
         <div class="order-1 col-span-2 self-center lg:order-1 lg:col-span-3">
           <a href="{{url_for('index')}}">
             <img class="inline h-16 w-auto" src="{{url_for('static', filename='images/svg/logo.svg')}}" alt="{{ BRAND_NAME }}" />
@@ -86,16 +88,16 @@
           <div class="group-items hidden items-center gap-5 text-white lg:flex">
             <div class="relative">
               <a class="btn-open-modal" data-target=".shopping-cart-modal" href="javascript:void(0)">
-                <i class="bi bi-cart2 pointer-events-none flex text-[35px] text-white" style="color:#216A60;"></i>
+                <i class="bi bi-cart2 pointer-events-none flex text-[35px] text-white" style="color:#0E506C;"></i>
               </a>
               <span class="badge absolute top-0 right-[-6px] h-[15px] min-w-[15px] px-[2px]">0</span>
             </div>
           </div>
           <div class="group relative hidden lg:flex">
             <div class="flex cursor-pointer select-none items-center gap-1">
-              <span class="font-semibold text-white" style="color:#216A60;">My account</span>
+              <span class="font-semibold text-white" style="color:#0E506C;">My account</span>
               <i class="bi bi-caret-down-fill transition-all-300 flex rotate-0 text-sm text-white group-hover:rotate-180"
-                style="color: #216A60;"></i>
+                style="color: #0E506C;"></i>
             </div>
             <div
               class="transition-all-300 invisible absolute top-full z-30 w-[120%] pt-[10px] opacity-0 group-hover:visible group-hover:opacity-100">
@@ -820,7 +822,9 @@
                 <i class="bi bi-star-fill flex text-base text-gray-200"></i>
               </div>
               <div class="ml-auto">
-                <span class="rounded-md bg-green-300 py-1 px-2 text-xs font-bold uppercase text-white">instock</span>
+                <span class="rounded-md bg-stock py-1 px-2 text-xs font-bold uppercase text-white">
+  Stock disponible
+</span>
               </div>
             </div>
             <div class="my-5 flex items-center gap-5">
@@ -969,12 +973,12 @@
   <!-- -->
 
 
-  <div class="btn-gotop transition-all-300 invisible fixed bottom-[-999px] right-10 z-50 opacity-0"
-    style="background: #011638;">
+  <div class="btn-gotop transition-all-300 invisible fixed bottom-[-999px] right-10 z-50 opacity-0 rounded-lg"
+    style="background: #0E506C;">
     <div class="transition-all-300 cursor-pointer rounded-lg bg-[rgba(0,0,0,.3)] p-3 hover:bg-primary-color">
       <i class="bi bi-chevron-compact-up pointer-events-none flex text-2xl text-white" style="color: #fff;"></i>
     </div>
-  </div>
+</div>
 
   <div class="loader fixed z-[999] flex h-screen w-screen items-center justify-center bg-body">
     <div class="loader-content flex flex-col items-center gap-2">
