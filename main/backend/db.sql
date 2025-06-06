@@ -23,3 +23,5 @@ CREATE TABLE productos(
     imagen LONGBLOB
 );
 
+INSERT INTO Usuario (username, email, password_, role)
+VALUES ('admin', 'admin@example.com', 'admin', 'admin');

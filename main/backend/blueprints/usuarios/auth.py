@@ -27,7 +27,7 @@ def verify_user(username, password):
         with conn.cursor() as cursor:
             cursor.execute("SELECT * FROM users WHERE username = %s", (username,))
             user = cursor.fetchone()
-            if user and check_password_hash(user["password"], password):
+            if user and check_password_hash(user["password_"], password):
                 return user
             return None
         
