@@ -58,3 +58,17 @@ def profile():
 def dashboard():
     return jsonify({'message': f'Panel de administración para el usuario con ID {session["user_id"]}'}), 200
 
+@usuarios_bp.route('admin/create_admin', methods=['POST'])
+@admin_required
+def create_admin_user():
+    data = request.json
+    username = data.get('username')
+    password = data.get('password')
+
+    if not username or not password:
+        return jsonify({'message': 'Faltan datos'}), 400
+    if user_exists(username):
+        return jsonify({'message': 'Usuario ya existe'}), 400
+    create_user(username, password, role='admin')
+    return jsonify({'message': f'Administrador creado exitosamente'}), 201
+
