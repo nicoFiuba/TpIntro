@@ -18,6 +18,26 @@ def obtener_producto_por_id(producto_id):
     conn.close()
     return producto
 
+def obtener_producto_por_categoria(producto_tipo):
+    conn = get_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM productos WHERE categoria = %s", (producto_tipo,))
+    producto = cursor.fetchone()
+    cursor.close()
+    conn.close()
+    return producto
+
+def obtener_categorias():
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("SHOW COLUMNS FROM productos LIKE 'categoria'")
+    result = cursor.fetchone()
+    cursor.close()
+    conn.close()
+    type_str = result['Type']
+    valores = type_str.strip("enum()").replace("'", "").split(",")
+    return [v.strip() for v in valores]
+
 def crear_producto(datos_producto):
     conn = get_connection()
     cursor = conn.cursor()

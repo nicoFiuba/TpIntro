@@ -1,9 +1,9 @@
 from flask import Blueprint, request, jsonify, session
 from functools import wraps
 
-from blueprints.usuarios.auth import user_exists, create_user, verify_user
-from blueprints.usuarios.admin import admin_required
-from blueprints.usuarios.user import login_required
+from blueprints.auth.auth import user_exists, create_user, verify_user
+from blueprints.admin.admin import admin_required
+from blueprints.user.user import login_required
 
 usuarios_bp = Blueprint('usuarios', __name__)
 
