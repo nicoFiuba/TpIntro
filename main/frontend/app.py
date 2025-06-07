@@ -1,10 +1,31 @@
 from flask import Flask, render_template
-
+import requests
+from urllib.parse import quote
 
 app = Flask(__name__)
 
+def invocar_categorias():
+    try:
+        resp = requests.get('http://localhost:5000/catalogo/api/productos/categorias')
+        if resp.status_code == 200:
+            return resp.json()
+        else:
+            return []
+    except requests.exceptions.RequestException as e:
+        print(f"Error al invocar el servicio de categorías: {e}")
+        return []
 
-# Flask ejemplo
+def invocar_productos():
+    try:
+        resp = requests.get('http://localhost:5000/catalogo/api/productos')
+        if resp.status_code == 200:
+            return resp.json()
+        else:
+            return []
+    except requests.exceptions.RequestException as e:
+        print(f"Error al invocar el servicio de productos: {e}")
+        return []
+
 @app.context_processor
 def poner_nombre():
     return dict(BRAND_NAME="Ludoteca central")
@@ -19,39 +40,40 @@ def poner_mail():
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    productos = invocar_productos()
+    categorias = invocar_categorias()
+    return render_template("index.html", categorias=categorias, productos=productos)
 
 @app.route('/shop-mixed')
 def shop_mixed():
-    return render_template("shop-mixed.html")
+    productos = invocar_productos()
+    categorias = invocar_categorias()
+    return render_template("shop-mixed.html", categorias=categorias, productos=productos)
 
 @app.route('/shopping-cart')
 def shopping_cart():
-    return render_template("shopping-cart.html")
+    categorias = invocar_categorias()
+    return render_template("shopping-cart.html", categorias=categorias)
 
 @app.route('/product-details')
 def product_details():
-    return render_template("product-details.html")
+    categorias = invocar_categorias()
+    return render_template("product-details.html", categorias=categorias)
 
 @app.route('/my-account')
 def my_account():
-    return render_template("my-account.html")
-
-@app.route('/login')
-def login():
-    return render_template("login.html")
-
-@app.route('/sign-up')
-def sign_up():
-    return render_template("sign-up.html")
+    categorias = invocar_categorias()
+    return render_template("my-account.html", categorias=categorias)
 
 @app.route('/purchase-completed')
 def purchase_completed():
-    return render_template("purchase-completed.html")
+    categorias = invocar_categorias()
+    return render_template("purchase-completed.html", categorias=categorias)
 
 @app.route('/contact-us')
 def contact_us():
-    return render_template("contact-us.html")
+    categorias = invocar_categorias()
+    return render_template("contact-us.html", categorias=categorias)
 
 if __name__ == '__main__':
     app.run(host="localhost", port=8080, debug=True)

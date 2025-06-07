@@ -24,3 +24,4 @@ CREATE TABLE Productos(
 
 INSERT INTO Usuario (username, password_, role) VALUES ('admin', 'admin', 'admin')
 
+
