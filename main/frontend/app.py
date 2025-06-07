@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 
+
 app = Flask(__name__)
 
 
@@ -18,7 +19,7 @@ def poner_mail():
 
 @app.route('/')
 def index():
-   return render_template("index.html")
+    return render_template("index.html")
 
 @app.route('/shop-mixed')
 def shop_mixed():
@@ -53,4 +54,4 @@ def contact_us():
     return render_template("contact-us.html")
 
 if __name__ == '__main__':
-   app.run(host="localhost", port=8080, debug=True)
+    app.run(host="localhost", port=8080, debug=True)

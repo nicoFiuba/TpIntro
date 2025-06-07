@@ -4,7 +4,7 @@ from flask import current_app
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
-auth_bp = Blueprint('auth', __name__)
+auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
 
 def user_exists(username):
     with get_connection() as conn:

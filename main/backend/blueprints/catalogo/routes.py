@@ -3,10 +3,24 @@ from . import productos_bp
 from . queries import (
     obtener_todos_los_productos,
     obtener_producto_por_id,
+    obtener_categorias,
+    obtener_producto_por_categoria,
     crear_producto as crear_producto_db,
     actualizar_producto as actualizar_producto_db,
     eliminar_producto as eliminar_producto_db
 )
+
+@productos_bp.route('/api/productos/categorias', methods=['GET'])
+def obtener_categorias_productos():
+    categorias = obtener_categorias()
+    return jsonify(categorias), 200
+
+@productos_bp.route('/api/productos/categoria/<string:producto_tipo>', methods=['GET'])
+def obtener_producto_por_categoria(producto_tipo):
+    producto = obtener_producto_por_categoria(producto_tipo)
+    if producto:
+        return jsonify(producto), 200
+    return jsonify({'error': 'Producto no encontrado'}), 404
 
 @productos_bp.route('/api/productos', methods=['GET'])
 def listar_productos():
