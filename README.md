@@ -15,7 +15,7 @@
 ##### *La empresa ficticia "Ludoteca Central" desea lanzar su tienda online para vender juegos de mesa. Necesitan  una  plataforma  web  que  permita  a  los  clientes  navegar  el  catálogo  de productos,  ver  detalles  de  cada  juego,  registrarse,  iniciar  sesión  y realizar  compras. Los administradores podrán cargar y modificar productos, ver pedidos y gestionar el stock. Los usuarios podrán agregar juegos al carrito de compras y efectuar la compra.*
 ### -----------------------------------------
 ### 🟩Tecnologias utilizadas:
-#### **Backend**: Flask (Python), MySQL, Firebase Authentication.
+#### **Backend**: Flask (Python), MySQL.
 #### **Frontend**: HTML, CSS, JavaScript.
 ### -----------------------------------------
 ### 🟪Listado de servicios a utilizar:
