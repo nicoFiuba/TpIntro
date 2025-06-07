@@ -3,7 +3,7 @@ from functools import wraps
 
 from blueprints.auth.auth import user_exists, create_user, verify_user
 from blueprints.admin.admin import admin_required
-from blueprints.user.user import login_required
+from blueprints.user.user import login_required, get_user_by_id
 
 usuarios_bp = Blueprint('usuarios', __name__)
 
@@ -51,7 +51,12 @@ def logout():
 @usuarios_bp.route('/user/profile', methods=['GET'])
 @login_required
 def profile():
-    return jsonify({'message': f'Perfil de usuario con ID {session["user_id"]}'}), 200
+    user_id = session["user_id"]
+    user = get_user_by_id(user_id)
+    if user:
+        return jsonify(user), 200
+    else:
+        return jsonify({'message': 'Usuario no encontrado'}), 404
 
 @usuarios_bp.route('/admin/dashboard', methods=['GET'])
 @admin_required
