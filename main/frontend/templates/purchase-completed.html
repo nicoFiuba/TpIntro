@@ -6,24 +6,28 @@
 {% block content %}
   <div class="purchase-completed-section container mx-auto my-5 px-2 sm:px-8">
     <div class="flex flex-col items-center gap-2 text-center">
-      <div class="max-h-[300px] max-w-[300px]">
-        <img class="h-full w-full" src="images/svg/purchase-done.svg" alt="purchase completed" />
+      <div class="max-h-[500px] max-w-[500px]">
+        <img class="h-full w-full p-5 rounded-full" src="{{url_for('static', filename='/images/banner/banner-compra.png')}}" alt="purchase completed"/>
       </div>
-      <h1 class="text-4xl uppercase text-primary-color">
-        Purchase Completed
-      </h1>
-      <p class="text-lg">
-        Your purchase has been successful, you can see the
-        <a class="underlined-animated text-primary-color after:bottom-0" href="#">details of your purchase here</a>.
-      </p>
-      <p class="text-lg">
-        We have sent the confirmation of your purchase to the email registered
-        in your account.
-      </p>
-      <a class="btn-effect rounded-lg bg-primary-color p-2 font-bold uppercase text-white" href="{{ url_for('index') }}">
-        <span>Go Back Home</span>
-      </a>
+      <h1 class="text-4xl uppercase text-primary-color" style="color:black">
+        Tu pedido ha sido procesado con éxito
+      </h1><br>
     </div>
+      <p class="text-lg">
+        <b>Detalles de tu compra</b>
+      </p>
+      <ul class="detalles-compra">
+        <li>ID Pedido: #</li>
+        <li>Productos:</li>
+        <li>Fecha:</li>
+        <li><b>Total: $<b></li>
+
+      </ul>
+      <div style="text-align: center; margin-top: 30px;">
+      <a class="btn-effect rounded-lg bg-primary-color p-2 font-bold uppercase text-white" href="{{ url_for('index') }}">
+        <span>Volver al inicio</span>
+      </a>
+      </div>
   </div>
 
   <!-- Modals -->
