@@ -24,10 +24,11 @@ CREATE TABLE Productos(
 
 CREATE TABLE Pedidos(
     id INT AUTO_INCREMENT PRIMARY KEY,
+    idpedido INT NOT NULL,
     usuario VARCHAR(50) NOT NULL,
     producto VARCHAR(100) NOT NULL,
     cantidad INT NOT NULL,
-    total DECIMAL(10, 2) NOT NULL,
+    precio DECIMAL(10, 2) NOT NULL,
     fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
