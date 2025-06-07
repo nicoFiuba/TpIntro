@@ -22,6 +22,16 @@ CREATE TABLE Productos(
     imagen LONGBLOB
 );
 
+CREATE TABLE Pedidos(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario VARCHAR(50) NOT NULL,
+    producto VARCHAR(100) NOT NULL,
+    cantidad INT NOT NULL,
+    total DECIMAL(10, 2) NOT NULL,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
 INSERT INTO Usuario (username, password_, role) VALUES ('admin', 'admin', 'admin')
 
 
