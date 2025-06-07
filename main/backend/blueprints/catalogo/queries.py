@@ -2,7 +2,7 @@ from db import get_connection
 
 def obtener_todos_los_productos():
     conn = get_connection()
-    cursor = conn.cursor(dictionary=True)
+    cursor = conn.cursor()
     cursor.execute("SELECT * FROM productos")
     resultado = cursor.fetchall()
     cursor.close()
@@ -11,7 +11,7 @@ def obtener_todos_los_productos():
 
 def obtener_producto_por_id(producto_id):
     conn = get_connection()
-    cursor = conn.cursor(dictionary=True)
+    cursor = conn.cursor()
     cursor.execute("SELECT * FROM productos WHERE id = %s", (producto_id,))
     producto = cursor.fetchone()
     cursor.close()
@@ -20,7 +20,7 @@ def obtener_producto_por_id(producto_id):
 
 def obtener_producto_por_categoria(producto_tipo):
     conn = get_connection()
-    cursor = conn.cursor(dictionary=True)
+    cursor = conn.cursor()
     cursor.execute("SELECT * FROM productos WHERE categoria = %s", (producto_tipo,))
     producto = cursor.fetchone()
     cursor.close()

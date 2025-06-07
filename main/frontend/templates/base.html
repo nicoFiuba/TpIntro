@@ -138,132 +138,40 @@
             <div
               class="submenu transition-all-300 invisible absolute left-0 pt-[10px] opacity-0 group-hover:visible group-hover:opacity-100">
               <ul class="relative w-[250px] bg-white text-base shadow-custom-1">
+                {% for categoria in categorias %}
                 <li class="group-1">
                   <a href="#" class="flex items-center gap-2 p-2">
                     <i class="bi bi-circle-fill group-1-hover-visible invisible flex text-[6px] text-primary-color"></i>
-                    <span class="group-1-hover-font">Juegos de mesa</span>
+                    <span class="group-1-hover-font">{{categoria}}</span>
                     <i
                       class="bi bi-caret-right-fill group-1-hover-visible invisible ml-auto flex text-xs text-primary-color"></i>
                   </a>
                   <div
                     class="submenu group-1-hover-visible transition-all-300 invisible absolute top-0 left-full min-h-full min-w-[680px] opacity-0">
                     <div class="bg-white shadow-custom-2">
+                      {% for producto in productos%}
+                      {% if producto.categoria == categoria %}
                       <div class="border-b-2 border-primary-color py-[10px]">
-                        <span class="px-5 text-3xl font-bold uppercase text-primary-color">Juegos de mesa</span>
+                        <span class="px-5 text-3xl font-bold uppercase text-primary-color">{{producto.nombre}}</span>
                       </div>
                       <div class="submenu-categories flex flex-wrap">
                         <div class="group-2 p-[10px]">
-                          <a class="categorie-container inline-block" href="#">
+                          <a class="categorie-container inline-block" href="{{url_for('product_details', id=producto.id)}}">
                             <div class="categorie-img h-[150px] w-[150px]">
                               <img class="img-product group-2-hover-img"
-                                src="{{url_for('static', filename='images/categories/pc_components/motherboards.jpg')}}"
-                                alt="motherboard" />
+                                src="{{url_for('static', filename='images/product/{{producto.nombre}}.jpg')}}"
+                                alt={{producto.nombre}} />
                             </div>
-                            <span class="group-2-hover-font block text-center">Keyboard</span>
+                            <span class="group-2-hover-font block text-center">{{producto.nombre}}</span>
                           </a>
                         </div>
                       </div>
+                      {% endif %}
+                      {% endfor %}
                     </div>
                   </div>
                 </li>
-
-                <li class="group-1">
-                  <a href="#" class="flex items-center gap-2 p-2">
-                    <i class="bi bi-circle-fill group-1-hover-visible invisible flex text-[6px] text-primary-color"></i>
-                    <span class="group-1-hover-font">Juego de cartas</span>
-                    <i
-                      class="bi bi-caret-right-fill group-1-hover-visible invisible ml-auto flex text-xs text-primary-color"></i>
-                  </a>
-                  <div
-                    class="submenu group-1-hover-visible transition-all-300 invisible absolute top-0 left-full min-h-full min-w-[680px] opacity-0">
-                    <div class="bg-white shadow-custom-2">
-                      <div class="border-b-2 border-primary-color py-[10px]">
-                        <span class="px-5 text-3xl font-bold uppercase text-primary-color">Keyboard</span>
-                      </div>
-                      <div class="submenu-categories flex flex-wrap">
-                        <div class="group-2 p-[10px]">
-                          <a class="categorie-container inline-block" href="#">
-                            <div class="categorie-img h-[150px] w-[150px]">
-                              <img class="img-product group-2-hover-img"
-                                src="{{url_for('static', filename='images/categories/peripherals/keywords.jpg')}}"
-                                alt="motherboard" />
-                            </div>
-                            <span class="group-2-hover-font block text-center">Keywords</span>
-                          </a>
-                        </div>
-                        <div class="group-2 p-[10px]">
-                          <a class="categorie-container inline-block" href="#">
-                            <div class="categorie-img h-[150px] w-[150px]">
-                              <img class="img-product group-2-hover-img"
-                                src="{{url_for('static', filename='images/categories/peripherals/mouse.jpg')}}"
-                                alt="processors" />
-                            </div>
-                            <span class="group-2-hover-font block text-center">Mouses</span>
-                          </a>
-                        </div>
-                        <div class="group-2 p-[10px]">
-                          <a class="categorie-container inline-block" href="#">
-                            <div class="categorie-img h-[150px] w-[150px]">
-                              <img class="img-product group-2-hover-img"
-                                src="{{url_for('static', filename='images/categories/peripherals/mic.jpg')}}"
-                                alt="rams" />
-                            </div>
-                            <span class="group-2-hover-font block text-center">Mics</span>
-                          </a>
-                        </div>
-                        <div class="group-2 p-[10px]">
-                          <a class="categorie-container inline-block" href="#">
-                            <div class="categorie-img h-[150px] w-[150px]">
-                              <img class="img-product group-2-hover-img"
-                                src="{{url_for('static', filename='images/categories/peripherals/webcam.jpg')}}"
-                                alt="rams" />
-                            </div>
-                            <span class="group-2-hover-font block text-center">Webcam</span>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-
-                <li class="group-1">
-                  <a href="#" class="flex items-center gap-2 p-2">
-                    <i class="bi bi-circle-fill group-1-hover-visible invisible flex text-[6px] text-primary-color"></i>
-                    <span class="group-1-hover-font">Gaming Gear</span>
-                    <i
-                      class="bi bi-caret-right-fill group-1-hover-visible invisible ml-auto flex text-xs text-primary-color"></i>
-                  </a>
-                  <div
-                    class="submenu group-1-hover-visible transition-all-300 invisible absolute top-0 left-full min-h-full min-w-[680px] opacity-0">
-                    <div class="bg-white shadow-custom-2">
-                      <div class="border-b-2 border-primary-color py-[10px]">
-                        <span class="px-5 text-3xl font-bold uppercase text-primary-color">Gaming Gear</span>
-                      </div>
-                      <div class="submenu-categories flex flex-wrap">
-                        <div class="group-2 p-[10px]">
-                          <a class="categorie-container inline-block" href="#">
-                            <div class="categorie-img h-[150px] w-[150px]">
-                              <img class="img-product group-2-hover-img"
-                                src="{{url_for('static', filename='images/categories/computers/desktops.jpg')}}"
-                                alt="motherboard" />
-                            </div>
-                            <span class="group-2-hover-font block text-center">Desktops</span>
-                          </a>
-                        </div>
-                        <div class="group-2 p-[10px]">
-                          <a class="categorie-container inline-block" href="#">
-                            <div class="categorie-img h-[150px] w-[150px]">
-                              <img class="img-product group-2-hover-img"
-                                src="{{url_for('static', filename='images/categories/computers/notebooks.jpg')}}"
-                                alt="processors" />
-                            </div>
-                            <span class="group-2-hover-font block text-center">Notebooks</span>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
+                {% endfor %}
               </ul>
             </div>
           </li>
@@ -305,24 +213,6 @@
                   <a href="{{url_for('product_details')}}" class="flex items-center gap-2 p-2">
                     <i class="bi bi-circle-fill group-1-hover-visible invisible flex text-[6px] text-primary-color"></i>
                     <span class="group-1-hover-font">Product Details</span>
-                  </a>
-                </li>
-                <li class="group-1">
-                  <a href="{{url_for('my_account')}}" class="flex items-center gap-2 p-2">
-                    <i class="bi bi-circle-fill group-1-hover-visible invisible flex text-[6px] text-primary-color"></i>
-                    <span class="group-1-hover-font">My Account</span>
-                  </a>
-                </li>
-                <li class="group-1">
-                  <a href="{{url_for('login')}}" class="flex items-center gap-2 p-2">
-                    <i class="bi bi-circle-fill group-1-hover-visible invisible flex text-[6px] text-primary-color"></i>
-                    <span class="group-1-hover-font">Login</span>
-                  </a>
-                </li>
-                <li class="group-1">
-                  <a href="{{url_for('sign_up')}}" class="flex items-center gap-2 p-2">
-                    <i class="bi bi-circle-fill group-1-hover-visible invisible flex text-[6px] text-primary-color"></i>
-                    <span class="group-1-hover-font">Sign Up</span>
                   </a>
                 </li>
                 <li class="group-1">
@@ -461,10 +351,8 @@
               <div class="metismenu-content">
                 <a class="btn-open-modal ml-10 block p-1" href="{{url_for('shopping_cart')}}">Shopping Cart</a>
                 <a class="btn-open-modal ml-10 block p-1" href="{{url_for('product_details')}}">Product Details</a>
+                <a class="btn-open-modal ml-10 block p-1" href="{{url_for('my_account')}}">My account</a>
                 <a class="btn-open-modal ml-10 block p-1" href="{{url_for('shop_mixed')}}">Shop - Mixed</a>
-                <a class="btn-open-modal ml-10 block p-1" href="{{url_for('my_account')}}">My Account</a>
-                <a class="btn-open-modal ml-10 block p-1" href="{{url_for('login')}}">Login</a>
-                <a class="btn-open-modal ml-10 block p-1" href="{{url_for('sign_up')}}">Sign Up</a>
                 <a class="btn-open-modal ml-10 block p-1" href="{{url_for('purchase_completed')}}">Purchase
                   Completed</a>
               </div>
