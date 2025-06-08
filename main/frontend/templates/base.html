@@ -178,15 +178,11 @@
           <li class="underlined-animated">
             <a href="{{url_for('index')}}">Home</a>
           </li>
+          {% for categoria in categorias %}
           <li class="underlined-animated">
-            <a href="#">Smarthome</a>
+            <a href="#">{{ categoria }}</a> <!-- aca falta un link para ir a la tienda y que se filtre por categoria -->
           </li>
-          <li class="underlined-animated">
-            <a href="#">Keyboard</a>
-          </li>
-          <li class="underlined-animated">
-            <a href="#">Computer Accessories</a>
-          </li>
+          {% endfor %}
           <li class="underlined-animated group">
             <a href="{{url_for('shop_mixed')}}" class="flex items-center gap-1">
               <span>Shop</span>
@@ -468,6 +464,10 @@
                     <i class="bi bi-lock absolute ml-2 flex text-[24px] text-gray-400"></i>
                     <input class="input pl-10" type="password" name="password" placeholder="Password" required />
                   </div>
+                  <div class="relative flex h-[40px] items-center">
+                    <i class="bi bi-lock absolute ml-2 flex text-[24px] text-gray-400"></i>
+                    <input class="input pl-10" type="email" name="email" placeholder="Email" required />
+                  </div>
                   <button class="btn-effect transition-all-300 h-full w-full rounded-lg bg-primary-color p-2"
                     type="submit">
                     <span class="font-bold uppercase text-white">Login</span>
@@ -506,15 +506,19 @@
                 <div class="flex flex-col gap-4">
                   <div class="relative flex h-[40px] items-center">
                     <i class="bi bi-person absolute ml-2 flex text-[24px] text-gray-400"></i>
-                    <input class="input pl-10" type="text" placeholder="Name" required />
+                    <input class="input pl-10" type="text" placeholder="Name" name="name" required />
                   </div>
                   <div class="relative flex h-[40px] items-center">
                     <i class="bi bi-lock absolute ml-2 flex text-[24px] text-gray-400"></i>
-                    <input class="input pl-10" type="password" placeholder="Password" required />
+                    <input class="input pl-10" type="email" name="email" placeholder="Email" required />
+                  </div>
+                  <div class="relative flex h-[40px] items-center">
+                    <i class="bi bi-lock absolute ml-2 flex text-[24px] text-gray-400"></i>
+                    <input class="input pl-10" type="password" placeholder="Password" name="password" required />
                   </div>
                   <div class="relative flex h-[40px] items-center">
                     <i class="bi bi-lock-fill absolute ml-2 flex text-[24px] text-gray-400"></i>
-                    <input class="input pl-10" type="password" placeholder="Confirm Password" required />
+                    <input class="input pl-10" type="password" placeholder="Confirm Password" name="confirm_password" required />
                   </div>
                   <button class="btn-effect transition-all-300 h-full w-full rounded-lg bg-primary-color p-2"
                     type="submit">

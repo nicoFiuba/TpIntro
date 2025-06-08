@@ -57,6 +57,14 @@ def profile():
         return jsonify(user), 200
     else:
         return jsonify({'message': 'Usuario no encontrado'}), 404
+    
+@usuarios_bp.route('/user/<int:user_id>', methods=['GET'])
+def get_user_by_id_endpoint(user_id):
+    user = get_user_by_id(user_id)
+    if user:
+        return jsonify(user), 200
+    else:
+        return jsonify({'message': 'Usuario no encontrado'}), 404
 
 @usuarios_bp.route('/admin/dashboard', methods=['GET'])
 @admin_required

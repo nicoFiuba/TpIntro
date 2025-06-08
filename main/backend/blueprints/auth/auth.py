@@ -12,13 +12,13 @@ def user_exists(username):
             cursor.execute("SELECT id FROM Usuario WHERE username = %s", (username,))
             return cursor.fetchone() is not None
         
-def create_user(username, password, role="user"):
+def create_user(username, password, email, role="user"):
     hashed_password = generate_password_hash(password)
     with get_connection() as conn:
         with conn.cursor() as cursor:
             cursor.execute(
-                "INSERT INTO Usuario (username, password_, role) VALUES (%s, %s, %s)",
-                (username, hashed_password, role)
+                "INSERT INTO Usuario (username, password_,email role) VALUES (%s, %s, %s, %s)",
+                (username, hashed_password, email, role)
             )
             conn.commit()
 
