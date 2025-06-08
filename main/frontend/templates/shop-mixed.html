@@ -64,14 +64,38 @@
             >
               <div class="see-more-content">
                 <span class="mb-2 flex font-semibold">Categorias</span>
-                {% for categoria in categorias %}
-                <label
-                  class="transition-all-300 flex cursor-pointer select-none items-center gap-2 p-1 hover:text-primary-color"
-                >
-                  <input class="checkbox" type="checkbox" />
-                  <span class="text-gray-title">{{categoria}}</span>
-                </label>
-                {% endfor %}
+                <form method="get" action="{{ url_for('shop_mixed') }}">
+                  <div class="flex flex-col gap-1">
+                    <label
+                      class="transition-all-300 flex cursor-pointer select-none items-center gap-2 p-1 hover:text-primary-color"
+                    >
+                      <input
+                        type="radio"
+                        name="categoria"
+                        value=""
+                        onchange="this.form.submit()"
+                        {%
+                        if
+                        not
+                        categoria
+                        %}checked{%
+                        endif
+                        %}
+                      />
+                      <span class="text-gray-title">Todas</span>
+                    </label>
+                    {% for cat in categorias %}
+                    <label
+                      class="transition-all-300 flex cursor-pointer select-none items-center gap-2 p-1 hover:text-primary-color"
+                    >
+                      <input type="radio" name="categoria" value="{{ cat }}"
+                      onchange="this.form.submit()" {% if cat == categoria
+                      %}checked{% endif %} >
+                      <span class="text-gray-title">{{ cat }}</span>
+                    </label>
+                    {% endfor %}
+                  </div>
+                </form>
               </div>
             </div>
             <button
@@ -84,33 +108,11 @@
             </button>
           </div>
         </div>
-        <div class="border-t-2 pt-5">
-          <span class="mb-2 flex font-semibold">Price range</span>
-          <div class="flex items-center gap-2">
-            <input
-              class="input input-number"
-              type="number"
-              placeholder="$ MIN"
-            />
-            <div class="h-[2px] w-10 bg-gray-200"></div>
-            <input
-              class="input input-number"
-              type="number"
-              placeholder="$ MAX"
-            />
-          </div>
-          <button
-            class="btn-effect mt-2 w-full rounded-lg bg-primary-color p-2 font-bold uppercase text-white"
-            type="submit"
-          >
-            <span>Filter</span>
-          </button>
-        </div>
       </form>
     </div>
     <div class="col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-9">
       <div class="mix-elements mix-all grid grid-cols-12 gap-5">
-        {% for producto in productos %}
+        {% if categoria == none %} {% for producto in productos %}
         <div
           class="mix mix-main col-span-12 h-auto sm:col-span-6 lg:col-span-4"
         >
@@ -174,7 +176,7 @@
             </div>
 
             <div class="my-1">
-              <span class="text-lg font-bold">{{ producto.precio }}</span>
+              <span class="text-lg font-bold">${{ producto.precio }}</span>
             </div>
             <div class="mt-auto">
               <a
@@ -186,34 +188,165 @@
             </div>
           </div>
         </div>
-        {% endfor %}
-      </div>
-    </div>
+        {% endfor %} {% else %} {% for producto in productos if
+        producto.categoria == categoria %}
+        <div
+          class="mix mix-main col-span-12 h-auto sm:col-span-6 lg:col-span-4"
+        >
+          <div
+            class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl"
+          >
+            <div class="absolute top-[10px] right-[10px]">
+              <div class="p-[2px]">
+                <a
+                  class="tippy tippy-left-wishlist btn-wishlist transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center gap-2 rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
+                  href="javascript:void(0)"
+                >
+                  <i
+                    class="bi bi-heart pointer-events-none flex text-white"
+                  ></i>
+                </a>
+              </div>
+            </div>
+            <div class="h-[190px] overflow-hidden rounded-lg">
+              <a href="#">
+                <img
+                  class="card-object-fit h-full w-full"
+                  src="images/productos/{{ producto.nombre }}"
+                  alt="{{producto.nombre}}"
+                />
+              </a>
+            </div>
+            <div class="my-2 flex justify-between">
+              <div class="flex">
+                <i class="bi bi-star-fill flex text-base text-star"></i>
+                <i class="bi bi-star-fill flex text-base text-star"></i>
+                <i class="bi bi-star-fill flex text-base text-star"></i>
+                <i class="bi bi-star-fill flex text-base text-star"></i>
+                <i class="bi bi-star-fill flex text-base text-gray-200"></i>
+              </div>
+              <div>
+                {% if producto.stock > 0 %}
+                <span
+                  class="rounded-md bg-stock py-1 px-2 text-xs font-bold uppercase text-white"
+                >
+                  Stock disponible
+                </span>
+                {% else %}
+                <span
+                  class="rounded-md bg-gray-200 py-1 px-2 text-xs font-bold uppercase text-gray-400"
+                >
+                  Sin stock
+                </span>
+                {% endif %}
+              </div>
+            </div>
+            <div class="my-1">
+              <a class="clamp break-all font-medium" href="#">
+                {{ producto.nombre }}
+              </a>
+            </div>
+            <div class="my-1">
+              <p class="clamp-2 text-sm text-gray-400">
+                {{ producto.descripcion }}
+              </p>
+            </div>
 
-    <div class="col-span-12">
-      <div class="flex items-center justify-center">
-        <ul class="pagination flex items-center">
-          <li class="pointer-events-none py-2 px-3 text-gray-200">
-            <i class="bi bi-arrow-left-short flex"></i>
-          </li>
-          <li class="active cursor-pointer py-2 px-3">1</li>
-          <li class="cursor-pointer py-2 px-3">2</li>
-          <li class="cursor-pointer py-2 px-3">3</li>
-          <li class="hidden cursor-pointer py-2 px-3 tracking-wide sm:block">
-            ...
-          </li>
-          <li class="hidden cursor-pointer py-2 px-3 sm:block">10</li>
-          <li class="hidden cursor-pointer py-2 px-3 sm:block">11</li>
-          <li class="cursor-pointer py-2 px-3 text-primary-color">
-            <i class="bi bi-arrow-right-short flex"></i>
-          </li>
-        </ul>
+            <div class="my-1">
+              <span class="text-lg font-bold">${{ producto.precio }}</span>
+            </div>
+            <div class="mt-auto">
+              <a
+                class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
+                href="{{ url_for('product_details', product_id=producto.id) }}"
+              >
+                <span class="font-bold uppercase text-white">View details</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %} {% endif %} {% if perfil_usuario.role == "admin" %}
+        <div
+          class="mix mix-main col-span-12 h-auto sm:col-span-6 lg:col-span-4"
+        >
+          <div
+            class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl"
+          >
+            <button
+              class="btn-effect bg-primary-color text-white w-full h-full flex items-center justify-center text-lg font-bold rounded-lg"
+              style="min-height: 200px"
+              onclick="document.getElementById('add-product-modal').classList.remove('invisible','opacity-0')"
+            >
+              Agregar producto
+            </button>
+          </div>
+        </div>
+        {% endif %}
       </div>
     </div>
   </div>
 </div>
 
 <!-- Modals -->
+<div
+  id="add-product-modal"
+  class="modal transition-all-300 invisible fixed inset-0 z-50 flex h-full w-full items-center justify-center bg-overlay opacity-0"
+>
+  <div class="modal-content w-1/2 relative rounded-lg bg-white p-8 shadow-lg">
+    <button
+      class="btn-close-modal absolute top-3 right-3 p-2 text-gray-400 hover:text-primary-color"
+      onclick="document.getElementById('add-product-modal').classList.add('invisible','opacity-0')"
+    >
+      <i class="bi bi-x-lg text-xl"></i>
+    </button>
+    <h2 class="mb-4 text-2xl font-bold text-primary-color">Agregar Producto</h2>
+    <form method="post" action="/ruta-para-agregar-producto">
+      <div class="mb-4">
+        <label class="block text-sm font-semibold mb-1">Nombre</label>
+        <input class="input w-full" type="text" name="nombre" required />
+      </div>
+      <div class="mb-4">
+        <label class="block text-sm font-semibold mb-1">Descripción</label>
+        <textarea class="input w-full" name="descripcion" required></textarea>
+      </div>
+      <div class="mb-4">
+        <label class="block text-sm font-semibold mb-1">Precio</label>
+        <input
+          class="input w-full"
+          type="number"
+          name="precio"
+          min="0"
+          step="0.01"
+          required
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block text-sm font-semibold mb-1">Stock</label>
+        <input
+          class="input w-full"
+          type="number"
+          name="stock"
+          min="0"
+          required
+        />
+      </div>
+      <div class="mb-4">
+        <label class="block text-sm font-semibold mb-1">Categoría</label>
+        <select class="input w-full" name="categoria" required>
+          {% for categoria in categorias %}
+          <option value="{{ categoria }}">{{ categoria }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <button
+        class="btn-effect w-full rounded-lg bg-primary-color p-2 font-bold uppercase text-white"
+        type="submit"
+      >
+        Agregar
+      </button>
+    </form>
+  </div>
+</div>
 <div
   class="menu-mob modal transition-all-300 invisible fixed inset-0 z-50 h-full w-full bg-overlay opacity-0"
 >

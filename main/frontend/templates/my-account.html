@@ -17,8 +17,7 @@
                 class="bi bi-camera-fill transition-all-300 absolute top-0 left-0 flex cursor-pointer rounded-full bg-slate-500 p-1 text-white shadow-md hover:bg-slate-400"></i>
             </div>
             <div class="mt-2 text-center">
-              <span class="block font-bold">John Doe</span>
-              <span class="text-slate-400">@JOHNDOE98</span>
+              <span class="block font-bold">{{ perfil_usuario.username }}</span>
             </div>
           </div>
           <ul class="w-full text-sm">
@@ -69,68 +68,34 @@
         <div class="tab-content active flex h-full flex-col gap-5 rounded bg-white p-5">
           <span class="block text-xl font-bold">My Account</span>
           <form class="grid grid-cols-12 gap-2" action="#">
-            <div class="col-span-12 xs:col-span-6">
+            <div class="col-span-12 xs:col-span-12">
               <label class="flex flex-col text-sm">
                 First name
-                <input class="input h-10" type="text" placeholder="John" value="John" required />
-              </label>
-            </div>
-            <div class="col-span-12 xs:col-span-6">
-              <label class="flex flex-col text-sm">
-                Last name
-                <input class="input h-10" type="text" placeholder="Doe" value="Doe" required />
+                <input class="input h-10" type="text" placeholder="{{ perfil_usuario.username }}" value="{{ perfil_usuario.username }}" readonly />
               </label>
             </div>
             <div class="col-span-12 xs:col-span-6">
               <label class="flex flex-col text-sm">
                 Telephone
                 <input class="input input-number h-10" type="number" placeholder="011234567890" value="011234567890"
-                  required />
+                  readonly />
               </label>
             </div>
             <div class="col-span-12 xs:col-span-6">
               <label class="flex flex-col text-sm">
                 D.N.I
                 <input class="input input-number h-10" type="number" placeholder="1234567890" value="1234567890"
-                  required />
+                  readonly />
               </label>
             </div>
             <div class="col-span-12">
               <label class="flex flex-col text-sm">
                 Email
                 <input class="input h-10" type="text" placeholder="johndoe@example.com" value="johndoe@example.com"
-                  required />
+                  readonly />
               </label>
             </div>
-            <div class="col-span-12">
-              <button class="btn-effect w-full rounded-lg bg-primary-color p-2 font-bold uppercase text-white"
-                type="submit">
-                <span class="text-center">Save Changes</span>
-              </button>
-            </div>
           </form>
-          <div class="flex flex-col gap-2">
-            <a class="btn-open-modal transition-all-300 rounded-lg border bg-slate-100 p-2 hover:bg-slate-200"
-              href="javascript:void(0)" data-target=".change-password-modal">
-              <div class="pointer-events-none flex items-center justify-between gap-2">
-                <div>
-                  <i class="bi bi-lock-fill"></i>
-                  <span>Change Password</span>
-                </div>
-                <i class="bi bi-arrow-right-short flex text-2xl text-primary-color"></i>
-              </div>
-            </a>
-            <a class="btn-open-modal transition-all-300 rounded-lg border bg-slate-100 p-2 hover:bg-slate-200"
-              href="javascript:void(0)" data-target=".deactivate-account-modal">
-              <div class="pointer-events-none flex items-center justify-between gap-2">
-                <div>
-                  <i class="bi bi-person-x-fill"></i>
-                  <span>Deactivate Account</span>
-                </div>
-                <i class="bi bi-arrow-right-short flex text-2xl text-primary-color"></i>
-              </div>
-            </a>
-          </div>
         </div>
 
         <div class="tab-content flex h-full flex-col gap-5 rounded bg-white p-5">

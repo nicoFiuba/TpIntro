@@ -6,6 +6,7 @@ CREATE TABLE Usuario(
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL,
     password_ VARCHAR(255) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
     role ENUM('admin', 'user') NOT NULL DEFAULT 'user',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -32,7 +33,4 @@ CREATE TABLE Pedidos(
     fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-
-INSERT INTO Usuario (username, password_, role) VALUES ('admin', 'admin', 'admin')
-
-
+INSERT INTO Usuario (username, password_, email, role) VALUES ('admin', 'admin', 'admin@example.com', 'admin')

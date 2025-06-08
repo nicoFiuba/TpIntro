@@ -1,6 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import requests
+
 from urllib.parse import quote
+from flask import session
 
 app = Flask(__name__)
 
@@ -26,6 +28,17 @@ def invocar_productos():
         print(f"Error al invocar el servicio de productos: {e}")
         return []
 
+def invocar_perfil_usuario():
+    try:
+        resp = requests.get('http://localhost:5000/usuarios/user/',)
+        if resp.status_code == 200:
+            return resp.json()
+        else:
+            return {}
+    except requests.exceptions.RequestException as e:
+        print(f"Error al invocar el servicio de perfil de usuario: {e}")
+        return {}
+
 @app.context_processor
 def poner_nombre():
     return dict(BRAND_NAME="Ludoteca central")
@@ -46,9 +59,21 @@ def index():
 
 @app.route('/shop-mixed')
 def shop_mixed():
+    categoria = request.args.get('categoria')
+    perfil_usuario = invocar_perfil_usuario()
     productos = invocar_productos()
     categorias = invocar_categorias()
-    return render_template("shop-mixed.html", categorias=categorias, productos=productos)
+    if not categoria:  
+        categoria = None
+    if categoria:
+        productos = [p for p in productos if p.get('categoria') == categoria]
+    return render_template(
+        "shop-mixed.html",
+        categorias=categorias,
+        productos=productos,
+        perfil_usuario=perfil_usuario,
+        categoria=categoria
+    )
 
 @app.route('/shopping-cart')
 def shopping_cart():
@@ -62,8 +87,9 @@ def product_details():
 
 @app.route('/my-account')
 def my_account():
+    perfil_usuario = invocar_perfil_usuario()
     categorias = invocar_categorias()
-    return render_template("my-account.html", categorias=categorias)
+    return render_template("my-account.html", categorias=categorias, perfil_usuario=perfil_usuario)
 
 @app.route('/purchase-completed')
 def purchase_completed():
