@@ -1,5 +1,6 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import requests
+
 from urllib.parse import quote
 from flask import session
 
@@ -29,7 +30,7 @@ def invocar_productos():
 
 def invocar_perfil_usuario():
     try:
-        resp = requests.get('http://localhost:5000/usuarios/user/profile', cookies=session)
+        resp = requests.get('http://localhost:5000/usuarios/user/',)
         if resp.status_code == 200:
             return resp.json()
         else:
@@ -58,9 +59,21 @@ def index():
 
 @app.route('/shop-mixed')
 def shop_mixed():
+    categoria = request.args.get('categoria')
+    perfil_usuario = invocar_perfil_usuario()
     productos = invocar_productos()
     categorias = invocar_categorias()
-    return render_template("shop-mixed.html", categorias=categorias, productos=productos)
+    if not categoria:  
+        categoria = None
+    if categoria:
+        productos = [p for p in productos if p.get('categoria') == categoria]
+    return render_template(
+        "shop-mixed.html",
+        categorias=categorias,
+        productos=productos,
+        perfil_usuario=perfil_usuario,
+        categoria=categoria
+    )
 
 @app.route('/shopping-cart')
 def shopping_cart():

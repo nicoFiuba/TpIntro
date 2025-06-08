@@ -20,6 +20,7 @@ def get_user_by_id(user_id):
                     'id': user['id'],
                     'username': user['username'],
                     'role': user['role'],
+                    'email': user['email'],
                     'created_at': user['created_at'],
                 }
             return None
