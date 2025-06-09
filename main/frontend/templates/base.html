@@ -179,9 +179,11 @@
             <a href="{{url_for('index')}}">Home</a>
           </li>
           {% for categoria in categorias %}
+          {% if categoria != 'Otro' %}
           <li class="underlined-animated">
             <a href="#">{{ categoria }}</a> <!-- aca falta un link para ir a la tienda y que se filtre por categoria -->
           </li>
+          {% endif %}
           {% endfor %}
           <li class="underlined-animated group">
             <a href="{{url_for('shop_mixed')}}" class="flex items-center gap-1">
@@ -229,6 +231,11 @@
           <li class="underlined-animated">
             <a href="{{url_for('contact_us')}}">Contact Us</a>
           </li>
+          {% if perfil_usuario.role == "admin" %}
+          <li class="underlined-animated">
+            <a href="{{url_for('administrar_pagina')}}">Administrar pagina</a>
+          </li>
+          {% endif %}
         </ul>
       </nav>
     </div>
