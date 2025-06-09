@@ -41,5 +41,3 @@ CREATE TABLE PedidoDetalle (
 );
 
 INSERT INTO Usuario (username, password_, email, role) VALUES ('admin', 'admin', 'admin@example.com', 'admin')
-INSERT INTO Pedidos (usuario_id, producto_id, cantidad, precio) VALUES (5, 1, 2, 19.99);
-
