@@ -30,7 +30,7 @@ def invocar_productos():
 
 def invocar_perfil_usuario():
     try:
-        resp = requests.get('http://localhost:5000/usuarios/user/',)
+        resp = requests.get('http://localhost:5000/usuarios/user/5',)
         if resp.status_code == 200:
             return resp.json()
         else:
@@ -67,7 +67,8 @@ def poner_mail():
 def index():
     productos = invocar_productos()
     categorias = invocar_categorias()
-    return render_template("index.html", categorias=categorias, productos=productos)
+    perfil_usuario = invocar_perfil_usuario()
+    return render_template("index.html", categorias=categorias, productos=productos, perfil_usuario=perfil_usuario)
 
 @app.route('/shop-mixed')
 def shop_mixed():
@@ -89,13 +90,15 @@ def shop_mixed():
 
 @app.route('/shopping-cart')
 def shopping_cart():
+    perfil_usuario = invocar_perfil_usuario()
     categorias = invocar_categorias()
-    return render_template("shopping-cart.html", categorias=categorias)
+    return render_template("shopping-cart.html", categorias=categorias, perfil_usuario=perfil_usuario)
 
 @app.route('/product-details')
 def product_details():
+    perfil_usuario = invocar_perfil_usuario()
     categorias = invocar_categorias()
-    return render_template("product-details.html", categorias=categorias)
+    return render_template("product-details.html", categorias=categorias, perfil_usuario=perfil_usuario)
 
 @app.route('/my-account')
 def my_account():
@@ -106,17 +109,23 @@ def my_account():
 @app.route('/purchase-completed')
 def purchase_completed():
     categorias = invocar_categorias()
-    return render_template("purchase-completed.html", categorias=categorias)
+    perfil_usuario = invocar_perfil_usuario()
+    return render_template("purchase-completed.html", categorias=categorias, perfil_usuario=perfil_usuario)
 
 @app.route('/contact-us')
 def contact_us():
+    perfil_usuario = invocar_perfil_usuario()
     categorias = invocar_categorias()
-    return render_template("contact-us.html", categorias=categorias)
+    return render_template("contact-us.html", categorias=categorias, perfil_usuario=perfil_usuario)
 
-@app.route('/pedidos')
-def pedidos():
+@app.route('/administrar-pagina')
+def administrar_pagina():
     verpedidos = invocar_pedidos()
-    return jsonify(verpedidos)
+    categorias = invocar_categorias()
+    perfil_usuario = invocar_perfil_usuario()
+    productos = invocar_productos()
+    
+    return render_template("administrar-pagina.html", verpedidos=verpedidos, perfil_usuario=perfil_usuario, categorias=categorias, productos=productos)
 
 if __name__ == '__main__':
     app.run(host="localhost", port=8080, debug=True)

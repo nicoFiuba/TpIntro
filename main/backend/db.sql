@@ -23,14 +23,23 @@ CREATE TABLE Productos(
     imagen LONGBLOB
 );
 
-CREATE TABLE Pedidos(
+CREATE TABLE Pedido (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    idpedido INT NOT NULL,
-    usuario VARCHAR(50) NOT NULL,
-    producto VARCHAR(100) NOT NULL,
+    usuario_id INT NOT NULL,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (usuario_id) REFERENCES Usuario(id)
+);
+
+CREATE TABLE PedidoDetalle (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pedido_id INT NOT NULL,
+    producto_id INT NOT NULL,
     cantidad INT NOT NULL,
-    precio DECIMAL(10, 2) NOT NULL,
-    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    precio DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (pedido_id) REFERENCES Pedido(id),
+    FOREIGN KEY (producto_id) REFERENCES Productos(id)
 );
 
 INSERT INTO Usuario (username, password_, email, role) VALUES ('admin', 'admin', 'admin@example.com', 'admin')
+INSERT INTO Pedidos (usuario_id, producto_id, cantidad, precio) VALUES (5, 1, 2, 19.99);
+
