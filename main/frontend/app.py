@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import requests
 
 from urllib.parse import quote
@@ -38,6 +38,18 @@ def invocar_perfil_usuario():
     except requests.exceptions.RequestException as e:
         print(f"Error al invocar el servicio de perfil de usuario: {e}")
         return {}
+
+def invocar_pedidos():
+    try:
+        resp = requests.get('http://localhost:5000/pedidos')
+        if resp.status_code == 200:
+            return resp.json()
+        else:
+            return []
+    except requests.exceptions.RequestException as e:
+        print(f"Error al invocar pedidos {e}")
+        return []
+
 
 @app.context_processor
 def poner_nombre():
@@ -100,6 +112,11 @@ def purchase_completed():
 def contact_us():
     categorias = invocar_categorias()
     return render_template("contact-us.html", categorias=categorias)
+
+@app.route('/pedidos')
+def pedidos():
+    verpedidos = invocar_pedidos()
+    return jsonify(verpedidos)
 
 if __name__ == '__main__':
     app.run(host="localhost", port=8080, debug=True)
