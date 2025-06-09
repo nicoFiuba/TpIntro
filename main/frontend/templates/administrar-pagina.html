@@ -20,6 +20,13 @@ endblock %} {% block content %}
                 <i class="bi bi-pencil-square text-2xl"></i>
                 Acción 2
             </button>
+            <a href="{{ url_for('administrar_pedidos') }}"
+                class="flex-1 flex items-center justify-center gap-2 rounded-lg p-4 text-lg font-bold uppercase text-white shadow-lg hover:scale-105 transition-all-300"
+                style="background-color: #0e506c"
+                onclick="document.getElementById('modal-dos').classList.remove('hidden')">
+                <i class="bi bi-pencil-square text-2xl"></i>
+                Ver pedidos
+        </a>
         </div>
     </div>
 </div>

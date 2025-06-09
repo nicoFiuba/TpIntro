@@ -127,5 +127,13 @@ def administrar_pagina():
     
     return render_template("administrar-pagina.html", verpedidos=verpedidos, perfil_usuario=perfil_usuario, categorias=categorias, productos=productos)
 
+@app.route('/administrar-pagina/pedidos')
+def administrar_pedidos():
+    verpedidos = invocar_pedidos()
+    categorias = invocar_categorias()
+    perfil_usuario = invocar_perfil_usuario()
+    productos = invocar_productos()
+    return render_template('pedidos.html', datos=verpedidos, perfil_usuario=perfil_usuario, categorias=categorias, productos=productos)
+
 if __name__ == '__main__':
     app.run(host="localhost", port=8080, debug=True)
