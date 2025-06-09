@@ -104,7 +104,7 @@ def shopping_cart():
     perfil_usuario = invocar_perfil_usuario()
     categorias = invocar_categorias()
     carrito = invocar_carrito()
-    return render_template("shopping-cart.html", categorias=categorias, perfil_usuario=perfil_usuario)
+    return render_template("shopping-cart.html", categorias=categorias, perfil_usuario=perfil_usuario, carrito=carrito)
 
 @app.route('/product-details')
 def product_details():
