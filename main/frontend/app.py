@@ -88,10 +88,22 @@ def shop_mixed():
         categoria=categoria
     )
 
+def invocar_carrito():
+    try:
+        resp = requests.get('http://localhost:5000/cart')
+        if resp.status_code == 200:
+            return resp.json()
+        else:
+            return {}
+    except requests.exceptions.RequestException as e:
+        print(f"Error al invocar el carrito: {e}")
+        return {}
+
 @app.route('/shopping-cart')
 def shopping_cart():
     perfil_usuario = invocar_perfil_usuario()
     categorias = invocar_categorias()
+    carrito = invocar_carrito()
     return render_template("shopping-cart.html", categorias=categorias, perfil_usuario=perfil_usuario)
 
 @app.route('/product-details')
