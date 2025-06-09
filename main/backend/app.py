@@ -5,6 +5,7 @@ import config
 from blueprints.routes.routes import usuarios_bp
 from blueprints.catalogo import productos_bp
 from blueprints.auth.auth import auth_bp
+from blueprints.ver_pedidos.pedidos import pedidos_bp
 
 def create_app():
     app = Flask(__name__)
@@ -15,6 +16,7 @@ def create_app():
     app.register_blueprint(auth_bp, url_prefix='/auth')
     app.register_blueprint(usuarios_bp, url_prefix='/usuarios')
     app.register_blueprint(productos_bp, url_prefix='/catalogo')
+    app.register_blueprint(pedidos_bp, url_prefix='/pedidos')
 
     return app
 
