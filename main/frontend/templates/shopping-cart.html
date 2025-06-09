@@ -28,48 +28,56 @@
     </div>
   </div>
 
-  <div class="shopping-cart-page container mx-auto my-5 px-2 sm:px-8">
-    {% if carrito %}
-  <table class="w-full text-left">
-    <thead>
-      <tr>
-        <th>Producto ID</th>
-        <th>Cantidad</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for producto_id, cantidad in carrito.items() %}
-      <tr>
-        <td>{{ producto_id }}</td>
-        <td>
-          <form method="post" action="http://localhost:5000/cart/update/{{ producto_id }}">
-            <input type="number" name="cantidad" value="{{ cantidad }}" min="1" style="width:60px;">
-            <button type="submit">Actualizar</button>
-          </form>
-        </td>
-        <td>
-          <form method="post" action="http://localhost:5000/cart/remove/{{ producto_id }}">
-            <button type="submit">Eliminar</button>
-          </form>
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  <form method="post" action="http://localhost:5000/cart/clear">
-    <button type="submit">Vaciar carrito</button>
-  </form>
-{% else %}
-  <div class="shopping-cart-empty flex flex-col items-center justify-center gap-4 p-5">
-    <i class="bi bi-cart-x text-8xl text-gray-200"></i>
-    <p class="text-lg font-semibold">There are no products in the cart.</p>
-    <a class="btn-effect transition-all-300 flex items-center justify-center gap-2 rounded-lg bg-primary-color p-2"
-      href="#">
-      <span class="font-bold uppercase text-white">Go to the store</span>
-    </a>
-  </div>
-{% endif %}
+ <div class="shopping-cart-page container mx-auto my-5 px-2 sm:px-8">
+  {% if carrito_detallado %}
+    <table class="w-full text-left">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Subtotal</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for producto in carrito_detallado %}
+        <tr>
+          <td>{{ producto.nombre }}</td>
+          <td>${{ producto.precio }}</td>
+          <td>
+            <form method="post" action="http://localhost:5000/cart/update/{{ producto.id }}">
+              <input type="number" name="cantidad" value="{{ producto.cantidad }}" min="1" style="width:60px;">
+              <button type="submit">Actualizar</button>
+            </form>
+          </td>
+          <td>${{ producto.precio * producto.cantidad }}</td>
+          <td>
+            <form method="post" action="http://localhost:5000/cart/remove/{{ producto.id }}">
+              <button type="submit">Eliminar</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <form method="post" action="http://localhost:5000/cart/clear">
+      <button type="submit">Vaciar carrito</button>
+    </form>
+    <div class="text-right font-bold mt-4">
+      Total: ${{ total }}
+    </div>
+  {% else %}
+    <div class="shopping-cart-empty flex flex-col items-center justify-center gap-4 p-5">
+      <i class="bi bi-cart-x text-8xl text-gray-200"></i>
+      <p class="text-lg font-semibold">There are no products in the cart.</p>
+      <a class="btn-effect transition-all-300 flex items-center justify-center gap-2 rounded-lg bg-primary-color p-2"
+        href="{{ url_for('shop_mixed') }}">
+        <span class="font-bold uppercase text-white">Go to the store</span>
+      </a>
+    </div>
+  {% endif %}
+</div>
 
   <div class="menu-mob modal transition-all-300 invisible fixed inset-0 z-50 h-full w-full bg-overlay opacity-0">
     <div class="flex h-full w-full">
@@ -228,7 +236,7 @@
             <i class="bi bi-cart-x text-8xl text-gray-200"></i>
             <p class="font-semibold">There are no products in the cart.</p>
             <a class="btn-effect transition-all-300 flex items-center justify-center gap-2 rounded-lg bg-primary-color p-2"
-              href="#">
+              href="{{ url_for('shop_mixed') }}">
               <span class="font-bold uppercase text-white">Go to the store</span>
             </a>
           </div>
@@ -293,7 +301,7 @@
               There are no products in the wishlist.
             </p>
             <a class="btn-effect transition-all-300 flex items-center justify-center gap-2 rounded-lg bg-primary-color p-2"
-              href="#">
+              href="{{ url_for('shop_mixed') }}">
               <span class="font-bold uppercase text-white">Go to the store</span>
             </a>
           </div>

@@ -1,6 +1,6 @@
 from flask import Blueprint, session, request, jsonify
 
-cart_bp = Blueprint('cart', name)
+cart_bp = Blueprint('cart', __name__)
 
 @cart_bp.route('/cart/add/<int:producto_id>', methods=['POST'])
 def add_to_cart(producto_id):
