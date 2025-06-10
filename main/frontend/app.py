@@ -63,6 +63,17 @@ def invocar_pedidos():
     except requests.exceptions.RequestException as e:
         print(f"Error al invocar pedidos {e}")
         return []
+    
+def invocar_pedidos_por_id(id):
+    try:
+        resp = requests.get(f'http://localhost:5000/pedidos/idpedido/{id}')
+        if resp.status_code == 200:
+            return resp.json()
+        else:
+            return []
+    except requests.exceptions.RequestException as e:
+        print(f"Error al invocar pedidos {e}")
+        return []
 
 def invocar_carrito():
     try:
@@ -160,13 +171,20 @@ def administrar_pagina():
     
     return render_template("administrar-pagina.html", verpedidos=verpedidos, perfil_usuario=perfil_usuario, categorias=categorias, productos=productos)
 
-@app.route('/administrar-pagina/pedidos')
+@app.route('/administrar-pagina/pedidos', methods=['GET','POST'])
 def administrar_pedidos():
     verpedidos = invocar_pedidos()
     categorias = invocar_categorias()
     perfil_usuario = invocar_perfil_usuario()
     productos = invocar_productos()
-    return render_template('pedidos.html', datos=verpedidos, perfil_usuario=perfil_usuario, categorias=categorias, productos=productos)
+    if request.method == 'POST':
+        id = request.form['id_pedido']
+        verpedidosid = invocar_pedidos_por_id(id)
+        return render_template('pedidos.html', datos=verpedidosid, perfil_usuario=perfil_usuario, categorias=categorias, productos=productos)
+    else:
+        return render_template('pedidos.html', datos=verpedidos, perfil_usuario=perfil_usuario, categorias=categorias, productos=productos)
+
+    
 
 if __name__ == '__main__':
     app.run(host="localhost", port=8080, debug=True)
