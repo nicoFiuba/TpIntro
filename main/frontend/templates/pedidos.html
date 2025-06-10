@@ -28,10 +28,10 @@
     </tbody>
   </table>
   
-  <form action="/administrar-pagina/pedidos" method="POST">
-    <label for="id_pedido">Buscar por ID:</label>
-    <input type="int" id="id_pedido" name="id_pedido" required>
-    <button type="submit" class="btn-effect rounded-lg bg-primary-color p-2 font-bold uppercase text-white"><span>Filtrar</span></button>
+  <form style="margin: 30px;" action="/administrar-pagina/pedidos" method="POST">
+    <label for="id_pedido" class="mb-2 block">Filtrar por ID: </label>
+    <input type="int" id="id_pedido" name="id_pedido" required style="width: 150px ;border: 1px solid #ccc; padding: 0.5rem; border-radius: 5px;">
+    <button type="submit" class="btn-effect rounded-lg bg-primary-color p-2 font-bold uppercase text-white"><span>Buscar</span></button>
   </form>
 
   <div class="purchase-completed-section container mx-auto my-5 px-2 sm:px-8">
