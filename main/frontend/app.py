@@ -87,6 +87,12 @@ def invocar_carrito():
         return {}
 
 @app.context_processor
+def inject_cart_count():
+    cart = session.get('cart', {})
+    cart_count = sum(cart.values())
+    return dict(cart_count=cart_count)
+
+@app.context_processor
 def poner_nombre():
     return dict(BRAND_NAME="Ludoteca central")
 
