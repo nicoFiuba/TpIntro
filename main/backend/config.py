@@ -6,3 +6,7 @@ DB_CONFIG = {
 }
 
 SECRET_KEY = 'key'
+SESSION_COOKIE_SECURE = True #Borrar antes de mandar a producción
+
+
+

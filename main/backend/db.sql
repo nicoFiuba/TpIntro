@@ -40,4 +40,4 @@ CREATE TABLE PedidoDetalle (
     FOREIGN KEY (producto_id) REFERENCES Productos(id)
 );
 
-INSERT INTO Usuario (username, password_, email, role) VALUES ('admin', 'admin', 'admin@example.com', 'admin')
+
