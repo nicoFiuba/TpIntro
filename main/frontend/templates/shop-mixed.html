@@ -6,12 +6,10 @@
     <div class="col-span-12">
       <div class="flex flex-wrap items-center justify-between gap-2">
         <span class="text-lg"
-          >Results of '<span class="text-blue-400"
-            >aca va lo que se busca</span
+          >Results of '<span class="text-blue-400">aca va lo que se busca</span
           >'</span
         >
         <div class="flex items-center gap-5">
-          
           <form>
             <select class="nice-select order-by select">
               <option value="0">Lower price</option>
@@ -106,7 +104,6 @@
           <div
             class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl"
           >
-           
             <div class="h-[190px] overflow-hidden rounded-lg">
               <a href="#">
                 <img
@@ -117,7 +114,6 @@
               </a>
             </div>
             <div class="my-2 flex justify-between">
-              
               <div>
                 {% if producto.stock > 0 %}
                 <span
@@ -166,9 +162,7 @@
           <div
             class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl"
           >
-            <div class="absolute top-[10px] right-[10px]">
-              
-            </div>
+            <div class="absolute top-[10px] right-[10px]"></div>
             <div class="h-[190px] overflow-hidden rounded-lg">
               <a href="#">
                 <img
@@ -179,7 +173,6 @@
               </a>
             </div>
             <div class="my-2 flex justify-between">
-              
               <div>
                 {% if producto.stock > 0 %}
                 <span
@@ -255,7 +248,7 @@
       <i class="bi bi-x-lg text-xl"></i>
     </button>
     <h2 class="mb-4 text-2xl font-bold text-primary-color">Agregar Producto</h2>
-    <form method="post" action="/ruta-para-agregar-producto">
+    <form method="post" action="{{ url_for('agregar_producto') }}">
       <div class="mb-4">
         <label class="block text-sm font-semibold mb-1">Nombre</label>
         <input class="input w-full" type="text" name="nombre" required />
@@ -493,7 +486,6 @@
             >
               <span class="font-semibold">Pages</span>
             </div>
-            
           </li>
         </ul>
       </nav>
@@ -944,7 +936,6 @@
             </a>
           </div>
           <div class="my-2 flex justify-between">
-            
             <div class="ml-auto">
               <span
                 class="rounded-md bg-stock py-1 px-2 text-xs font-bold uppercase text-white"

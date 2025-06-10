@@ -19,7 +19,6 @@ CREATE TABLE Productos(
     precio DECIMAL(10, 2) NOT NULL,
     stock INT NOT NULL DEFAULT 0,
     categoria ENUM('Juego de mesa', 'Juego de Cartas', 'Juego de rol', 'Otro') NOT NULL DEFAULT 'Otro',
-    publico_destinado ENUM('Todo público', 'Adultos') NOT NULL DEFAULT 'Todo público',
     imagen LONGBLOB
 );
 
