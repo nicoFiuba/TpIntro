@@ -86,6 +86,17 @@ def invocar_carrito():
         print(f"Error al invocar el carrito: {e}")
         return {}
 
+def invocar_busqueda_productos(consulta):
+    try:
+        resp = requests.get(f'http://localhost:5000/catalogo/buscar?q={consulta}')
+        if resp.status_code == 200:
+            return resp.json()
+        else:
+            return []
+    except requests.exceptions.RequestException as e:
+        print(f"Error al buscar productos: {e}")
+        return []
+
 @app.context_processor
 def inject_cart_count():
     cart = session.get('cart', {})
@@ -129,14 +140,13 @@ def shop_mixed():
         categoria=categoria
     )
 
-
-
 @app.route('/shopping-cart')
 def shopping_cart():
     perfil_usuario = invocar_perfil_usuario()
+    productos = invocar_productos()
     categorias = invocar_categorias()
     carrito = invocar_carrito()
-    return render_template("shopping-cart.html", categorias=categorias, perfil_usuario=perfil_usuario, carrito=carrito)
+    return render_template("shopping-cart.html", categorias=categorias, perfil_usuario=perfil_usuario, carrito=carrito, productos=productos)
 
 @app.route('/product-details/<int:product_id>')
 def product_details(product_id):
@@ -154,19 +164,22 @@ def product_details(product_id):
 def my_account():
     perfil_usuario = invocar_perfil_usuario()
     categorias = invocar_categorias()
-    return render_template("my-account.html", categorias=categorias, perfil_usuario=perfil_usuario)
+    productos = invocar_productos()
+    return render_template("my-account.html", categorias=categorias, perfil_usuario=perfil_usuario, productos=productos)
 
 @app.route('/purchase-completed')
 def purchase_completed():
     categorias = invocar_categorias()
     perfil_usuario = invocar_perfil_usuario()
-    return render_template("purchase-completed.html", categorias=categorias, perfil_usuario=perfil_usuario)
+    productos = invocar_productos()
+    return render_template("purchase-completed.html", categorias=categorias, perfil_usuario=perfil_usuario, productos=productos)
 
 @app.route('/contact-us')
 def contact_us():
     perfil_usuario = invocar_perfil_usuario()
     categorias = invocar_categorias()
-    return render_template("contact-us.html", categorias=categorias, perfil_usuario=perfil_usuario)
+    productos = invocar_productos()
+    return render_template("contact-us.html", categorias=categorias, perfil_usuario=perfil_usuario, productos=productos)
 
 @app.route('/administrar-pagina')
 def administrar_pagina():
@@ -190,7 +203,21 @@ def administrar_pedidos():
     else:
         return render_template('pedidos.html', datos=verpedidos, perfil_usuario=perfil_usuario, categorias=categorias, productos=productos)
 
-    
+@app.route('/buscar')
+def buscar_productos():
+    consulta = request.args.get('q', '')
+    categorias = invocar_categorias()
+    perfil_usuario = invocar_perfil_usuario()
+    productos = []
+    if consulta:
+        productos = invocar_busqueda_productos(consulta)
+    return render_template(
+        "resultados_busqueda.html",
+        categorias=categorias,
+        productos=productos,
+        perfil_usuario=perfil_usuario,
+        consulta=consulta
+    )
 
 if __name__ == '__main__':
     app.run(host="localhost", port=8080, debug=True)

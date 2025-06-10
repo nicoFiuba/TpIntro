@@ -60,3 +60,7 @@ VALUES
 ('Ludo', 'Ludo es un juego de mesa clásico que se juega con fichas y un dado. El objetivo es llevar todas las fichas al centro del tablero antes que los demás jugadores. Es un juego de estrategia y suerte, ideal para toda la familia.', 25000, 14, 'Juego de mesa', 'Todo público'),
 
 ('Clue', 'Clue es un juego de mesa de misterio y deducción. Los jugadores deben resolver un asesinato descubriendo quién es el asesino, con qué arma y en qué habitación ocurrió el crimen.', 60000, 7, 'Juego de mesa', 'Todo público');
+
+INSERT INTO Productos (nombre, descripcion, precio, stock, categoria, publico_destinado)
+VALUES
+('Dungeons & Dragons', 'Dungeons & Dragons es un juego de rol de fantasía donde los jugadores crean personajes y participan en aventuras guiadas por un Dungeon Master. Es un juego de imaginación, estrategia y colaboración.', 80000, 5, 'Juego de rol', 'Adultos')
