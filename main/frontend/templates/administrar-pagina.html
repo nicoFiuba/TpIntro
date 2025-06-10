@@ -7,24 +7,24 @@ endblock %} {% block content %}
         </h1>
         <div class="flex flex-row gap-6 w-full justify-center">
             <button
-                class="flex-1 flex items-center justify-center gap-2 rounded-lg p-4 text-lg font-bold uppercase text-white shadow-lg hover:scale-105 transition-all-300"
+                class=" mx-2 flex-1 flex items-center justify-center gap-2 rounded-lg p-4 text-lg font-bold uppercase text-white shadow-lg hover:scale-105 transition-all-300"
                 style="background-color: #0e506c"
                 onclick="document.getElementById('mi-modal').classList.remove('invisible','opacity-0');">
                 <i class="bi bi-plus-circle text-2xl"></i>
                 Acción 1
             </button>
             <button
-                class="flex-1 flex items-center justify-center gap-2 rounded-lg p-4 text-lg font-bold uppercase text-white shadow-lg hover:scale-105 transition-all-300"
+                class=" mx-2 flex-1 flex items-center justify-center gap-2 rounded-lg p-4 text-lg font-bold uppercase text-white shadow-lg hover:scale-105 transition-all-300"
                 style="background-color: #0e506c"
                 onclick="document.getElementById('modal-dos').classList.remove('hidden')">
                 <i class="bi bi-pencil-square text-2xl"></i>
                 Acción 2
             </button>
             <a href="{{ url_for('administrar_pedidos') }}"
-                class="flex-1 flex items-center justify-center gap-2 rounded-lg p-4 text-lg font-bold uppercase text-white shadow-lg hover:scale-105 transition-all-300"
+                class="mx-2 flex-1 flex items-center justify-center gap-2 rounded-lg p-4 text-lg font-bold uppercase text-white shadow-lg hover:scale-105 transition-all-300"
                 style="background-color: #0e506c"
                 onclick="document.getElementById('modal-dos').classList.remove('hidden')">
-                <i class="bi bi-pencil-square text-2xl"></i>
+                <i class="bi bi-box-seam"></i>
                 Ver pedidos
         </a>
         </div>
