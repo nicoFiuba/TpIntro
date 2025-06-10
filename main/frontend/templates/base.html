@@ -126,39 +126,41 @@
               class="submenu transition-all-300 invisible absolute left-0 pt-[10px] opacity-0 group-hover:visible group-hover:opacity-100">
               <ul class="relative w-[250px] bg-white text-base shadow-custom-1">
                 {% for categoria in categorias %}
-                <li class="group-1">
-                  <a href="#" class="flex items-center gap-2 p-2">
-                    <i class="bi bi-circle-fill group-1-hover-visible invisible flex text-[6px] text-primary-color"></i>
-                    <span class="group-1-hover-font">{{categoria}}</span>
-                    <i
-                      class="bi bi-caret-right-fill group-1-hover-visible invisible ml-auto flex text-xs text-primary-color"></i>
-                  </a>
-                  <div
-                    class="submenu group-1-hover-visible transition-all-300 invisible absolute top-0 left-full min-h-full min-w-[680px] opacity-0">
-                    <div class="bg-white shadow-custom-2">
-                      {% for producto in productos%}
-                      {% if producto.categoria == categoria %}
-                      <div class="border-b-2 border-primary-color py-[10px]">
-                        <span class="px-5 text-3xl font-bold uppercase text-primary-color">{{producto.nombre}}</span>
-                      </div>
-                      <div class="submenu-categories flex flex-wrap">
-                        <div class="group-2 p-[10px]">
-                          <a class="categorie-container inline-block" href="{{url_for('product_details', product_id=producto.id)}}">
-                            <div class="categorie-img h-[150px] w-[150px]">
-                              <img class="img-product group-2-hover-img"
-                                src="{{url_for('static', filename='images/product/{{producto.nombre}}.jpg')}}"
-                                alt={{producto.nombre}} />
-                            </div>
-                            <span class="group-2-hover-font block text-center">{{producto.nombre}}</span>
-                          </a>
-                        </div>
-                      </div>
-                      {% endif %}
-                      {% endfor %}
-                    </div>
+  <li class="group-1">
+    <a href="#" class="flex items-center gap-2 p-2">
+      <i class="bi bi-circle-fill group-1-hover-visible invisible flex text-[6px] text-primary-color"></i>
+      <span class="group-1-hover-font">{{ categoria }}</span>
+      <i class="bi bi-caret-right-fill group-1-hover-visible invisible ml-auto flex text-xs text-primary-color"></i>
+    </a>
+
+    <div class="submenu group-1-hover-visible transition-all-300 invisible absolute top-0 left-full min-h-full min-w-[680px] opacity-0">
+      <div class="bg-white shadow-custom-2">
+
+        <div class="border-b-2 border-primary-color py-[10px]">
+          <span class="px-5 text-3xl font-bold uppercase text-primary-color">{{ categoria }}</span>
+        </div>
+
+        <div class="submenu-categories flex flex-wrap">
+          {% for producto in productos %}
+            {% if producto.categoria == categoria %}
+              <div class="group-2 p-[10px]">
+                <a class="categorie-container inline-block" href="{{ url_for('product_details', product_id=producto.id) }}">
+                  <div class="categorie-img h-[150px] w-[150px]">
+                    <img class="img-product group-2-hover-img"
+                         src="{{ url_for('static', filename='images/product/' ~ producto.nombre ~ '.jpg') }}"
+                         alt="{{ producto.nombre }}" />
                   </div>
-                </li>
-                {% endfor %}
+                  <span class="group-2-hover-font block text-center">{{ producto.nombre }}</span>
+                </a>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+      </div>
+    </div>
+  </li>
+{% endfor %}
               </ul>
             </div>
           </li>
