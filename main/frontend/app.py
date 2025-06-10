@@ -233,5 +233,38 @@ def eliminar_producto(product_id):
         flash('Error al eliminar el producto', 'danger')
     return redirect(url_for('administrar_pagina'))
 
+
+@app.route('/agregar-producto', methods=['GET', 'POST'])
+def agregar_producto():
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        descripcion = request.form['descripcion']
+        precio = request.form['precio']
+        categoria = request.form['categoria']
+        stock = request.form.get('stock')
+        if not nombre or not descripcion or not precio or not categoria:
+            flash('Todos los campos son obligatorios', 'danger')
+            return redirect(url_for('administrar_pagina'))
+
+        try:
+            data = {
+                'nombre': nombre,
+                'descripcion': descripcion,
+                'precio': precio,
+                'stock': stock,
+                'categoria': categoria
+                
+            }
+            resp = requests.post('http://localhost:5000/catalogo/api/productos', json=data)
+            if resp.status_code == 201:
+                flash('Producto agregado exitosamente', 'success')
+            else:
+                flash('No se pudo agregar el producto', 'danger')
+        except requests.exceptions.RequestException as e:
+            print(f"Error al agregar el producto: {e}")
+            flash('Error al agregar el producto', 'danger')
+        print(resp.status_code, resp.text)
+    return redirect(url_for('shop_mixed'))
+
 if __name__ == '__main__':
     app.run(host="localhost", port=8080, debug=True)
