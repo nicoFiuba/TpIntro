@@ -1,10 +1,11 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, redirect, url_for, flash
 import requests
 
 from urllib.parse import quote
 from flask import session
 
 app = Flask(__name__)
+app.secret_key = 'clave'
 
 def invocar_categorias():
     try:
@@ -218,6 +219,19 @@ def buscar_productos():
         perfil_usuario=perfil_usuario,
         consulta=consulta
     )
+
+@app.route('/eliminar-producto/<int:product_id>', methods=['POST'])
+def eliminar_producto(product_id):
+    try:
+        resp = requests.delete(f'http://localhost:5000/catalogo/api/productos/{product_id}')
+        if resp.status_code == 200:
+            flash('Producto eliminado exitosamente', 'success')
+        else:
+            flash('No se pudo eliminar el producto', 'danger')
+    except requests.exceptions.RequestException as e:
+        print(f"Error al eliminar el producto: {e}")
+        flash('Error al eliminar el producto', 'danger')
+    return redirect(url_for('administrar_pagina'))
 
 if __name__ == '__main__':
     app.run(host="localhost", port=8080, debug=True)
