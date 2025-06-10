@@ -28,6 +28,12 @@
     </tbody>
   </table>
   
+  <form action="/administrar-pagina/pedidos" method="POST">
+    <label for="id_pedido">Buscar por ID:</label>
+    <input type="int" id="id_pedido" name="id_pedido" required>
+    <button type="submit" class="btn-effect rounded-lg bg-primary-color p-2 font-bold uppercase text-white"><span>Filtrar</span></button>
+  </form>
+
   <div class="purchase-completed-section container mx-auto my-5 px-2 sm:px-8">
       <div style="text-align: center; margin-top: 30px;">
       <a class="btn-effect rounded-lg bg-primary-color p-2 font-bold uppercase text-white" href="{{ url_for('administrar_pagina') }}">
