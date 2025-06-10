@@ -22,7 +22,7 @@ def obtener_producto_por_categoria(producto_tipo):
     conn = get_connection()
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM productos WHERE categoria = %s", (producto_tipo,))
-    producto = cursor.fetchone()
+    producto = cursor.fetchall()
     cursor.close()
     conn.close()
     return producto
@@ -35,7 +35,7 @@ def obtener_categorias():
     cursor.close()
     conn.close()
     type_str = result['Type']
-    valores = type_str.strip("enum()").replace("'", "").split(",")
+    valores = type_str[type_str.find("(")+1 : type_str.rfind(")")].replace("'", "").split(",")
     return [v.strip() for v in valores]
 
 def crear_producto(datos_producto):
