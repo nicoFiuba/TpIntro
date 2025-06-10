@@ -66,7 +66,7 @@
           </p>
           <a
             class="btn-effect inline-block rounded-lg bg-primary-color py-2 px-3 text-white"
-            href="shop-mixed.html"
+            href="{{ url_for('product_details', product_id='7') }}"
             style="color: #fff"
           >
             <span>Comprar ahora</span>
@@ -329,7 +329,7 @@
           <p class="my-5 text-white drop-shadow-md">Productos destacados</p>
           <a
             class="btn-effect inline-block rounded-lg bg-primary-color py-2 px-3 text-white"
-            href="#"
+            href="{{url_for('shop_mixed')}}"
           >
             <span>Ver todos</span>
           </a>
@@ -346,17 +346,7 @@
             >
               <div class="absolute top-[10px] right-[10px]">
                 <div class="p-[2px]"></div>
-                <div class="p-[2px]">
-                  <a
-                    class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
-                    href="javascript:void(0)"
-                    data-target=".quick-view-modal"
-                  >
-                    <i
-                      class="bi bi-eye pointer-events-none flex text-xl text-white"
-                    ></i>
-                  </a>
-                </div>
+                
               </div>
               <div class="h-[190px] overflow-hidden rounded-lg">
                 <a
@@ -451,7 +441,7 @@
           <p class="my-5 text-white drop-shadow-md">Destacados</p>
           <a
             class="btn-effect inline-block rounded-lg bg-primary-color py-2 px-3 text-white"
-            href=""
+            href="{{ url_for('shop_mixed', categoria='Juego de mesa') }}"
           >
             <span>Ver todos</span>
           </a>
@@ -468,17 +458,7 @@
             >
               <div class="absolute top-[10px] right-[10px]">
                 <div class="p-[2px]"></div>
-                <div class="p-[2px]">
-                  <a
-                    class="tippy tippy-left-card-view btn-open-modal transition-all-300 flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg bg-[rgba(0,0,0,.3)] hover:bg-primary-hover"
-                    href="javascript:void(0)"
-                    data-target=".quick-view-modal"
-                  >
-                    <i
-                      class="bi bi-eye pointer-events-none flex text-xl text-white"
-                    ></i>
-                  </a>
-                </div>
+                
               </div>
               <div class="h-[190px] overflow-hidden rounded-lg">
                 <a
