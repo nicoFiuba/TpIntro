@@ -1,8 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash,  session
 import requests
 
 from urllib.parse import quote
-from flask import session
+
 
 app = Flask(__name__)
 app.secret_key = 'clave'
@@ -98,6 +98,12 @@ def invocar_busqueda_productos(consulta):
         print(f"Error al buscar productos: {e}")
         return []
 
+def get_cart():
+    return session.get('cart', {})
+
+def save_cart(cart):
+    session['cart'] = cart
+
 @app.context_processor
 def inject_cart_count():
     cart = session.get('cart', {})
@@ -146,8 +152,61 @@ def shopping_cart():
     perfil_usuario = invocar_perfil_usuario()
     productos = invocar_productos()
     categorias = invocar_categorias()
-    carrito = invocar_carrito()
-    return render_template("shopping-cart.html", categorias=categorias, perfil_usuario=perfil_usuario, carrito=carrito, productos=productos)
+    cart = session.get('cart', {})
+    carrito_detallado = []
+    total = 0
+    for pid, cantidad in cart.items():
+        producto = next((p for p in productos if str(p['id']) == str(pid)), None)
+        if producto:
+            precio = float(producto['precio'])
+            cantidad_int = int(cantidad)
+            producto_detalle = producto.copy()
+            producto_detalle['cantidad'] = cantidad_int
+            producto_detalle['subtotal'] = precio * cantidad_int
+            total += producto_detalle['subtotal']
+            carrito_detallado.append(producto_detalle)
+    return render_template(
+        "shopping-cart.html",
+        categorias=categorias,
+        perfil_usuario=perfil_usuario,
+        carrito_detallado=carrito_detallado,
+        total=total
+    )
+
+@app.route('/cart/add/<int:producto_id>', methods=['POST'])
+def add_to_cart(producto_id):
+    cantidad = int(request.form.get('cantidad', 1))
+    cart = get_cart()
+    cart[str(producto_id)] = cart.get(str(producto_id), 0) + cantidad
+    save_cart(cart)
+    flash('Producto agregado al carrito', 'success')
+    return redirect(request.referrer or url_for('shop_mixed'))
+
+@app.route('/cart/update/<int:producto_id>', methods=['POST'])
+def update_cart(producto_id):
+    cantidad = int(request.form.get('cantidad', 1))
+    cart = get_cart()
+    if cantidad > 0:
+        cart[str(producto_id)] = cantidad
+    else:
+        cart.pop(str(producto_id), None)
+    save_cart(cart)
+    flash('Carrito actualizado', 'success')
+    return redirect(url_for('shopping_cart'))
+
+@app.route('/cart/remove/<int:producto_id>', methods=['POST'])
+def remove_from_cart(producto_id):
+    cart = get_cart()
+    cart.pop(str(producto_id), None)
+    save_cart(cart)
+    flash('Producto eliminado del carrito', 'success')
+    return redirect(url_for('shopping_cart'))
+
+@app.route('/cart/clear', methods=['POST'])
+def clear_cart():
+    save_cart({})
+    flash('Carrito vaciado', 'success')
+    return redirect(url_for('shopping_cart'))
 
 @app.route('/product-details/<int:product_id>')
 def product_details(product_id):
