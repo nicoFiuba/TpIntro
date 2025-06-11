@@ -7,18 +7,18 @@ endblock %} {% block content %}
         </h1>
         <div class="flex flex-row gap-6 w-full justify-center">
             <button
-                class=" mx-2 flex-1 flex items-center justify-center gap-2 rounded-lg p-4 text-lg font-bold uppercase text-white shadow-lg hover:scale-105 transition-all-300"
+                class="mx-2 flex-1 flex items-center justify-center gap-2 rounded-lg p-4 text-lg font-bold uppercase text-white shadow-lg hover:scale-105 transition-all-300"
                 style="background-color: #0e506c"
                 onclick="document.getElementById('mi-modal').classList.remove('invisible','opacity-0');">
                 <i class="bi bi-plus-circle text-2xl"></i>
-                Acción 1
+                Ver stock
             </button>
             <button
-                class=" mx-2 flex-1 flex items-center justify-center gap-2 rounded-lg p-4 text-lg font-bold uppercase text-white shadow-lg hover:scale-105 transition-all-300"
+                class="mx-2 flex-1 flex items-center justify-center gap-2 rounded-lg p-4 text-lg font-bold uppercase text-white shadow-lg hover:scale-105 transition-all-300"
                 style="background-color: #0e506c"
-                onclick="document.getElementById('modal-dos').classList.remove('hidden')">
-                <i class="bi bi-pencil-square text-2xl"></i>
-                Acción 2
+                onclick="document.getElementById('mi-modal2').classList.remove('invisible','opacity-0');">
+                <i class="bi bi-trash text-2xl"></i>
+                Eliminar producto
             </button>
             <a href="{{ url_for('administrar_pedidos') }}"
                 class="mx-2 flex-1 flex items-center justify-center gap-2 rounded-lg p-4 text-lg font-bold uppercase text-white shadow-lg hover:scale-105 transition-all-300"
@@ -26,7 +26,7 @@ endblock %} {% block content %}
                 onclick="document.getElementById('modal-dos').classList.remove('hidden')">
                 <i class="bi bi-box-seam"></i>
                 Ver pedidos
-        </a>
+            </a>
         </div>
     </div>
 </div>
@@ -66,38 +66,41 @@ endblock %} {% block content %}
         </div>
     </div>
 </div>
-
-<!-- Modal 2 -->
-<!-- <div id="mi-modal"
+<div id="mi-modal2"
     class="entry-modal modal transition-all-300 invisible fixed inset-0 z-50 flex h-full w-full flex-col items-center justify-start overflow-auto bg-overlay opacity-0">
     <div class="my-10 flex w-full justify-center">
         <div
             class="entry-content modal-content transition-all-300 relative mx-3 w-[500px] min-w-[250px] rounded-lg bg-white px-3 pb-3 pt-7 xs:px-5 xs:pb-5 md:m-5">
             <button
                 class="btn-close-modal transition-all-300 absolute top-0 right-0 p-2 sm:top-[-10px] sm:right-[-10px] sm:rounded-lg sm:bg-primary-color sm:text-white sm:hover:bg-primary-hover"
-                onclick="document.getElementById('mi-modal').classList.add('invisible','opacity-0')"
+                onclick="document.getElementById('mi-modal2').classList.add('invisible','opacity-0')"
                 aria-label="Cerrar">
                 <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex"></i>
             </button>
             <div class="flex flex-col items-center gap-4">
                 <h2 class="text-xl font-bold text-primary-color text-center" style="color: #0e506c">
-                    Stock
+                    Eliminar producto
                 </h2>
                 <table class="w-full text-left">
                     <thead>
                         <tr>
                             <th class="px-4 py-2">Producto</th>
-                            <th class="px-4 py-2">Cantidad</th>
+                            <th class="px-4 py-2">Accion</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for pedido in pedidos %}
+                        {% for producto in productos %}
                         <tr>
-                            <td class="px-4 py-2">{{ pedido.id }}</td>
-                            {% for producto in pedido.productos %}
                             <td class="px-4 py-2">{{ producto.nombre }}</td>
-                            {% endfor %}
-
+                            <td class="px-4 py-2">
+                                <form method="post" action="{{ url_for('eliminar_producto', product_id=producto.id) }} " style="display:inline;">
+                                    <button type="submit"
+                                        class="rounded bg-red-600 px-3 py-1 text-white hover:bg-red-800 transition-all-300"
+                                        onclick="return confirm('¿Seguro que deseas eliminar este producto?');">
+                                        Eliminar
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -105,5 +108,6 @@ endblock %} {% block content %}
             </div>
         </div>
     </div>
-</div> -->
+</div>
+
 {% endblock %}

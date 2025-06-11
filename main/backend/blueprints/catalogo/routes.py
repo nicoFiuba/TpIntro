@@ -1,5 +1,6 @@
 from flask import request, jsonify
 from . import productos_bp
+import unicodedata
 from . queries import (
     obtener_todos_los_productos,
     obtener_producto_por_id,
@@ -9,6 +10,12 @@ from . queries import (
     actualizar_producto as actualizar_producto_db,
     eliminar_producto as eliminar_producto_db
 )
+
+def normalizar(texto):
+    return ''.join(
+        c for c in unicodedata.normalize('NFD', texto)
+        if unicodedata.category(c) != 'Mn'
+    ).lower()
 
 @productos_bp.route('/api/productos/categorias', methods=['GET'])
 def obtener_categorias_productos():
@@ -54,4 +61,18 @@ def eliminar(producto_id):
     if exito:
         return jsonify({'mensaje': 'Producto eliminado'}), 200
     return jsonify({'error': 'Producto no encontrado'}), 404
+
+@productos_bp.route('/buscar', methods=['GET'])
+def buscar_productos():
+    consulta = normalizar(request.args.get('q', ''))
+    if not consulta:
+        return jsonify([])
+    productos = obtener_todos_los_productos()
+    print("PRODUCTOS:", productos)
+    resultados = [
+        p for p in productos
+        if consulta in normalizar(p.get('nombre', '')) or consulta in normalizar(p.get('descripcion', ''))
+    ]
+    print("RESULTADOS:", resultados)
+    return jsonify(resultados)
 

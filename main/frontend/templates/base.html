@@ -50,11 +50,11 @@
         </div>
         <div
           class="header-search transition-all-300 order-3 col-span-4 mt-[10px] hidden self-center lg:order-2 lg:col-span-6 lg:mt-0 lg:block">
-          <form class="search" action="#">
+          <form class="search" action="{{ url_for('buscar_productos') }}" method="get">
             <div class="flex h-[40px] overflow-hidden rounded-[50px] bg-primary-rgba">
               <input
                 class="search w-full border-none bg-transparent py-[5px] pl-5 text-white placeholder-icon focus:border-none focus:ring-0 focus:ring-transparent"
-                type="search" placeholder="Search..." />
+                type="search" name="q" placeholder="Buscar productos..." />
               <button class="btn-search px-3 text-white" type="submit">
                 <i class="bi bi-search flex text-xl"></i>
               </button>
@@ -77,7 +77,7 @@
               <a class="btn-open-modal" data-target=".shopping-cart-modal" href="javascript:void(0)">
                 <i class="bi bi-cart2 pointer-events-none flex text-[35px] text-white" style="color:#0E506C;"></i>
               </a>
-              <span class="badge absolute top-0 right-[-6px] h-[15px] min-w-[15px] px-[2px]">0</span>
+              <span class="badge absolute top-0 right-[-6px] h-[15px] min-w-[15px] px-[2px]">{{ cart_count }}</span>
             </div>
           </div>
           <div class="group relative hidden lg:flex">
@@ -126,39 +126,41 @@
               class="submenu transition-all-300 invisible absolute left-0 pt-[10px] opacity-0 group-hover:visible group-hover:opacity-100">
               <ul class="relative w-[250px] bg-white text-base shadow-custom-1">
                 {% for categoria in categorias %}
-                <li class="group-1">
-                  <a href="#" class="flex items-center gap-2 p-2">
-                    <i class="bi bi-circle-fill group-1-hover-visible invisible flex text-[6px] text-primary-color"></i>
-                    <span class="group-1-hover-font">{{categoria}}</span>
-                    <i
-                      class="bi bi-caret-right-fill group-1-hover-visible invisible ml-auto flex text-xs text-primary-color"></i>
-                  </a>
-                  <div
-                    class="submenu group-1-hover-visible transition-all-300 invisible absolute top-0 left-full min-h-full min-w-[680px] opacity-0">
-                    <div class="bg-white shadow-custom-2">
-                      {% for producto in productos%}
-                      {% if producto.categoria == categoria %}
-                      <div class="border-b-2 border-primary-color py-[10px]">
-                        <span class="px-5 text-3xl font-bold uppercase text-primary-color">{{producto.nombre}}</span>
-                      </div>
-                      <div class="submenu-categories flex flex-wrap">
-                        <div class="group-2 p-[10px]">
-                          <a class="categorie-container inline-block" href="{{url_for('product_details', product_id=producto.id)}}">
-                            <div class="categorie-img h-[150px] w-[150px]">
-                              <img class="img-product group-2-hover-img"
-                                src="{{url_for('static', filename='images/product/{{producto.nombre}}.jpg')}}"
-                                alt={{producto.nombre}} />
-                            </div>
-                            <span class="group-2-hover-font block text-center">{{producto.nombre}}</span>
-                          </a>
-                        </div>
-                      </div>
-                      {% endif %}
-                      {% endfor %}
-                    </div>
+  <li class="group-1">
+    <a href="#" class="flex items-center gap-2 p-2">
+      <i class="bi bi-circle-fill group-1-hover-visible invisible flex text-[6px] text-primary-color"></i>
+      <span class="group-1-hover-font">{{ categoria }}</span>
+      <i class="bi bi-caret-right-fill group-1-hover-visible invisible ml-auto flex text-xs text-primary-color"></i>
+    </a>
+
+    <div class="submenu group-1-hover-visible transition-all-300 invisible absolute top-0 left-full min-h-full min-w-[680px] opacity-0">
+      <div class="bg-white shadow-custom-2">
+
+        <div class="border-b-2 border-primary-color py-[10px]">
+          <span class="px-5 text-3xl font-bold uppercase text-primary-color">{{ categoria }}</span>
+        </div>
+
+        <div class="submenu-categories flex flex-wrap">
+          {% for producto in productos %}
+            {% if producto.categoria == categoria %}
+              <div class="group-2 p-[10px]">
+                <a class="categorie-container inline-block" href="{{ url_for('product_details', product_id=producto.id) }}">
+                  <div class="categorie-img h-[150px] w-[150px]">
+                    <img class="img-product group-2-hover-img"
+                         src="{{ url_for('static', filename='images/product/' ~ producto.nombre ~ '.jpg') }}"
+                         alt="{{ producto.nombre }}" />
                   </div>
-                </li>
-                {% endfor %}
+                  <span class="group-2-hover-font block text-center">{{ producto.nombre }}</span>
+                </a>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+      </div>
+    </div>
+  </li>
+{% endfor %}
               </ul>
             </div>
           </li>
@@ -739,3 +741,4 @@
   </script>
 </body>
 </html>
+

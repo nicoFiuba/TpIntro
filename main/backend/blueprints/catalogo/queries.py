@@ -43,7 +43,8 @@ def crear_producto(datos_producto):
     cursor = conn.cursor()
     
     sql = """
-    INSERT INTO productos (nombre, descripcion, precio, stock, categoria, imagen, publico_destinado, tipo) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+    INSERT INTO productos (nombre, descripcion, precio, stock, categoria)
+    VALUES (%s, %s, %s, %s, %s)
     """
 
     valores = (
@@ -51,16 +52,14 @@ def crear_producto(datos_producto):
         datos_producto.get('descripcion'),
         datos_producto.get('precio'),
         datos_producto.get('stock'),
-        datos_producto.get('categoria'),
-        datos_producto.get('imagen'),
-        datos_producto.get('publico_destinado'),
-        datos_producto.get('tipo')
+        datos_producto.get('categoria')
     )
 
     cursor.execute(sql, valores)
     conn.commit()
     nuevo_id = cursor.lastrowid
     cursor.close()
+    conn.close()
     return nuevo_id
 
 def actualizar_producto(producto_id, datos_producto):
