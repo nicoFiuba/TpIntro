@@ -1,16 +1,7 @@
 {% extends "base.html" %} {% block title %}Ludoteca central - Product details{%
 endblock %} {% block content %}
 
-<div class="breadcrumb-section container mx-auto my-5 px-2 sm:px-8">
-  <ul class="flex flex-wrap items-center gap-1">
-    <li class="transition-all-300 hover:text-primary-color">
-      <a href="{{ url_for('index') }}">Home</a>
-    </li>
-    <li>
-      <i class="bi bi-caret-right-fill flex text-primary-color"></i>
-    </li>
-  </ul>
-</div>
+
 
 <div class="product-details container mx-auto my-5 px-2 sm:px-8">
   <div class="grid grid-cols-12 gap-5 rounded-lg bg-white p-2 xs:p-8">
@@ -54,7 +45,7 @@ endblock %} {% block content %}
       <div class="my-1">
         <a
           class="clamp-2 transition-all-300 break-all text-2xl font-medium hover:text-primary-color"
-          href="#"
+          
         >
           {{ product.nombre }}
         </a>
@@ -76,7 +67,7 @@ endblock %} {% block content %}
       </div>
       <div class="my-5 flex items-center gap-5">
         <div
-          class="flex rounded-lg bg-white px-3 py-2 text-primary-color shadow"
+          class="text-lg font-bold"
         >
           <span class="text-sm">$</span>
           <span class="text-2xl font-semibold leading-7"
@@ -90,26 +81,28 @@ endblock %} {% block content %}
         <p class="clamp-5 break-all">{{ product.descripcion }}</p>
       </div>
 
-      <div class="flex gap-1">
+      <div class="flex gap-3 items-center">
        <form method="post" action="{{ url_for('add_to_cart', producto_id=product.id) }}">
   <input
-    class="quantity-value input-number w-12 border-none bg-transparent p-1 text-center text-lg text-gray-400 focus:border-none focus:ring-0"
-    type="number"
-    name="cantidad"
-    value="1"
-    min="1"
-    max="{{ product.stock }}"
-    {% if product.stock == 0 %}disabled{% endif %}
-  />
+  class="quantity-value input-number w-12 border border-gray-300 rounded-md bg-white p-1 text-center text-sm text-black focus:outline-none focus:ring-1 focus:ring-primary-color"
+  type="number"
+  name="cantidad"
+  value="1"
+  min="1"
+  max="{{ product.stock }}"
+  {% if product.stock == 0 %}disabled{% endif %}
+/>
+
   <!-- ...botones de cantidad... -->
   <button
-    class="btn-effect transition-all-300 flex h-full items-center justify-center gap-2 rounded-lg bg-primary-color p-2"
-    type="submit"
-    {% if product.stock == 0 %}disabled{% endif %}
-  >
-    <i class="bi bi-cart-fill flex text-xl text-white"></i>
-    <span class="font-bold uppercase text-white">Add to cart</span>
-  </button>
+  class="btn-effect transition-all-300 flex h-10 items-center justify-center gap-1 rounded-md bg-primary-color p-1"
+  type="submit"
+  {% if product.stock == 0 %}disabled{% endif %}
+>
+  <i class="bi bi-cart-fill flex text-base text-white"></i>
+  <span class="font-bold uppercase text-white text-sm">Add to cart</span>
+</button>
+
 </form>
       </div>
 
@@ -1597,51 +1590,7 @@ endblock %} {% block content %}
   </div>
 </div>
 
-<div
-  class="calculate-shipping-modal modal transition-all-300 invisible fixed inset-0 z-50 flex h-full w-full flex-col items-center justify-start overflow-auto bg-overlay opacity-0"
->
-  <div class="my-10 flex w-full justify-center">
-    <div
-      class="modal-content relative mx-3 w-[900px] min-w-[250px] scale-0 rounded-lg bg-body px-3 pb-3 pt-7 xs:px-5 xs:pb-5 md:m-5"
-    >
-      <button
-        class="btn-close-modal transition-all-300 absolute right-0 top-0 p-2 sm:right-[-10px] sm:top-[-10px] sm:rounded-lg sm:bg-primary-color sm:text-white sm:hover:bg-primary-hover"
-      >
-        <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex"></i>
-      </button>
-      <span class="block text-xl font-bold">Calculate Shipping Cost</span>
-      <form class="mt-5" action="#">
-        <label class="flex w-full flex-col">
-          <span class="text-sm">Postal Code</span>
-          <div class="flex">
-            <input class="input-rounded-l" type="text" placeholder="7400" />
-            <button
-              class="btn-view-shopping-cart btn-effect transition-all-300 flex min-w-max items-center justify-center rounded-r-lg bg-primary-color px-3"
-              type="submit"
-            >
-              <span class="font-bold uppercase text-white">Calculate</span>
-            </button>
-          </div>
-        </label>
-      </form>
-      <div class="mt-5 w-full text-sm">
-        <div class="flex justify-between font-bold">
-          <span>Shipping methods</span>
-          <span>Cost</span>
-        </div>
-        <div class="flex justify-between">
-          <span>At Home</span>
-          <span>$30.00</span>
-        </div>
-        <div class="flex justify-between">
-          <span>Post Office</span>
-          <span>$20.00</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- -->
+
 
 <div
   class="btn-gotop transition-all-300 invisible fixed bottom-[-999px] right-10 z-50 opacity-0"
