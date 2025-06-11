@@ -1,7 +1,7 @@
 DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
-    'password': 'keines11',
+    'password': 'tucontra',
     'database': 'Ludoteca',
 }
 
