@@ -170,7 +170,7 @@ def shopping_cart():
         categorias=categorias,
         perfil_usuario=perfil_usuario,
         carrito_detallado=carrito_detallado,
-        total=total
+        total=total,productos=productos
     )
 
 @app.route('/cart/add/<int:producto_id>', methods=['POST'])
@@ -212,12 +212,14 @@ def clear_cart():
 def product_details(product_id):
     perfil_usuario = invocar_perfil_usuario()
     categorias = invocar_categorias()
+    productos = invocar_productos()
     producto = invocar_productos_por_id(product_id)
     return render_template(
         "product-details.html",
         categorias=categorias,
         perfil_usuario=perfil_usuario,
-        product=producto
+        product=producto,
+        productos=productos
     )
 
 @app.route('/my-account')

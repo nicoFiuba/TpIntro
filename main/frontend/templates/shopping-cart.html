@@ -46,15 +46,28 @@
           <td>{{ producto.nombre }}</td>
           <td>${{ producto.precio }}</td>
           <td>
-            <form method="post" action="{{ url_for('update_cart', producto_id=producto.id) }}">
-    <input type="number" name="cantidad" value="{{ producto.cantidad }}" min="1" style="width:60px;">
-    <button type="submit">Actualizar</button>
+            <form method="post" action="{{ url_for('update_cart', producto_id=producto.id) }}" style="display:inline;">
+  <div style="display:flex; align-items:center; gap:8px;">
+    <input
+  type="number"
+  name="cantidad"
+  value="{{ producto.cantidad }}"
+  min="1"
+  max="{{ producto.stock }}"
+  style="width:60px; border-radius:8px; border:1px solid #0E506C; padding:4px 8px; background:#f9fafb; text-align:center;"
+>
+    <button type="submit" style="border-radius:8px; border:1px solid #0E506C; padding:4px 12px; background:#f3f3f3; cursor:pointer;">
+      Actualizar
+    </button>
+  </div>
 </form>
           </td>
           <td>${{ producto.precio * producto.cantidad }}</td>
           <td>
-            <form method="post" action="{{ url_for('remove_from_cart', producto_id=producto.id) }}">
-    <button type="submit">Eliminar</button>
+            <form method="post" action="{{ url_for('remove_from_cart', producto_id=producto.id) }}" style="display:inline;">
+  <button type="submit" style="border-radius:8px; border:1px solid #dc2626; padding:4px 12px; background:#fee2e2; color:#dc2626; cursor:pointer;">
+    Eliminar
+  </button>
 </form>
           </td>
         </tr>
