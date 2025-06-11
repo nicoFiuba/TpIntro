@@ -384,7 +384,7 @@
               <div class="my-5">
                 <img class="mx-auto" src="{{url_for('static', filename='images/svg/logo.svg')}}" alt="{{ BRAND_NAME }}" />
               </div>
-              <form method="post" action="/usuarios/auth/login">
+              <form method="post" action="/ingresar">
                 <div class="flex flex-col gap-4">
                   <div class="relative flex h-[40px] items-center">
                     <i class="bi bi-person absolute ml-2 flex text-[24px] text-gray-400"></i>
@@ -432,11 +432,11 @@
               <div class="my-5">
                 <img class="mx-auto" src="{{url_for('static', filename='images/svg/logo.svg')}}" alt="{{ BRAND_NAME }}" />
               </div>
-              <form method="post" action="http://localhost:5000/usuarios/auth/register">
+              <form method="post" action="/registro">
                 <div class="flex flex-col gap-4">
                   <div class="relative flex h-[40px] items-center">
                     <i class="bi bi-person absolute ml-2 flex text-[24px] text-gray-400"></i>
-                    <input class="input pl-10" type="text" placeholder="Name" name="name" required />
+                    <input class="input pl-10" type="text" placeholder="Usuario" name="username" required />
                   </div>
                   <div class="relative flex h-[40px] items-center">
                     <i class="bi bi-lock absolute ml-2 flex text-[24px] text-gray-400"></i>

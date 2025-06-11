@@ -45,7 +45,7 @@ def invocar_productos_por_id(product_id):
 
 def invocar_perfil_usuario():
     try:
-        resp = requests.get('http://localhost:5000/usuarios/user/5',)
+        resp = requests.get('http://localhost:5000/usuarios/user/',)
         if resp.status_code == 200:
             return resp.json()
         else:
@@ -265,6 +265,50 @@ def agregar_producto():
             flash('Error al agregar el producto', 'danger')
         print(resp.status_code, resp.text)
     return redirect(url_for('shop_mixed'))
+    
+@app.route('/ingresar', methods=['POST'])
+def ingresar():
+    username = request.form.get('username')
+    password = request.form.get('password')
+
+    try:
+        data = {
+            'username': username,
+            'password': password
+        }
+
+        resp = requests.post('http://localhost:5000/usuarios/auth/login', data=data)
+
+        if resp.status_code == 200:
+            flash('Inicio de sesión exitoso', 'success')
+            return redirect(url_for('my_account'))
+        else:
+            flash('Error al iniciar sesión: ' + resp.json().get('message', 'Error'), 'danger')      
+            return redirect(url_for('index'))
+    except requests.exceptions.RequestException as e:
+        flash('No se pudo conectar al servicio de autenticación', 'danger')
+        return redirect(url_for('index'))
+
+@app.route('/registro', methods=['POST'])
+def registro():    
+    username = request.form.get('username')
+    password = request.form.get('password')
+    email = request.form.get('email')
+
+    data = {
+            "username": username,
+            "password": password,
+            "email": email
+        }
+    
+    resp = requests.post('http://localhost:5000/usuarios/auth/register', json=data)
+
+    if resp.status_code == 201:
+        flash('Registro exitoso')
+        return redirect(url_for('index'))
+    else:
+        flash('Error al registrar: ' + resp.json().get('message', ''))
+        return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(host="localhost", port=8080, debug=True)
