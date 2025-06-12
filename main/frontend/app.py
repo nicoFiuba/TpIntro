@@ -45,7 +45,7 @@ def invocar_productos_por_id(product_id):
 
 def invocar_perfil_usuario():
     try:
-        resp = requests.get('http://localhost:5000/usuarios/user/',)
+        resp = requests.get('http://localhost:5000/usuarios/user/5',)
         if resp.status_code == 200:
             return resp.json()
         else:
@@ -131,20 +131,22 @@ def index():
 
 @app.route('/shop-mixed')
 def shop_mixed():
-    categoria = request.args.get('categoria')
-    perfil_usuario = invocar_perfil_usuario()
+    categoria = request.args.get('categoria', '')
+    stock_disponible = request.args.get('stock_disponible')
     productos = invocar_productos()
-    categorias = invocar_categorias()
-    if not categoria:  
-        categoria = None
     if categoria:
         productos = [p for p in productos if p.get('categoria') == categoria]
+    if stock_disponible:
+        productos = [p for p in productos if int(p.get('stock', 0)) > 0]
+    categorias = invocar_categorias()
+    perfil_usuario = invocar_perfil_usuario()
     return render_template(
         "shop-mixed.html",
-        categorias=categorias,
         productos=productos,
-        perfil_usuario=perfil_usuario,
-        categoria=categoria
+        categorias=categorias,
+        categoria=categoria,
+        stock_disponible=stock_disponible,
+        perfil_usuario=perfil_usuario
     )
 
 @app.route('/shopping-cart')
