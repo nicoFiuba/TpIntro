@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash,  session
+from flask import Flask, render_template, request, redirect, url_for, flash,  session, jsonify
 import requests
 
 from urllib.parse import quote
@@ -44,8 +44,12 @@ def invocar_productos_por_id(product_id):
         return None
 
 def invocar_perfil_usuario():
+    user = session.get('user')
+    if not user:
+        return {}
     try:
-        resp = requests.get('http://localhost:5000/usuarios/user/5',)
+        user_id = user['id']
+        resp = requests.get(f'http://localhost:5000/usuarios/user/{user_id}',)
         if resp.status_code == 200:
             return resp.json()
         else:
@@ -343,6 +347,8 @@ def ingresar():
         resp = requests.post('http://localhost:5000/usuarios/auth/login', data=data)
 
         if resp.status_code == 200:
+            session['logged_in'] = True
+            session['username'] = username
             flash('Inicio de sesión exitoso', 'success')
             return redirect(url_for('my_account'))
         else:
@@ -373,5 +379,21 @@ def registro():
         flash('Error al registrar: ' + resp.json().get('message', ''))
         return redirect(url_for('index'))
 
+@app.route('/logout')
+def logout():
+    session.clear()
+    flash('Sesión cerrada', 'success')
+    return redirect(url_for('index'))
+
+@app.route('/usuarios/auth/status')
+def auth_status():
+    if 'user_id' in session:
+        return jsonify({"logged_in" : True, "username" : session.get("username")})
+    else:
+        return jsonify({"logged_in" : False})
+    
+@app.context_processor
+def inject_auth_status():
+    return dict(logged_in=session.get('logged_in', False))
 if __name__ == '__main__':
     app.run(host="localhost", port=8080, debug=True)

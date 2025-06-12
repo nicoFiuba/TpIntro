@@ -82,32 +82,38 @@
               <span class="badge absolute top-0 right-[-6px] h-[15px] min-w-[15px] px-[2px]">{{ cart_count }}</span>
             </div>
           </div>
-          <div class="group relative hidden lg:flex">
-            <div class="flex cursor-pointer select-none items-center gap-1">
-              <span class="font-semibold text-white" style="color:#0E506C;">My account</span>
-              <i class="bi bi-caret-down-fill transition-all-300 flex rotate-0 text-sm text-white group-hover:rotate-180"
-                style="color: #0E506C;"></i>
-            </div>
-            <div
-              class="transition-all-300 invisible absolute top-full z-30 w-[120%] pt-[10px] opacity-0 group-hover:visible group-hover:opacity-100">
+         <div class="group relative">
+            <a class="cursor-pointer">Cuenta</a>
+            <div class="transition-all-300 invisible absolute top-full z-30 w-[120%] pt-[10px] opacity-0 group-hover:visible group-hover:opacity-100">
               <div class="arrow relative">
                 <ul class="overflow-hidden rounded-md bg-white p-[6px] shadow-custom-1">
-                  <li class="hover:font-semibold">
-                    <a href="#" class="btn-open-modal" data-tab="0" data-target=".entry-modal">
-                      <div class="pointer-events-none flex items-center gap-2 p-1">
-                        <i class="bi bi-box-arrow-in-right flex text-xl text-primary-color" style="color: #011638;"></i>
-                        <span>Login</span>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="hover:font-semibold">
-                    <a href="#" class="btn-open-modal" data-tab="1" data-target=".entry-modal">
-                      <div class="pointer-events-none flex items-center gap-2 p-1">
-                        <i class="bi bi-person flex text-xl text-primary-color" style="color: #011638;"></i>
-                        <span>Registrarse</span>
-                      </div>
-                    </a>
-                  </li>
+                  {% if logged_in %}
+                    <li class="hover:font-semibold">
+                      <a href="{{ url_for('logout') }}">
+                        <div class="flex items-center gap-2 p-1">
+                          <i class="bi bi-box-arrow-right text-xl text-primary-color" style="color: #011638;"></i>
+                          <span>Logout</span>
+                        </div>
+                      </a>
+                    </li>
+                  {% else %}
+                    <li class="hover:font-semibold">
+                      <a href="#" class="btn-open-modal" data-tab="0" data-target=".entry-modal">
+                        <div class="pointer-events-none flex items-center gap-2 p-1">
+                          <i class="bi bi-box-arrow-in-right text-xl text-primary-color" style="color: #011638;"></i>
+                          <span>Login</span>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="hover:font-semibold">
+                      <a href="#" class="btn-open-modal" data-tab="1" data-target=".entry-modal">
+                        <div class="pointer-events-none flex items-center gap-2 p-1">
+                          <i class="bi bi-person text-xl text-primary-color" style="color: #011638;"></i>
+                          <span>Registrarse</span>
+                        </div>
+                      </a>
+                    </li>
+                  {% endif %}
                 </ul>
               </div>
             </div>
