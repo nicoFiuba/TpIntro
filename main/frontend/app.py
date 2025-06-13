@@ -273,16 +273,16 @@ def administrar_pagina():
 
 @app.route('/administrar-pagina/pedidos', methods=['GET','POST'])
 def administrar_pedidos():
-    verpedidos = invocar_detalles_pedidos()
+    verpedidos = invocar_pedidos()
     categorias = invocar_categorias()
     perfil_usuario = invocar_perfil_usuario()
     productos = invocar_productos()
     if request.method == 'POST':
-        id = request.form['id_pedido']
+        id = request.form['pedido_id']
         verpedidosid = invocar_pedidos_por_id(id)
-        return render_template('pedidos.html', datos=verpedidosid, perfil_usuario=perfil_usuario, categorias=categorias, productos=productos)
+        return render_template('pedidos.html',datos=verpedidos, datosid=verpedidosid, perfil_usuario=perfil_usuario, categorias=categorias, productos=productos, id=id, modal=True)
     else:
-        return render_template('pedidos.html', datos=verpedidos, perfil_usuario=perfil_usuario, categorias=categorias, productos=productos)
+        return render_template('pedidos.html', datos=verpedidos, perfil_usuario=perfil_usuario, categorias=categorias, productos=productos, modal=False)
 
 @app.route('/buscar')
 def buscar_productos():
