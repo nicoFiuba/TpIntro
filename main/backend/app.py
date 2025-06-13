@@ -7,6 +7,7 @@ from blueprints.catalogo import productos_bp
 from blueprints.auth.auth import auth_bp
 from blueprints.ver_pedidos.pedidos import pedidos_bp
 from blueprints.routes.carrito import cart_bp
+from blueprints.stock.stock import stock_bp
 
 def create_app():
     app = Flask(__name__)
@@ -19,6 +20,7 @@ def create_app():
     app.register_blueprint(productos_bp, url_prefix='/catalogo')
     app.register_blueprint(pedidos_bp, url_prefix='/pedidos')
     app.register_blueprint(cart_bp)
+    app.register_blueprint(stock_bp, url_prefix='/stock')
     
     return app
 
