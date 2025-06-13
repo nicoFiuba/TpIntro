@@ -58,9 +58,22 @@ def invocar_perfil_usuario():
         print(f"Error al invocar el servicio de perfil de usuario: {e}")
         return {}
 
+
 def invocar_pedidos():
     try:
         resp = requests.get('http://localhost:5000/pedidos')
+        if resp.status_code == 200:
+            return resp.json()
+        else:
+            return []
+    except requests.exceptions.RequestException as e:
+        print(f"Error al invocar pedidos {e}")
+        return []
+
+
+def invocar_detalles_pedidos():
+    try:
+        resp = requests.get('http://localhost:5000/pedidos/detalles')
         if resp.status_code == 200:
             return resp.json()
         else:
@@ -260,7 +273,7 @@ def administrar_pagina():
 
 @app.route('/administrar-pagina/pedidos', methods=['GET','POST'])
 def administrar_pedidos():
-    verpedidos = invocar_pedidos()
+    verpedidos = invocar_detalles_pedidos()
     categorias = invocar_categorias()
     perfil_usuario = invocar_perfil_usuario()
     productos = invocar_productos()
