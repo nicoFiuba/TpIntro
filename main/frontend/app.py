@@ -115,6 +115,30 @@ def invocar_busqueda_productos(consulta):
         print(f"Error al buscar productos: {e}")
         return []
 
+def ver_stock():
+    try:
+        resp = requests.get(f'http://localhost:5000/stock')
+        if resp.status_code == 200:
+            return resp.json()
+        else:
+            return []
+    except requests.exceptions.RequestException as e:
+        print(f"Error al ver stock: {e}")
+        return []
+
+
+def modificar_stock(nstock, producto):
+    try:
+        resp = requests.get(f'http://localhost:5000/stock/agregar/{nstock}/{producto}')
+        if resp.status_code == 200:
+            return resp.json()
+        else:
+            return []
+    except requests.exceptions.RequestException as e:
+        print(f"Error al modificar stock: {e}")
+        return []
+
+
 def get_cart():
     return session.get('cart', {})
 
@@ -262,14 +286,22 @@ def contact_us():
     productos = invocar_productos()
     return render_template("contact-us.html", categorias=categorias, perfil_usuario=perfil_usuario, productos=productos)
 
-@app.route('/administrar-pagina')
+@app.route('/administrar-pagina', methods=['GET', 'POST'])
 def administrar_pagina():
     verpedidos = invocar_pedidos()
     categorias = invocar_categorias()
     perfil_usuario = invocar_perfil_usuario()
     productos = invocar_productos()
-    
-    return render_template("administrar-pagina.html", verpedidos=verpedidos, perfil_usuario=perfil_usuario, categorias=categorias, productos=productos)
+    stock = ver_stock()
+    if request.method == 'POST':
+        nombre = request.form.get('nombre')
+        stock_nuevo = request.form.get('stock_nuevo')
+        modificar_stock(stock_nuevo, nombre)
+        return redirect(url_for('administrar_pagina'))
+       
+    return render_template("administrar-pagina.html", stock=stock, verpedidos=verpedidos, perfil_usuario=perfil_usuario, categorias=categorias, productos=productos)
+
+
 
 @app.route('/administrar-pagina/pedidos', methods=['GET','POST'])
 def administrar_pedidos():

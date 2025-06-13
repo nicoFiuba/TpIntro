@@ -51,13 +51,25 @@ endblock %} {% block content %}
                         <tr>
                             <th class="px-4 py-2">Producto</th>
                             <th class="px-4 py-2">Cantidad</th>
+                            <th class="px-4 py-2">Cambiar stock</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for producto in productos %}
+                        {% for dato in stock %}
                         <tr>
-                            <td class="px-4 py-2">{{ producto.nombre }}</td>
-                            <td class="px-4 py-2">{{ producto.stock }}</td>
+                            <td class="px-4 py-2">{{ dato.nombre }}</td>
+                            <td class="px-4 py-2">{{ dato.stock }}</td>
+                            <td class="px-4 py-2">
+                                <form method="post" action="{{ url_for('administrar_pagina') }} "
+                                    class = "flex items-center gap-2" >
+                                    <input type="hidden" name="nombre" value="{{ dato.nombre }}">
+                                    <input type="int" name="stock_nuevo" min="0" required
+                                        class="w-16 rounded border border-gray-300 px-3 py-1">
+                                    <button type="submit"
+                                        class="rounded bg-primary-color px-2 py-1 text-white hover:bg-primary-hover transition-all-300">
+                                        Modificar
+                                    </button>
+                                </form>
                         </tr>
                         {% endfor %}
                     </tbody>
