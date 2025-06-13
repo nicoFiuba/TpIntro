@@ -58,9 +58,22 @@ def invocar_perfil_usuario():
         print(f"Error al invocar el servicio de perfil de usuario: {e}")
         return {}
 
+
 def invocar_pedidos():
     try:
         resp = requests.get('http://localhost:5000/pedidos')
+        if resp.status_code == 200:
+            return resp.json()
+        else:
+            return []
+    except requests.exceptions.RequestException as e:
+        print(f"Error al invocar pedidos {e}")
+        return []
+
+
+def invocar_detalles_pedidos():
+    try:
+        resp = requests.get('http://localhost:5000/pedidos/detalles')
         if resp.status_code == 200:
             return resp.json()
         else:
@@ -265,11 +278,11 @@ def administrar_pedidos():
     perfil_usuario = invocar_perfil_usuario()
     productos = invocar_productos()
     if request.method == 'POST':
-        id = request.form['id_pedido']
+        id = request.form['pedido_id']
         verpedidosid = invocar_pedidos_por_id(id)
-        return render_template('pedidos.html', datos=verpedidosid, perfil_usuario=perfil_usuario, categorias=categorias, productos=productos)
+        return render_template('pedidos.html',datos=verpedidos, datosid=verpedidosid, perfil_usuario=perfil_usuario, categorias=categorias, productos=productos, id=id, modal=True)
     else:
-        return render_template('pedidos.html', datos=verpedidos, perfil_usuario=perfil_usuario, categorias=categorias, productos=productos)
+        return render_template('pedidos.html', datos=verpedidos, perfil_usuario=perfil_usuario, categorias=categorias, productos=productos, modal=False)
 
 @app.route('/buscar')
 def buscar_productos():
