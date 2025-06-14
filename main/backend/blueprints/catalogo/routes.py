@@ -1,4 +1,6 @@
-from flask import request, jsonify
+from flask import request, jsonify, send_file
+import io
+import base64
 from . import productos_bp
 import unicodedata
 from . queries import (
@@ -75,4 +77,20 @@ def buscar_productos():
     ]
     print("RESULTADOS:", resultados)
     return jsonify(resultados)
+
+@productos_bp.route('/api/productos/<int:producto_id>/imagen', methods=['GET'])
+def obtener_imagen(producto_id):
+    producto = obtener_producto_por_id(producto_id)
+    if producto and producto['imagen']:
+        try:
+            imagen_binaria = base64.b64decode(producto['imagen'])
+            return send_file(
+                io.BytesIO(imagen_binaria),
+                mimetype='image/jpeg',
+                as_attachment=False
+            )
+        except Exception as e:
+            return jsonify({'error': 'Error al decodificar la imagen', 'detalle': str(e)}), 500
+    return jsonify({'error': 'Imagen no encontrada'}), 404
+
 

@@ -1,12 +1,13 @@
-from flask import Flask, render_template, request, redirect, url_for, flash,  session, jsonify
+from flask import Flask, render_template, request, redirect, url_for, flash,  session, jsonify, Response, abort
 import requests
 import base64
 
 from urllib.parse import quote
 
-
 app = Flask(__name__)
 app.secret_key = 'clave'
+
+BACKEND_URL = 'http://localhost:5000'
 
 @app.context_processor
 def inject_user():
@@ -356,7 +357,6 @@ def eliminar_producto(product_id):
         flash('Error al eliminar el producto', 'danger')
     return redirect(url_for('administrar_pagina'))
 
-
 @app.route('/agregar-producto', methods=['GET', 'POST'])
 def agregar_producto():
     if request.method == 'POST':
@@ -397,6 +397,18 @@ def agregar_producto():
             flash('Error al agregar el producto', 'danger')
         print(resp.status_code, resp.text)
     return redirect(url_for('shop_mixed'))
+
+@app.route('/productos/<int:producto_id>/imagen')
+def obtener_imagen_producto(producto_id):
+    try:
+        resp = requests.get(f'{BACKEND_URL}/catalogo/api/productos/{producto_id}/imagen')
+        if resp.status_code == 200:
+            return Response(resp.content, content_type=resp.headers.get('Content-Type', 'image/jpeg'))
+        else:
+            abort(404)
+    except requests.exceptions.RequestException as e:
+        print("Error de conexion", e)
+        abort(500)
     
 @app.route('/ingresar', methods=['POST'])
 def ingresar():

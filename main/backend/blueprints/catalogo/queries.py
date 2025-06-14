@@ -6,6 +6,9 @@ def obtener_todos_los_productos():
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM productos")
     resultado = cursor.fetchall()
+    for producto in resultado:
+        if producto['imagen']:
+            producto['imagen'] = base64.b64encode(producto['imagen']).decode('utf-8')    
     cursor.close()
     conn.close()
     return resultado
@@ -15,6 +18,8 @@ def obtener_producto_por_id(producto_id):
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM productos WHERE id = %s", (producto_id,))
     producto = cursor.fetchone()
+    if producto and producto['imagen']:
+        producto['imagen'] = base64.b64encode(producto['imagen']).decode('utf-8')
     cursor.close()
     conn.close()
     return producto

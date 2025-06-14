@@ -66,7 +66,7 @@
             class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
             <div class="h-[190px] overflow-hidden rounded-lg">
               <a href="{{ url_for('product_details', product_id=producto.id) }}">
-                <img class="card-object-fit h-full w-full" src="images/productos/{{ producto.nombre }}"
+                <img class="card-object-fit h-full w-full" src="http://localhost:5000/catalogo/api/productos/{{ producto.id }}/imagen"
                   alt="{{ producto.nombre }}" />
               </a>
             </div>

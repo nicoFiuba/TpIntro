@@ -158,7 +158,7 @@
                             href="{{ url_for('product_details', product_id=producto.id) }}">
                             <div class="categorie-img h-[150px] w-[150px]">
                               <img class="img-product group-2-hover-img"
-                                src="{{ url_for('static', filename='images/product/' ~ producto.nombre ~ '.jpg') }}"
+                                src="{{ url_for('obtener_imagen_producto', producto_id=producto.id) }}"
                                 alt="{{ producto.nombre }}" />
                             </div>
                             <span class="group-2-hover-font block text-center">{{ producto.nombre }}</span>
