@@ -46,4 +46,12 @@ def email_exists(email):
     conn.close()
     return result is not None
 
+def get_user_by_username_and_email(username, email):
+    with get_connection() as conn:
+        with conn.cursor() as cursor:
+            cursor.execute("""
+                SELECT * FROM Usuario WHERE username = %s AND email = %s
+            """, (username, email))
+            return cursor.fetchone()
+
        
