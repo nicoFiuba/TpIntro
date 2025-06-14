@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash,  session, jsonify
 import requests
+import base64
 
 from urllib.parse import quote
 
@@ -364,20 +365,29 @@ def agregar_producto():
         precio = request.form['precio']
         categoria = request.form['categoria']
         stock = request.form.get('stock')
+        imagen = request.files.get('imagen')
+
         if not nombre or not descripcion or not precio or not categoria:
             flash('Todos los campos son obligatorios', 'danger')
             return redirect(url_for('administrar_pagina'))
 
-        try:
-            data = {
+        imagen_base64 = None
+        if imagen and imagen.filename != '':
+            imagen_binaria = imagen.read()
+            imagen_base64 = base64.b64encode(imagen_binaria).decode('utf-8')
+        
+        data = {
                 'nombre': nombre,
                 'descripcion': descripcion,
                 'precio': precio,
                 'stock': stock,
-                'categoria': categoria
-                
+                'categoria': categoria,
+                'imagen': imagen_base64
             }
+        
+        try:    
             resp = requests.post('http://localhost:5000/catalogo/api/productos', json=data)
+
             if resp.status_code == 201:
                 flash('Producto agregado exitosamente', 'success')
             else:
@@ -391,11 +401,13 @@ def agregar_producto():
 @app.route('/ingresar', methods=['POST'])
 def ingresar():
     username = request.form.get('username')
+    email = request.form.get('email')
     password = request.form.get('password')
 
     try:
         data = {
             'username': username,
+            'email': email,
             'password': password
         }
 

@@ -140,7 +140,7 @@
       <i class="bi bi-x-lg text-xl"></i>
     </button>
     <h2 class="mb-4 text-2xl font-bold text-primary-color">Agregar Producto</h2>
-    <form method="post" action="{{ url_for('agregar_producto') }}">
+    <form method="post" action="{{ url_for('agregar_producto') }}" enctype="multipart/form-data">
       <div class="mb-4">
         <label class="block text-sm font-semibold mb-1">Nombre</label>
         <input class="input w-full" type="text" name="nombre" required />
@@ -164,6 +164,10 @@
           <option value="{{ categoria }}">{{ categoria }}</option>
           {% endfor %}
         </select>
+      </div>
+      <div class="mb-4">
+        <label class="block text-sm font-semibold mb-1">Imagen</label>
+        <input class="input w-full" type="file" name="imagen" accept="image/*" required />
       </div>
       <button class="btn-effect w-full rounded-lg bg-primary-color p-2 font-bold uppercase text-white" type="submit">
         Agregar

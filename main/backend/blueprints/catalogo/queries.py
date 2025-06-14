@@ -1,4 +1,5 @@
 from db import get_connection
+import base64
 
 def obtener_todos_los_productos():
     conn = get_connection()
@@ -43,17 +44,21 @@ def crear_producto(datos_producto):
     cursor = conn.cursor()
     
     sql = """
-    INSERT INTO productos (nombre, descripcion, precio, stock, categoria)
-    VALUES (%s, %s, %s, %s, %s)
+    INSERT INTO productos (nombre, descripcion, precio, stock, categoria, imagen)
+    VALUES (%s, %s, %s, %s, %s, %s)
     """
+
+    imagen_base64 = datos_producto.get('imagen')
+    imagen_binaria = base64.b64decode(imagen_base64) if imagen_base64 else None
 
     valores = (
         datos_producto.get('nombre'),
         datos_producto.get('descripcion'),
         datos_producto.get('precio'),
         datos_producto.get('stock'),
-        datos_producto.get('categoria')
-    )
+        datos_producto.get('categoria'),
+        imagen_binaria
+        )
 
     cursor.execute(sql, valores)
     conn.commit()
