@@ -43,10 +43,10 @@ def login():
     session['user_id'] = user['id']
     session['is_admin'] = user['role'] == 'admin'
 
-    if not request.is_json:
-        return redirect('http://localhost:8080/my-account')
-
-    return jsonify({'message': 'Inicio de sesión exitoso', 'user_id': user['id']}), 200
+    return jsonify({'message': 'Inicio de sesión exitoso',
+                    'user_id': user['id'],
+                    'username': user['username'],
+                    'role': user['role']}), 200
 
 @usuarios_bp.route('/auth/logout', methods=['POST'])
 def logout():

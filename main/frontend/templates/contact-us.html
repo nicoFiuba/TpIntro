@@ -410,31 +410,34 @@
           <div class="tabs-content border border-t-transparent">
             <div class="tab-content invisible absolute w-full p-5 opacity-0">
               <div class="my-5">
-                <img class="mx-auto" src="images/svg/logo.svg" alt="Besnik." />
+                <img class="mx-auto" src="static/images/svg/logo.svg" alt="Besnik." />
               </div>
-              <form action="#">
+              <form method="post" action="/ingresar">
                 <div class="flex flex-col gap-4">
                   <div class="relative flex h-[40px] items-center">
                     <i class="bi bi-person absolute ml-2 flex text-[24px] text-gray-400"></i>
-                    <input class="input pl-10" type="text" placeholder="Username or Email" required />
+                    <input class="input pl-10" type="text" name="username" placeholder="Username or Email" required />
                   </div>
                   <div class="relative flex h-[40px] items-center">
                     <i class="bi bi-lock absolute ml-2 flex text-[24px] text-gray-400"></i>
-                    <input class="input pl-10" type="password" placeholder="Password" required />
+                   <input class="input pl-10" type="password" name="password" placeholder="Password" required />
+                  </div>
+                  <div class="relative flex h-[40px] items-center">
+                   <i class="bi bi-lock absolute ml-2 flex text-[24px] text-gray-400"></i>
+                   <input class="input pl-10" type="email" name="email" placeholder="Email" required />
                   </div>
                   <button class="btn-effect transition-all-300 h-full w-full rounded-lg bg-primary-color p-2"
-                    type="submit">
-                    <span class="font-bold uppercase text-white">Login</span>
+                   type="submit">
+                   <span class="font-bold uppercase text-white">Login</span>
                   </button>
                 </div>
                 <div class="my-2 flex flex-wrap items-center justify-between gap-2">
-                  <label class="flex select-none items-center gap-2">
-                    <input class="checkbox" type="checkbox" />
-                    <span class="text-gray-title">Remember</span>
-                  </label>
-                  <a class="underlined-animated text-[#3091ff] after:bottom-0" href="#">Forgot Password?</a>
+                 <label class="flex select-none items-center gap-2">
+                   <input class="checkbox" type="checkbox" />
+                   <span class="text-gray-title">Remember</span>
+                 </label>
                 </div>
-              </form>
+             </form>
               <span class="or text-gray-title flex h-[50px] items-center py-2">
                 <span class="mx-2 text-sm uppercase">Or</span>
               </span>

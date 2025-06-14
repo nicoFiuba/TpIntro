@@ -139,6 +139,12 @@ def poner_mail():
 def poner_mail():
     return dict(NUMERO= "+54 11 60217938")
 
+@app.context_processor
+def inject_auth_status():
+    return {'logged_in': session.get('logged_in', False),
+             'user': session.get('user')
+            }
+
 @app.route('/')
 def index():
     productos = invocar_productos()
@@ -146,7 +152,7 @@ def index():
     perfil_usuario = invocar_perfil_usuario()
     return render_template("index.html", categorias=categorias, productos=productos, perfil_usuario=perfil_usuario)
 
-@app.route('/shop-mixed')
+@app.route('/shop_mixed')
 def shop_mixed():
     categoria = request.args.get('categoria', '')
     stock_disponible = request.args.get('stock_disponible')
@@ -158,7 +164,7 @@ def shop_mixed():
     categorias = invocar_categorias()
     perfil_usuario = invocar_perfil_usuario()
     return render_template(
-        "shop-mixed.html",
+        "shop_mixed.html",
         productos=productos,
         categorias=categorias,
         categoria=categoria,
@@ -241,12 +247,12 @@ def product_details(product_id):
         productos=productos
     )
 
-@app.route('/my-account')
+@app.route('/my_account')
 def my_account():
     perfil_usuario = invocar_perfil_usuario()
     categorias = invocar_categorias()
     productos = invocar_productos()
-    return render_template("my-account.html", categorias=categorias, perfil_usuario=perfil_usuario, productos=productos)
+    return render_template("my_account.html", categorias=categorias, perfil_usuario=perfil_usuario, productos=productos)
 
 @app.route('/purchase-completed')
 def purchase_completed():
@@ -360,15 +366,24 @@ def ingresar():
         resp = requests.post('http://localhost:5000/usuarios/auth/login', data=data)
 
         if resp.status_code == 200:
+            user_data = resp.json()
             session['logged_in'] = True
-            session['username'] = username
+            session['username'] = user_data.get('username')
+            session['user'] = {
+                'id': user_data.get('user_id'),
+                'role': user_data.get('role'),
+                'username' : user_data.get('username')
+            }
             flash('Inicio de sesión exitoso', 'success')
-            return redirect(url_for('my_account'))
+            print(session)
+            return(redirect(url_for('my_account')))
         else:
-            flash('Error al iniciar sesión: ' + resp.json().get('message', 'Error'), 'danger')      
+            flash('Error al iniciar sesión: ' + resp.json().get('message', 'Error'), 'danger')
+            print(session)      
             return redirect(url_for('index'))
     except requests.exceptions.RequestException as e:
         flash('No se pudo conectar al servicio de autenticación', 'danger')
+        print(session)
         return redirect(url_for('index'))
 
 @app.route('/registro', methods=['POST'])
@@ -408,5 +423,6 @@ def auth_status():
 @app.context_processor
 def inject_auth_status():
     return dict(logged_in=session.get('logged_in', False))
+
 if __name__ == '__main__':
     app.run(host="localhost", port=8080, debug=True)
