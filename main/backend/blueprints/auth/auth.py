@@ -36,4 +36,14 @@ def get_user_by_username(username):
         with conn.cursor() as cursor:
             cursor.execute("SELECT * FROM Usuario WHERE username = %s", (username,))
             return cursor.fetchone()
+        
+def email_exists(email):
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT id FROM usuarios WHERE email = %s", (email,))
+    result = cursor.fetchone()
+    cursor.close()
+    conn.close()
+    return result is not None
+
        

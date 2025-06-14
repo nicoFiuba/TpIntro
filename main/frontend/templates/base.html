@@ -375,6 +375,9 @@
                     <input class="input pl-10" type="password" placeholder="Confirm Password" name="confirm_password"
                       required />
                   </div>
+                  {% if signup_error %}
+                    <div class="mi-alerta">{{ signup_error }}</div>
+                  {% endif %}
                   <button class="btn-effect transition-all-300 h-full w-full rounded-lg bg-primary-color p-2"
                     type="submit">
                     <span class="font-bold uppercase text-white">Sign Up</span>
@@ -454,13 +457,23 @@
   {% if open_login_modal %}
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      // Simular el click del botón de login para abrir el modal correctamente
       const loginButton = document.querySelector('.btn-open-modal[data-tab="0"]');
       if (loginButton) {
         loginButton.click();
       }
     });
   </script>
+  {% endif %}
+
+  {% if open_register_modal %}
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const registerButton = document.querySelector('.btn-open-modal[data-tab="1"]');
+        if (registerButton) {
+          registerButton.click();
+        }
+      });
+    </script>
   {% endif %}
 </body>
 

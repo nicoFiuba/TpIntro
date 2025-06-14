@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify, session, redirect
 from functools import wraps
 
-from blueprints.auth.auth import user_exists, create_user, verify_user, get_user_by_username, check_password_hash
+from blueprints.auth.auth import user_exists, create_user, verify_user, get_user_by_username, check_password_hash, email_exists
 from blueprints.admin.admin import admin_required
 from blueprints.user.user import login_required, get_user_by_id
 
@@ -14,12 +14,13 @@ def register():
     password = data.get('password')
     email = data.get('email')
 
-
-    if not username or not password:
-        return jsonify({'message': 'Faltan datos'}), 400
+    if not username or not password or not email:
+        return jsonify({'success': False, 'message': 'Faltan datos'}), 400
     if user_exists(username):
-        return jsonify({'message': 'Usuario ya existe'}), 400
-    
+        return jsonify({'success': False, 'message': 'Usuario ya registrado'}), 400
+    if email_exists(email):
+        return jsonify({'Success': False, 'message': 'Email ya registrdo'}), 400
+
     create_user(username, password, email)
     return jsonify({'message': 'Usuario creado exitosamente'}), 201
 

@@ -438,8 +438,8 @@ def registro():
         flash('Registro exitoso')
         return redirect(url_for('index'))
     else:
-        flash('Error al registrar: ' + resp.json().get('message', ''))
-        return redirect(url_for('index'))
+        error_msg = resp.json().get('message', 'Error al registrar usuario')
+        return render_template('index.html', signup_error=error_msg, open_register_modal=True)
 
 @app.route('/logout')
 def logout():
