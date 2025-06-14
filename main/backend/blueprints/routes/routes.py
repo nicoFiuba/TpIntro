@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify, session, redirect
 from functools import wraps
 
-from blueprints.auth.auth import user_exists, create_user, verify_user
+from blueprints.auth.auth import user_exists, create_user, verify_user, get_user_by_username, check_password_hash
 from blueprints.admin.admin import admin_required
 from blueprints.user.user import login_required, get_user_by_id
 
@@ -36,9 +36,12 @@ def login():
     if not username or not password:
         return jsonify({'message': 'Faltan datos'}), 400
     
-    user = verify_user(username, password)
+    user = get_user_by_username(username)
     if not user:
-        return jsonify({'message': 'Credenciales incorrectas'}), 401
+        return jsonify({'message': 'Usuario no registrado'}), 404
+    
+    if not check_password_hash(user["password_"], password):
+        return jsonify({'message': 'Contraseña o mail incorrecto'}), 401
     
     session['user_id'] = user['id']
     session['is_admin'] = user['role'] == 'admin'

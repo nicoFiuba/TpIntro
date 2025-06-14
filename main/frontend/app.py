@@ -7,6 +7,10 @@ from urllib.parse import quote
 app = Flask(__name__)
 app.secret_key = 'clave'
 
+@app.context_processor
+def inject_user():
+    return {'perfil_usuario': session.get('user')}
+
 def invocar_categorias():
     try:
         resp = requests.get('http://localhost:5000/catalogo/api/productos/categorias')
@@ -410,13 +414,11 @@ def ingresar():
             print(session)
             return(redirect(url_for('my_account')))
         else:
-            flash('Error al iniciar sesión: ' + resp.json().get('message', 'Error'), 'danger')
-            print(session)      
-            return redirect(url_for('index'))
+            error_msg = 'Usuario, email, o contraseña incorrecta. Intente de nuevo.'
+            return render_template('index.html', login_error=error_msg, open_login_modal=True)
     except requests.exceptions.RequestException as e:
-        flash('No se pudo conectar al servicio de autenticación', 'danger')
-        print(session)
-        return redirect(url_for('index'))
+        error_msg = 'No se pudo conectar al servicio de autenticación'
+        return render_template('index.html', login_error=error_msg, open_login_modal=True)
 
 @app.route('/registro', methods=['POST'])
 def registro():    

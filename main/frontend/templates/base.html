@@ -318,6 +318,9 @@
                     <i class="bi bi-lock absolute ml-2 flex text-[24px] text-gray-400"></i>
                     <input class="input pl-10" type="email" name="email" placeholder="Email" required />
                   </div>
+                  {% if login_error %}
+                    <div class="mi-alerta">{{ login_error }}</div>
+                  {% endif %}
                   <button class="btn-effect transition-all-300 h-full w-full rounded-lg bg-primary-color p-2"
                     type="submit">
                     <span class="font-bold uppercase text-white">Login</span>
@@ -448,6 +451,17 @@
       if (loader) loader.style.display = 'none';
     });
   </script>
+  {% if open_login_modal %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Simular el click del botón de login para abrir el modal correctamente
+      const loginButton = document.querySelector('.btn-open-modal[data-tab="0"]');
+      if (loginButton) {
+        loginButton.click();
+      }
+    });
+  </script>
+  {% endif %}
 </body>
 
 </html>

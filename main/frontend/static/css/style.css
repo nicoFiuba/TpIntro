@@ -3986,3 +3986,11 @@ input::-webkit-inner-spin-button {
     gap: 1.25rem;
   }
 }
+
+.mi-alerta {
+  background-color: #ffe5e5; /* rojo pastel suave */
+  color: #a94442;            /* rojo oscuro/anaranjado */
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}

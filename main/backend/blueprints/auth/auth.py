@@ -30,3 +30,10 @@ def verify_user(username, password):
             if user and check_password_hash(user["password_"], password):
                 return user
             return None
+        
+def get_user_by_username(username):
+    with get_connection() as conn:
+        with conn.cursor() as cursor:
+            cursor.execute("SELECT * FROM Usuario WHERE username = %s", (username,))
+            return cursor.fetchone()
+       
