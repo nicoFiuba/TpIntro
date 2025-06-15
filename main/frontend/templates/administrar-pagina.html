@@ -1,5 +1,8 @@
 {% extends "base.html" %} {% block title %}Ludoteca - Administrar pagina{%
 endblock %} {% block content %}
+
+{% if perfil_usuario.role == "admin" %}
+
 <div class="flex min-h-[70vh] items-center justify-center bg-body">
     <div class="rounded-xl bg-white shadow-xl p-10 flex flex-col items-center gap-8 w-full max-w-md">
         <h1 class="text-3xl font-bold text-primary-color mb-4 text-center">
@@ -121,5 +124,26 @@ endblock %} {% block content %}
         </div>
     </div>
 </div>
+
+{% else %}
+<div class="flex items-center justify-center bg-body">
+    <div class="rounded-xl bg-white shadow-xl p-10 flex flex-col items-center gap-8 w-full max-w-md">
+        <h1 class="text-3xl font-bold text-black mb-4 text-center">
+            Acceso denegado
+        </h1>
+        <p>
+            Pagina visible exclusivamente para administradores.
+        </p>
+        <div class="container mx-auto px-2 sm:px-8">
+      <div style="text-align: center; margin-top: 30px;">
+      <a class="btn-effect rounded-lg bg-primary-color p-2 font-bold uppercase text-white" href="{{ url_for('index') }}">
+        <span>Volver al inicio</span>
+      </a>
+      </div>
+  </div>
+    </div>
+</div>
+
+{% endif %}
 
 {% endblock %}
