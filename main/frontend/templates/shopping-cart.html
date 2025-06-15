@@ -30,9 +30,9 @@
 
  <div class="shopping-cart-page container mx-auto my-5 px-2 sm:px-8">
   {% if carrito_detallado %}
-    <table class="w-full text-left">
+    <table class="w-full text-left border-collapse">
       <thead>
-        <tr>
+        <tr class="bg-gray-200 text-gray-700">
           <th>Producto</th>
           <th>Precio</th>
           <th>Cantidad</th>
@@ -42,43 +42,47 @@
       </thead>
       <tbody>
         {% for producto in carrito_detallado %}
-        <tr>
-          <td>{{ producto.nombre }}</td>
-          <td>${{ producto.precio }}</td>
-          <td>
-            <form method="post" action="{{ url_for('update_cart', producto_id=producto.id) }}" style="display:inline;">
-  <div style="display:flex; align-items:center; gap:8px;">
-    <input
-  type="number"
-  name="cantidad"
-  value="{{ producto.cantidad }}"
-  min="1"
-  max="{{ producto.stock }}"
-  style="width:60px; border-radius:8px; border:1px solid #0E506C; padding:4px 8px; background:#f9fafb; text-align:center;"
->
-    <button type="submit" style="border-radius:8px; border:1px solid #0E506C; padding:4px 12px; background:#f3f3f3; cursor:pointer;">
-      Actualizar
-    </button>
-  </div>
-</form>
+        <tr class="bg-gray-100 hover:bg-gray-200 transition-all border-b border-gray-300">
+          <td class="p-4 rounded-l-md">{{ producto.nombre }}</td>
+          <td class="p-4">${{ "%.2f"|format(producto.precio | float) }}</td>
+          <td class="p-4">
+            <form method="post" action="{{ url_for('update_cart', producto_id=producto.id) }}" class="flex items-center gap-2">
+              <input
+                type="number"
+                name="cantidad"
+                value="{{ producto.cantidad }}"
+                min="1"
+                max="{{ producto.stock }}"
+                class="w-[60px] rounded-md border border-primary-color bg-gray-50 px-2 py-1 text-center"
+              >
+              <button
+                type="submit"
+                class="rounded-md border border-primary-color bg-gray-100 px-3 py-1 text-sm hover:bg-primary-color hover:text-white transition-all"
+              >
+                Actualizar
+              </button>
+            </form>
           </td>
-          <td>${{ producto.precio * producto.cantidad }}</td>
-          <td>
-            <form method="post" action="{{ url_for('remove_from_cart', producto_id=producto.id) }}" style="display:inline;">
-  <button type="submit" style="border-radius:8px; border:1px solid #dc2626; padding:4px 12px; background:#fee2e2; color:#dc2626; cursor:pointer;">
-    Eliminar
-  </button>
-</form>
+          <td class="p-4 font-semibold">${{ "%.2f"|format(producto.precio | float * producto.cantidad | int) }}</td>
+          <td class="p-4 rounded-r-md">
+            <form method="post" action="{{ url_for('remove_from_cart', producto_id=producto.id) }}">
+              <button
+                type="submit"
+                class="rounded-md border border-red-600 bg-red-100 px-3 py-1 text-sm text-red-600 hover:bg-red-600 hover:text-white transition-all"
+              >
+                Eliminar
+              </button>
+            </form>
           </td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
     <form method="post" action="{{ url_for('clear_cart') }}">
-    <button type="submit">Vaciar carrito</button>
-</form>
+     <button type="submit">Vaciar carrito</button>
+    </form>
     <div class="text-right font-bold mt-4">
-      Total: ${{ total }}
+      Total: ${{ "%.2f"|format(total) }}
     </div>
   {% else %}
     <div class="shopping-cart-empty flex flex-col items-center justify-center gap-4 p-5">
