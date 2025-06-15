@@ -45,12 +45,12 @@
         {% for producto in carrito_detallado %}
         <tr class="bg-gray-100 hover:bg-gray-200 transition-all border-b border-gray-300">
           <td class="p-4">
-  <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border">
-    <img class="h-full w-full object-cover" 
-         src="{{ url_for('static', filename='images/product/' + producto.imagen) if producto.imagen else url_for('static', filename='images/product/default.jpg') }}" 
-         alt="{{ producto.nombre }}" />
-  </div>
-</td>
+            <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border">
+              <img class="h-full w-full object-cover" 
+                src="http://localhost:5000/catalogo/api/productos/{{ producto.id }}/imagen" 
+                alt="{{ producto.nombre }}" />
+            </div>
+          </td>
 
           <td class="p-4 rounded-l-md">{{ producto.nombre }}</td>
           <td class="p-4">${{ "%.2f"|format(producto.precio | float) }}</td>
