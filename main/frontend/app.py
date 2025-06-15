@@ -298,11 +298,18 @@ def purchase_completed():
     productos = invocar_productos()
     return render_template("purchase-completed.html", categorias=categorias, perfil_usuario=perfil_usuario, productos=productos)
 
-@app.route('/contact-us')
+@app.route('/contact-us', methods=['GET', 'POST'])
 def contact_us():
     perfil_usuario = invocar_perfil_usuario()
     categorias = invocar_categorias()
     productos = invocar_productos()
+    if request.method == 'POST':
+        nombre = request.form.get('nombre')
+        email = request.form.get('email')
+        mensaje = request.form.get('mensaje')
+        # Aquí puedes guardar el mensaje, enviarlo por email, etc.
+        flash('¡Mensaje enviado correctamente!', 'success')
+        return redirect(url_for('contact_us'))
     return render_template("contact-us.html", categorias=categorias, perfil_usuario=perfil_usuario, productos=productos)
 
 @app.route('/administrar-pagina', methods=['GET', 'POST'])
