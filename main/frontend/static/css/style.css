@@ -3014,6 +3014,43 @@ input::-webkit-inner-spin-button {
   z-index: 4;
 }
 
+.btn-add-product {
+  position: relative;
+  color: white;
+  font-weight: bold;
+  font-size: 1.125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  min-height: 200px;
+  padding: 0 1rem;
+  background-color: #0E506C; /* Azul oscuro fijo para test */
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.btn-add-product::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(255, 255, 255, 0.1); /* menos blanco */
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: inherit;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.btn-add-product:hover::before {
+  opacity: 0.5;
+}
+
+.btn-add-product > span {
+  position: relative;
+  z-index: 2;
+}
+
 /* ----> Heart Animation Wishlist <---- */
 
 .heartscale {
