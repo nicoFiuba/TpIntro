@@ -37,18 +37,20 @@
           </div>
         </div>
         <div class="col-span-4 self-center justify-self-end">
-
         </div>
       </div>
     </div>
     <div class="bg-secondary-color">
       <div class="container mx-auto grid h-full grid-cols-4 gap-1 px-2 py-5 sm:px-8 lg:grid-cols-12 lg:gap-0"
         style="background-color: #fff; color: #0E506C;">
-        <div class="order-1 col-span-2 self-center lg:order-1 lg:col-span-3">
+        <div class="order-1 col-span-2 self-center lg:order-1 lg:col-span-3 flex items-center gap-3">
           <a href="{{url_for('index')}}">
             <img class="inline h-16 w-auto" src="{{url_for('static', filename='images/svg/logo.svg')}}"
               alt="{{ BRAND_NAME }}" />
           </a>
+          {% if session.get('logged_in') %}
+            Bienvenido, <span class="text-accent-color">{{ session.get('username') }}</span>
+          {% endif %}
         </div>
         <div
           class="header-search transition-all-300 order-3 col-span-4 mt-[10px] hidden self-center lg:order-2 lg:col-span-6 lg:mt-0 lg:block">
@@ -76,7 +78,7 @@
           </div>
           <div class="group-items hidden items-center gap-5 text-white lg:flex">
             <div class="relative">
-              <a class="btn-open-modal" data-target=".shopping-cart-modal" href="javascript:void(0)">
+              <a class="btn-open-modal" href="{{ url_for('shopping_cart') }}">
                 <i class="bi bi-cart2 pointer-events-none flex text-[35px] text-white" style="color:#0E506C;"></i>
               </a>
               <span class="badge absolute top-0 right-[-6px] h-[15px] min-w-[15px] px-[2px]">{{ cart_count }}</span>
@@ -304,6 +306,17 @@
                 <img class="mx-auto" src="{{url_for('static', filename='images/svg/logo.svg')}}"
                   alt="{{ BRAND_NAME }}" />
               </div>
+              {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                  {% for category, message in messages %}
+                    {% if category == 'success' %}
+                      <div class="mi-alerta-exito mb-2 text-center">{{ message }}</div>
+                    {% elif category == 'error' %}
+                      <div class="mi-alerta mb-2 text-center">{{ message }}</div>
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              {% endwith %}
               <form method="post" action="/ingresar">
                 <div class="flex flex-col gap-4">
                   <div class="relative flex h-[40px] items-center">
@@ -475,6 +488,19 @@
       });
     </script>
   {% endif %}
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const loginButton = document.querySelector('.btn-open-modal[data-tab="0"]');
+          if (loginButton) {
+            loginButton.click();
+          }
+        });
+      </script>
+    {% endif %}
+  {% endwith %}  
 </body>
 
 </html>

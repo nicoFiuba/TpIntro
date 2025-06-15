@@ -175,6 +175,13 @@ def inject_auth_status():
              'user': session.get('user')
             }
 
+@app.context_processor
+def inject_auth_status():
+    return dict(
+        logged_in=session.get('logged_in', False),
+        username=session.get('username')
+    )
+
 @app.route('/')
 def index():
     productos = invocar_productos()
@@ -410,39 +417,43 @@ def obtener_imagen_producto(producto_id):
         print("Error de conexion", e)
         abort(500)
     
-@app.route('/ingresar', methods=['POST'])
+@app.route('/ingresar', methods=['POST', 'GET'])
 def ingresar():
-    username = request.form.get('username')
-    email = request.form.get('email')
-    password = request.form.get('password')
+    desde_registro = request.args.get('desde_registro', False)
 
-    try:
-        data = {
-            'username': username,
-            'email': email,
-            'password': password
-        }
+    if request.method == 'POST':
+        username = request.form.get('username')
+        email = request.form.get('email')
+        password = request.form.get('password')
 
-        resp = requests.post('http://localhost:5000/usuarios/auth/login', data=data)
-
-        if resp.status_code == 200:
-            user_data = resp.json()
-            session['logged_in'] = True
-            session['username'] = user_data.get('username')
-            session['user'] = {
-                'id': user_data.get('user_id'),
-                'role': user_data.get('role'),
-                'username' : user_data.get('username')
+        try:
+            data = {
+                'username': username,
+                'email': email,
+                'password': password
             }
-            flash('Inicio de sesión exitoso', 'success')
-            print(session)
-            return(redirect(url_for('my_account')))
-        else:
-            error_msg = 'Usuario, email, o contraseña incorrecta. Intente de nuevo.'
+
+            resp = requests.post('http://localhost:5000/usuarios/auth/login', data=data)
+
+            if resp.status_code == 200:
+                user_data = resp.json()
+                session['logged_in'] = True
+                session['username'] = user_data.get('username')
+                session['user_id'] = user_data.get('user_id')
+                session['user'] = {
+                    'id': user_data.get('user_id'),
+                    'role': user_data.get('role'),
+                    'username' : user_data.get('username')
+                }
+                flash('Inicio de sesión exitoso', 'success')
+                return(redirect(url_for('my_account')))
+            else:
+                error_msg = 'Usuario, email, o contraseña incorrecta. Intente de nuevo.'
+                return render_template('index.html', login_error=error_msg, open_login_modal=True)
+        except requests.exceptions.RequestException as e:
+            error_msg = 'No se pudo conectar al servicio de autenticación'
             return render_template('index.html', login_error=error_msg, open_login_modal=True)
-    except requests.exceptions.RequestException as e:
-        error_msg = 'No se pudo conectar al servicio de autenticación'
-        return render_template('index.html', login_error=error_msg, open_login_modal=True)
+    return render_template('index.html', open_login_modal=bool(desde_registro))
 
 @app.route('/registro', methods=['POST'])
 def registro():    
@@ -459,8 +470,8 @@ def registro():
     resp = requests.post('http://localhost:5000/usuarios/auth/register', json=data)
 
     if resp.status_code == 201:
-        flash('Registro exitoso')
-        return redirect(url_for('index'))
+        flash('Usuario registrado exitosamente', 'success')
+        return redirect(url_for('ingresar', desde_registro=True))
     else:
         error_msg = resp.json().get('message', 'Error al registrar usuario')
         return render_template('index.html', signup_error=error_msg, open_register_modal=True)
@@ -477,10 +488,6 @@ def auth_status():
         return jsonify({"logged_in" : True, "username" : session.get("username")})
     else:
         return jsonify({"logged_in" : False})
-    
-@app.context_processor
-def inject_auth_status():
-    return dict(logged_in=session.get('logged_in', False))
 
 if __name__ == '__main__':
     app.run(host="localhost", port=8080, debug=True)

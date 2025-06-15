@@ -3994,3 +3994,13 @@ input::-webkit-inner-spin-button {
   border-radius: 4px;
   font-size: 0.9rem;
 }
+
+.mi-alerta-exito {
+  background-color: #e6ffed; /* verde pastel suave */
+  color: #2e7d32;            /* verde más oscuro */
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  border: 1px solid #b2dfdb;
+  margin-bottom: 10px;
+}
