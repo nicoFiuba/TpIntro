@@ -19,7 +19,7 @@ def register():
     if user_exists(username):
         return jsonify({'success': False, 'message': 'Usuario ya registrado'}), 400
     if email_exists(email):
-        return jsonify({'Success': False, 'message': 'Email ya registrdo'}), 400
+        return jsonify({'success': False, 'message': 'Email ya registrado'}), 400
 
     create_user(username, password, email)
     return jsonify({'message': 'Usuario creado exitosamente'}), 201

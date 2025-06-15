@@ -40,7 +40,7 @@ def get_user_by_username(username):
 def email_exists(email):
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT id FROM Usuarios WHERE email = %s", (email,))
+    cursor.execute("SELECT id FROM Usuario WHERE email = %s", (email,))
     result = cursor.fetchone()
     cursor.close()
     conn.close()

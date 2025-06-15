@@ -180,7 +180,7 @@
               <a href="#">
                 <img
                   class="card-object-fit h-full w-full"
-                  src="{{ url_for('static', filename=producto.imagen_url) }}"
+                  src="{{ url_for('obtener_imagen_producto', producto_id=producto.id) }}"
                 />
               </a>
             </div>
@@ -466,7 +466,7 @@
                 >
                   <img
                     class="card-object-fit h-full w-full"
-                    src="{{ url_for('static', filename=producto.imagen_url) }}"
+                    src="{{ url_for('obtener_imagen_producto', producto_id=producto.id) }}"
                     alt="{{ producto.nombre }}"
                   />
                 </a>

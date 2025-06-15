@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Ludoteca central - Contact us{% endblock %}
+{% block title %}Ludoteca central - Contactenos {% endblock %}
 
 {% block content %}
 
@@ -98,24 +98,33 @@
         <h1 class="inline-block pb-3 text-xl font-bold uppercase">
           Leave a Message
         </h1>
-        <form class="form-leave-message flex flex-col gap-5" action="javascript:void(0)">
-          <div>
-            <input class="input" type="text" placeholder="Tu nombre" required />
-          </div>
-          <div>
-            <input class="input" type="email" placeholder="Tu E-mail" required />
-          </div>
-          <div class="h-32">
-            <textarea class="input h-full resize-none" placeholder="Escribe tu mensaje acá..." required></textarea>
-          </div>
-          <div>
-            <button
-              class="btn-view-shopping-cart btn-effect transition-all-300 flex items-center justify-center rounded-lg bg-primary-color p-4"
-              type="submit">
-              <span class="font-bold uppercase text-white">Enviar mensaje</span>
-            </button>
-          </div>
-        </form>
+<form class="form-leave-message flex flex-col gap-5" method="post" action="{{ url_for('contact_us') }}">
+  <div>
+    <input class="input" type="text" name="nombre" placeholder="Tu nombre" required />
+  </div>
+  <div>
+    <input class="input" type="email" name="email" placeholder="Tu E-mail" required />
+  </div>
+  <div class="h-32">
+    <textarea class="input h-full resize-none" name="mensaje" placeholder="Escribe tu mensaje acá..." required></textarea>
+  </div>
+  <div>
+    <button
+      class="btn-view-shopping-cart btn-effect transition-all-300 flex items-center justify-center rounded-lg bg-primary-color p-4"
+      type="submit">
+      <span class="font-bold uppercase text-white">Enviar mensaje</span>
+    </button>
+  </div>
+</form>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }} mt-3">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
       </div>
     </div>
   </div>

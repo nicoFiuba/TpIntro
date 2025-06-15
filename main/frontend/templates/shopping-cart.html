@@ -30,9 +30,9 @@
 
 <div class="shopping-cart-page container mx-auto my-5 px-2 sm:px-8">
   {% if carrito_detallado %}
-    <table class="w-full text-left">
+    <table class="w-full text-left border-collapse">
       <thead>
-        <tr>
+        <tr class="bg-gray-200 text-gray-700">
           <th>Imagen</th>
           <th>Producto</th>
           <th>Precio</th>
@@ -43,37 +43,42 @@
       </thead>
       <tbody>
         {% for producto in carrito_detallado %}
-        <tr>
-          <td>
-            <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border">
-              <img class="h-full w-full object-cover" 
-                   src="{{ url_for('static', filename='images/product/' + producto.imagen) if producto.imagen else url_for('static', filename='images/product/default.jpg') }}" 
-                   alt="{{ producto.nombre }}" />
-            </div>
-          </td>
-          <td>{{ producto.nombre }}</td>
-          <td>${{ producto.precio }}</td>
-          <td>
-            <form method="post" action="{{ url_for('update_cart', producto_id=producto.id) }}" style="display:inline;">
-              <div style="display:flex; align-items:center; gap:8px;">
-                <input
-                  type="number"
-                  name="cantidad"
-                  value="{{ producto.cantidad }}"
-                  min="1"
-                  max="{{ producto.stock }}"
-                  style="width:60px; border-radius:8px; border:1px solid #0E506C; padding:4px 8px; background:#f9fafb; text-align:center;"
-                >
-                <button type="submit" style="border-radius:8px; border:1px solid #0E506C; padding:4px 12px; background:#f3f3f3; cursor:pointer;">
-                  Actualizar
-                </button>
-              </div>
+        <tr class="bg-gray-100 hover:bg-gray-200 transition-all border-b border-gray-300">
+          <td class="p-4">
+  <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border">
+    <img class="h-full w-full object-cover" 
+         src="{{ url_for('static', filename='images/product/' + producto.imagen) if producto.imagen else url_for('static', filename='images/product/default.jpg') }}" 
+         alt="{{ producto.nombre }}" />
+  </div>
+</td>
+
+          <td class="p-4 rounded-l-md">{{ producto.nombre }}</td>
+          <td class="p-4">${{ "%.2f"|format(producto.precio | float) }}</td>
+          <td class="p-4">
+            <form method="post" action="{{ url_for('update_cart', producto_id=producto.id) }}" class="flex items-center gap-2">
+              <input
+                type="number"
+                name="cantidad"
+                value="{{ producto.cantidad }}"
+                min="1"
+                max="{{ producto.stock }}"
+                class="w-[60px] rounded-md border border-primary-color bg-gray-50 px-2 py-1 text-center"
+              >
+              <button
+                type="submit"
+                class="rounded-md border border-primary-color bg-gray-100 px-3 py-1 text-sm hover:bg-primary-color hover:text-white transition-all"
+              >
+                Actualizar
+              </button>
             </form>
           </td>
-          <td>${{ producto.precio * producto.cantidad }}</td>
-          <td>
-            <form method="post" action="{{ url_for('remove_from_cart', producto_id=producto.id) }}" style="display:inline;">
-              <button type="submit" style="border-radius:8px; border:1px solid #dc2626; padding:4px 12px; background:#fee2e2; color:#dc2626; cursor:pointer;">
+          <td class="p-4 font-semibold">${{ "%.2f"|format(producto.precio | float * producto.cantidad | int) }}</td>
+          <td class="p-4 rounded-r-md">
+            <form method="post" action="{{ url_for('remove_from_cart', producto_id=producto.id) }}">
+              <button
+                type="submit"
+                class="rounded-md border border-red-600 bg-red-100 px-3 py-1 text-sm text-red-600 hover:bg-red-600 hover:text-white transition-all"
+              >
                 Eliminar
               </button>
             </form>
@@ -88,7 +93,7 @@
       </button>
     </form>
     <div class="text-right font-bold mt-4">
-      Total: ${{ total }}
+      Total: ${{ "%.2f"|format(total) }}
     </div>
     <div class="text-right mt-4">
       <!-- Opción 1: Usar purchase_completed si existe -->
