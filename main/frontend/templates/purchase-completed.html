@@ -2,7 +2,6 @@
 
 {% block title %}Purchase completed - Ludoteca{% endblock %}
 
-
 {% block content %}
   <div class="purchase-completed-section container mx-auto my-5 px-2 sm:px-8">
     <div class="flex flex-col items-center gap-2 text-center">
@@ -13,29 +12,36 @@
         Tu pedido ha sido procesado con éxito
       </h1><br>
     </div>
-      <p class="text-lg">
-        <b>Detalles de tu compra</b>
-      </p>
-      <ul class="detalles-compra">
-        <li>ID Pedido: #</li>
-        <li>Productos:</li>
-        <li>Fecha:</li>
-        <li><b>Total: $<b></li>
-
-      </ul>
-      <div style="text-align: center; margin-top: 30px;">
+    
+    <p class="text-lg">
+      <b>Detalles de tu compra</b>
+    </p>
+    
+    <ul class="detalles-compra">
+  <li>ID Pedido: #{{ pedido.id }}</li>
+  <li>Cliente: {{ pedido.cliente }}</li>
+  <li>Productos:
+    <ul class="ml-5 list-disc">
+      {% for producto in pedido.productos %}
+      <li>{{ producto.nombre }} (x{{ producto.cantidad }}) - ${{ producto.precio * producto.cantidad }}</li>
+      {% endfor %}
+    </ul>
+  </li>
+  <li>Fecha: {{ pedido.fecha.strftime('%d/%m/%Y %H:%M') }}</li>
+  <li><b>Total: ${{ pedido.total }}</b></li>
+</ul>
+    
+    <div style="text-align: center; margin-top: 30px;">
       <a class="btn-effect rounded-lg bg-primary-color p-2 font-bold uppercase text-white" href="{{ url_for('index') }}">
         <span>Volver al inicio</span>
       </a>
-      </div>
+    </div>
   </div>
 
- 
+  <!-- Botón para ir arriba -->
   <div class="btn-gotop transition-all-300 invisible fixed bottom-[-999px] right-10 z-50 opacity-0">
     <div class="transition-all-300 cursor-pointer rounded-lg bg-[rgba(0,0,0,.3)] p-3 hover:bg-primary-color">
       <i class="bi bi-chevron-compact-up pointer-events-none flex text-2xl text-white"></i>
     </div>
   </div>
-
-
 {% endblock %}

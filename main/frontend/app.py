@@ -175,11 +175,13 @@ def purchase_completed():
     productos = invocar_productos()
     return render_template("purchase-completed.html", categorias=categorias, perfil_usuario=perfil_usuario, productos=productos)
 
-@app.route('/contact-us')
+@app.route('/contact-us', methods=['GET', 'POST'])
 def contact_us():
     perfil_usuario = invocar_perfil_usuario()
     categorias = invocar_categorias()
     productos = invocar_productos()
+    if request.method == 'POST':
+        flash("Gracias por compartir tu opinion", "success")
     return render_template("contact-us.html", categorias=categorias, perfil_usuario=perfil_usuario, productos=productos)
 
 @app.route('/administrar-pagina')
