@@ -4,20 +4,6 @@
 
 {% block content %}
 
-  <div class="breadcrumb-section container mx-auto my-5 px-2 sm:px-8">
-    <ul class="flex flex-wrap items-center gap-1">
-      <li class="transition-all-300 hover:text-primary-color">
-        <a href="index.html">Home</a>
-      </li>
-      <li>
-        <i class="bi bi-caret-right-fill flex text-primary-color"></i>
-      </li>
-      <li class="transition-all-300 active hover:text-primary-color">
-        <a href="contact-us.html">Contact us</a>
-      </li>
-    </ul>
-  </div>
-
   <div class="banner-title-section container mx-auto my-5 px-2 sm:px-8">
     <div class="liner-container my-5 flex justify-center border-b-2 border-[rgba(119,119,119,.17)]">
       <h1 class="mb-[-2px] inline-block border-b-2 border-primary-color pb-3 text-2xl font-bold uppercase">
@@ -93,10 +79,9 @@
           width="700" height="500" style="border: 0" allowfullscreen="" loading="lazy"></iframe>
       </div>
       
-      
       <div class="col-span-12 bg-white p-5 sm:col-span-6">
         <h1 class="inline-block pb-3 text-xl font-bold uppercase">
-          Leave a Message
+          Deja tu mensaje
         </h1>
 <form class="form-leave-message flex flex-col gap-5" method="post" action="{{ url_for('contact_us') }}">
   <div>
@@ -129,115 +114,15 @@
     </div>
   </div>
 
-  <!-- Modals -->
-  <div class="menu-mob modal transition-all-300 invisible fixed inset-0 z-50 h-full w-full bg-overlay opacity-0">
-    <div class="flex h-full w-full">
-      <div
-        class="modal-content transition-all-300 relative left-[-999px] mr-auto flex h-full w-[288px] min-w-[250px] flex-col bg-white">
-        <div class="w-full bg-secondary-color">
-          <button class="btn-close-modal transition-all-300 absolute top-5 right-5 p-[3px] text-white">
-            <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex text-xl"></i>
-          </button>
-          <div class="py-12">
-            <img src="images/logo.png" class="mx-auto h-[40px]" alt="logo" />
-          </div>
-        </div>
-        <nav class="h-full w-full overflow-auto bg-white">
-          <ul class="metismenu">
-            <li class="border-b border-gray-200">
-              <a class="flex select-none items-center p-2" href="index.html">
-                <i class="bi bi-house-door mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Home</span>
-              </a>
-            </li>
-            <li class="border-b border-gray-200">
-              <div class="metismenu-btn has-arrow flex cursor-pointer select-none items-center p-2"
-                aria-expanded="false" role="menu">
-                <i class="bi bi-person mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">My Account</span>
-              </div>
-              <div class="metismenu-content">
-                <a class="btn-open-modal ml-10 block p-1" href="#" data-tab="0" data-target=".entry-modal">Login</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#" data-tab="1" data-target=".entry-modal">Sign Up</a>
-              </div>
-            </li>
-            <li class="border-b border-gray-200">
-              <div class="btn-open-modal cursor-pointer p-2" data-target=".wishlist-modal">
-                <div class="pointer-events-none flex cursor-pointer select-none items-center">
-                  <i class="bi bi-heart mr-3 flex text-xl text-primary-color"></i>
-                  <span class="font-semibold">Wishlist</span>
-                  <span class="badge ml-auto h-[22px] min-w-[22px] px-[6px]">0</span>
-                </div>
-              </div>
-            </li>
-            <li class="border-b border-gray-200">
-              <div class="btn-open-modal cursor-pointer p-2" data-target=".shopping-cart-modal">
-                <div class="pointer-events-none flex cursor-pointer select-none items-center">
-                  <i class="bi bi-cart mr-3 flex text-xl text-primary-color"></i>
-                  <span class="font-semibold">Shopping Cart</span>
-                  <span class="badge ml-auto h-[22px] min-w-[22px] px-[6px]">0</span>
-                </div>
-              </div>
-            </li>
-            <li class="border-b border-gray-200">
-              <div class="metismenu-btn has-arrow flex cursor-pointer select-none items-center p-2"
-                aria-expanded="false" role="menu">
-                <i class="bi bi-motherboard mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Hardware</span>
-              </div>
-              <div class="metismenu-content">
-                <a class="btn-open-modal ml-10 block p-1" href="#">Motherboards</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Processors</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Rams</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Video Cards</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Power Supplys</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Hard Drives</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">SSD Disk</a>
-              </div>
-            </li>
-            <li class="border-b border-gray-200">
-              <div class="metismenu-btn has-arrow flex cursor-pointer select-none items-center p-2"
-                aria-expanded="false" role="menu">
-                <i class="bi bi-mouse mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Peripherals</span>
-              </div>
-              <div class="metismenu-content">
-                <a class="btn-open-modal ml-10 block p-1" href="#">Keywords</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Mouses</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Mics</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Webcam</a>
-              </div>
-            </li>
-            <li class="border-b border-gray-200">
-              <div class="metismenu-btn has-arrow flex cursor-pointer select-none items-center p-2"
-                aria-expanded="false" role="menu">
-                <i class="bi bi-pc-display mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Computers</span>
-              </div>
-              <div class="metismenu-content">
-                <a class="btn-open-modal ml-10 block p-1" href="#">Notebooks</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Desktops</a>
-              </div>
-            </li>
-            <li class="border-b border-gray-200">
-              <a class="flex cursor-pointer select-none items-center p-2" href="#">
-                <i class="bi bi-tv mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Monitors</span>
-              </a>
-            </li>
-            <li class="border-b border-gray-200">
-              <a class="flex cursor-pointer select-none items-center p-2" href="#">
-                <i class="bi bi-printer mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Printers</span>
-              </a>
-            </li>
-            <li class="border-b border-gray-200">
-              <a class="flex cursor-pointer select-none items-center p-2" href="#">
-                <i class="bi bi-phone mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Smartphones</span>
-              </a>
-            </li>
-
+        {% with messages = get_flashed_messages() %}
+				{% if messages %}
+				<div class="alert alert-success">
+					{% for message in messages %}
+					{{ message }}
+					{% endfor %}
+				</div>
+				{% endif %}
+				{% endwith %}
             </li>
             <li class="border-b border-gray-200">
               <a class="flex select-none items-center p-2" href="contact-us.html">
@@ -525,7 +410,6 @@
       </div>
     </div>
   </div>
-  <!-- -->
 
   <div class="btn-gotop transition-all-300 invisible fixed bottom-[-999px] right-10 z-50 opacity-0">
     <div class="transition-all-300 cursor-pointer rounded-lg bg-[rgba(0,0,0,.3)] p-3 hover:bg-primary-color">
