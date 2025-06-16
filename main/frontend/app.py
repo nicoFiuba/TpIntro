@@ -512,16 +512,23 @@ def agregar_admin():
     token = session.get('token')
     
     if not token:
-        return jsonify({'message': 'Token no encontrado en la sesión'}), 401
+        flash('Token no encontrado en la sesión', 'error')
+        return redirect(url_for('administrar_pagina'))
     headers = {
         'Authorization': f'Bearer {token}'
     }
 
     try:
         response = requests.post('http://localhost:5000/usuarios/admin/create_admin', json=payload, headers=headers)
-        return jsonify(response.json()), response.status_code
+        data = response.json()
+        if response.status_code == 201:
+            flash(data.get('message', 'Admin creado exitosamente'), 'success')
+        else:
+            flash(data.get('message', 'Error al crear admin'), 'error')
+        return redirect(url_for('administrar_pagina'))
     except requests.exceptions.RequestException:
-        return jsonify({'message': 'Error al conectar con el backend'}), 500
+        flash('Error al conectar con el backend', 'error')
+        return redirect(url_for('administrar_pagina'))
     
 if __name__ == '__main__':
     app.run(host="localhost", port=8080, debug=True)
