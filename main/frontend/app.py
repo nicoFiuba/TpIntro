@@ -440,10 +440,11 @@ def ingresar():
                 'password': password
             }
 
-            resp = requests.post('http://localhost:5000/usuarios/auth/login', data=data)
+            resp = requests.post('http://localhost:5000/usuarios/auth/login', json=data)
 
             if resp.status_code == 200:
                 user_data = resp.json()
+                session['token'] = user_data.get('token')
                 session['logged_in'] = True
                 session['username'] = user_data.get('username')
                 session['user_id'] = user_data.get('user_id')
@@ -495,6 +496,32 @@ def auth_status():
         return jsonify({"logged_in" : True, "username" : session.get("username")})
     else:
         return jsonify({"logged_in" : False})
+    
+@app.route('/agregar-admin', methods=['POST'])
+def agregar_admin():
+    username = request.form.get('username')
+    email = request.form.get('email')
+    password = request.form.get('password')
 
+    payload = {
+        'username': username,
+        'email': email,
+        'password': password
+    }
+    
+    token = session.get('token')
+    
+    if not token:
+        return jsonify({'message': 'Token no encontrado en la sesión'}), 401
+    headers = {
+        'Authorization': f'Bearer {token}'
+    }
+
+    try:
+        response = requests.post('http://localhost:5000/usuarios/admin/create_admin', json=payload, headers=headers)
+        return jsonify(response.json()), response.status_code
+    except requests.exceptions.RequestException:
+        return jsonify({'message': 'Error al conectar con el backend'}), 500
+    
 if __name__ == '__main__':
     app.run(host="localhost", port=8080, debug=True)

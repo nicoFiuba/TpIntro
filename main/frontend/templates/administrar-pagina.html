@@ -23,6 +23,13 @@ endblock %} {% block content %}
                 <i class="bi bi-trash text-2xl"></i>
                 Eliminar producto
             </button>
+            <button
+                class="mx-2 flex-1 flex items-center justify-center gap-2 rounded-lg p-4 text-lg font-bold uppercase text-white shadow-lg hover:scale-105 transition-all-300"
+                style="background-color: #0e506c"
+                onclick="document.getElementById('modal-agregar-admin').classList.remove('invisible','opacity-0');">
+                <i class="bi bi-person-plus text-2xl"></i>
+                Agregar admin
+            </button>
             <a href="{{ url_for('administrar_pedidos') }}"
                 class="mx-2 flex-1 flex items-center justify-center gap-2 rounded-lg p-4 text-lg font-bold uppercase text-white shadow-lg hover:scale-105 transition-all-300"
                 style="background-color: #0e506c"
@@ -31,6 +38,22 @@ endblock %} {% block content %}
                 Ver pedidos
             </a>
         </div>
+    </div>
+</div>
+<!-- Modal add admin-->
+ <div id="modal-agregar-admin"
+     class="invisible opacity-0 fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+        <h2 class="text-xl font-bold mb-4">Agregar Administrador</h2>
+        <form id="form-agregar-admin" method="POST" action="/agregar-admin">
+            <input type="text" name="username" placeholder="Nombre de usuario" class="w-full p-2 mb-3 border rounded" required>
+            <input type="email" name="email" placeholder="Email" class="w-full p-2 mb-3 border rounded">
+            <input type="password" name="password" placeholder="Contraseña" class="w-full p-2 mb-3 border rounded" required>
+            <div class="flex justify-end gap-3">
+                <button type="button" onclick="cerrarModalAdmin()" class="px-4 py-2 bg-gray-300 rounded">Cancelar</button>
+                <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">Agregar</button>
+            </div>
+        </form>
     </div>
 </div>
 <!-- Modal 1 -->
@@ -124,6 +147,14 @@ endblock %} {% block content %}
         </div>
     </div>
 </div>
+<script>
+function cerrarModalAdmin() {
+    const modal = document.getElementById('modal-agregar-admin');
+    if (modal) {
+        modal.classList.add('invisible', 'opacity-0');
+    }
+}
+</script>
 
 {% else %}
 <div class="flex items-center justify-center bg-body">

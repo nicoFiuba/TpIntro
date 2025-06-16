@@ -1,8 +1,11 @@
 from flask import Blueprint, request, jsonify, session, redirect
 from functools import wraps
+import datetime
+import jwt
+from config import SECRET_KEY
 
 from blueprints.auth.auth import user_exists, create_user, verify_user, get_user_by_username, check_password_hash, email_exists, get_user_by_username_and_email
-from blueprints.admin.admin import admin_required
+from blueprints.admin.admin import jwt_admin_required
 from blueprints.user.user import login_required, get_user_by_id
 
 usuarios_bp = Blueprint('usuarios', __name__)
@@ -42,14 +45,21 @@ def login():
     if not check_password_hash(user["password_"], password):
         return jsonify({'message': 'Contraseña incorrecta'}), 401
 
-    session['user_id'] = user['id']
-    session['is_admin'] = user['role'] == 'admin'
+    token_payload = {
+        'user_id': user['id'],
+        'username': user['username'],
+        'role': user['role'],
+        'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)
+    }
+
+    token = jwt.encode(token_payload, SECRET_KEY, algorithm='HS256')
 
     return jsonify({
         'message': 'Inicio de sesión exitoso',
         'user_id': user['id'],
         'username': user['username'],
-        'role': user['role']
+        'role': user['role'],
+        'token': token
     }), 200
 
 @usuarios_bp.route('/auth/logout', methods=['POST'])
@@ -76,12 +86,12 @@ def get_user_by_id_endpoint(user_id):
         return jsonify({'message': 'Usuario no encontrado'}), 404
 
 @usuarios_bp.route('/admin/dashboard', methods=['GET'])
-@admin_required
+@jwt_admin_required
 def dashboard():
     return jsonify({'message': f'Panel de administración para el usuario con ID {session["user_id"]}'}), 200
 
 @usuarios_bp.route('/admin/create_admin', methods=['POST'])
-@admin_required
+@jwt_admin_required
 def create_admin_user():
     data = request.json
     username = data.get('username')
@@ -91,9 +101,9 @@ def create_admin_user():
     if not username or not password:
         return jsonify({'message': 'Faltan datos'}), 400
     if user_exists(username):
-        return jsonify({'message': 'Usuario ya existe'}), 400
-    create_user(username, password, email=None, role='admin')
-    return jsonify({'message': f'Administrador creado exitosamente'}), 201
+        return jsonify({'message': 'Usuario ya existente'}), 400
+    create_user(username, password, email=email, role='admin')
+    return jsonify({'message': 'Administrador creado exitosamente'}), 201
 
 @usuarios_bp.route('/auth/status', methods=['GET'])
 def session_status():
