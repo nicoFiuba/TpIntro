@@ -42,6 +42,19 @@ def compra_completada(pedido_id):
 def get_pedidos():
     conn = get_connection()
     cursor = conn.cursor()
+    cursor.execute("SELECT * FROM Pedido")
+    pedidos = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    if not pedidos:
+        return f"No hay pedidos"
+    return jsonify(pedidos)
+
+
+@pedidos_bp.route('/detalles')
+def get_detalles_pedidos():
+    conn = get_connection()
+    cursor = conn.cursor()
     cursor.execute("SELECT * FROM PedidoDetalle")
     pedidos = cursor.fetchall()
     cursor.close()

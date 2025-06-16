@@ -1,0 +1,736 @@
+{% extends "base.html" %} {% block title %}Shop mixed - Ludoteca{% endblock %}
+
+{% block content %}
+
+<div class="shop-section container mx-auto my-5 px-2 sm:px-8">
+  <div class="grid grid-cols-12 gap-5">
+    <div class="col-span-12">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <span class="text-lg">
+          Results of '<span id="busqueda-actual" class="text-blue-400"></span>'
+        </span>
+        <div class="flex items-center gap-5">
+          <form>
+<select id="ordenar-precio" class="nice-select order-by select">
+  <option value="0">Precio mas bajo</option>
+  <option value="1">Precio mas alto</option>
+</select>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-span-12 md:col-span-4 lg:col-span-4 xl:col-span-3">
+      <form class="flex flex-col rounded-lg bg-white p-5" method="get" action="{{ url_for('shop_mixed') }}">
+        <div class="mb-5 border-t-2 pt-5">
+          <div class="relative flex items-center">
+            <i class="bi bi-search text-stroke-medium absolute ml-4 flex text-gray-400"></i>
+            <input id="buscador-productos" class="input pl-10" type="search" placeholder="Buscar..." />
+          </div>
+        </div>
+        <div class="mb-5 border-t-2 pt-5">
+          <span class="mb-2 flex font-semibold">Servicios</span>
+          <label
+            class="transition-all-300 my-1 flex cursor-pointer select-none items-center gap-2 hover:text-primary-color">
+            <input class="checkbox" type="checkbox" name="stock_disponible" value="1" {% if stock_disponible %}checked{%
+              endif %} onchange="this.form.submit()" />
+            <span class="text-gray-title">Stock disponible</span>
+          </label>
+        </div>
+        <div class="mb-5 border-t-2 pt-5">
+          <span class="mb-2 flex font-semibold">Categorias</span>
+          <div class="flex flex-col gap-1">
+            <label
+              class="transition-all-300 flex cursor-pointer select-none items-center gap-2 p-1 hover:text-primary-color">
+              <input type="radio" name="categoria" value="" onchange="this.form.submit()" {% if not categoria
+                %}checked{% endif %} />
+              <span class="text-gray-title">Todas</span>
+            </label>
+            {% for cat in categorias %}
+            <label
+              class="transition-all-300 flex cursor-pointer select-none items-center gap-2 p-1 hover:text-primary-color">
+              <input type="radio" name="categoria" value="{{ cat }}" onchange="this.form.submit()" {% if cat==categoria
+                %}checked{% endif %}>
+              <span class="text-gray-title">{{ cat }}</span>
+            </label>
+            {% endfor %}
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-9">
+      <div class="mix-elements mix-all grid grid-cols-12 gap-5">
+        {% for producto in productos %}
+        <div class="mix mix-main col-span-12 h-auto sm:col-span-6 lg:col-span-4 producto-card"
+          data-nombre="{{ producto.nombre|lower }}" data-descripcion="{{ producto.descripcion|lower }}" data-precio="{{ producto.precio }}">
+          <div
+            class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
+            <div class="h-[190px] overflow-hidden rounded-lg">
+              <a href="{{ url_for('product_details', product_id=producto.id) }}">
+                <img class="card-object-fit h-full w-full" src="http://localhost:5000/catalogo/api/productos/{{ producto.id }}/imagen"
+                  alt="{{ producto.nombre }}" />
+              </a>
+            </div>
+            <div class="my-2 flex justify-between">
+              <div>
+                {% if producto.stock > 0 %}
+                <span class="rounded-md bg-stock py-1 px-2 text-xs font-bold uppercase text-white">
+                  Stock disponible
+                </span>
+                {% else %}
+                <span class="rounded-md bg-gray-200 py-1 px-2 text-xs font-bold uppercase text-gray-400">
+                  Sin stock
+                </span>
+                {% endif %}
+              </div>
+            </div>
+            <div class="my-1">
+              <a class="clamp break-all font-medium" href="#">
+                {{ producto.nombre }}
+              </a>
+            </div>
+            <div class="my-1">
+              <p class="clamp-2 text-sm text-gray-400">
+                {{ producto.descripcion }}
+              </p>
+            </div>
+            <div class="my-1">
+              <span class="text-lg font-bold">${{ producto.precio }}</span>
+            </div>
+            <div class="mt-auto">
+              <a class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
+                href="{{ url_for('product_details', product_id=producto.id) }}">
+                <span class="font-bold uppercase text-white">View details</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        <div id="no-resultados" class="col-span-12 text-center text-gray-400 py-10" style="display:none;">
+          No se encontraron productos.
+        </div>
+        {% if productos|length == 0 %}
+        <div class="col-span-12 text-center text-gray-400 py-10">
+          No se encontraron productos.
+        </div>
+        {% endif %}
+        {% if perfil_usuario.role == "admin" %}
+        <div class="mix mix-main col-span-12 h-auto sm:col-span-6 lg:col-span-4">
+          <div
+            class="card-container relative transition-all-300 translateY-2 flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl">
+            <div
+              class="absolute inset-0 bg-white bg-opacity-50 opacity-0 transition-opacity pointer-events-none hover:opacity-100"
+              style="z-index: 5;">
+            </div>  
+            <button
+              class="btn-add-product"
+              style="width: 100%; height: 100%;"
+              onclick="document.getElementById('add-product-modal').classList.remove('invisible','opacity-0')"
+            >
+              <span>Agregar producto</span>
+            </button>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modals -->
+<div id="add-product-modal"
+  class="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 opacity-0 invisible transition-opacity duration-300">
+  <div class="modal-content relative w-screen rounded-xl bg-white p-8 shadow-2xl transform transition-transform duration-300 scale-95">
+    <button class="btn-close-modal absolute top-4 right-4 rounded-full p-2 text-gray-400 hover:text-primary-color focus:outline-none focus:ring-2 focus:ring-primary-color"
+      onclick="document.getElementById('add-product-modal').classList.add('invisible','opacity-0')">
+      <i class="bi bi-x-lg text-2xl"></i>
+    </button>
+    <h2 class="mb-6 text-3xl font-extrabold text-primary-color">Agregar Producto</h2>
+    <form method="post" action="{{ url_for('agregar_producto') }}" enctype="multipart/form-data" class="space-y-6">
+      <div>
+        <label class="block text-sm font-semibold mb-2" for="nombre">Nombre</label>
+        <input id="nombre" name="nombre" type="text" required
+          class="input w-full rounded-md border border-gray-300 px-4 py-2 text-gray-700 placeholder-gray-400 focus:border-primary-color focus:ring-2 focus:ring-primary-color focus:outline-none transition" />
+      </div>
+      <div>
+        <label class="block text-sm font-semibold mb-2" for="descripcion">Descripción</label>
+         <textarea id="descripcion" name="descripcion" required
+          class="input w-full rounded-md border border-gray-300 px-4 py-2 text-gray-700 placeholder-gray-400 focus:border-primary-color focus:ring-2 focus:ring-primary-color focus:outline-none transition resize-none h-24"></textarea>
+      </div>
+      <div>
+        <label class="block text-sm font-semibold mb-2" for="precio">Precio</label>
+        <input id="precio" name="precio" type="number" min="0" step="0.01" required
+          class="input w-full rounded-md border border-gray-300 px-4 py-2 text-gray-700 placeholder-gray-400 focus:border-primary-color focus:ring-2 focus:ring-primary-color focus:outline-none transition" />
+      </div>
+      <div>
+        <label class="block text-sm font-semibold mb-2" for="stock">Stock</label>
+        <input id="stock" name="stock" type="number" min="0" required
+          class="input w-full rounded-md border border-gray-300 px-4 py-2 text-gray-700 placeholder-gray-400 focus:border-primary-color focus:ring-2 focus:ring-primary-color focus:outline-none transition" />
+      </div>
+      <div>
+        <label class="block text-sm font-semibold mb-2" for="categoria">Categoría</label>
+        <select id="categoria" name="categoria" required
+          class="input w-full rounded-md border border-gray-300 px-4 py-2 text-gray-700 focus:border-primary-color focus:ring-2 focus:ring-primary-color focus:outline-none transition">
+          {% for categoria in categorias %}
+          <option value="{{ categoria }}">{{ categoria }}</option>
+          {% endfor %}
+        </select>
+      <div>
+        <label class="block text-sm font-semibold mb-2" for="imagen">Imagen</label>
+        <input id="imagen" name="imagen" type="file" accept="image/*" required
+          class="input w-full rounded-md border border-gray-300 px-4 py-2 text-gray-700 focus:border-primary-color focus:ring-2 focus:ring-primary-color focus:outline-none transition" />
+      </div>
+      <button
+        class="btn-effect w-full rounded-lg bg-primary-color p-3 font-bold uppercase text-white hover:bg-primary-color/90 transition"
+        type="submit">
+        Agregar
+      </button>
+    </form>
+  </div>
+</div>
+<div class="menu-mob modal transition-all-300 invisible fixed inset-0 z-50 h-full w-full bg-overlay opacity-0">
+  <div class="flex h-full w-full">
+    <div
+      class="modal-content transition-all-300 relative left-[-999px] mr-auto flex h-full w-[288px] min-w-[250px] flex-col bg-white">
+      <div class="w-full bg-secondary-color">
+        <button class="btn-close-modal transition-all-300 absolute top-5 right-5 p-[3px] text-white">
+          <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex text-xl"></i>
+        </button>
+        <div class="py-12">
+          <img src="images/logo.png" class="mx-auto h-[40px]" alt="logo" />
+        </div>
+      </div>
+      <nav class="h-full w-full overflow-auto bg-white">
+        <ul class="metismenu">
+          <li class="border-b border-gray-200">
+            <a class="flex select-none items-center p-2" href="index.html">
+              <i class="bi bi-house-door mr-3 flex text-xl text-primary-color"></i>
+              <span class="font-semibold">Home</span>
+            </a>
+          </li>
+          <li class="border-b border-gray-200">
+            <div class="group relative">
+              <a class="cursor-pointer">Cuenta</a>
+              <div class="transition-all-300 invisible absolute top-full z-30 w-[120%] pt-[10px] opacity-0 group-hover:visible group-hover:opacity-100">
+                <div class="arrow relative">
+                  <ul class="overflow-hidden rounded-md bg-white p-[6px] shadow-custom-1">
+                    {% if logged_in %}
+                      <li class="hover:font-semibold">
+                        <a href="{{ url_for('logout') }}">
+                          <div class="flex items-center gap-2 p-1">
+                            <i class="bi bi-box-arrow-right text-xl text-primary-color" style="color: #011638;"></i>
+                            <span>Logout</span>
+                          </div>
+                        </a>
+                      </li>
+                      {% else %}
+                        <li class="hover:font-semibold">
+                          <a href="#" class="btn-open-modal" data-tab="0" data-target=".entry-modal">
+                            <div class="pointer-events-none flex items-center gap-2 p-1">
+                              <i class="bi bi-box-arrow-in-right text-xl text-primary-color" style="color: #011638;"></i>
+                              <span>Login</span>
+                            </div>
+                          </a>
+                        </li>
+                        <li class="hover:font-semibold">
+                          <a href="#" class="btn-open-modal" data-tab="1" data-target=".entry-modal">
+                            <div class="pointer-events-none flex items-center gap-2 p-1">
+                              <i class="bi bi-person text-xl text-primary-color" style="color: #011638;"></i>
+                              <span>Registrarse</span>
+                            </div>
+                          </a>
+                        </li>
+                    {% endif %}                 
+                  </ul>
+                </div>
+              </div>  
+            </div>  
+          </li>
+          <li class="border-b border-gray-200">
+            <div class="btn-open-modal cursor-pointer p-2" data-target=".wishlist-modal">
+              <div class="pointer-events-none flex cursor-pointer select-none items-center">
+                <i class="bi bi-heart mr-3 flex text-xl text-primary-color"></i>
+                <span class="font-semibold">Wishlist</span>
+                <span class="badge ml-auto h-[22px] min-w-[22px] px-[6px]">0</span>
+              </div>
+            </div>
+          </li>
+          <li class="border-b border-gray-200">
+            <div class="btn-open-modal cursor-pointer p-2" data-target=".shopping-cart-modal">
+              <div class="pointer-events-none flex cursor-pointer select-none items-center">
+                <i class="bi bi-cart mr-3 flex text-xl text-primary-color"></i>
+                <span class="font-semibold">Shopping Cart</span>
+                <span class="badge ml-auto h-[22px] min-w-[22px] px-[6px]">0</span>
+              </div>
+            </div>
+          </li>
+          <li class="border-b border-gray-200">
+            <div class="metismenu-btn has-arrow flex cursor-pointer select-none items-center p-2" aria-expanded="false"
+              role="menu">
+              <i class="bi bi-motherboard mr-3 flex text-xl text-primary-color"></i>
+              <span class="font-semibold">Hardware</span>
+            </div>
+            <div class="metismenu-content">
+              <a class="btn-open-modal ml-10 block p-1" href="#">Motherboards</a>
+              <a class="btn-open-modal ml-10 block p-1" href="#">Processors</a>
+              <a class="btn-open-modal ml-10 block p-1" href="#">Rams</a>
+              <a class="btn-open-modal ml-10 block p-1" href="#">Video Cards</a>
+              <a class="btn-open-modal ml-10 block p-1" href="#">Power Supplys</a>
+              <a class="btn-open-modal ml-10 block p-1" href="#">Hard Drives</a>
+              <a class="btn-open-modal ml-10 block p-1" href="#">SSD Disk</a>
+            </div>
+          </li>
+          <li class="border-b border-gray-200">
+            <div class="metismenu-btn has-arrow flex cursor-pointer select-none items-center p-2" aria-expanded="false"
+              role="menu">
+              <i class="bi bi-mouse mr-3 flex text-xl text-primary-color"></i>
+              <span class="font-semibold">Peripherals</span>
+            </div>
+            <div class="metismenu-content">
+              <a class="btn-open-modal ml-10 block p-1" href="#">Keywords</a>
+              <a class="btn-open-modal ml-10 block p-1" href="#">Mouses</a>
+              <a class="btn-open-modal ml-10 block p-1" href="#">Mics</a>
+              <a class="btn-open-modal ml-10 block p-1" href="#">Webcam</a>
+            </div>
+          </li>
+          <li class="border-b border-gray-200">
+            <div class="metismenu-btn has-arrow flex cursor-pointer select-none items-center p-2" aria-expanded="false"
+              role="menu">
+              <i class="bi bi-pc-display mr-3 flex text-xl text-primary-color"></i>
+              <span class="font-semibold">Computers</span>
+            </div>
+            <div class="metismenu-content">
+              <a class="btn-open-modal ml-10 block p-1" href="#">Notebooks</a>
+              <a class="btn-open-modal ml-10 block p-1" href="#">Desktops</a>
+            </div>
+          </li>
+          <li class="border-b border-gray-200">
+            <a class="flex cursor-pointer select-none items-center p-2" href="#">
+              <i class="bi bi-tv mr-3 flex text-xl text-primary-color"></i>
+              <span class="font-semibold">Monitors</span>
+            </a>
+          </li>
+          <li class="border-b border-gray-200">
+            <a class="flex cursor-pointer select-none items-center p-2" href="#">
+              <i class="bi bi-printer mr-3 flex text-xl text-primary-color"></i>
+              <span class="font-semibold">Printers</span>
+            </a>
+          </li>
+          <li class="border-b border-gray-200">
+            <a class="flex cursor-pointer select-none items-center p-2" href="#">
+              <i class="bi bi-phone mr-3 flex text-xl text-primary-color"></i>
+              <span class="font-semibold">Smartphones</span>
+            </a>
+          </li>
+
+          <li class="border-b border-gray-200">
+            <a class="flex select-none items-center p-2" href="{{ url_for('contact_us') }}">
+              <i class="bi bi-telephone mr-3 flex text-xl text-primary-color"></i>
+              <span class="font-semibold">Contact Us</span>
+            </a>
+          </li>
+          <li class="border-b border-gray-200">
+            <div class="metismenu-btn has-arrow flex cursor-pointer select-none items-center p-2" aria-expanded="false"
+              role="menu">
+              <span class="font-semibold">Pages</span>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<div
+  class="shopping-cart-modal modal transition-all-300 invisible fixed inset-0 z-50 h-full w-full bg-overlay opacity-0">
+  <div class="flex h-full w-full">
+    <div
+      class="modal-content transition-all-300 relative right-[-999px] ml-auto flex h-full w-[400px] min-w-[250px] flex-col bg-white">
+      <div class="w-full">
+        <div class="border-b-2 border-gray-200 p-5">
+          <h3 class="text-xl font-bold uppercase">Shopping Cart</h3>
+        </div>
+        <button class="btn-close-modal transition-all-300 absolute top-5 right-5 p-[3px] hover:text-slate-400">
+          <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex text-xl"></i>
+        </button>
+      </div>
+      <div class="h-full overflow-auto">
+        <!-- If the shopping cart is empty (replace hidden with flex) -->
+        <div class="hidden flex-col items-center justify-center gap-4 p-5">
+          <i class="bi bi-cart-x text-8xl text-gray-200"></i>
+          <p class="font-semibold">There are no products in the cart.</p>
+          <a class="btn-effect transition-all-300 flex items-center justify-center gap-2 rounded-lg bg-primary-color p-2"
+            href="#">
+            <span class="font-bold uppercase text-white">Go to the store</span>
+          </a>
+        </div>
+        <!-- -->
+        <a class="transition-all-300 flex h-[100px] w-full items-center justify-between gap-5 bg-white p-2 hover:bg-gray-100"
+          href="#">
+          <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border">
+            <img class="h-full w-full object-cover" src="images/product/prod-1.jpg" alt="product" />
+          </div>
+          <div class="flex w-full flex-col">
+            <h6 class="clamp-2 break-all text-lg font-semibold">
+              Ryzen 5 3600x
+            </h6>
+            <div class="flex gap-2">
+              <div class="flex gap-1 leading-7 text-gray-400">
+                <span>1</span>
+                <span>X</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-primary-color">$37.00</span>
+                <small class="text-xs text-primary-color line-through">$50.00</small>
+              </div>
+            </div>
+          </div>
+          <div class="transition-all-300 flex text-slate-400 hover:text-primary-color">
+            <i class="bi bi-trash-fill pointer-events-none text-2xl"></i>
+          </div>
+        </a>
+      </div>
+      <div class="mt-auto border-t-2 border-gray-200 bg-white px-1 pt-5 xs:px-5">
+        <div class="flex justify-between">
+          <span class="text-lg uppercase">Subtotal:</span>
+          <span class="text-lg font-semibold text-primary-color">$37.00</span>
+        </div>
+        <a class="btn-effect transition-all-300 my-5 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
+          href="{{ url_for('shopping_cart') }}">
+          <span class="font-bold uppercase text-white">View Shopping Cart</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wishlist-modal modal transition-all-300 invisible fixed inset-0 z-50 h-full w-full bg-overlay opacity-0">
+  <div class="flex h-full w-full">
+    <div
+      class="modal-content transition-all-300 relative right-[-999px] ml-auto flex h-full w-[400px] min-w-[250px] flex-col bg-white">
+      <div class="w-full">
+        <div class="border-b-2 border-gray-200 p-5">
+          <h3 class="text-xl font-bold uppercase">Wishlist</h3>
+        </div>
+        <button class="btn-close-modal transition-all-300 absolute top-5 right-5 p-[3px] hover:text-slate-400">
+          <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex text-xl"></i>
+        </button>
+      </div>
+      <div class="h-full overflow-auto">
+        <!-- If the wishlist is empty (replace hidden with flex) -->
+        <div class="hidden flex-col items-center justify-center gap-4 p-5">
+          <i class="bi bi-heart text-8xl text-gray-200"></i>
+          <p class="font-semibold">There are no products in the wishlist.</p>
+          <a class="btn-effect transition-all-300 flex items-center justify-center gap-2 rounded-lg bg-primary-color p-2"
+            href="#">
+            <span class="font-bold uppercase text-white">Go to the store</span>
+          </a>
+        </div>
+        <a class="transition-all-300 flex h-[100px] w-full items-center justify-between gap-5 bg-white p-2 hover:bg-gray-100"
+          href="#">
+          <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border">
+            <img class="h-full w-full object-cover" src="images/product/prod-1.jpg" alt="product" />
+          </div>
+
+          <div class="flex w-full flex-col">
+            <h6 class="clamp-2 break-all text-lg font-semibold">
+              Ryzen 5 3600x
+            </h6>
+            <div class="flex items-center gap-2">
+              <span class="font-bold text-primary-color">$37.00</span>
+              <small class="text-xs text-primary-color line-through">$50.00</small>
+            </div>
+          </div>
+
+          <div class="transition-all-300 flex text-slate-400 hover:text-primary-color">
+            <i class="bi bi-trash-fill pointer-events-none text-2xl"></i>
+          </div>
+        </a>
+      </div>
+      <div class="mt-auto border-t-2 border-gray-200 bg-white px-1 xs:px-5"></div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="entry-modal modal transition-all-300 invisible fixed inset-0 z-50 flex h-full w-full flex-col items-center justify-start overflow-auto bg-overlay opacity-0">
+  <div class="my-10 flex w-full justify-center">
+    <div
+      class="entry-content modal-content transition-all-300 relative mx-3 w-[500px] min-w-[250px] rounded-lg bg-white px-3 pb-3 pt-7 xs:px-5 xs:pb-5 md:m-5">
+      <button
+        class="btn-close-modal transition-all-300 absolute top-0 right-0 p-2 sm:top-[-10px] sm:right-[-10px] sm:rounded-lg sm:bg-primary-color sm:text-white sm:hover:bg-primary-hover">
+        <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex"></i>
+      </button>
+      <div class="tabs-container entry-container">
+        <ul class="flex justify-between">
+          <li
+            class="btn-tabs tab-active-1 transition-all-300 active w-full cursor-pointer border bg-gray-200 p-2 text-center text-gray-400">
+            Login
+          </li>
+          <li
+            class="btn-tabs tab-active-1 transition-all-300 w-full cursor-pointer border bg-gray-200 p-2 text-center text-gray-400">
+            Sign Up
+          </li>
+        </ul>
+        <div class="tabs-content border border-t-transparent">
+          <div class="tab-content invisible absolute w-full p-5 opacity-0">
+            <div class="my-5">
+              <img class="mx-auto" src="static/images/svg/logo.svg" alt="Ludoteca Central." />
+            </div>
+            <form method="post" action="/ingresar">
+              <div class="flex flex-col gap-4">
+                <div class="relative flex h-[40px] items-center">
+                  <i class="bi bi-person absolute ml-2 flex text-[24px] text-gray-400"></i>
+                  <input class="input pl-10" type="text" name="username" placeholder="Username or Email" required />
+                </div>
+                <div class="relative flex h-[40px] items-center">
+                  <i class="bi bi-lock absolute ml-2 flex text-[24px] text-gray-400"></i>
+                  <input class="input pl-10" type="password" name="password" placeholder="Password" required />
+                </div>
+                <div class="relative flex h-[40px] items-center">
+                  <i class="bi bi-lock absolute ml-2 flex text-[24px] text-gray-400"></i>
+                  <input class="input pl-10" type="email" name="email" placeholder="Email" required />
+                </div>
+                <button class="btn-effect transition-all-300 h-full w-full rounded-lg bg-primary-color p-2"
+                  type="submit">
+                  <span class="font-bold uppercase text-white">Login</span>
+                </button>
+              </div>
+              <div class="my-2 flex flex-wrap items-center justify-between gap-2">
+                <label class="flex select-none items-center gap-2">
+                  <input class="checkbox" type="checkbox" />
+                  <span class="text-gray-title">Remember</span>
+                </label>
+              </div>
+            </form>
+            <span class="or text-gray-title flex h-[50px] items-center py-2">
+              <span class="mx-2 text-sm uppercase">Or</span>
+            </span>
+            <div class="flex flex-col flex-wrap justify-center gap-5 sm:flex-row">
+              <button
+                class="transition-all-300 flex h-[50px] min-w-[100px] items-center justify-center rounded-lg bg-facebook hover:scale-110">
+                <i class="bi bi-facebook flex text-3xl text-white"></i>
+              </button>
+              <button
+                class="transition-all-300 flex h-[50px] min-w-[100px] items-center justify-center rounded-lg bg-twitter hover:scale-110">
+                <i class="bi bi-twitter flex text-3xl text-white"></i>
+              </button>
+              <button
+                class="transition-all-300 flex h-[50px] min-w-[100px] items-center justify-center rounded-lg bg-google hover:scale-110">
+                <i class="bi bi-google flex text-3xl text-white"></i>
+              </button>
+            </div>
+          </div>
+          <div class="tab-content invisible absolute w-full bg-white p-5 opacity-0">
+            <div class="my-5">
+              <img class="mx-auto" src="images/svg/logo.svg" alt="Besbik." />
+            </div>
+            <form action="#">
+              <div class="flex flex-col gap-4">
+                <div class="relative flex h-[40px] items-center">
+                  <i class="bi bi-person absolute ml-2 flex text-[24px] text-gray-400"></i>
+                  <input class="input pl-10" type="text" placeholder="Name" required />
+                </div>
+                <div class="relative flex h-[40px] items-center">
+                  <i class="bi bi-envelope absolute ml-2 flex text-[24px] text-gray-400"></i>
+                  <input class="input pl-10" type="text" placeholder="Email" required />
+                </div>
+                <div class="relative flex h-[40px] items-center">
+                  <i class="bi bi-lock absolute ml-2 flex text-[24px] text-gray-400"></i>
+                  <input class="input pl-10" type="password" placeholder="Password" required />
+                </div>
+                <div class="relative flex h-[40px] items-center">
+                  <i class="bi bi-lock-fill absolute ml-2 flex text-[24px] text-gray-400"></i>
+                  <input class="input pl-10" type="password" placeholder="Confirm Password" required />
+                </div>
+                <button class="btn-effect transition-all-300 h-full w-full rounded-lg bg-primary-color p-2"
+                  type="submit">
+                  <span class="font-bold uppercase text-white">Sign Up</span>
+                </button>
+              </div>
+              <div class="my-2 flex items-center justify-between">
+                <label class="flex select-none items-center gap-2">
+                  <input class="checkbox" type="checkbox" />
+                  <span class="text-gray-title">I agree with all
+                    <a class="underlined-animated text-[#3091ff] after:bottom-0" href="#">Terms of Use</a>
+                    &
+                    <a class="underlined-animated text-[#3091ff] after:bottom-0" href="#">Privacy Policy</a>.</span>
+                </label>
+              </div>
+            </form>
+            <span class="or text-gray-title flex h-[50px] items-center py-2">
+              <span class="mx-2 text-sm uppercase">Or</span>
+            </span>
+            <div class="flex flex-col flex-wrap justify-center gap-5 sm:flex-row">
+              <button
+                class="transition-all-300 flex h-[50px] min-w-[100px] items-center justify-center rounded-lg bg-facebook hover:scale-110">
+                <i class="bi bi-facebook flex text-3xl text-white"></i>
+              </button>
+              <button
+                class="transition-all-300 flex h-[50px] min-w-[100px] items-center justify-center rounded-lg bg-twitter hover:scale-110">
+                <i class="bi bi-twitter flex text-3xl text-white"></i>
+              </button>
+              <button
+                class="transition-all-300 flex h-[50px] min-w-[100px] items-center justify-center rounded-lg bg-google hover:scale-110">
+                <i class="bi bi-google flex text-3xl text-white"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="quick-view-modal modal transition-all-300 invisible fixed inset-0 z-50 flex h-full w-full flex-col items-center justify-start overflow-auto bg-overlay opacity-0">
+  <div class="my-10 flex w-full justify-center">
+    <div
+      class="modal-content relative mx-3 w-[900px] min-w-[250px] scale-0 rounded-lg bg-body px-3 pb-3 pt-7 xs:px-5 xs:pb-5 md:m-5">
+      <button
+        class="btn-close-modal transition-all-300 absolute top-0 right-0 p-2 sm:top-[-10px] sm:right-[-10px] sm:rounded-lg sm:bg-primary-color sm:text-white sm:hover:bg-primary-hover">
+        <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex"></i>
+      </button>
+      <div class="grid grid-cols-12 gap-5">
+        <div class="col-span-12 max-h-[500px] md:col-span-7">
+          <div class="swiper swiper-top group relative flex items-center rounded-lg">
+            <div class="swiper-wrapper z-[5]">
+              <div class="swiper-slide">
+                <div class="swiper-zoom-container">
+                  <img src="images/product/prod-1.jpg" alt="product" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="swiper-zoom-container">
+                  <img src="images/product/prod-2.jpg" alt="product" />
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="swiper-zoom-container">
+                  <img src="images/product/prod-3.jpg" alt="product" />
+                </div>
+              </div>
+            </div>
+            <div class="button-next btn-slider-1 transition-all-300 -right-16 group-hover:right-4">
+              &#10095;
+            </div>
+            <div class="button-prev btn-slider-1 transition-all-300 -left-16 group-hover:left-4">
+              &#10094;
+            </div>
+          </div>
+          <div class="swiper swiper-thumbs">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide cursor-pointer rounded-lg">
+                <img src="images/product/prod-1.jpg" alt="product" />
+              </div>
+              <div class="swiper-slide cursor-pointer rounded-lg">
+                <img src="images/product/prod-2.jpg" alt="product" />
+              </div>
+              <div class="swiper-slide cursor-pointer rounded-lg">
+                <img src="images/product/prod-3.jpg" alt="product" />
+              </div>
+            </div>
+
+            <a class="tippy tippy-wishlist btn-wishlist transition-all-300 flex min-h-[40px] min-w-[40px] cursor-pointer items-center justify-center gap-2 rounded-lg bg-primary-color p-2 hover:bg-primary-hover"
+              href="javascript:void(0)">
+              <i class="bi bi-heart pointer-events-none flex text-white"></i>
+            </a>
+          </div>
+        </div>
+        </form>
+      </div>
+      <div class="mt-5 border-t border-gray-200 pt-5">
+        <div>
+          <b>Categories: </b>
+          <span><a href="#" class="text-zinc-500">Hardware</a>,
+            <a href="#" class="text-zinc-500">Processors</a></span>
+        </div>
+        <div class="flex gap-2">
+          <b>Share:</b>
+          <div class="flex items-center gap-[10px]">
+            <a href="#">
+              <i class="bi bi-facebook transition-all-300 flex text-zinc-500 hover:text-primary-color"></i>
+            </a>
+            <a href="#">
+              <i class="bi bi-twitter transition-all-300 flex text-zinc-500 hover:text-primary-color"></i>
+            </a>
+            <a href="#">
+              <i class="bi bi-whatsapp transition-all-300 flex text-zinc-500 hover:text-primary-color"></i>
+            </a>
+            <a href="#">
+              <i class="bi bi-link-45deg transition-all-300 flex text-zinc-500 hover:text-primary-color"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<!-- -->
+
+<div class="btn-gotop transition-all-300 invisible fixed bottom-[-999px] right-10 z-50 opacity-0">
+  <div class="transition-all-300 cursor-pointer rounded-lg bg-[rgba(0,0,0,.3)] p-3 hover:bg-primary-color">
+    <i class="bi bi-chevron-compact-up pointer-events-none flex text-2xl text-white"></i>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const input = document.getElementById('buscador-productos');
+    const cards = document.querySelectorAll('.producto-card');
+    const noResultados = document.getElementById('no-resultados');
+    const busquedaActual = document.getElementById('busqueda-actual');
+    const ordenar = document.getElementById('ordenar-precio');
+    const grid = document.querySelector('.mix-elements');
+
+    function filtrar() {
+      const valor = input.value.trim().toLowerCase();
+      let visibles = 0;
+      cards.forEach(card => {
+        const nombre = card.getAttribute('data-nombre');
+        const descripcion = card.getAttribute('data-descripcion');
+        if (nombre.includes(valor) || descripcion.includes(valor)) {
+          card.style.display = '';
+          visibles++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      if (noResultados) {
+        noResultados.style.display = visibles === 0 ? '' : 'none';
+      }
+      if (busquedaActual) {
+        busquedaActual.textContent = valor;
+      }
+    }
+
+    function ordenarProductos() {
+      const visibles = Array.from(cards).filter(card => card.style.display !== 'none');
+      visibles.sort((a, b) => {
+        const precioA = parseFloat(a.getAttribute('data-precio'));
+        const precioB = parseFloat(b.getAttribute('data-precio'));
+        if (ordenar.value === "0") {
+          return precioA - precioB; 
+        } else {
+          return precioB - precioA; 
+        }
+      });
+      visibles.forEach(card => grid.appendChild(card));
+    }
+
+    input.addEventListener('input', function() {
+      filtrar();
+      ordenarProductos();
+    });
+
+    if (ordenar) {
+      ordenar.addEventListener('change', ordenarProductos);
+    }
+
+    filtrar();
+    ordenarProductos();
+  });
+</script>
+
+{% endblock %}

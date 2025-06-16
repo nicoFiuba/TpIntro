@@ -30,3 +30,28 @@ def verify_user(username, password):
             if user and check_password_hash(user["password_"], password):
                 return user
             return None
+        
+def get_user_by_username(username):
+    with get_connection() as conn:
+        with conn.cursor() as cursor:
+            cursor.execute("SELECT * FROM Usuario WHERE username = %s", (username,))
+            return cursor.fetchone()
+        
+def email_exists(email):
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT id FROM Usuario WHERE email = %s", (email,))
+    result = cursor.fetchone()
+    cursor.close()
+    conn.close()
+    return result is not None
+
+def get_user_by_username_and_email(username, email):
+    with get_connection() as conn:
+        with conn.cursor() as cursor:
+            cursor.execute("""
+                SELECT * FROM Usuario WHERE username = %s AND email = %s
+            """, (username, email))
+            return cursor.fetchone()
+
+       

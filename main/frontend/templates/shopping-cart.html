@@ -6,33 +6,34 @@
 
 
 
-  <div class="breadcrumb-section container mx-auto my-5 px-2 sm:px-8">
-    <ul class="flex flex-wrap items-center gap-1">
-      <li class="transition-all-300 hover:text-primary-color">
-        <a href="{{ url_for('index') }}">Home</a>
-      </li>
-      <li>
-        <i class="bi bi-caret-right-fill flex text-primary-color"></i>
-      </li>
-      <li class="transition-all-300 active hover:text-primary-color">
-        <a href="{{ url_for('shopping_cart') }}">Shopping Cart</a>
-      </li>
-    </ul>
-  </div>
+<div class="breadcrumb-section container mx-auto my-5 px-2 sm:px-8">
+  <ul class="flex flex-wrap items-center gap-1">
+    <li class="transition-all-300 hover:text-primary-color">
+      <a href="{{ url_for('index') }}">Home</a>
+    </li>
+    <li>
+      <i class="bi bi-caret-right-fill flex text-primary-color"></i>
+    </li>
+    <li class="transition-all-300 active hover:text-primary-color">
+      <a href="{{ url_for('shopping_cart') }}">Shopping Cart</a>
+    </li>
+  </ul>
+</div>
 
-  <div class="banner-title-section container mx-auto my-5 px-2 sm:px-8">
-    <div class="liner-container my-5 flex justify-center border-b-2 border-[rgba(119,119,119,.17)]">
-      <h1 class="mb-[-2px] inline-block border-b-2 border-primary-color pb-3 text-2xl font-bold uppercase">
-        Shopping Cart
-      </h1>
-    </div>
+<div class="banner-title-section container mx-auto my-5 px-2 sm:px-8">
+  <div class="liner-container my-5 flex justify-center border-b-2 border-[rgba(119,119,119,.17)]">
+    <h1 class="mb-[-2px] inline-block border-b-2 border-primary-color pb-3 text-2xl font-bold uppercase">
+      Shopping Cart
+    </h1>
   </div>
+</div>
 
- <div class="shopping-cart-page container mx-auto my-5 px-2 sm:px-8">
+<div class="shopping-cart-page container mx-auto my-5 px-2 sm:px-8">
   {% if carrito_detallado %}
-    <table class="w-full text-left">
+    <table class="w-full text-left border-collapse">
       <thead>
-        <tr>
+        <tr class="bg-gray-200 text-gray-700">
+          <th>Imagen</th>
           <th>Producto</th>
           <th>Precio</th>
           <th>Cantidad</th>
@@ -42,30 +43,69 @@
       </thead>
       <tbody>
         {% for producto in carrito_detallado %}
-        <tr>
-          <td>{{ producto.nombre }}</td>
-          <td>${{ producto.precio }}</td>
-          <td>
-            <form method="post" action="http://localhost:5000/cart/update/{{ producto.id }}">
-              <input type="number" name="cantidad" value="{{ producto.cantidad }}" min="1" style="width:60px;">
-              <button type="submit">Actualizar</button>
+        <tr class="bg-gray-100 hover:bg-gray-200 transition-all border-b border-gray-300">
+          <td class="p-4">
+            <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border">
+              <img class="h-full w-full object-cover" 
+                src="http://localhost:5000/catalogo/api/productos/{{ producto.id }}/imagen" 
+                alt="{{ producto.nombre }}" />
+            </div>
+          </td>
+
+          <td class="p-4 rounded-l-md">{{ producto.nombre }}</td>
+          <td class="p-4">${{ "%.2f"|format(producto.precio | float) }}</td>
+          <td class="p-4">
+            <form method="post" action="{{ url_for('update_cart', producto_id=producto.id) }}" class="flex items-center gap-2">
+              <input
+                type="number"
+                name="cantidad"
+                value="{{ producto.cantidad }}"
+                min="1"
+                max="{{ producto.stock }}"
+                class="w-[60px] rounded-md border border-primary-color bg-gray-50 px-2 py-1 text-center"
+              >
+              <button
+                type="submit"
+                class="rounded-md border border-primary-color bg-gray-100 px-3 py-1 text-sm hover:bg-primary-color hover:text-white transition-all"
+              >
+                Actualizar
+              </button>
             </form>
           </td>
-          <td>${{ producto.precio * producto.cantidad }}</td>
-          <td>
-            <form method="post" action="http://localhost:5000/cart/remove/{{ producto.id }}">
-              <button type="submit">Eliminar</button>
+          <td class="p-4 font-semibold">${{ "%.2f"|format(producto.precio | float * producto.cantidad | int) }}</td>
+          <td class="p-4 rounded-r-md">
+            <form method="post" action="{{ url_for('remove_from_cart', producto_id=producto.id) }}">
+              <button
+                type="submit"
+                class="rounded-md border border-red-600 bg-red-100 px-3 py-1 text-sm text-red-600 hover:bg-red-600 hover:text-white transition-all"
+              >
+                Eliminar
+              </button>
             </form>
           </td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
-    <form method="post" action="http://localhost:5000/cart/clear">
-      <button type="submit">Vaciar carrito</button>
+    <form method="post" action="{{ url_for('clear_cart') }}">
+      <button type="submit" style="border-radius:8px; border:1px solid #dc2626; padding:4px 12px; background:#fee2e2; color:#dc2626; cursor:pointer; margin-top: 10px;">
+        Vaciar carrito
+      </button>
     </form>
     <div class="text-right font-bold mt-4">
-      Total: ${{ total }}
+      Total: ${{ "%.2f"|format(total) }}
+    </div>
+    <div class="text-right mt-4">
+      <!-- Opción 1: Usar purchase_completed si existe -->
+      <a href="{{ url_for('purchase_completed') }}" style="border-radius:8px; padding:8px 16px; background:#0E506C; color:white; font-weight:bold; display:inline-block;">
+        Finalizar compra
+      </a>
+      
+      <!-- Opción 2: Alternativa si no hay purchase_completed -->
+      
+      <button class="btn-open-modal" data-target=".entry-modal" style="border-radius:8px; padding:8px 16px; background:#0E506C; color:white; font-weight:bold; cursor:pointer;">
+        Finalizar compra
+      </button>
     </div>
   {% else %}
     <div class="shopping-cart-empty flex flex-col items-center justify-center gap-4 p-5">
@@ -79,396 +119,94 @@
   {% endif %}
 </div>
 
-  <div class="menu-mob modal transition-all-300 invisible fixed inset-0 z-50 h-full w-full bg-overlay opacity-0">
-    <div class="flex h-full w-full">
-      <div
-        class="modal-content transition-all-300 relative left-[-999px] mr-auto flex h-full w-[288px] min-w-[250px] flex-col bg-white">
-        <div class="w-full bg-secondary-color">
-          <button class="btn-close-modal transition-all-300 absolute top-5 right-5 p-[3px] text-white">
-            <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex text-xl"></i>
-          </button>
-          <div class="py-12">
-            <img src="{{ url_for('static', filename='images/logo.png') }}" class="mx-auto h-[40px]" alt="logo" />
-          </div>
-        </div>
-        <nav class="h-full w-full overflow-auto bg-white">
-          <ul class="metismenu">
-            <li class="border-b border-gray-200">
-              <a class="flex select-none items-center p-2" href="{{ url_for('index') }}">
-                <i class="bi bi-house-door mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Home</span>
-              </a>
-            </li>
-            <li class="border-b border-gray-200">
-              <div class="metismenu-btn has-arrow flex cursor-pointer select-none items-center p-2"
-                aria-expanded="false" role="menu">
-                <i class="bi bi-person mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">My Account</span>
-              </div>
-              <div class="metismenu-content">
-                <a class="btn-open-modal ml-10 block p-1" href="#" data-tab="0" data-target=".entry-modal">Login</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#" data-tab="1" data-target=".entry-modal">Sign Up</a>
-              </div>
-            </li>
-            <li class="border-b border-gray-200">
-              <div class="btn-open-modal cursor-pointer p-2" data-target=".wishlist-modal">
-                <div class="pointer-events-none flex cursor-pointer select-none items-center">
-                  <i class="bi bi-heart mr-3 flex text-xl text-primary-color"></i>
-                  <span class="font-semibold">Wishlist</span>
-                  <span class="badge ml-auto h-[22px] min-w-[22px] px-[6px]">0</span>
-                </div>
-              </div>
-            </li>
-            <li class="border-b border-gray-200">
-              <div class="btn-open-modal cursor-pointer p-2" data-target=".shopping-cart-modal">
-                <div class="pointer-events-none flex cursor-pointer select-none items-center">
-                  <i class="bi bi-cart mr-3 flex text-xl text-primary-color"></i>
-                  <span class="font-semibold">Shopping Cart</span>
-                  <span class="badge ml-auto h-[22px] min-w-[22px] px-[6px]">0</span>
-                </div>
-              </div>
-            </li>
-            <li class="border-b border-gray-200">
-              <div class="metismenu-btn has-arrow flex cursor-pointer select-none items-center p-2"
-                aria-expanded="false" role="menu">
-                <i class="bi bi-motherboard mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Hardware</span>
-              </div>
-              <div class="metismenu-content">
-                <a class="btn-open-modal ml-10 block p-1" href="#">Motherboards</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Processors</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Rams</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Video Cards</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Power Supplys</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Hard Drives</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">SSD Disk</a>
-              </div>
-            </li>
-            <li class="border-b border-gray-200">
-              <div class="metismenu-btn has-arrow flex cursor-pointer select-none items-center p-2"
-                aria-expanded="false" role="menu">
-                <i class="bi bi-mouse mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Peripherals</span>
-              </div>
-              <div class="metismenu-content">
-                <a class="btn-open-modal ml-10 block p-1" href="#">Keywords</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Mouses</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Mics</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Webcam</a>
-              </div>
-            </li>
-            <li class="border-b border-gray-200">
-              <div class="metismenu-btn has-arrow flex cursor-pointer select-none items-center p-2"
-                aria-expanded="false" role="menu">
-                <i class="bi bi-pc-display mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Computers</span>
-              </div>
-              <div class="metismenu-content">
-                <a class="btn-open-modal ml-10 block p-1" href="#">Notebooks</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Desktops</a>
-              </div>
-            </li>
-            <li class="border-b border-gray-200">
-              <a class="flex cursor-pointer select-none items-center p-2" href="#">
-                <i class="bi bi-tv mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Monitors</span>
-              </a>
-            </li>
-            <li class="border-b border-gray-200">
-              <a class="flex cursor-pointer select-none items-center p-2" href="#">
-                <i class="bi bi-printer mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Printers</span>
-              </a>
-            </li>
-            <li class="border-b border-gray-200">
-              <a class="flex cursor-pointer select-none items-center p-2" href="#">
-                <i class="bi bi-phone mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Smartphones</span>
-              </a>
-            </li>
-
-            <li class="border-b border-gray-200">
-              <a class="flex select-none items-center p-2" href="{{ url_for('contact_us')}}">
-                <i class="bi bi-telephone mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Contact Us</span>
-              </a>
-            </li>
-            <li class="border-b border-gray-200">
-              <div class="metismenu-btn has-arrow flex cursor-pointer select-none items-center p-2"
-                aria-expanded="false" role="menu">
-                <span class="font-semibold">Pages</span>
-              </div>
-              <div class="metismenu-content">
-                
-                <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('shopping_cart') }}">Shopping Cart</a>
-                <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('product_details', product_id=1) }}">Product Details</a>
-                
-                <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('shop_mixed') }}">Shop - Mixed</a>
-
-                <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('my_account') }}">My Account</a>
-                <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('purchase_completed') }}">Purchase Completed</a>
-
-
-              </div>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </div>
-
-  <div
-    class="shopping-cart-modal modal transition-all-300 invisible fixed inset-0 z-50 h-full w-full bg-overlay opacity-0">
-    <div class="flex h-full w-full">
-      <div
-        class="modal-content transition-all-300 relative right-[-999px] ml-auto flex h-full w-[400px] min-w-[250px] flex-col bg-white">
-        <div class="w-full">
-          <div class="border-b-2 border-gray-200 p-5">
-            <h3 class="text-xl font-bold uppercase">Shopping Cart</h3>
-          </div>
-          <button class="btn-close-modal transition-all-300 absolute top-5 right-5 p-[3px] hover:text-slate-400">
-            <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex text-xl"></i>
-          </button>
-        </div>
-        <div class="h-full overflow-auto">
-          <!-- If the shopping cart is empty (replace hidden with flex) -->
-          <div class="hidden flex-col items-center justify-center gap-4 p-5">
-            <i class="bi bi-cart-x text-8xl text-gray-200"></i>
-            <p class="font-semibold">There are no products in the cart.</p>
-            <a class="btn-effect transition-all-300 flex items-center justify-center gap-2 rounded-lg bg-primary-color p-2"
-              href="{{ url_for('shop_mixed') }}">
-              <span class="font-bold uppercase text-white">Go to the store</span>
-            </a>
-          </div>
-          <!-- -->
-          <a class="transition-all-300 flex h-[100px] w-full items-center justify-between gap-5 bg-white p-2 hover:bg-gray-100"
-            href="#">
-            <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border">
-              <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/product/prod-1.jpg') }}" alt="product" />
-            </div>
-            <div class="flex w-full flex-col">
-              <h6 class="clamp-2 break-all text-lg font-semibold">
-                Ryzen 5 3600x
-              </h6>
-              <div class="flex gap-2">
-                <div class="flex gap-1 leading-7 text-gray-400">
-                  <span>1</span>
-                  <span>X</span>
-                </div>
-                <div class="flex items-center gap-2">
-                  <span class="font-bold text-primary-color">$37.00</span>
-                  <small class="text-xs text-primary-color line-through">$50.00</small>
-                </div>
-              </div>
-            </div>
-            <div class="transition-all-300 flex text-slate-400 hover:text-primary-color">
-              <i class="bi bi-trash-fill pointer-events-none text-2xl"></i>
-            </div>
-          </a>
-        </div>
-        <div class="mt-auto border-t-2 border-gray-200 bg-white px-1 pt-5 xs:px-5">
-          <div class="flex justify-between">
-            <span class="text-lg uppercase">Subtotal:</span>
-            <span class="text-lg font-semibold text-primary-color">$37.00</span>
-          </div>
-          <a class="btn-effect transition-all-300 my-5 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
-            href="{{ url_for('shopping_cart') }}">
-            <span class="font-bold uppercase text-white">View Shopping Cart</span>
-          </a>
-        
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="wishlist-modal modal transition-all-300 invisible fixed inset-0 z-50 h-full w-full bg-overlay opacity-0">
-    <div class="flex h-full w-full">
-      <div
-        class="modal-content transition-all-300 relative right-[-999px] ml-auto flex h-full w-[400px] min-w-[250px] flex-col bg-white">
-        <div class="w-full">
-          <div class="border-b-2 border-gray-200 p-5">
-            <h3 class="text-xl font-bold uppercase">Wishlist</h3>
-          </div>
-          <button class="btn-close-modal transition-all-300 absolute top-5 right-5 p-[3px] hover:text-slate-400">
-            <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex text-xl"></i>
-          </button>
-        </div>
-        <div class="h-full overflow-auto">
-          <!-- If the wishlist is empty (replace hidden with flex) -->
-          <div class="hidden flex-col items-center justify-center gap-4 p-5">
-            <i class="bi bi-heart text-8xl text-gray-200"></i>
-            <p class="font-semibold">
-              There are no products in the wishlist.
-            </p>
-            <a class="btn-effect transition-all-300 flex items-center justify-center gap-2 rounded-lg bg-primary-color p-2"
-              href="{{ url_for('shop_mixed') }}">
-              <span class="font-bold uppercase text-white">Go to the store</span>
-            </a>
-          </div>
-          <a class="transition-all-300 flex h-[100px] w-full items-center justify-between gap-5 bg-white p-2 hover:bg-gray-100"
-            href="#">
-            <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border">
-              <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/product/prod-1.jpg') }}" alt="product" />
-            </div>
-
-            <div class="flex w-full flex-col">
-              <h6 class="clamp-2 break-all text-lg font-semibold">
-                Ryzen 5 3600x
-              </h6>
-              <div class="flex items-center gap-2">
-                <span class="font-bold text-primary-color">$37.00</span>
-                <small class="text-xs text-primary-color line-through">$50.00</small>
-              </div>
-            </div>
-
-            <div class="transition-all-300 flex text-slate-400 hover:text-primary-color">
-              <i class="bi bi-trash-fill pointer-events-none text-2xl"></i>
-            </div>
-          </a>
-        </div>
-        <div class="mt-auto border-t-2 border-gray-200 bg-white px-1 xs:px-5">
-          
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div
-    class="entry-modal modal transition-all-300 invisible fixed inset-0 z-50 flex h-full w-full flex-col items-center justify-start overflow-auto bg-overlay opacity-0">
-    <div class="my-10 flex w-full justify-center">
-      <div
-        class="entry-content modal-content transition-all-300 relative mx-3 w-[500px] min-w-[250px] rounded-lg bg-white px-3 pb-3 pt-7 xs:px-5 xs:pb-5 md:m-5">
-        <button
-          class="btn-close-modal transition-all-300 absolute top-0 right-0 p-2 sm:top-[-10px] sm:right-[-10px] sm:rounded-lg sm:bg-primary-color sm:text-white sm:hover:bg-primary-hover">
-          <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex"></i>
+<div class="menu-mob modal transition-all-300 invisible fixed inset-0 z-50 h-full w-full bg-overlay opacity-0">
+  <div class="flex h-full w-full">
+    <div
+      class="modal-content transition-all-300 relative left-[-999px] mr-auto flex h-full w-[288px] min-w-[250px] flex-col bg-white">
+      <div class="w-full bg-secondary-color">
+        <button class="btn-close-modal transition-all-300 absolute top-5 right-5 p-[3px] text-white">
+          <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex text-xl"></i>
         </button>
-        <div class="tabs-container entry-container">
-          <ul class="flex justify-between">
-            <li
-              class="btn-tabs tab-active-1 transition-all-300 active w-full cursor-pointer border bg-gray-200 p-2 text-center text-gray-400">
-              Login
-            </li>
-            <li
-              class="btn-tabs tab-active-1 transition-all-300 w-full cursor-pointer border bg-gray-200 p-2 text-center text-gray-400">
-              Sign Up
-            </li>
-          </ul>
-          <div class="tabs-content border border-t-transparent">
-            <div class="tab-content invisible absolute w-full p-5 opacity-0">
-              <div class="my-5">
-                <img class="mx-auto" src="{{ url_for('static', filename='images/svg/logo.svg') }}" alt="{{ BRAND_NAME }}" />
-              </div>
-              <form action="#">
-                <div class="flex flex-col gap-4">
-                  <div class="relative flex h-[40px] items-center">
-                    <i class="bi bi-person absolute ml-2 flex text-[24px] text-gray-400"></i>
-                    <input class="input pl-10" type="text" placeholder="Username or Email" required />
-                  </div>
-                  <div class="relative flex h-[40px] items-center">
-                    <i class="bi bi-lock absolute ml-2 flex text-[24px] text-gray-400"></i>
-                    <input class="input pl-10" type="password" placeholder="Password" required />
-                  </div>
-                  <button class="btn-effect transition-all-300 h-full w-full rounded-lg bg-primary-color p-2"
-                    type="submit">
-                    <span class="font-bold uppercase text-white">Login</span>
-                  </button>
-                </div>
-                <div class="my-2 flex flex-wrap items-center justify-between gap-2">
-                  <label class="flex select-none items-center gap-2">
-                    <input class="checkbox" type="checkbox" />
-                    <span class="text-gray-title">Remember</span>
-                  </label>
-                  <a class="underlined-animated text-[#3091ff] after:bottom-0" href="#">Forgot Password?</a>
-                </div>
-              </form>
-              <span class="or text-gray-title flex h-[50px] items-center py-2">
-                <span class="mx-2 text-sm uppercase">Or</span>
-              </span>
-              <div class="flex flex-col flex-wrap justify-center gap-5 sm:flex-row">
-                <button
-                  class="transition-all-300 flex h-[50px] min-w-[100px] items-center justify-center rounded-lg bg-facebook hover:scale-110">
-                  <i class="bi bi-facebook flex text-3xl text-white"></i>
-                </button>
-                <button
-                  class="transition-all-300 flex h-[50px] min-w-[100px] items-center justify-center rounded-lg bg-twitter hover:scale-110">
-                  <i class="bi bi-twitter flex text-3xl text-white"></i>
-                </button>
-                <button
-                  class="transition-all-300 flex h-[50px] min-w-[100px] items-center justify-center rounded-lg bg-google hover:scale-110">
-                  <i class="bi bi-google flex text-3xl text-white"></i>
-                </button>
-              </div>
-            </div>
-            <div class="tab-content invisible absolute w-full bg-white p-5 opacity-0">
-              <div class="my-5">
-                <img class="mx-auto" src="{{ url_for('static', filename='images/svg/logo.svg') }}" alt="{{ BRAND_NAME }}" />
-              </div>
-              <form action="#">
-                <div class="flex flex-col gap-4">
-                  <div class="relative flex h-[40px] items-center">
-                    <i class="bi bi-person absolute ml-2 flex text-[24px] text-gray-400"></i>
-                    <input class="input pl-10" type="text" placeholder="Name" required />
-                  </div>
-                  <div class="relative flex h-[40px] items-center">
-                    <i class="bi bi-envelope absolute ml-2 flex text-[24px] text-gray-400"></i>
-                    <input class="input pl-10" type="text" placeholder="Email" required />
-                  </div>
-                  <div class="relative flex h-[40px] items-center">
-                    <i class="bi bi-lock absolute ml-2 flex text-[24px] text-gray-400"></i>
-                    <input class="input pl-10" type="password" placeholder="Password" required />
-                  </div>
-                  <div class="relative flex h-[40px] items-center">
-                    <i class="bi bi-lock-fill absolute ml-2 flex text-[24px] text-gray-400"></i>
-                    <input class="input pl-10" type="password" placeholder="Confirm Password" required />
-                  </div>
-                  <button class="btn-effect transition-all-300 h-full w-full rounded-lg bg-primary-color p-2"
-                    type="submit">
-                    <span class="font-bold uppercase text-white">Sign Up</span>
-                  </button>
-                </div>
-                <div class="my-2 flex items-center justify-between">
-                  <label class="flex select-none items-center gap-2">
-                    <input class="checkbox" type="checkbox" />
-                    <span class="text-gray-title">I agree with all
-                      <a class="underlined-animated text-[#3091ff] after:bottom-0" href="#">Terms of Use</a>
-                      &
-                      <a class="underlined-animated text-[#3091ff] after:bottom-0" href="#">Privacy Policy</a>.</span>
-                  </label>
-                </div>
-              </form>
-              <span class="or text-gray-title flex h-[50px] items-center py-2">
-                <span class="mx-2 text-sm uppercase">Or</span>
-              </span>
-              <div class="flex flex-col flex-wrap justify-center gap-5 sm:flex-row">
-                <button
-                  class="transition-all-300 flex h-[50px] min-w-[100px] items-center justify-center rounded-lg bg-facebook hover:scale-110">
-                  <i class="bi bi-facebook flex text-3xl text-white"></i>
-                </button>
-                <button
-                  class="transition-all-300 flex h-[50px] min-w-[100px] items-center justify-center rounded-lg bg-twitter hover:scale-110">
-                  <i class="bi bi-twitter flex text-3xl text-white"></i>
-                </button>
-                <button
-                  class="transition-all-300 flex h-[50px] min-w-[100px] items-center justify-center rounded-lg bg-google hover:scale-110">
-                  <i class="bi bi-google flex text-3xl text-white"></i>
-                </button>
-              </div>
-            </div>
-          </div>
+        <div class="py-12">
+          <img src="{{ url_for('static', filename='images/logo.png') }}" class="mx-auto h-[40px]" alt="logo" />
         </div>
       </div>
+      <nav class="h-full w-full overflow-auto bg-white">
+        <ul class="metismenu">
+          <li class="border-b border-gray-200">
+            <a class="flex select-none items-center p-2" href="{{ url_for('index') }}">
+              <i class="bi bi-house-door mr-3 flex text-xl text-primary-color"></i>
+              <span class="font-semibold">Home</span>
+            </a>
+          </li>
+          <li class="border-b border-gray-200">
+            <div class="metismenu-btn has-arrow flex cursor-pointer select-none items-center p-2" aria-expanded="false"
+              role="menu">
+              <i class="bi bi-person mr-3 flex text-xl text-primary-color"></i>
+              <span class="font-semibold">My Account</span>
+            </div>
+            <div class="metismenu-content">
+              <a class="btn-open-modal ml-10 block p-1" href="#" data-tab="0" data-target=".entry-modal">Login</a>
+              <a class="btn-open-modal ml-10 block p-1" href="#" data-tab="1" data-target=".entry-modal">Sign Up</a>
+            </div>
+          </li>
+          <li class="border-b border-gray-200">
+            <div class="btn-open-modal cursor-pointer p-2" data-target=".wishlist-modal">
+              <div class="pointer-events-none flex cursor-pointer select-none items-center">
+                <i class="bi bi-heart mr-3 flex text-xl text-primary-color"></i>
+                <span class="font-semibold">Wishlist</span>
+                <span class="badge ml-auto h-[22px] min-w-[22px] px-[6px]">0</span>
+              </div>
+            </div>
+          </li>
+          <li class="border-b border-gray-200">
+            <div class="btn-open-modal cursor-pointer p-2" data-target=".shopping-cart-modal">
+              <div class="pointer-events-none flex cursor-pointer select-none items-center">
+                <i class="bi bi-cart mr-3 flex text-xl text-primary-color"></i>
+                <span class="font-semibold">Shopping Cart</span>
+                <span class="badge ml-auto h-[22px] min-w-[22px] px-[6px]">0</span>
+              </div>
+            </div>
+          </li>
+          <li class="border-b border-gray-200">
+            <a class="flex select-none items-center p-2" href="{{ url_for('contact_us')}}">
+              <i class="bi bi-telephone mr-3 flex text-xl text-primary-color"></i>
+              <span class="font-semibold">Contact Us</span>
+            </a>
+          </li>
+          <li class="border-b border-gray-200">
+            <div class="metismenu-btn has-arrow flex cursor-pointer select-none items-center p-2" aria-expanded="false"
+              role="menu">
+              <span class="font-semibold">Pages</span>
+            </div>
+            <div class="metismenu-content">
+
+              <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('shopping_cart') }}">Shopping Cart</a>
+              <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('product_details', product_id=1) }}">Product
+                Details</a>
+
+              <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('shop_mixed') }}">Shop - Mixed</a>
+
+              <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('my_account') }}">My Account</a>
+              <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('purchase_completed') }}">Purchase
+                Completed</a>
+
+
+            </div>
+          </li>
+        </ul>
+      </nav>
     </div>
   </div>
-  <!-- -->
+</div>
+<!-- -->
 
-  <div class="btn-gotop transition-all-300 invisible fixed bottom-[-999px] right-10 z-50 opacity-0">
-    <div class="transition-all-300 cursor-pointer rounded-lg bg-[rgba(0,0,0,.3)] p-3 hover:bg-primary-color">
-      <i class="bi bi-chevron-compact-up pointer-events-none flex text-2xl text-white"></i>
-    </div>
+<div class="btn-gotop transition-all-300 invisible fixed bottom-[-999px] right-10 z-50 opacity-0">
+  <div class="transition-all-300 cursor-pointer rounded-lg bg-[rgba(0,0,0,.3)] p-3 hover:bg-primary-color">
+    <i class="bi bi-chevron-compact-up pointer-events-none flex text-2xl text-white"></i>
   </div>
+</div>
 
- 
+
 
 {% endblock %}
-
- 

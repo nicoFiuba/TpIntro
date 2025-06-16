@@ -1,10 +1,14 @@
 from db import get_connection
+import base64
 
 def obtener_todos_los_productos():
     conn = get_connection()
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM productos")
     resultado = cursor.fetchall()
+    for producto in resultado:
+        if producto['imagen']:
+            producto['imagen'] = base64.b64encode(producto['imagen']).decode('utf-8')    
     cursor.close()
     conn.close()
     return resultado
@@ -14,6 +18,8 @@ def obtener_producto_por_id(producto_id):
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM productos WHERE id = %s", (producto_id,))
     producto = cursor.fetchone()
+    if producto and producto['imagen']:
+        producto['imagen'] = base64.b64encode(producto['imagen']).decode('utf-8')
     cursor.close()
     conn.close()
     return producto
@@ -43,17 +49,21 @@ def crear_producto(datos_producto):
     cursor = conn.cursor()
     
     sql = """
-    INSERT INTO productos (nombre, descripcion, precio, stock, categoria)
-    VALUES (%s, %s, %s, %s, %s)
+    INSERT INTO productos (nombre, descripcion, precio, stock, categoria, imagen)
+    VALUES (%s, %s, %s, %s, %s, %s)
     """
+
+    imagen_base64 = datos_producto.get('imagen')
+    imagen_binaria = base64.b64decode(imagen_base64) if imagen_base64 else None
 
     valores = (
         datos_producto.get('nombre'),
         datos_producto.get('descripcion'),
         datos_producto.get('precio'),
         datos_producto.get('stock'),
-        datos_producto.get('categoria')
-    )
+        datos_producto.get('categoria'),
+        imagen_binaria
+        )
 
     cursor.execute(sql, valores)
     conn.commit()
