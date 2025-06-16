@@ -4,7 +4,7 @@ import base64
 def obtener_todos_los_productos():
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM productos")
+    cursor.execute("SELECT * FROM Productos")
     resultado = cursor.fetchall()
     for producto in resultado:
         if producto['imagen']:
@@ -16,7 +16,7 @@ def obtener_todos_los_productos():
 def obtener_producto_por_id(producto_id):
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM productos WHERE id = %s", (producto_id,))
+    cursor.execute("SELECT * FROM Productos WHERE id = %s", (producto_id,))
     producto = cursor.fetchone()
     if producto and producto['imagen']:
         producto['imagen'] = base64.b64encode(producto['imagen']).decode('utf-8')
@@ -27,7 +27,7 @@ def obtener_producto_por_id(producto_id):
 def obtener_producto_por_categoria(producto_tipo):
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT * FROM productos WHERE categoria = %s", (producto_tipo,))
+    cursor.execute("SELECT * FROM Productos WHERE categoria = %s", (producto_tipo,))
     producto = cursor.fetchall()
     cursor.close()
     conn.close()
@@ -36,7 +36,7 @@ def obtener_producto_por_categoria(producto_tipo):
 def obtener_categorias():
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute("SHOW COLUMNS FROM productos LIKE 'categoria'")
+    cursor.execute("SHOW COLUMNS FROM Productos LIKE 'categoria'")
     result = cursor.fetchone()
     cursor.close()
     conn.close()
@@ -49,7 +49,7 @@ def crear_producto(datos_producto):
     cursor = conn.cursor()
     
     sql = """
-    INSERT INTO productos (nombre, descripcion, precio, stock, categoria, imagen)
+    INSERT INTO Productos (nombre, descripcion, precio, stock, categoria, imagen)
     VALUES (%s, %s, %s, %s, %s, %s)
     """
 
@@ -77,7 +77,7 @@ def actualizar_producto(producto_id, datos_producto):
     cursor = conn.cursor()
     
     sql = """
-    UPDATE productos SET nombre = %s, descripcion = %s, precio = %s, stock = %s, categoria = %s, imagen = %s, edad = %s, tipo = %s WHERE id = %s
+    UPDATE Productos SET nombre = %s, descripcion = %s, precio = %s, stock = %s, categoria = %s, imagen = %s, edad = %s, tipo = %s WHERE id = %s
     """
 
     valores = (
@@ -101,7 +101,7 @@ def actualizar_producto(producto_id, datos_producto):
 def eliminar_producto(producto_id):
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute("DELETE FROM productos WHERE id = %s", (producto_id,))
+    cursor.execute("DELETE FROM Productos WHERE id = %s", (producto_id,))
     conn.commit()
     cursor.close()
     conn.close()
