@@ -70,28 +70,20 @@
           <form class="grid grid-cols-12 gap-2" action="#">
             <div class="col-span-12 xs:col-span-12">
               <label class="flex flex-col text-sm">
-                First name
+                Nombre
                 <input class="input h-10" type="text" placeholder="{{ perfil_usuario.username }}" value="{{ perfil_usuario.username }}" readonly />
               </label>
             </div>
             <div class="col-span-12 xs:col-span-6">
-              <label class="flex flex-col text-sm">
-                Telephone
-                <input class="input input-number h-10" type="number" placeholder="011234567890" value="011234567890"
-                  readonly />
-              </label>
+              
             </div>
             <div class="col-span-12 xs:col-span-6">
-              <label class="flex flex-col text-sm">
-                D.N.I
-                <input class="input input-number h-10" type="number" placeholder="1234567890" value="1234567890"
-                  readonly />
-              </label>
+              
             </div>
             <div class="col-span-12">
               <label class="flex flex-col text-sm">
                 Email
-                <input class="input h-10" type="text" placeholder="johndoe@example.com" value="johndoe@example.com"
+                <input class="input h-10" type="text" placeholder="{{  }}" value="{{  }}"
                   readonly />
               </label>
             </div>
@@ -99,20 +91,14 @@
         </div>
 
         <div class="tab-content flex h-full flex-col gap-5 rounded bg-white p-5">
-          <span class="block text-xl font-bold">My Address</span>
+         
           <ul class="flex flex-col gap-4">
             <li class="relative">
               <input class="peer sr-only" type="radio" value="" name="address" id="address-1" checked="" />
               <label
                 class="flex w-full cursor-pointer flex-col gap-5 rounded-lg border border-gray-300 bg-white p-2 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-primary-color"
                 for="address-1">
-                <span class="font-bold">John Doe</span>
-                <div class="text-sm">
-                  <span class="block">Olavarría, Buenos Aires</span>
-                  <span class="block">7400</span>
-                  <span class="block">Av. Colón 0101</span>
-                  <span class="block">(+01)1234567890</span>
-                </div>
+                
                 <div class="flex items-center justify-end gap-4 text-slate-400">
                   <div class="btn-open-modal tippy tippy-edit transition-all-300 hover:text-primary-color"
                     data-target=".edit-address-modal">
@@ -126,17 +112,12 @@
               </label>
             </li>
             <li class="relative">
-              <input class="peer sr-only" type="radio" value="" name="address" id="address-2" />
+              
               <label
                 class="flex w-full cursor-pointer flex-col gap-5 rounded-lg border border-gray-300 bg-white p-2 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-primary-color"
                 for="address-2">
-                <span class="font-bold">John Doe</span>
-                <div class="text-sm">
-                  <span class="block">Olavarría, Buenos Aires</span>
-                  <span class="block">7400</span>
-                  <span class="block">Av. Colón 0101</span>
-                  <span class="block">(+01)1234567890</span>
-                </div>
+                
+                
                 <div class="flex items-center justify-end gap-4 text-slate-400">
                   <div class="btn-open-modal tippy tippy-edit transition-all-300 hover:text-primary-color"
                     data-target=".edit-address-modal">
@@ -150,45 +131,17 @@
               </label>
             </li>
           </ul>
-          <button
-            class="btn-open-modal btn-effect w-full rounded-lg bg-primary-color p-2 font-bold uppercase text-white"
-            data-target=".add-address-modal">
-            <span class="pointer-events-none text-center">Add Address</span>
-          </button>
+          
         </div>
         <div class="tab-content flex h-full flex-col gap-5 rounded bg-white p-5">
           <span class="block text-xl font-bold">My Orders</span>
           <div class="flex flex-wrap justify-between gap-5">
             <form class="search" action="#">
               <div class="flex h-[40px] overflow-hidden rounded-[50px] bg-gray-100">
-                <input
-                  class="search w-full border-none bg-transparent py-[5px] pl-5 text-slate-600 focus:border-none focus:ring-0 focus:ring-transparent"
-                  type="search" placeholder="Search..." />
-                <button class="btn-search px-3 text-slate-600" type="submit">
-                  <i class="bi bi-search flex text-xl"></i>
-                </button>
+               
               </div>
             </form>
-            <ul class="order-mix flex flex-wrap">
-              <li class="control relative cursor-pointer rounded py-2 px-3" data-filter=".mix-main">
-                <span>All</span>
-              </li>
-              <li class="control relative flex cursor-pointer items-center gap-2 rounded py-2 px-3"
-                data-filter=".mix-processing">
-                <i class="bi bi-clock-history text-yellow-300"></i>
-                <span>Processing</span>
-              </li>
-              <li class="control relative flex cursor-pointer items-center gap-2 rounded py-2 px-3"
-                data-filter=".mix-completed">
-                <i class="bi bi-check-circle text-green-300"></i>
-                <span>Completed</span>
-              </li>
-              <li class="control relative flex cursor-pointer items-center gap-2 rounded py-2 px-3"
-                data-filter=".mix-cancelled">
-                <i class="bi bi-x-circle text-red-300"></i>
-                <span>Cancelled </span>
-              </li>
-            </ul>
+            
           </div>
           <div class="mix-elements mix-all grid grid-cols-12">
             <div class="mix mix-main mix-processing col-span-12">
@@ -196,34 +149,24 @@
                 href="javascript:void(0)" data-target=".order-details-modal">
                 <div class="pointer-events-none flex flex-col gap-5 sm:flex-row">
                   <div class="relative">
-                    <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border bg-white">
-                      <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/product/prod-1.jpg') }}" alt="product" />
-                    </div>
-                    <div
-                      class="absolute -top-2 -right-2 h-[30px] w-[30px] min-w-[30px] overflow-hidden rounded-lg border bg-white">
-                      <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/cards/mousepad.jpg') }}" alt="product" />
-                    </div>
+                    
+                     
+                    
                   </div>
                   <div class="flex flex-col justify-between">
-                    <span class="clamp-2 break-all text-lg font-semibold">Ryzen 5 3600x
-                      <span>, Mousepad Hyperx Fury S Pro Speed </span>
-                    </span>
+                    
                     <div class="my-1 flex items-center gap-1 text-xs">
                       <i class="bi bi-clock flex"></i>
-                      <span>08/01/2022</span>
+                      
                     </div>
                     <div class="flex flex-col">
-                      <span class="text-xs font-light">Transaction. ID</span>
-                      <span class="text-sm font-semibold">#1998ARG</span>
+                      
                     </div>
                   </div>
                   <div class="mt-auto flex flex-col sm:ml-auto">
-                    <span class="whitespace-nowrap text-xs font-light">Total Payment</span>
-                    <span class="text-sm font-semibold">$37.00</span>
+                    
                   </div>
-                  <span class="absolute top-0 right-0 m-2 rounded-xl bg-yellow-200 py-px px-2 text-sm text-yellow-500">
-                    Processing
-                  </span>
+                  
                 </div>
               </a>
             </div>
@@ -232,25 +175,22 @@
                 href="javascript:void(0)" data-target=".order-details-modal">
                 <div class="pointer-events-none flex flex-col gap-5 sm:flex-row">
                   <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border">
-                    <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/product/prod-1.jpg') }}" alt="product" />
+                    
                   </div>
                   <div class="flex flex-col justify-between">
-                    <span class="clamp-2 break-all text-lg font-semibold">Ryzen 5 3600x</span>
+                    
                     <div class="my-1 flex items-center gap-1 text-xs">
                       <i class="bi bi-clock flex"></i>
-                      <span>08/01/2022</span>
+                    
                     </div>
                     <div class="flex flex-col">
-                      <span class="text-xs font-light">Transaction. ID</span>
-                      <span class="text-sm font-semibold">#1998ARG</span>
+                     
                     </div>
                   </div>
                   <div class="mt-auto flex flex-col sm:ml-auto">
-                    <span class="whitespace-nowrap text-xs font-light">Total Payment</span>
-                    <span class="text-sm font-semibold">$37.00</span>
+                    
                   </div>
-                  <span class="absolute top-0 right-0 m-2 rounded-xl bg-green-200 py-px px-2 text-sm text-green-500">
-                    Completed
+                  
                   </span>
                 </div>
               </a>
@@ -260,10 +200,10 @@
                 href="javascript:void(0)" data-target=".order-details-modal">
                 <div class="pointer-events-none flex flex-col gap-5 sm:flex-row">
                   <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border">
-                    <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/product/prod-1.jpg') }}" alt="product" />
+                    
                   </div>
                   <div class="flex flex-col justify-between">
-                    <span class="clamp-2 break-all text-lg font-semibold">Ryzen 5 3600x</span>
+                    
                     <div class="my-1 flex items-center gap-1 text-xs">
                       <i class="bi bi-clock flex"></i>
                       
