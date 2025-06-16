@@ -70,28 +70,20 @@
           <form class="grid grid-cols-12 gap-2" action="#">
             <div class="col-span-12 xs:col-span-12">
               <label class="flex flex-col text-sm">
-                First name
+                Nombre
                 <input class="input h-10" type="text" placeholder="{{ perfil_usuario.username }}" value="{{ perfil_usuario.username }}" readonly />
               </label>
             </div>
             <div class="col-span-12 xs:col-span-6">
-              <label class="flex flex-col text-sm">
-                Telephone
-                <input class="input input-number h-10" type="number" placeholder="011234567890" value="011234567890"
-                  readonly />
-              </label>
+              
             </div>
             <div class="col-span-12 xs:col-span-6">
-              <label class="flex flex-col text-sm">
-                D.N.I
-                <input class="input input-number h-10" type="number" placeholder="1234567890" value="1234567890"
-                  readonly />
-              </label>
+              
             </div>
             <div class="col-span-12">
               <label class="flex flex-col text-sm">
                 Email
-                <input class="input h-10" type="text" placeholder="johndoe@example.com" value="johndoe@example.com"
+                <input class="input h-10" type="text" placeholder="{{  }}" value="{{  }}"
                   readonly />
               </label>
             </div>
@@ -99,20 +91,14 @@
         </div>
 
         <div class="tab-content flex h-full flex-col gap-5 rounded bg-white p-5">
-          <span class="block text-xl font-bold">My Address</span>
+         
           <ul class="flex flex-col gap-4">
             <li class="relative">
               <input class="peer sr-only" type="radio" value="" name="address" id="address-1" checked="" />
               <label
                 class="flex w-full cursor-pointer flex-col gap-5 rounded-lg border border-gray-300 bg-white p-2 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-primary-color"
                 for="address-1">
-                <span class="font-bold">John Doe</span>
-                <div class="text-sm">
-                  <span class="block">Olavarría, Buenos Aires</span>
-                  <span class="block">7400</span>
-                  <span class="block">Av. Colón 0101</span>
-                  <span class="block">(+01)1234567890</span>
-                </div>
+                
                 <div class="flex items-center justify-end gap-4 text-slate-400">
                   <div class="btn-open-modal tippy tippy-edit transition-all-300 hover:text-primary-color"
                     data-target=".edit-address-modal">
@@ -126,17 +112,12 @@
               </label>
             </li>
             <li class="relative">
-              <input class="peer sr-only" type="radio" value="" name="address" id="address-2" />
+              
               <label
                 class="flex w-full cursor-pointer flex-col gap-5 rounded-lg border border-gray-300 bg-white p-2 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-primary-color"
                 for="address-2">
-                <span class="font-bold">John Doe</span>
-                <div class="text-sm">
-                  <span class="block">Olavarría, Buenos Aires</span>
-                  <span class="block">7400</span>
-                  <span class="block">Av. Colón 0101</span>
-                  <span class="block">(+01)1234567890</span>
-                </div>
+                
+                
                 <div class="flex items-center justify-end gap-4 text-slate-400">
                   <div class="btn-open-modal tippy tippy-edit transition-all-300 hover:text-primary-color"
                     data-target=".edit-address-modal">
@@ -150,11 +131,7 @@
               </label>
             </li>
           </ul>
-          <button
-            class="btn-open-modal btn-effect w-full rounded-lg bg-primary-color p-2 font-bold uppercase text-white"
-            data-target=".add-address-modal">
-            <span class="pointer-events-none text-center">Add Address</span>
-          </button>
+          
         </div>
         <div class="tab-content flex h-full flex-col gap-5 rounded bg-white p-5">
           <span class="block text-xl font-bold">My Orders</span>
