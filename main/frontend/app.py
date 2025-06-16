@@ -531,4 +531,4 @@ def agregar_admin():
         return redirect(url_for('administrar_pagina'))
     
 if __name__ == '__main__':
-    app.run(host="localhost", port=8080, debug=True)
+    app.run(port=8081, debug=True)
