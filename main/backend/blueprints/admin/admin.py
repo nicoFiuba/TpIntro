@@ -21,4 +21,3 @@ def jwt_admin_required(f):
             return jsonify({'message': 'Token inválido'}), 401
         return f(*args, *kwargs)
     return decorated_function
-            
