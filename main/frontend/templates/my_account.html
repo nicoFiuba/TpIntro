@@ -4,6 +4,8 @@
 
 {% block content %}
 
+ {% if perfil_usuario %}
+ 
   <div class="container mx-auto my-5 px-2 sm:px-8">
     <div class="tabs-container grid grid-cols-12 gap-2">
       <div class="col-span-12 lg:col-span-4">
@@ -11,10 +13,8 @@
           <div class="flex flex-col items-center">
             <div class="relative">
               <div class="h-24 w-24 overflow-hidden rounded-full bg-gray-200 shadow-md">
-                <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/comments/profile_1.png') }}" alt="profile" />
+                <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/img/foto_perfil.jpg') }}" alt="profile" />
               </div>
-              <i
-                class="bi bi-camera-fill transition-all-300 absolute top-0 left-0 flex cursor-pointer rounded-full bg-slate-500 p-1 text-white shadow-md hover:bg-slate-400"></i>
             </div>
             <div class="mt-2 text-center">
               <span class="block font-bold">{{ perfil_usuario.username }}</span>
@@ -24,40 +24,19 @@
             <li class="btn-tabs tab-active-2 transition-all-300 active border-t hover:bg-gray-100">
               <a class="flex items-center gap-2 px-1 py-2" href="javascript:void(0)">
                 <i class="bi bi-person flex text-3xl text-primary-color"></i>
-                <span>My Account</span>
-              </a>
-            </li>
-            <li class="btn-tabs tab-active-2 transition-all-300 border-t hover:bg-gray-100">
-              <a class="flex items-center gap-2 px-1 py-2" href="javascript:void(0)">
-                <i class="bi bi-house-door flex text-3xl text-primary-color"></i>
-                <span>My Address</span>
+                <span>Mi Cuenta</span>
               </a>
             </li>
             <li class="btn-tabs tab-active-2 transition-all-300 border-t hover:bg-gray-100">
               <a class="flex items-center gap-2 px-1 py-2" href="javascript:void(0)">
                 <i class="bi bi-clipboard flex text-3xl text-primary-color"></i>
-                <span>My Order</span>
-              </a>
-            </li>
-            <li class="btn-tabs tab-active-2 transition-all-300 border-t hover:bg-gray-100">
-              <a class="flex items-center gap-2 px-1 py-2" href="javascript:void(0)">
-                <i class="bi bi-credit-card flex text-3xl text-primary-color"></i>
-                <span>Payment Methods</span>
-              </a>
-            </li>
-            <li class="btn-tabs tab-active-2 transition-all-300 border-t hover:bg-gray-100">
-              <a class="flex items-center px-1 py-2" href="javascript:void(0)">
-                <div class="flex items-center gap-2">
-                  <i class="bi bi-headset flex text-3xl text-primary-color"></i>
-                  <span>Support Tickets</span>
-                </div>
-                <span class="badge ml-auto h-[22px] min-w-[22px] px-[6px]">1</span>
+                <span>Mis Pedidos</span>
               </a>
             </li>
             <li class="transition-all-300 border-t hover:bg-gray-100">
               <a class="flex items-center gap-2 px-1 py-2" href="javascript:void(0)">
                 <i class="bi bi-box-arrow-left flex text-3xl text-primary-color"></i>
-                <span>Log out</span>
+                <span>Cerrar Sesion</span>
               </a>
             </li>
           </ul>
@@ -66,7 +45,7 @@
 
       <div class="tabs-content col-span-12 lg:col-span-8">
         <div class="tab-content active flex h-full flex-col gap-5 rounded bg-white p-5">
-          <span class="block text-xl font-bold">My Account</span>
+          <span class="block text-xl font-bold">Mi Cuenta</span>
           <form class="grid grid-cols-12 gap-2" action="#">
             <div class="col-span-12 xs:col-span-12">
               <label class="flex flex-col text-sm">
@@ -91,50 +70,7 @@
         </div>
 
         <div class="tab-content flex h-full flex-col gap-5 rounded bg-white p-5">
-         
-          <ul class="flex flex-col gap-4">
-            <li class="relative">
-              <input class="peer sr-only" type="radio" value="" name="address" id="address-1" checked="" />
-              <label
-                class="flex w-full cursor-pointer flex-col gap-5 rounded-lg border border-gray-300 bg-white p-2 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-primary-color"
-                for="address-1">
-                
-                <div class="flex items-center justify-end gap-4 text-slate-400">
-                  <div class="btn-open-modal tippy tippy-edit transition-all-300 hover:text-primary-color"
-                    data-target=".edit-address-modal">
-                    <i class="bi bi-pencil-fill pointer-events-none flex"></i>
-                  </div>
-                  <div class="btn-open-modal tippy tippy-remove transition-all-300 hover:text-primary-color"
-                    data-target=".delete-modal">
-                    <i class="bi bi-trash-fill pointer-events-none flex"></i>
-                  </div>
-                </div>
-              </label>
-            </li>
-            <li class="relative">
-              
-              <label
-                class="flex w-full cursor-pointer flex-col gap-5 rounded-lg border border-gray-300 bg-white p-2 hover:bg-gray-50 focus:outline-none peer-checked:border-transparent peer-checked:ring-2 peer-checked:ring-primary-color"
-                for="address-2">
-                
-                
-                <div class="flex items-center justify-end gap-4 text-slate-400">
-                  <div class="btn-open-modal tippy tippy-edit transition-all-300 hover:text-primary-color"
-                    data-target=".edit-address-modal">
-                    <i class="bi bi-pencil-fill pointer-events-none flex"></i>
-                  </div>
-                  <div class="btn-open-modal tippy tippy-remove transition-all-300 hover:text-primary-color"
-                    data-target=".delete-modal">
-                    <i class="bi bi-trash-fill pointer-events-none flex"></i>
-                  </div>
-                </div>
-              </label>
-            </li>
-          </ul>
-          
-        </div>
-        <div class="tab-content flex h-full flex-col gap-5 rounded bg-white p-5">
-          <span class="block text-xl font-bold">My Orders</span>
+          <span class="block text-xl font-bold">Mis pedidos</span>
           <div class="flex flex-wrap justify-between gap-5">
             <form class="search" action="#">
               <div class="flex h-[40px] overflow-hidden rounded-[50px] bg-gray-100">
@@ -290,552 +226,11 @@
         </div>
       </div>
     </div>
+   </div>        
   </div>
-
-  <!-- Modals -->
-  <div class="menu-mob modal transition-all-300 invisible fixed inset-0 z-50 h-full w-full bg-overlay opacity-0">
-    <div class="flex h-full w-full">
-      <div
-        class="modal-content transition-all-300 relative left-[-999px] mr-auto flex h-full w-[288px] min-w-[250px] flex-col bg-white">
-        <div class="w-full bg-secondary-color">
-          <button class="btn-close-modal transition-all-300 absolute top-5 right-5 p-[3px] text-white">
-            <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex text-xl"></i>
-          </button>
-          <div class="py-12">
-            <img src="{{ url_for('static', filename='images/logo.png') }}" class="mx-auto h-[40px]" alt="logo" />
-          </div>
-        </div>
-        <nav class="h-full w-full overflow-auto bg-white">
-          <ul class="metismenu">
-            <li class="border-b border-gray-200">
-              <a class="flex select-none items-center p-2" href="{{ url_for('index') }}">
-                <i class="bi bi-house-door mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Home</span>
-              </a>
-            </li>
-            <li class="border-b border-gray-200">
-              <div class="btn-open-modal cursor-pointer p-2" data-target=".wishlist-modal">
-                <div class="pointer-events-none flex cursor-pointer select-none items-center">
-                  <i class="bi bi-heart mr-3 flex text-xl text-primary-color"></i>
-                  <span class="font-semibold">Wishlist</span>
-                  <span class="badge ml-auto h-[22px] min-w-[22px] px-[6px]">0</span>
-                </div>
-              </div>
-            </li>
-            <li class="border-b border-gray-200">
-              <div class="btn-open-modal cursor-pointer p-2" data-target=".shopping-cart-modal">
-                <div class="pointer-events-none flex cursor-pointer select-none items-center">
-                  <i class="bi bi-cart mr-3 flex text-xl text-primary-color"></i>
-                  <span class="font-semibold">Shopping Cart</span>
-                  <span class="badge ml-auto h-[22px] min-w-[22px] px-[6px]">0</span>
-                </div>
-              </div>
-            </li>
-            <li class="border-b border-gray-200">
-              <div class="metismenu-btn has-arrow flex cursor-pointer select-none items-center p-2"
-                aria-expanded="false" role="menu">
-                <i class="bi bi-motherboard mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Hardware</span>
-              </div>
-              <div class="metismenu-content">
-                <a class="btn-open-modal ml-10 block p-1" href="#">Motherboards</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Processors</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Rams</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Video Cards</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Power Supplys</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Hard Drives</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">SSD Disk</a>
-              </div>
-            </li>
-            <li class="border-b border-gray-200">
-              <div class="metismenu-btn has-arrow flex cursor-pointer select-none items-center p-2"
-                aria-expanded="false" role="menu">
-                <i class="bi bi-mouse mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Peripherals</span>
-              </div>
-              <div class="metismenu-content">
-                <a class="btn-open-modal ml-10 block p-1" href="#">Keywords</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Mouses</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Mics</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Webcam</a>
-              </div>
-            </li>
-            <li class="border-b border-gray-200">
-              <div class="metismenu-btn has-arrow flex cursor-pointer select-none items-center p-2"
-                aria-expanded="false" role="menu">
-                <i class="bi bi-pc-display mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Computers</span>
-              </div>
-              <div class="metismenu-content">
-                <a class="btn-open-modal ml-10 block p-1" href="#">Notebooks</a>
-                <a class="btn-open-modal ml-10 block p-1" href="#">Desktops</a>
-              </div>
-            </li>
-            <li class="border-b border-gray-200">
-              <a class="flex cursor-pointer select-none items-center p-2" href="#">
-                <i class="bi bi-tv mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Monitors</span>
-              </a>
-            </li>
-            <li class="border-b border-gray-200">
-              <a class="flex cursor-pointer select-none items-center p-2" href="#">
-                <i class="bi bi-printer mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Printers</span>
-              </a>
-            </li>
-            <li class="border-b border-gray-200">
-              <a class="flex cursor-pointer select-none items-center p-2" href="#">
-                <i class="bi bi-phone mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Smartphones</span>
-              </a>
-            </li>
-            <li class="border-b border-gray-200">
-              <a class="flex select-none items-center p-2" href="{{ url_for('contact_us') }}">
-                <i class="bi bi-telephone mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Contact Us</span>
-              </a>
-            </li>
-            <li class="border-b border-gray-200">
-              <div class="metismenu-btn has-arrow flex cursor-pointer select-none items-center p-2"
-                aria-expanded="false" role="menu">
-                <span class="font-semibold">Pages</span>
-              </div>
-              <div class="metismenu-content">
- 
-                <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('shopping_cart') }}">Shopping Cart</a>
-                <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('product_details', product_id=1) }}">Product Details</a>
-                <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('shop_mixed') }}">Shop - Mixed</a>
-                <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('my_account') }}">My Account</a>
-                <a class="btn-open-modal ml-10 block p-1" href="{{ url_for('purchase_completed') }}">Purchase Completed</a>
-       
-
-              </div>
-            </li>
-            <li class="border-b border-gray-200">
-              <a class="flex select-none items-center p-2" href="#">
-                <i class="bi bi-box-arrow-left mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Log out</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </div>
-
-  <div
-    class="shopping-cart-modal modal transition-all-300 invisible fixed inset-0 z-50 h-full w-full bg-overlay opacity-0">
-    <div class="flex h-full w-full">
-      <div
-        class="modal-content transition-all-300 relative right-[-999px] ml-auto flex h-full w-[400px] min-w-[250px] flex-col bg-white">
-        <div class="w-full">
-          <div class="border-b-2 border-gray-200 p-5">
-            <h3 class="text-xl font-bold uppercase">Shopping Cart</h3>
-          </div>
-          <button class="btn-close-modal transition-all-300 absolute top-5 right-5 p-[3px] hover:text-slate-400">
-            <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex text-xl"></i>
-          </button>
-        </div>
-        <div class="h-full overflow-auto">
-          <!-- If the shopping cart is empty (replace hidden with flex) -->
-          <div class="hidden flex-col items-center justify-center gap-4 p-5">
-            <i class="bi bi-cart-x text-8xl text-gray-200"></i>
-            <p class="font-semibold">There are no products in the cart.</p>
-            <a class="btn-effect transition-all-300 flex items-center justify-center gap-2 rounded-lg bg-primary-color p-2"
-              href="#">
-              <span class="font-bold uppercase text-white">Go to the store</span>
-            </a>
-          </div>
-          <!-- -->
-          <a class="transition-all-300 flex h-[100px] w-full items-center justify-between gap-5 bg-white p-2 hover:bg-gray-100"
-            href="#">
-            <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border">
-              <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/product/prod-1.jpg') }}" alt="product" />
-            </div>
-            <div class="flex w-full flex-col">
-              <h6 class="clamp-2 break-all text-lg font-semibold">
-                Ryzen 5 3600x
-              </h6>
-              <div class="flex gap-2">
-                <div class="flex gap-1 leading-7 text-gray-400">
-                  <span>1</span>
-                  <span>X</span>
-                </div>
-                <div class="flex items-center gap-2">
-                  <span class="font-bold text-primary-color">$37.00</span>
-                  <small class="text-xs text-primary-color line-through">$50.00</small>
-                </div>
-              </div>
-            </div>
-            <div class="transition-all-300 flex text-slate-400 hover:text-primary-color">
-              <i class="bi bi-trash-fill pointer-events-none text-2xl"></i>
-            </div>
-          </a>
-        </div>
-        <div class="mt-auto border-t-2 border-gray-200 bg-white px-1 pt-5 xs:px-5">
-          <div class="flex justify-between">
-            <span class="text-lg uppercase">Subtotal:</span>
-            <span class="text-lg font-semibold text-primary-color">$37.00</span>
-          </div>
-          <a class="btn-effect transition-all-300 my-5 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
-            href="{{ url_for('shopping_cart') }}">
-            <span class="font-bold uppercase text-white">View Shopping Cart</span>
-          </a>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="wishlist-modal modal transition-all-300 invisible fixed inset-0 z-50 h-full w-full bg-overlay opacity-0">
-    <div class="flex h-full w-full">
-      <div
-        class="modal-content transition-all-300 relative right-[-999px] ml-auto flex h-full w-[400px] min-w-[250px] flex-col bg-white">
-        <div class="w-full">
-          <div class="border-b-2 border-gray-200 p-5">
-            <h3 class="text-xl font-bold uppercase">Wishlist</h3>
-          </div>
-          <button class="btn-close-modal transition-all-300 absolute top-5 right-5 p-[3px] hover:text-slate-400">
-            <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex text-xl"></i>
-          </button>
-        </div>
-        <div class="h-full overflow-auto">
-          <!-- If the wishlist is empty (replace hidden with flex) -->
-          <div class="hidden flex-col items-center justify-center gap-4 p-5">
-            <i class="bi bi-heart text-8xl text-gray-200"></i>
-            <p class="font-semibold">
-              There are no products in the wishlist.
-            </p>
-            <a class="btn-effect transition-all-300 flex items-center justify-center gap-2 rounded-lg bg-primary-color p-2"
-              href="#">
-              <span class="font-bold uppercase text-white">Go to the store</span>
-            </a>
-          </div>
-          <a class="transition-all-300 flex h-[100px] w-full items-center justify-between gap-5 bg-white p-2 hover:bg-gray-100"
-            href="#">
-            <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border">
-              <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/product/prod-1.jpg') }}" alt="product" />
-            </div>
-
-            <div class="flex w-full flex-col">
-              <h6 class="clamp-2 break-all text-lg font-semibold">
-                Ryzen 5 3600x
-              </h6>
-              <div class="flex items-center gap-2">
-                <span class="font-bold text-primary-color">$37.00</span>
-                <small class="text-xs text-primary-color line-through">$50.00</small>
-              </div>
-            </div>
-
-            <div class="transition-all-300 flex text-slate-400 hover:text-primary-color">
-              <i class="bi bi-trash-fill pointer-events-none text-2xl"></i>
-            </div>
-          </a>
-        </div>
-        <div class="mt-auto border-t-2 border-gray-200 bg-white px-1 xs:px-5">
-         
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div
-    class="change-password-modal modal transition-all-300 invisible fixed inset-0 z-50 flex h-full w-full flex-col items-center justify-start overflow-auto bg-overlay opacity-0">
-    <div class="my-10 flex w-full justify-center">
-      <div
-        class="modal-content transition-all-300 relative mx-3 w-[500px] min-w-[250px] scale-0 rounded-lg bg-white px-3 pb-3 pt-7 xs:px-5 xs:pb-5 md:m-5">
-        <button
-          class="btn-close-modal btn-reset-progressbar transition-all-300 absolute top-0 right-0 p-2 sm:top-[-10px] sm:right-[-10px] sm:rounded-lg sm:bg-primary-color sm:text-white sm:hover:bg-primary-hover"
-          data-target=".step-password">
-          <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex"></i>
-        </button>
-        <span class="mb-5 block text-xl font-bold">Change Password</span>
-        <form class="step-container step-password" action="javascript:void(0)">
-          <div class="progressbar-container mb-4 flex flex-row items-center justify-between gap-2">
-            <div class="step-number">
-              <div
-                class="transition-all-300 active flex h-10 w-10 items-center justify-center rounded-full bg-gray-200 text-current">
-                <span class="text-lg font-bold">1</span>
-              </div>
-            </div>
-            <div class="progressbar relative h-2 w-full overflow-hidden rounded-full bg-gray-200">
-              <div class="transition-all-300 absolute h-full w-0 rounded-full bg-primary-color"></div>
-            </div>
-            <div class="step-number">
-              <div
-                class="transition-all-300 flex h-10 w-10 items-center justify-center rounded-full bg-gray-200 text-current">
-                <span class="text-lg font-bold">2</span>
-              </div>
-            </div>
-            <div class="progressbar relative h-2 w-full overflow-hidden rounded-full bg-gray-200">
-              <div class="transition-all-300 absolute h-full w-0 rounded-full bg-primary-color"></div>
-            </div>
-            <div class="step-number">
-              <div
-                class="transition-all-300 flex h-10 w-10 items-center justify-center rounded-full bg-gray-200 text-current">
-                <span class="text-lg font-bold">3</span>
-              </div>
-            </div>
-          </div>
-          <div class="step-content active hidden flex-col gap-2">
-            <label class="flex flex-col">
-              <span class="text-sm">Current Password</span>
-              <input class="input" type="password" />
-            </label>
-            <a class="btn-next-step btn-effect ml-auto w-max rounded-lg bg-primary-color p-2 px-3 font-bold uppercase text-white"
-              href="javascript:void(0)">
-              <span class="text-center">Next</span>
-            </a>
-          </div>
-          <div class="step-content hidden flex-col gap-2">
-            <label class="flex flex-col">
-              <span class="text-sm">New Password</span>
-              <input class="input" type="password" />
-            </label>
-            <label class="flex flex-col">
-              <span class="text-sm">Confirm Password</span>
-              <input class="input" type="password" />
-            </label>
-            <div class="flex justify-between">
-              <a class="btn-prev-step btn-effect rounded-lg bg-primary-color p-2 px-3 font-bold uppercase text-white"
-                href="javascript:void(0)">
-                <span class="text-center">Previous</span>
-              </a>
-              <button
-                class="btn-next-step btn-effect rounded-lg bg-primary-color p-2 px-3 font-bold uppercase text-white"
-                type="submit">
-                <span class="text-center">Complete</span>
-              </button>
-            </div>
-          </div>
-          <div class="step-content hidden flex-col gap-2">
-            <div class="flex flex-col items-center gap-2 text-center">
-              <div class="max-h-[200px] max-w-[200px]">
-                <img class="h-full w-full" src="{{ url_for('static', filename='images/svg/password-successfull.svg') }}" alt="password-successfull" />
-              </div>
-              <h1 class="text-2xl uppercase text-primary-color">
-                Password Changed Successfully
-              </h1>
-              <p>
-                Your password has been changed successfully, you can now log
-                in again with your new password.
-              </p>
-            </div>
-            <a class="btn-close-modal btn-reset-progressbar btn-effect ml-auto w-max rounded-lg bg-primary-color p-2 px-3 font-bold uppercase text-white"
-              href="javascript:void(0)" data-target=".step-password">
-              <span class="text-center">Close</span>
-            </a>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <div
-    class="deactivate-account-modal modal transition-all-300 invisible fixed inset-0 z-50 flex h-full w-full flex-col items-center justify-start overflow-auto bg-overlay opacity-0">
-    <div class="my-10 flex w-full justify-center">
-      <div
-        class="modal-content transition-all-300 relative mx-3 w-[500px] min-w-[250px] scale-0 rounded-lg bg-white px-3 pb-3 pt-7 xs:px-5 xs:pb-5 md:m-5">
-        <button
-          class="btn-close-modal btn-reset-progressbar transition-all-300 absolute top-0 right-0 p-2 sm:top-[-10px] sm:right-[-10px] sm:rounded-lg sm:bg-primary-color sm:text-white sm:hover:bg-primary-hover"
-          data-target=".step-deactivate">
-          <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex"></i>
-        </button>
-        <span class="mb-5 block text-xl font-bold">Deactivate Account</span>
-        <form class="step-container step-deactivate" action="javascript:void(0)">
-          <div class="progressbar-container mb-4 flex flex-row items-center justify-between gap-2">
-            <div class="step-number">
-              <div
-                class="transition-all-300 active flex h-10 w-10 items-center justify-center rounded-full bg-gray-200 text-current">
-                <span class="text-lg font-bold">1</span>
-              </div>
-            </div>
-            <div class="progressbar relative h-2 w-full overflow-hidden rounded-full bg-gray-200">
-              <div class="transition-all-300 absolute h-full w-0 rounded-full bg-primary-color"></div>
-            </div>
-            <div class="step-number">
-              <div
-                class="transition-all-300 flex h-10 w-10 items-center justify-center rounded-full bg-gray-200 text-current">
-                <span class="text-lg font-bold">2</span>
-              </div>
-            </div>
-            <div class="progressbar relative h-2 w-full overflow-hidden rounded-full bg-gray-200">
-              <div class="transition-all-300 absolute h-full w-0 rounded-full bg-primary-color"></div>
-            </div>
-            <div class="step-number">
-              <div
-                class="transition-all-300 flex h-10 w-10 items-center justify-center rounded-full bg-gray-200 text-current">
-                <span class="text-lg font-bold">3</span>
-              </div>
-            </div>
-          </div>
-          <div class="step-content active hidden flex-col gap-2">
-            <label class="flex flex-col">
-              <span class="text-sm">Confirm Password</span>
-              <input class="input" type="password" />
-            </label>
-            <a class="btn-next-step btn-effect ml-auto w-max rounded-lg bg-primary-color p-2 px-3 font-bold uppercase text-white"
-              href="javascript:void(0)">
-              <span class="text-center">Next</span>
-            </a>
-          </div>
-          <div class="step-content hidden flex-col gap-2">
-            <span>Tell us the reason for your decision (Optional)</span>
-            <div class="h-32">
-              <textarea class="input h-full resize-none" placeholder="Write your message here..."></textarea>
-            </div>
-            <div class="flex justify-between">
-              <a class="btn-prev-step btn-effect rounded-lg bg-primary-color p-2 px-3 font-bold uppercase text-white"
-                href="javascript:void(0)">
-                <span class="text-center">Previous</span>
-              </a>
-              <button
-                class="btn-next-step btn-effect rounded-lg bg-primary-color p-2 px-3 font-bold uppercase text-white"
-                type="submit">
-                <span class="text-center">Submit</span>
-              </button>
-            </div>
-          </div>
-          <div class="step-content hidden flex-col gap-2">
-            <div class="flex flex-col items-center gap-2 text-center">
-              <div class="max-h-[200px] max-w-[200px]">
-                <img class="h-full w-full" src="{{ url_for('static', filename='images/svg/deactivate-account.svg') }}" alt="deactivate-account" />
-              </div>
-              <h1 class="text-2xl uppercase text-primary-color">
-                Delete Account
-              </h1>
-              <p>
-                You have started the process of deleting your account.
-                <br />
-                We are sorry you made this decision, you will receive an email
-                when your account has been fully deleted.
-              </p>
-            </div>
-            <a class="btn-close-modal btn-reset-progressbar btn-effect ml-auto w-max rounded-lg bg-primary-color p-2 px-3 font-bold uppercase text-white"
-              href="javascript:void(0)" data-target=".step-deactivate">
-              <span class="text-center">Close</span>
-            </a>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <div
-    class="add-address-modal modal transition-all-300 invisible fixed inset-0 z-50 flex h-full w-full flex-col items-center justify-start overflow-auto bg-overlay opacity-0">
-    <div class="my-10 flex w-full justify-center">
-      <div
-        class="modal-content relative mx-3 w-[900px] min-w-[250px] scale-0 rounded-lg bg-body px-3 pb-3 pt-7 xs:px-5 xs:pb-5 md:m-5">
-        <button
-          class="btn-close-modal transition-all-300 absolute top-0 right-0 p-2 sm:top-[-10px] sm:right-[-10px] sm:rounded-lg sm:bg-primary-color sm:text-white sm:hover:bg-primary-hover">
-          <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex"></i>
-        </button>
-        <span class="block text-xl font-bold">Add Address</span>
-        <form class="mt-5 grid grid-cols-12 gap-2" action="#">
-          <div class="col-span-12 sm:col-span-6">
-            <label class="flex flex-col">
-              <span class="text-sm">Full Name</span>
-              <input class="input" type="text" required />
-            </label>
-          </div>
-          <div class="col-span-12 sm:col-span-6">
-            <label class="flex flex-col">
-              <span class="text-sm">Phone Number</span>
-              <input class="input input-number" type="number" required />
-            </label>
-          </div>
-          <div class="col-span-12 sm:col-span-6">
-            <label class="flex flex-col">
-              <span class="text-sm">Country</span>
-              <input class="input" type="text" required />
-            </label>
-          </div>
-          <div class="col-span-12 sm:col-span-6">
-            <label class="flex flex-col">
-              <span class="text-sm">City</span>
-              <input class="input" type="text" required />
-            </label>
-          </div>
-          <div class="col-span-12 sm:col-span-6">
-            <label class="flex flex-col">
-              <span class="text-sm">Postal Code</span>
-              <input class="input input-number" type="number" required />
-            </label>
-          </div>
-          <div class="col-span-12 sm:col-span-6">
-            <label class="flex flex-col">
-              <span class="text-sm">Address</span>
-              <input class="input" type="text" required />
-            </label>
-          </div>
-          <div class="col-span-12 justify-end">
-            <button class="btn-effect ml-auto block rounded-lg bg-primary-color p-2 px-3 font-bold uppercase text-white"
-              type="submit">
-              <span>Add Address</span>
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <div
-    class="edit-address-modal modal transition-all-300 invisible fixed inset-0 z-50 flex h-full w-full flex-col items-center justify-start overflow-auto bg-overlay opacity-0">
-    <div class="my-10 flex w-full justify-center">
-      <div
-        class="modal-content relative mx-3 w-[900px] min-w-[250px] scale-0 rounded-lg bg-body px-3 pb-3 pt-7 xs:px-5 xs:pb-5 md:m-5">
-        <button
-          class="btn-close-modal transition-all-300 absolute top-0 right-0 p-2 sm:top-[-10px] sm:right-[-10px] sm:rounded-lg sm:bg-primary-color sm:text-white sm:hover:bg-primary-hover">
-          <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex"></i>
-        </button>
-        <span class="block text-xl font-bold">Edit Address</span>
-        <form class="mt-5 grid grid-cols-12 gap-2" action="#">
-          <div class="col-span-12 sm:col-span-6">
-            <label class="flex flex-col">
-              <span class="text-sm">Full name</span>
-              <input class="input" type="text" value="John Doe" required />
-            </label>
-          </div>
-          <div class="col-span-12 sm:col-span-6">
-            <label class="flex flex-col">
-              <span class="text-sm">Phone Number</span>
-              <input class="input input-number" type="number" value="011234567890" required />
-            </label>
-          </div>
-          <div class="col-span-12 sm:col-span-6">
-            <label class="flex flex-col">
-              <span class="text-sm">Country</span>
-              <input class="input" type="text" value="Buenos Aires" required />
-            </label>
-          </div>
-          <div class="col-span-12 sm:col-span-6">
-            <label class="flex flex-col">
-              <span class="text-sm">City</span>
-              <input class="input" type="text" value="Olavarria" required />
-            </label>
-          </div>
-          <div class="col-span-12 sm:col-span-6">
-            <label class="flex flex-col">
-              <span class="text-sm">Postal Code</span>
-              <input class="input input-number" type="number" value="7400" required />
-            </label>
-          </div>
-          <div class="col-span-12 sm:col-span-6">
-            <labe class="flex flex-col">
-              <span class="text-sm">Address</span>
-              <input class="input" type="text" value="Av. Colón 0101" required />
-            </labe>
-          </div>
-          <div class="col-span-12 justify-end">
-            <button class="btn-effect ml-auto block rounded-lg bg-primary-color p-2 px-3 font-bold uppercase text-white"
-              type="submit">
-              <span>Save Changes</span>
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+</div>
+</div>
+</div>
 
   <div
     class="order-details-modal modal transition-all-300 invisible fixed inset-0 z-50 flex h-full w-full flex-col items-center justify-start overflow-auto bg-overlay opacity-0">
@@ -985,200 +380,24 @@
       </div>
     </div>
   </div>
-
-  <div
-    class="add-payment-modal modal transition-all-300 invisible fixed inset-0 z-50 flex h-full w-full flex-col items-center justify-start overflow-auto bg-overlay opacity-0">
-    <div class="my-10 flex w-full justify-center">
-      <div
-        class="modal-content relative mx-3 w-[900px] min-w-[250px] scale-0 rounded-lg bg-body px-3 pb-3 pt-7 xs:px-5 xs:pb-5 md:m-5">
-        <button
-          class="btn-close-modal transition-all-300 absolute top-0 right-0 p-2 sm:top-[-10px] sm:right-[-10px] sm:rounded-lg sm:bg-primary-color sm:text-white sm:hover:bg-primary-hover">
-          <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex"></i>
-        </button>
-        <span class="block text-xl font-bold">Add Payment</span>
-        <form class="mt-5 grid grid-cols-12 gap-3" action="#">
-          <div class="col-span-12 sm:col-span-6">
-            <div class="flex h-full flex-col">
-              <label class="text-sm" for="card-payment">Card</label>
-              <select class="nice-select card-payment select flex h-full w-full items-center" id="card-payment"
-                required>
-                <option value="1">Visa</option>
-                <option value="2">Mastercard</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-span-12 sm:col-span-6">
-            <label class="flex flex-col">
-              <span class="text-sm">Card Number</span>
-              <input class="input input-number" type="number" required />
-            </label>
-          </div>
-          <div class="col-span-12 sm:col-span-6">
-            <label class="flex flex-col">
-              <span class="text-sm">Expire Date</span>
-              <input class="input input-number" type="number" required />
-            </label>
-          </div>
-          <div class="col-span-12 sm:col-span-6">
-            <label class="flex flex-col">
-              <span class="text-sm">CVC</span>
-              <input class="input input-number" type="number" required />
-            </label>
-          </div>
-          <div class="col-span-12 justify-end">
-            <button class="btn-effect ml-auto block rounded-lg bg-primary-color p-2 px-3 font-bold uppercase text-white"
-              type="submit">
-              <span>Add Payment</span>
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <div
-    class="ticket-details-modal modal transition-all-300 invisible fixed inset-0 z-50 flex h-full w-full flex-col items-center justify-start overflow-auto bg-overlay opacity-0">
-    <div class="my-10 flex w-full justify-center">
-      <div
-        class="modal-content relative mx-3 w-[900px] min-w-[250px] scale-0 rounded-lg bg-body px-3 pb-3 pt-7 xs:px-5 xs:pb-5 md:m-5">
-        <button
-          class="btn-close-modal transition-all-300 absolute top-0 right-0 p-2 sm:top-[-10px] sm:right-[-10px] sm:rounded-lg sm:bg-primary-color sm:text-white sm:hover:bg-primary-hover">
-          <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex"></i>
-        </button>
-        <div class="flex flex-wrap items-center gap-2">
-          <span class="block text-xl font-bold">Ticket Details</span>
-          <span class="font-semibold">(#1196SD2F)</span>
-          <div class="flex items-center gap-2">
-            <span class="text-slate-400">&#183;</span>
-            <span class="text-sm text-slate-400"><i class="bi bi-calendar3 mr-1"></i> 18 Feb, 11:30AM</span>
-          </div>
-        </div>
-        <div class="mt-5 flex flex-col gap-5">
-          <p class="text-lg font-semibold">
-            There is a problem with the product.
-          </p>
-          <div class="flex max-h-[350px] flex-col gap-5 overflow-auto">
-            <div class="flex gap-5">
-              <div class="hidden h-14 w-14 min-w-[3.5rem] overflow-hidden rounded-full shadow-md sm:block">
-                <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/comments/profile_1.png') }}" alt="profile_logo" />
-              </div>
-              <div class="rounded-lg bg-white p-2">
-                <div class="flex flex-col">
-                  <a class="font-bold hover:text-primary-color" href="#">John Doe</a>
-                  <span class="text-xs text-slate-400">2 feb. 11:28am</span>
-                </div>
-                <p class="my-2">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Possimus odit aperiam cupiditate, impedit, velit optio
-                  fugit, iure molestiae dolor exercitationem corrupti rem
-                  neque consequuntur. Architecto quod animi, expedita dolorem
-                  dignissimos aperiam voluptate quos a unde ducimus fugit
-                  obcaecati assumenda ipsam voluptatum asperiores neque
-                  sapiente rem? A libero neque eos? Omnis.
-                </p>
-              </div>
-            </div>
-            <div class="flex gap-5">
-              <div class="order-2 hidden h-14 w-14 min-w-[3.5rem] overflow-hidden rounded-full shadow-md sm:block">
-                <img class="h-full w-full object-cover" src="{{ url_for('static', filename='images/svg/logo.svg') }}" alt="profile_logo" />
-              </div>
-              <div class="order-1 rounded-lg bg-sky-400 p-2 shadow-md">
-                <div class="flex flex-col items-end">
-                  <a class="font-bold hover:text-primary-color" href="#">{{ BRAND_NAME }}</a>
-                  <span class="text-xs text-slate-200">Just now</span>
-                </div>
-                <p class="my-2 text-white">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Possimus odit aperiam cupiditate, impedit, velit optio
-                  fugit, iure molestiae dolor exercitationem corrupti rem
-                  neque consequuntur. Architecto quod animi, expedita dolorem
-                  dignissimos aperiam voluptate quos a unde ducimus fugit
-                  obcaecati assumenda ipsam voluptatum asperiores neque
-                  sapiente rem? A libero neque eos? Omnis.
-                </p>
-              </div>
-            </div>
-          </div>
-          <form action="#">
-            <div class="h-32">
-              <textarea class="input h-full resize-none" placeholder="Write your message here..."
-                required=""></textarea>
-            </div>
-            <button
-              class="btn-effect mt-2 ml-auto block rounded-lg bg-primary-color p-2 px-3 font-bold uppercase text-white"
-              type="submit">
-              <span>Send message</span>
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div
-    class="new-ticket-modal modal transition-all-300 invisible fixed inset-0 z-50 flex h-full w-full flex-col items-center justify-start overflow-auto bg-overlay opacity-0">
-    <div class="my-10 flex w-full justify-center">
-      <div
-        class="modal-content relative mx-3 w-[900px] min-w-[250px] scale-0 rounded-lg bg-body px-3 pb-3 pt-7 xs:px-5 xs:pb-5 md:m-5">
-        <button
-          class="btn-close-modal transition-all-300 absolute top-0 right-0 p-2 sm:top-[-10px] sm:right-[-10px] sm:rounded-lg sm:bg-primary-color sm:text-white sm:hover:bg-primary-hover">
-          <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex"></i>
-        </button>
-        <span class="block text-xl font-bold">Send Ticket</span>
-        <form class="mt-5 flex flex-col gap-2" action="#">
-          <div>
-            <label class="flex flex-col">
-              <span class="text-sm">Subject</span>
-              <input class="input" type="text" required />
-            </label>
-          </div>
-          <div class="h-32">
-            <textarea class="input h-full resize-none" placeholder="Write your message here..." required></textarea>
-          </div>
-          <button class="btn-effect ml-auto block rounded-lg bg-primary-color p-2 px-3 font-bold uppercase text-white"
-            type="submit">
-            <span>Send ticket</span>
-          </button>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <div
-    class="delete-modal modal transition-all-300 invisible fixed inset-0 z-50 flex h-full w-full flex-col items-center justify-start overflow-auto bg-overlay opacity-0">
-    <div class="my-10 flex w-full justify-center">
-      <div
-        class="modal-content transition-all-300 relative mx-3 w-[500px] min-w-[250px] scale-0 rounded-lg bg-white px-3 pb-3 pt-7 xs:px-5 xs:pb-5 md:m-5">
-        <button
-          class="btn-close-modal btn-reset-progressbar transition-all-300 absolute top-0 right-0 p-2 sm:top-[-10px] sm:right-[-10px] sm:rounded-lg sm:bg-primary-color sm:text-white sm:hover:bg-primary-hover">
-          <i class="bi bi-x-lg text-stroke-medium pointer-events-none flex"></i>
-        </button>
-        <div class="flex flex-col items-center gap-5">
-          <i class="bi bi-x-circle flex text-9xl text-red-500"></i>
-          <span class="text-2xl font-bold">You Are Sure?</span>
-          <p>Are you sure you want to delete this?</p>
-          <div class="flex gap-5">
-            <button
-              class="btn-close-modal transition-all-300 ml-auto w-max rounded-lg border bg-slate-100 p-2 px-3 font-semibold uppercase hover:bg-slate-200">
-              <span class="text-center">Cancel</span>
-            </button>
-            <button
-              class="btn-close-modal btn-effect ml-auto w-max rounded-lg bg-primary-color p-2 px-3 font-bold uppercase text-white">
-              <span class="text-center">Delete</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- -->
-
   <div class="btn-gotop transition-all-300 invisible fixed bottom-[-999px] right-10 z-50 opacity-0">
     <div class="transition-all-300 cursor-pointer rounded-lg bg-[rgba(0,0,0,.3)] p-3 hover:bg-primary-color">
       <i class="bi bi-chevron-compact-up pointer-events-none flex text-2xl text-white"></i>
     </div>
   </div>
 
-  
+{% else %}
+<div class="flex items-center justify-center bg-body">
+    <div class="rounded-xl bg-white shadow-xl p-10 flex flex-col items-center gap-8 w-full max-w-md">
+        <h1 class="text-3xl font-bold text-black mb-4 text-center">
+            Sesión cerrada.
+        </h1>
+        <p>
+            Inicie sesión para ver detalles de la cuenta.
+        </p>
+        
+    </div>
+</div>
+  {% endif %}
 {% endblock %}
 
