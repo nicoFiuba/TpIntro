@@ -6,7 +6,7 @@ from blueprints.routes.routes import usuarios_bp
 from blueprints.catalogo import productos_bp
 from blueprints.auth.auth import auth_bp
 from blueprints.ver_pedidos.pedidos import pedidos_bp
-from blueprints.routes.carrito import cart_bp
+from blueprints.carrito.carrito import cart_bp
 from blueprints.stock.stock import stock_bp
 
 def create_app():
@@ -26,4 +26,4 @@ def create_app():
 
 if __name__ == '__main__':
     app = create_app()
-    app.run(debug=True) #Borrar antes de mandar a producción
+    app.run(debug=True)
