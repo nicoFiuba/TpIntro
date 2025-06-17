@@ -87,3 +87,15 @@ def get_producto_pedido(idproducto):
     if not pedidos:
         return f"No hay ningun pedido del producto {idproducto}"
     return jsonify(pedidos)
+
+@pedidos_bp.route('idusuario/<int:idusuario>')
+def get_idusuario_pedido(idusuario):
+    conn = get_connection()
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM Pedido WHERE usuario_id = %s", (idusuario,))
+    pedidos = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    if not pedidos:
+        return f"No hay ningun pedido del usuario {idusuario}"
+    return jsonify(pedidos)

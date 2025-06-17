@@ -85,100 +85,23 @@
                
               </div>
             </form>
-            
-          </div>
-          <div class="mix-elements mix-all grid grid-cols-12">
-            <div class="mix mix-main mix-processing col-span-12">
-              <a class="btn-open-modal transition-all-300 relative block p-4 hover:bg-gray-100"
-                href="javascript:void(0)" data-target=".order-details-modal">
-                <div class="pointer-events-none flex flex-col gap-5 sm:flex-row">
-                  <div class="relative">
-                    
-                     
-                    
-                  </div>
-                  <div class="flex flex-col justify-between">
-                    
-                    <div class="my-1 flex items-center gap-1 text-xs">
-                      <i class="bi bi-clock flex"></i>
-                      
-                    </div>
-                    <div class="flex flex-col">
-                      
-                    </div>
-                  </div>
-                  <div class="mt-auto flex flex-col sm:ml-auto">
-                    
-                  </div>
-                  
-                </div>
-              </a>
-            </div>
-            <div class="mix mix-main mix-completed col-span-12">
-              <a class="btn-open-modal transition-all-300 relative block p-4 hover:bg-gray-100"
-                href="javascript:void(0)" data-target=".order-details-modal">
-                <div class="pointer-events-none flex flex-col gap-5 sm:flex-row">
-                  <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border">
-                    
-                  </div>
-                  <div class="flex flex-col justify-between">
-                    
-                    <div class="my-1 flex items-center gap-1 text-xs">
-                      <i class="bi bi-clock flex"></i>
-                    
-                    </div>
-                    <div class="flex flex-col">
-                     
-                    </div>
-                  </div>
-                  <div class="mt-auto flex flex-col sm:ml-auto">
-                    
-                  </div>
-                  
-                  </span>
-                </div>
-              </a>
-            </div>
-            <div class="mix mix-main mix-cancelled col-span-12">
-              <a class="btn-open-modal transition-all-300 relative block p-4 hover:bg-gray-100"
-                href="javascript:void(0)" data-target=".order-details-modal">
-                <div class="pointer-events-none flex flex-col gap-5 sm:flex-row">
-                  <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded-lg border">
-                    
-                  </div>
-                  <div class="flex flex-col justify-between">
-                    
-                    <div class="my-1 flex items-center gap-1 text-xs">
-                      <i class="bi bi-clock flex"></i>
-                      
-                    </div>
-                    <div class="flex flex-col">
-                      
-                    </div>
-                  </div>
-                  <div class="mt-auto flex flex-col sm:ml-auto">
-                    
-                  </div>
-                  <span class="absolute top-0 right-0 m-2 rounded-xl bg-red-200 py-px px-2 text-sm text-red-500">
-                   
-                  </span>
-                </div>
-              </a>
-            </div>
-          </div>
-          <button class="transition-all-300 mx-auto rounded border bg-gray-100 py-2 px-3 hover:bg-gray-200">
-           
-          </button>
-        </div>
-        <div class="tab-content </li>flex h-full flex-col gap-5 rounded bg-white p-5">
-          <div class="flex flex-col gap-4"></div>
-            
-          </div>
-        </div>
-        <div class="tab-content flex h-full flex-col gap-5 rounded bg-white p-5">
-         
-          <div class="flex flex-col gap-4">
-            
+        <table style="width: 90%; margin: 40px auto; text-align: center; border-collapse: collapse; border: 1px solid black;" class="table table-striped table-bordered">
+    <thead>
+      <tr>       
+        <th style="border: 1px solid black;">ID Pedido</th>
+        <th style="border: 1px solid black;">Fecha</th>     
+      </tr>
+    </thead>
+    <tbody>
+        {% for dato in pedido %}
+      <tr>
+        <td style="border: 1px solid black;">{{ dato.id }}</td>
+        <td style="border: 1px solid black;">{{ dato.fecha }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+                          
               <div class="pointer-events-none grid grid-cols-12 items-start gap-2">
                 <div class="col-span-12 sm:col-span-3">
                   <div class="flex flex-col">
