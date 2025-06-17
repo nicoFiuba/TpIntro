@@ -306,7 +306,7 @@
     <h1
       class="mb-[-2px] inline-block border-b-2 border-primary-color pb-3 text-2xl font-bold uppercase"
     >
-      Todas las edades
+      Juegos de Cartas
     </h1>
   </div>
   <div class="grid grid-cols-12 gap-5">
@@ -316,7 +316,7 @@
       <div class="overlay-gradient absolute z-[1] h-full w-full"></div>
       <img
         class="transition-all-300 h-full w-full object-cover hover:transform group-hover:scale-110"
-        src="{{url_for('static', filename='images/banner/todas_las_edades-banner.jpg')}}"
+        src="{{url_for('static', filename='images/banner/juegos-de-cartas.jpg')}}"
       />
       <div class="absolute top-0 left-0 flex h-full w-full items-center">
         <div class="z-[2] p-5">
@@ -324,12 +324,12 @@
             class="text-lg font-bold uppercase text-primary-color drop-shadow-xl"
             style="color: #d7d7d7"
           >
-            Para todas las edades
+           Juegos de Cartas
           </h3>
-          <p class="my-5 text-white drop-shadow-md">Productos destacados</p>
+          <p class="my-5 text-white drop-shadow-md">Destacados</p>
           <a
             class="btn-effect inline-block rounded-lg bg-primary-color py-2 px-3 text-white"
-            href="{{url_for('shop_mixed')}}"
+            href="{{url_for('shop_mixed', categoria='Juego de Cartas')}}"
           >
             <span>Ver todos</span>
           </a>
@@ -339,7 +339,8 @@
     <div class="cards-slider-2 swiper-container col-span-12 xl:col-span-9">
       <div class="swiper swiper-cards-2 group relative flex items-center py-5">
         <div class="swiper-wrapper">
-          {% for producto in productos %}
+
+     {% for producto in productos if producto.categoria == 'Juego de Cartas'%}
           <div class="swiper-slide h-auto">
             <div
               class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl"
@@ -354,7 +355,7 @@
                 >
                   <img
                     class="card-object-fit h-full w-full"
-                    src="{{ url_for('static', filename=producto.imagen_url) }}"
+                    src="{{ url_for('obtener_imagen_producto', producto_id=producto.id) }}"
                     alt="{{ producto.nombre }}"
                   />
                 </a>
@@ -428,7 +429,7 @@
       <div class="overlay-gradient absolute z-[1] h-full w-full"></div>
       <img
         class="transition-all-300 h-full w-full object-cover hover:transform group-hover:scale-110"
-        src="{{url_for('static', filename='/images/banner/estrategia-banner.jpg')}}"
+        src="{{url_for('static', filename='/images/banner/juegos-de-mesa.jpg')}}"
       />
       <div class="absolute top-0 left-0 flex h-full w-full items-center">
         <div class="z-[2] p-5">
@@ -507,6 +508,121 @@
           </div>
           {% endfor %}
         </div>
+
+
+        <div
+          class="button-next btn-slider-1 transition-all-300 -right-16 group-hover:right-4"
+        >
+          &#10095;
+        </div>
+        <div
+          class="button-prev btn-slider-1 transition-all-300 -left-16 group-hover:left-4"
+        >
+          &#10094;
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="products-2-section container mx-auto my-5 px-2 sm:px-8">
+  <div
+    class="liner-container mt-5 flex justify-center border-b-2 border-[rgba(119,119,119,.17)]"
+  >
+    <h1
+      class="mb-[-2px] inline-block border-b-2 border-primary-color pb-3 text-2xl font-bold uppercase"
+    >
+      Juegos de Rol
+    </h1>
+  </div>
+  <div class="grid grid-cols-12 gap-5">
+    <div
+      class="group relative col-span-3 my-5 hidden overflow-hidden rounded-l-lg xl:block"
+    >
+      <div class="overlay-gradient absolute z-[1] h-full w-full"></div>
+      <img
+        class="transition-all-300 h-full w-full object-cover hover:transform group-hover:scale-110"
+        src="{{url_for('static', filename='/images/banner/juegos-de-rol.webp')}}"
+      />
+      <div class="absolute top-0 left-0 flex h-full w-full items-center">
+        <div class="z-[2] p-5">
+          <h3
+            class="text-lg font-bold uppercase text-primary-color drop-shadow-xl"
+            style="color: #d7d7d7"
+          >
+            Juegos de Rol
+          </h3>
+          <p class="my-5 text-white drop-shadow-md">Destacados</p>
+          <a
+            class="btn-effect inline-block rounded-lg bg-primary-color py-2 px-3 text-white"
+            href="{{ url_for('shop_mixed', categoria='Juego de rol') }}"
+          >
+            <span>Ver todos</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="cards-slider-2 swiper-container col-span-12 xl:col-span-9">
+      <div class="swiper swiper-cards-2 group relative flex items-center py-5">
+        <div class="swiper-wrapper">
+          {% for producto in productos if producto.categoria == 'Juego de rol'%}
+          <div class="swiper-slide h-auto">
+            <div
+              class="card-container transition-all-300 translateY-2 relative flex h-full flex-col overflow-hidden rounded-lg bg-white p-5 shadow-md hover:z-[2] hover:shadow-xl"
+            >
+              <div class="absolute top-[10px] right-[10px]">
+                <div class="p-[2px]"></div>
+                
+              </div>
+              <div class="h-[190px] overflow-hidden rounded-lg">
+                <a
+                  href="{{ url_for('product_details', product_id=producto.id) }}"
+                >
+                  <img
+                    class="card-object-fit h-full w-full"
+                    src="{{ url_for('obtener_imagen_producto', producto_id=producto.id) }}"
+                    alt="{{ producto.nombre }}"
+                  />
+                </a>
+              </div>
+              <div class="my-2 flex justify-between">
+                <div>
+                  <span
+                    class="rounded-md bg-stock py-1 px-2 text-xs font-bold uppercase text-white"
+                  >
+                    Stock disponible
+                  </span>
+                </div>
+              </div>
+              <div class="my-1">
+                <a class="clamp break-all font-medium" href="#"
+                  >{{ producto.nombre }}</a
+                >
+              </div>
+              <div class="my-1">
+                <p class="clamp-2 text-sm text-gray-400">
+                  {{ producto.descripcion }}
+                </p>
+              </div>
+              <div class="my-1">
+                <span class="text-lg font-bold">${{ producto.precio }}</span>
+              </div>
+              <div class="mt-auto">
+                <a
+                  class="btn-effect transition-all-300 flex w-full items-center justify-center rounded-lg bg-primary-color p-2"
+                  href="{{ url_for('product_details', product_id=producto.id) }}"
+                >
+                  <span class="font-bold uppercase text-white"
+                    >Ver detalles</span
+                  >
+                </a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        
         <div
           class="button-next btn-slider-1 transition-all-300 -right-16 group-hover:right-4"
         >
