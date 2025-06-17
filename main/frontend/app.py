@@ -530,5 +530,9 @@ def agregar_admin():
         flash('Error al conectar con el backend', 'error')
         return redirect(url_for('administrar_pagina'))
     
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html"), 404
+    
 if __name__ == '__main__':
     app.run(host="localhost", port=8080, debug=True)
