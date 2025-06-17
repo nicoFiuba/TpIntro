@@ -101,6 +101,17 @@ def invocar_pedidos_por_id(id):
         print(f"Error al invocar pedidos {e}")
         return []
 
+def invocar_pedidos_por_idusuario(idu):
+    try:
+        resp = requests.get(f'http://localhost:5000/pedidos/idusuario/{idu}')
+        if resp.status_code == 200:
+            return resp.json()
+        else:
+            return []
+    except requests.exceptions.RequestException as e:
+        print(f"Error al invocar pedidos {e}")
+        return []
+
 def invocar_carrito():
     try:
         resp = requests.get('http://localhost:5000/cart')
@@ -289,9 +300,10 @@ def product_details(product_id):
 @app.route('/my_account')
 def my_account():
     perfil_usuario = invocar_perfil_usuario()
+    pedido_usuario = invocar_pedidos_por_idusuario(perfil_usuario.get('id'))
     categorias = invocar_categorias()
     productos = invocar_productos()
-    return render_template("my_account.html", categorias=categorias, perfil_usuario=perfil_usuario, productos=productos)
+    return render_template("my_account.html",pedido=pedido_usuario, categorias=categorias, perfil_usuario=perfil_usuario, productos=productos)
 
 @app.route('/purchase-completed')
 def purchase_completed():
