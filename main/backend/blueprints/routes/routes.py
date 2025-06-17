@@ -1,10 +1,9 @@
-from flask import Blueprint, request, jsonify, session, redirect
-from functools import wraps
+from flask import Blueprint, request, jsonify, session
 import datetime
 import jwt
 from config import SECRET_KEY
 
-from blueprints.auth.auth import user_exists, create_user, verify_user, get_user_by_username, check_password_hash, email_exists, get_user_by_username_and_email
+from blueprints.auth.auth import user_exists, create_user, check_password_hash, email_exists, get_user_by_username_and_email
 from blueprints.admin.admin import jwt_admin_required
 from blueprints.user.user import login_required, get_user_by_id
 

@@ -3025,7 +3025,8 @@ input::-webkit-inner-spin-button {
   border-radius: 0.5rem;
   min-height: 200px;
   padding: 0 1rem;
-  background-color: #0E506C; /* Azul oscuro fijo para test */
+  background-color: #0E506C;
+  /* Azul oscuro fijo para test */
   overflow: hidden;
   cursor: pointer;
 }
@@ -3034,7 +3035,8 @@ input::-webkit-inner-spin-button {
   content: "";
   position: absolute;
   inset: 0;
-  background-color: rgba(255, 255, 255, 0.1); /* menos blanco */
+  background-color: rgba(255, 255, 255, 0.1);
+  /* menos blanco */
   opacity: 0;
   transition: opacity 0.3s;
   border-radius: inherit;
@@ -3046,7 +3048,7 @@ input::-webkit-inner-spin-button {
   opacity: 0.5;
 }
 
-.btn-add-product > span {
+.btn-add-product>span {
   position: relative;
   z-index: 2;
 }
@@ -4025,16 +4027,20 @@ input::-webkit-inner-spin-button {
 }
 
 .mi-alerta {
-  background-color: #ffe5e5; /* rojo pastel suave */
-  color: #a94442;            /* rojo oscuro/anaranjado */
+  background-color: #ffe5e5;
+  /* rojo pastel suave */
+  color: #a94442;
+  /* rojo oscuro/anaranjado */
   padding: 10px;
   border-radius: 4px;
   font-size: 0.9rem;
 }
 
 .mi-alerta-exito {
-  background-color: #e6ffed; /* verde pastel suave */
-  color: #2e7d32;            /* verde más oscuro */
+  background-color: #e6ffed;
+  /* verde pastel suave */
+  color: #2e7d32;
+  /* verde más oscuro */
   padding: 10px 15px;
   border-radius: 4px;
   font-size: 0.9rem;

@@ -49,6 +49,8 @@ def invocar_productos_por_id(product_id):
         print(f"Error al invocar el servicio de productos: {e}")
         return None
 
+
+
 def invocar_perfil_usuario():
     user = session.get('user')
     if not user:
@@ -324,7 +326,7 @@ def administrar_pagina():
         stock_nuevo = request.form.get('stock_nuevo')
         modificar_stock(stock_nuevo, nombre)
         return redirect(url_for('administrar_pagina'))
-       
+
     return render_template("administrar-pagina.html", stock=stock, verpedidos=verpedidos, perfil_usuario=perfil_usuario, categorias=categorias, productos=productos)
 
 

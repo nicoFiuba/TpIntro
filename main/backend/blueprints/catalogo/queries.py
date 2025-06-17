@@ -24,6 +24,7 @@ def obtener_producto_por_id(producto_id):
     conn.close()
     return producto
 
+
 def obtener_producto_por_categoria(producto_tipo):
     conn = get_connection()
     cursor = conn.cursor()
