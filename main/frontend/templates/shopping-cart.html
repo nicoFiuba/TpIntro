@@ -96,16 +96,53 @@
       Total: ${{ "%.2f"|format(total) }}
     </div>
     <div class="text-right mt-4">
-      <!-- Opción 1: Usar purchase_completed si existe -->
-      <a href="{{ url_for('purchase_completed') }}" style="border-radius:8px; padding:8px 16px; background:#0E506C; color:white; font-weight:bold; display:inline-block;">
-        Finalizar compra
-      </a>
-      
-      <!-- Opción 2: Alternativa si no hay purchase_completed -->
-      
-      <button class="btn-open-modal" data-target=".entry-modal" style="border-radius:8px; padding:8px 16px; background:#0E506C; color:white; font-weight:bold; cursor:pointer;">
-        Finalizar compra
-      </button>
+    <div class="text-right mt-4">
+      {% if perfil_usuario %}
+        <a href="{{ url_for('purchase_completed') }}" 
+          style="
+            display: inline-block;
+            min-width: 180px;
+            padding: 10px 24px;
+            background-color: #0E506C;
+            color: white;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 8px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+          "
+          onmouseover="this.style.backgroundColor='#145d7c'"
+          onmouseout="this.style.backgroundColor='#0E506C'"
+        >
+          Finalizar compra
+        </a>
+      {% else %}
+        <button
+          id="btn-finalizar-compra"
+          type="button"
+          style="
+            display: inline-block;
+            min-width: 200px;
+            padding: 10px 24px;
+            background-color: #0E506C;
+            color: white;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border: none;
+          "
+          onmouseover="this.style.backgroundColor='#145d7c'"
+          onmouseout="this.style.backgroundColor='#0E506C'"
+        >
+          Finalizar compra
+        </button>
+      {% endif %}
     </div>
   {% else %}
     <div class="shopping-cart-empty flex flex-col items-center justify-center gap-4 p-5">
@@ -206,7 +243,25 @@
     <i class="bi bi-chevron-compact-up pointer-events-none flex text-2xl text-white"></i>
   </div>
 </div>
+<script>
+  document.getElementById('btn-finalizar-compra').addEventListener('click', function () {
+    const usuarioLogeado = {{ 'true' if perfil_usuario else 'false' }};
 
+    if (!usuarioLogeado) {
+      const modal = document.getElementById('auth-modal');
+      modal.classList.remove('invisible', 'opacity-0');
+      modal.classList.add('visible', 'opacity-100');
+    } else {
+      window.location.href = "{{ url_for('purchase_completed') }}";
+    }
+  });
+
+  document.querySelector('#auth-modal .btn-close-modal').addEventListener('click', () => {
+    const modal = document.getElementById('auth-modal');
+    modal.classList.add('invisible', 'opacity-0');
+    modal.classList.remove('visible', 'opacity-100');
+  });
+</script>
 
 
 {% endblock %}
