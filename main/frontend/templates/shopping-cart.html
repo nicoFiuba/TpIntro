@@ -9,13 +9,13 @@
 <div class="breadcrumb-section container mx-auto my-5 px-2 sm:px-8">
   <ul class="flex flex-wrap items-center gap-1">
     <li class="transition-all-300 hover:text-primary-color">
-      <a href="{{ url_for('index') }}">Inicio</a>
+      <a href="{{ url_for('index') }}">Home</a>
     </li>
     <li>
       <i class="bi bi-caret-right-fill flex text-primary-color"></i>
     </li>
     <li class="transition-all-300 active hover:text-primary-color">
-      <a href="{{ url_for('shopping_cart') }}">Carrito de Compras</a>
+      <a href="{{ url_for('shopping_cart') }}">Shopping Cart</a>
     </li>
   </ul>
 </div>
@@ -23,7 +23,7 @@
 <div class="banner-title-section container mx-auto my-5 px-2 sm:px-8">
   <div class="liner-container my-5 flex justify-center border-b-2 border-[rgba(119,119,119,.17)]">
     <h1 class="mb-[-2px] inline-block border-b-2 border-primary-color pb-3 text-2xl font-bold uppercase">
-      Carrito de Compras
+      Shopping Cart
     </h1>
   </div>
 </div>
@@ -147,10 +147,10 @@
   {% else %}
     <div class="shopping-cart-empty flex flex-col items-center justify-center gap-4 p-5">
       <i class="bi bi-cart-x text-8xl text-gray-200"></i>
-      <p class="text-lg font-semibold">No hay productos en el carrito.</p>
+      <p class="text-lg font-semibold">There are no products in the cart.</p>
       <a class="btn-effect transition-all-300 flex items-center justify-center gap-2 rounded-lg bg-primary-color p-2"
         href="{{ url_for('shop_mixed') }}">
-        <span class="font-bold uppercase text-white">Ir a Productos</span>
+        <span class="font-bold uppercase text-white">Go to the store</span>
       </a>
     </div>
   {% endif %}
