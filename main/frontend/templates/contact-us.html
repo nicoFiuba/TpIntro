@@ -114,50 +114,7 @@
     </div>
   </div>
 
-        {% with messages = get_flashed_messages() %}
-				{% if messages %}
-				<div class="alert alert-success">
-					{% for message in messages %}
-					{{ message }}
-					{% endfor %}
-				</div>
-				{% endif %}
-				{% endwith %}
-            </li>
-            <li class="border-b border-gray-200">
-              <a class="flex select-none items-center p-2" href="contact-us.html">
-                <i class="bi bi-telephone mr-3 flex text-xl text-primary-color"></i>
-                <span class="font-semibold">Contact Us</span>
-              </a>
-            </li>
-            <li class="border-b border-gray-200">
-              <div class="metismenu-btn has-arrow flex cursor-pointer select-none items-center p-2"
-                aria-expanded="false" role="menu">
-                <span class="font-semibold">Pages</span>
-              </div>
-              <div class="metismenu-content">
-                <a class="btn-open-modal ml-10 block p-1" href="wishlist.html">Wishlist</a>
-                <a class="btn-open-modal ml-10 block p-1" href="shopping-cart.html">Shopping Cart</a>
-                <a class="btn-open-modal ml-10 block p-1" href="product-details.html">Product Details</a>
-                <a class="btn-open-modal ml-10 block p-1" href="checkout.html">Checkout</a>
-                <a class="btn-open-modal ml-10 block p-1" href="shop-mixed.html">Shop - Mixed</a>
-                <a class="btn-open-modal ml-10 block p-1" href="my-account.html">My Account</a>
-                <a class="btn-open-modal ml-10 block p-1" href="forgot-password.html">Forgot Password</a>
-                <a class="btn-open-modal ml-10 block p-1" href="login.html">Login</a>
-                <a class="btn-open-modal ml-10 block p-1" href="sign-up.html">Sign Up</a>
-                <a class="btn-open-modal ml-10 block p-1" href="verification.html">Verification</a>
 
-                <a class="btn-open-modal ml-10 block p-1" href="error404.html">Error 404</a>
-                <a class="btn-open-modal ml-10 block p-1" href="message-sent.html">Message Sent</a>
-                <a class="btn-open-modal ml-10 block p-1" href="purchase-completed.html">Purchase Completed</a>
-                <a class="btn-open-modal ml-10 block p-1" href="purchase-failed.html">Purchase Failed</a>
-              </div>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </div>
 
   <div
     class="shopping-cart-modal modal transition-all-300 invisible fixed inset-0 z-50 h-full w-full bg-overlay opacity-0">
