@@ -2,6 +2,8 @@ from flask import Flask, Blueprint
 from flask_cors import CORS
 import config
 
+
+from blueprints.crear_pedidos.crear_pedidos import finalizar_compra_bp 
 from blueprints.routes.routes import usuarios_bp
 from blueprints.catalogo import productos_bp
 from blueprints.auth.auth import auth_bp
@@ -21,7 +23,8 @@ def create_app():
     app.register_blueprint(pedidos_bp, url_prefix='/pedidos')
     app.register_blueprint(cart_bp)
     app.register_blueprint(stock_bp, url_prefix='/stock')
-    
+    app.register_blueprint(finalizar_compra_bp)
+
     return app
 
 if __name__ == '__main__':

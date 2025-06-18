@@ -27,7 +27,14 @@
       {% endfor %}
     </ul>
   </li>
-  <li>Fecha: {{ pedido.fecha.strftime('%d/%m/%Y %H:%M') }}</li>
+   <li>
+    Fecha:
+    {% if pedido.fecha %}
+      {{ pedido.fecha.strftime('%d/%m/%Y %H:%M') }}
+    {% else %}
+      No disponible
+    {% endif %}
+  </li>
   <li><b>Total: ${{ pedido.total }}</b></li>
 </ul>
     
@@ -38,7 +45,6 @@
     </div>
   </div>
 
-  <!-- Botón para ir arriba -->
   <div class="btn-gotop transition-all-300 invisible fixed bottom-[-999px] right-10 z-50 opacity-0">
     <div class="transition-all-300 cursor-pointer rounded-lg bg-[rgba(0,0,0,.3)] p-3 hover:bg-primary-color">
       <i class="bi bi-chevron-compact-up pointer-events-none flex text-2xl text-white"></i>
