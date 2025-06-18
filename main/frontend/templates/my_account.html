@@ -77,7 +77,9 @@
           </form>
         </div>
 
+
         <div class="tab-content flex h-full flex-col gap-5 rounded bg-white p-5">
+          {% if pedido %}
     <span class="block text-xl font-bold">Mis Pedidos</span>
   <table style="width: 90%; margin: 40px auto; text-align: center; border-collapse: collapse; border: 1px solid black;" class="table table-striped table-bordered">
     <thead>
@@ -124,6 +126,15 @@
   </div>
  </div>      
 </div>
+        {% else %}
+          <span class="block text-xl font-bold">No realizaste ningun pedido.</span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+
+
 
 {% else %}
 <div class="flex items-center justify-center bg-body">
