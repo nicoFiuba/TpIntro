@@ -26,15 +26,6 @@
       <li>{{ producto.nombre }} (x{{ producto.cantidad }}) - ${{ producto.precio * producto.cantidad }}</li>
       {% endfor %}
     </ul>
-  </li>
-   <li>
-    Fecha:
-    {% if pedido.fecha %}
-      {{ pedido.fecha.strftime('%d/%m/%Y %H:%M') }}
-    {% else %}
-      No disponible
-    {% endif %}
-  </li>
   <li><b>Total: ${{ pedido.total }}</b></li>
 </ul>
     
