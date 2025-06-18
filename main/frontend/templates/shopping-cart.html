@@ -98,28 +98,31 @@
     <div class="text-right mt-4">
     <div class="text-right mt-4">
       {% if perfil_usuario %}
-        <a href="{{ url_for('purchase_completed') }}" 
-          style="
-            display: inline-block;
-            min-width: 180px;
-            padding: 10px 24px;
-            background-color: #0E506C;
-            color: white;
-            font-weight: 700;
-            text-transform: uppercase;
-            border-radius: 8px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: background-color 0.3s ease;
-            text-decoration: none;
-          "
-          onmouseover="this.style.backgroundColor='#145d7c'"
-          onmouseout="this.style.backgroundColor='#0E506C'"
-        >
-          Finalizar compra
-        </a>
-      {% else %}
+  <form method="post" action="{{ url_for('finalizar_compra') }}">
+    <button
+      type="submit"
+      style="
+        display: inline-block;
+        min-width: 180px;
+        padding: 10px 24px;
+        background-color: #0E506C;
+        color: white;
+        font-weight: 700;
+        text-transform: uppercase;
+        border-radius: 8px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+      "
+      onmouseover="this.style.backgroundColor='#145d7c'"
+      onmouseout="this.style.backgroundColor='#0E506C'"
+    >
+      Finalizar compra
+    </button>
+  </form>
+{% else %}
         <button
           id="btn-finalizar-compra"
           type="button"

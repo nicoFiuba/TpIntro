@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash,  session, jsonify, Response, abort
 import requests
 import base64
+import datetime
 
 from urllib.parse import quote
 
@@ -312,7 +313,86 @@ def purchase_completed():
     categorias = invocar_categorias()
     perfil_usuario = invocar_perfil_usuario()
     productos = invocar_productos()
-    return render_template("purchase-completed.html", categorias=categorias, perfil_usuario=perfil_usuario, productos=productos)
+    pedido_id = session.get('ultimo_pedido_id')
+    pedido = None
+    if pedido_id:
+        pedido_data = requests.get(f'http://localhost:5000/pedidos/idpedido/{pedido_id}').json()
+        pedido_info = requests.get(f'http://localhost:5000/pedidos/idusuario/{perfil_usuario["id"]}').json()
+        pedido = {
+            'id': pedido_id,
+            'cliente': perfil_usuario.get('username', ''),
+            'productos': [],
+            'fecha': None,
+            'total': 0
+        }
+        total = 0
+        for item in pedido_data:
+            prod = next((p for p in productos if p['id'] == item['producto_id']), None)
+            if prod:
+                cantidad = int(item['cantidad'])
+                precio = float(item['precio'])
+                pedido['productos'].append({
+                    'nombre': prod['nombre'],
+                    'cantidad': cantidad,
+                    'precio': precio
+                })
+                total += cantidad * precio
+        pedido['total'] = total
+
+        
+        for p in pedido_info:
+            if str(p['id']) == str(pedido_id):
+                fecha_str = p['fecha']
+                try:
+                    pedido['fecha'] = datetime.datetime.strptime(fecha_str, "%Y-%m-%d %H:%M:%S")
+                except Exception:
+                    pedido['fecha'] = None  
+                break
+
+    session.pop('ultimo_pedido_id', None)
+    return render_template(
+        "purchase-completed.html",
+        categorias=categorias,
+        perfil_usuario=perfil_usuario,
+        productos=productos,
+        pedido=pedido
+    )
+
+@app.route('/finalizar-compra', methods=['POST'])
+def finalizar_compra():
+    perfil_usuario = invocar_perfil_usuario()
+    cart = session.get('cart', {})
+    if not perfil_usuario or not cart:
+        flash('Debes iniciar sesión y tener productos en el carrito.', 'error')
+        return redirect(url_for('shopping_cart'))
+
+    productos = []
+    productos_backend = invocar_productos()
+    for pid, cantidad in cart.items():
+        producto = next((p for p in productos_backend if str(p['id']) == str(pid)), None)
+        if producto:
+            productos.append({
+                'producto_id': int(pid),
+                'cantidad': int(cantidad),
+                'precio': float(producto['precio'])
+            })
+
+    data = {
+        'usuario_id': perfil_usuario['id'],
+        'carrito': productos
+    }
+
+    resp = requests.post('http://localhost:5000/finalizar-compra', json=data)
+    if resp.status_code == 201:
+        session['cart'] = {}
+        pedido_id = resp.json().get('pedido_id')
+        session['ultimo_pedido_id'] = pedido_id  
+        return redirect(url_for('purchase_completed'))
+    else:
+        flash('Error al finalizar la compra.', 'error')
+        return redirect(url_for('shopping_cart'))
+
+
 
 @app.route('/contact-us', methods=['GET', 'POST'])
 def contact_us():
