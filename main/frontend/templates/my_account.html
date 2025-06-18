@@ -78,24 +78,42 @@
         </div>
 
         <div class="tab-content flex h-full flex-col gap-5 rounded bg-white p-5">
-          <span class="block text-xl font-bold">Mis pedidos</span>
+    <span class="block text-xl font-bold">Mis Pedidos</span>
+  <table style="width: 90%; margin: 40px auto; text-align: center; border-collapse: collapse; border: 1px solid black;" class="table table-striped table-bordered">
+    <thead>
+      <tr>       
+        <th style="border: 1px solid black;">ID del Pedido</th>
+        <th style="border: 1px solid black;">ID del Producto Comprado</th>
+        <th style="border: 1px solid black;">Cantidad</th>       
+        <th style="border: 1px solid black;">Subtotal</th>   
+      </tr>
+    </thead>
+    <tbody>
+        {% for datos in detalles %}
+        {% for dato in datos %}
+      <tr>
+        <td style="border: 1px solid black;"># {{ dato.pedido_id }}</td>
+        <td style="border: 1px solid black;">{{ dato.producto_id }}</td>
+        <td style="border: 1px solid black;">x{{ dato.cantidad }}</td>
+        <td style="border: 1px solid black;">${{ dato.precio}}</td>
+      </tr>
+      {% endfor %}
+      {% endfor %}
+    </tbody>
+  </table>
+   <span class="block text-xl font-bold">Fecha en que se realizaron</span>
           <div class="flex flex-wrap justify-between gap-5">
-            <form class="search" action="#">
-              <div class="flex h-[40px] overflow-hidden rounded-[50px] bg-gray-100">
-               
-              </div>
-            </form>
         <table style="width: 90%; margin: 40px auto; text-align: center; border-collapse: collapse; border: 1px solid black;" class="table table-striped table-bordered">
     <thead>
       <tr>       
-        <th style="border: 1px solid black;">ID Pedido</th>
-        <th style="border: 1px solid black;">Fecha</th>     
+        <th style="border: 1px solid black;">ID del Pedido</th>
+        <th style="border: 1px solid black;">Fecha de Compra</th>     
       </tr>
     </thead>
     <tbody>
         {% for dato in pedido %}
       <tr>
-        <td style="border: 1px solid black;">{{ dato.id }}</td>
+        <td style="border: 1px solid black;"># {{ dato.id }}</td>
         <td style="border: 1px solid black;">{{ dato.fecha }}</td>
       </tr>
       {% endfor %}

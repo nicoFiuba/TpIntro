@@ -301,9 +301,11 @@ def product_details(product_id):
 def my_account():
     perfil_usuario = invocar_perfil_usuario()
     pedido_usuario = invocar_pedidos_por_idusuario(perfil_usuario.get('id'))
+    detalles_pedidos = [invocar_pedidos_por_id(p['id']) for p in pedido_usuario]
     categorias = invocar_categorias()
     productos = invocar_productos()
-    return render_template("my_account.html",pedido=pedido_usuario, categorias=categorias, perfil_usuario=perfil_usuario, productos=productos)
+    return render_template("my_account.html", detalles=detalles_pedidos, pedido=pedido_usuario, categorias=categorias, perfil_usuario=perfil_usuario, productos=productos)
+
 
 @app.route('/purchase-completed')
 def purchase_completed():
