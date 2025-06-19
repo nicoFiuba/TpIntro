@@ -62,7 +62,7 @@ endblock %} {% block content %}
     </div>
   {% endif %}
 {% endwith %}
-<!-- Modal add admin-->
+
  <div id="modal-agregar-admin"
      class="invisible opacity-0 fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300">
     <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
@@ -179,12 +179,12 @@ function cerrarModalAdmin() {
 </script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // Cerrá el modal si está accidentalmente visible
+
   const modales = document.querySelectorAll('.modal');
   modales.forEach(modal => {
-    modal.classList.add('hidden'); // asegurarse de que esté oculto
-    modal.classList.remove('opacity-100', 'visible'); // sacar clases de visibilidad
-    modal.classList.add('opacity-0', 'invisible'); // poner clases para ocultar
+    modal.classList.add('hidden'); 
+    modal.classList.remove('opacity-100', 'visible'); 
+    modal.classList.add('opacity-0', 'invisible'); 
   });
 });
 </script>
@@ -192,12 +192,12 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
     const mensaje = document.getElementById('mensaje-resultado');
     if (mensaje) {
-      // Para ocultar suavemente, podés agregar una transición CSS y luego ocultar:
+      
       mensaje.style.transition = 'opacity 0.5s ease';
       mensaje.style.opacity = '0';
-      setTimeout(() => mensaje.remove(), 500); // eliminar el div después de la transición
+      setTimeout(() => mensaje.remove(), 500); 
     }
-  }, 5000); // 5000 ms = 5 segundos
+  }, 5000); 
 </script>
 {% else %}
 <div class="flex items-center justify-center bg-body">
