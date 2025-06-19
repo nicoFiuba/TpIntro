@@ -19,7 +19,7 @@
     <tbody>
         {% for dato in datos %}
       <tr>
-        <td style="border: 1px solid black;">#{{ dato.id }}</td>
+        <td style="border: 1px solid black;"># {{ dato.id }}</td>
         <td style="border: 1px solid black;">{{ dato.usuario_id }}</td>
         <td style="border: 1px solid black;">{{ dato.fecha }}</td>
         <td style="border: 1px solid black;">
@@ -76,15 +76,15 @@
                     <th style="border: 1px solid black;">ID Pedido</th>
                     <th style="border: 1px solid black;">ID Producto</th>
                     <th style="border: 1px solid black;">Cantidad</th>    
-                    <th style="border: 1px solid black;">Precio</th>       
+                    <th style="border: 1px solid black;">Precio x unidad</th>       
                   </tr>
                 </thead>
                 <tbody>
                     {% for dato in datosid %}
                   <tr>
-                    <td style="border: 1px solid black;">#{{ dato.pedido_id }}</td>
+                    <td style="border: 1px solid black;"># {{ dato.pedido_id }}</td>
                     <td style="border: 1px solid black;">{{ dato.producto_id }}</td>
-                    <td style="border: 1px solid black;">{{ dato.cantidad }}</td>
+                    <td style="border: 1px solid black;">x{{ dato.cantidad }}</td>
                     <td style="border: 1px solid black;">${{ dato.precio }}</td>                   
                   </tr>
                   {% endfor %}
