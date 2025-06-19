@@ -65,7 +65,7 @@ endblock %} {% block content %}
             type="number" name="cantidad" value="1" min="1" max="{{ product.stock }}" {% if product.stock==0
             %}disabled{% endif %} />
 
-          <!-- ...botones de cantidad... -->
+          
           <button
             class="btn-effect transition-all-300 flex h-10 items-center justify-center gap-1 rounded-md bg-primary-color p-1"
             type="submit" {% if product.stock==0 %}disabled{% endif %}>
